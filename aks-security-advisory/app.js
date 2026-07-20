@@ -322,8 +322,12 @@ function packageCard(row) {
 }
 
 function renderDetail(adv) {
+  // Gate href behind isExternal() (same as evidenceLinks) so only http(s)
+  // URLs ever become clickable links; anything else renders as inert text.
   const refs = (adv.references || []).map((u) =>
-    el("li", null, el("a", { href: u, target: "_blank", rel: "noopener" }, u)));
+    el("li", null, isExternal(u)
+      ? el("a", { href: u, target: "_blank", rel: "noopener" }, u)
+      : el("span", null, String(u))));
 
   const summary = el("div", { class: "card" }, [
     el("h3", null, "Summary"),
