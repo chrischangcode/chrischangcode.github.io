@@ -87,7 +87,8 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   margin: 1.5rem 0 1rem;
 }
 @media (min-width: 720px) {
-  .controls { grid-template-columns: 2fr 1fr 1fr 1fr; align-items: end; }
+  .controls { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); align-items: end; }
+  .field.grow { grid-column: 2 / -1; }
 }
 .field label {
   display: block; font-size: .75rem; text-transform: uppercase;
@@ -144,6 +145,22 @@ td.cve a { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-wei
 .st-not_affected { background: rgba(96,94,92,.12); color: var(--st-notaffected); border-color: rgba(96,94,92,.30); }
 .st-under_investigation { background: rgba(92,46,145,.12); color: var(--st-investigating); border-color: rgba(92,46,145,.30); }
 .st-will_not_fix { background: rgba(107,74,43,.12); color: var(--st-willnotfix); border-color: rgba(107,74,43,.30); }
+
+/* Extended-binary (component) coverage badges. */
+.coverage-badge {
+  display: inline-block; padding: .12rem .5rem; border-radius: 999px;
+  font-size: .75rem; font-weight: 600; white-space: nowrap;
+  border: 1px solid transparent;
+}
+.cov-covered_by_package { background: rgba(16,124,16,.12); color: var(--st-fixed); border-color: rgba(16,124,16,.30); }
+.cov-covered_by_scan { background: rgba(16,124,16,.10); color: #0b7a0b; border-color: rgba(16,124,16,.26); }
+.cov-scan_pending { background: rgba(202,128,4,.14); color: #8a5a00; border-color: rgba(202,128,4,.34); }
+.cov-aks_built { background: rgba(0,120,212,.12); color: #0067c0; border-color: rgba(0,120,212,.30); }
+.cov-not_baked { background: rgba(96,94,92,.12); color: var(--st-notaffected); border-color: rgba(96,94,92,.30); }
+.cov-not_assessed { background: rgba(96,94,92,.10); color: var(--st-notaffected); border-color: rgba(96,94,92,.24); }
+.comp-name { font-weight: 600; margin-right: .4rem; }
+.comp-ver { margin-right: .4rem; color: var(--muted, #605e5c); }
+.additive-items li { margin: .35rem 0; }
 
 .sev { font-weight: 600; }
 .sev-Critical { color: var(--sev-critical); }
@@ -235,4 +252,10 @@ td:last-child .info:hover::after, td:last-child .info:focus::after {
   max-width: 90ch; margin-top: .25rem;
 }
 .help-kv dt { color: var(--accent-hover); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .85rem; }
+
+/* cross-links between advisories and the installed-paths page */
+a.pkg-link { color: var(--accent-hover); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+a.pkg-link:hover { border-bottom-style: solid; }
+a.pkg-xref { font-size: .78rem; color: var(--muted); text-decoration: none; white-space: nowrap; }
+a.pkg-xref:hover { color: var(--accent-hover); text-decoration: underline; }
 .help-kv dd { margin: 0; color: var(--text-soft); font-size: .9rem; }

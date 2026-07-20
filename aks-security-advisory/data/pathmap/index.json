@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "type": "aks-vhd-pathmap-index",
+  "generated": "2026-07-20T23:02:51Z",
+  "default_lineage": "AKSAzureLinuxV3/gen2",
+  "lineages": {
+    "AKSAzureLinuxV3/cvmgen2": "azurelinux-3.0",
+    "AKSAzureLinuxV3/gen1": "azurelinux-3.0",
+    "AKSAzureLinuxV3/gen1fips": "azurelinux-3.0",
+    "AKSAzureLinuxV3/gen2": "azurelinux-3.0",
+    "AKSAzureLinuxV3/gen2arm64": "azurelinux-3.0",
+    "AKSAzureLinuxV3/gen2arm64fips": "azurelinux-3.0",
+    "AKSAzureLinuxV3/gen2fips": "azurelinux-3.0",
+    "AKSAzureLinuxV3/gen2kata": "azurelinux-3.0",
+    "AKSAzureLinuxV3/gen2tl": "azurelinux-3.0",
+    "AKSAzureLinuxV3/osguardgen2fipstl": "azurelinux-3.0",
+    "AKSUbuntu/gen1/2004fipscontainerd": "ubuntu-focal",
+    "AKSUbuntu/gen1/2204containerd": "ubuntu-jammy",
+    "AKSUbuntu/gen1/2204fipscontainerd": "ubuntu-jammy",
+    "AKSUbuntu/gen1/2404containerd": "ubuntu-noble",
+    "AKSUbuntu/gen2/2004cvmcontainerd": "ubuntu-focal",
+    "AKSUbuntu/gen2/2004fipscontainerd": "ubuntu-focal",
+    "AKSUbuntu/gen2/2204arm64containerd": "ubuntu-jammy",
+    "AKSUbuntu/gen2/2204containerd": "ubuntu-jammy",
+    "AKSUbuntu/gen2/2204fipscontainerd": "ubuntu-jammy",
+    "AKSUbuntu/gen2/2204fipstlcontainerd": "ubuntu-jammy",
+    "AKSUbuntu/gen2/2204tlcontainerd": "ubuntu-jammy",
+    "AKSUbuntu/gen2/2404arm64containerd": "ubuntu-noble",
+    "AKSUbuntu/gen2/2404containerd": "ubuntu-noble",
+    "AKSUbuntu/gen2/2404cvmcontainerd": "ubuntu-noble",
+    "AKSUbuntu/gen2/2404tlcontainerd": "ubuntu-noble"
+  },
+  "maps": [
+    {
+      "key": "azurelinux-3.0",
+      "os_family": "azurelinux",
+      "release": "3.0",
+      "path_count": 13711,
+      "package_count": 2075
+    },
+    {
+      "key": "ubuntu-focal",
+      "os_family": "ubuntu",
+      "release": "focal",
+      "path_count": 51603,
+      "package_count": 13697
+    },
+    {
+      "key": "ubuntu-jammy",
+      "os_family": "ubuntu",
+      "release": "jammy",
+      "path_count": 55067,
+      "package_count": 14874
+    },
+    {
+      "key": "ubuntu-noble",
+      "os_family": "ubuntu",
+      "release": "noble",
+      "path_count": 60067,
+      "package_count": 15758
+    }
+  ]
+}

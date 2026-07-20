@@ -3,7 +3,10 @@
 A zero-build static front-end for browsing the AKS VHD security-advisory feed
 (the per-CVE JSON + `index.json` artifact produced by `aks-cve feed`). It offers
 live search by CVE id and filtering by OS/SKU lineage, headline status, and
-severity, plus a detail view per CVE and a help/glossary page.
+severity, a detail view per CVE, an **Installed paths** page that maps a
+scanner-reported path (e.g. `/usr/bin/curl`) to the owning package(s), an
+**Extended binaries** page that lists AKS-laid binaries and how each is covered,
+and a help/glossary page.
 
 > **Community project.** This site and the feed behind it are an independent,
 > open-source effort. They are **not** an official Microsoft/Azure product and
@@ -13,7 +16,7 @@ severity, plus a detail view per CVE and a help/glossary page.
 
 - Plain **HTML + CSS + vanilla JS** — no framework, no bundler, no build step.
   Just static files served over HTTP.
-- `index.html` — page shell + header nav (Advisories / Help & glossary / Source).
+- `index.html` — page shell + header nav (Advisories / Installed paths / Extended binaries / Help).
 - `styles.css` — Azure light theme (white surfaces, `#0078d4` accent).
 - `app.js` — the whole front-end: data loading, search/filter, detail view,
   tooltips, and the help page. The `STATUS_HELP` / `FIELD_HELP` glossaries in
@@ -29,6 +32,22 @@ The site reads the feed produced by [`aks-cve feed`](../docs/CLI.md):
   labels to drive its filter controls **without fetching every per-CVE file**.
   See [docs/ADVISORY-SCHEMA.md](../docs/ADVISORY-SCHEMA.md#index-indexjson).
 - `advisories/<CVE>.json` — fetched lazily when a CVE detail view is opened.
+- `pathmap/index.json` + `pathmap/<key>.json` — the installed-path → package
+  maps behind the **Installed paths** page and the advisory ↔ path cross-links
+  (best-effort; the page degrades gracefully if the feed omits them). See
+  [docs/ADVISORY-SCHEMA.md](../docs/ADVISORY-SCHEMA.md#installed-path--package-supplemental-feed-pathmap).
+- `components.json` — per-OS-family classification of the extended binaries
+  behind the **Extended binaries** page (best-effort; the page is hidden if the
+  feed omits it). See
+  [docs/ADVISORY-SCHEMA.md](../docs/ADVISORY-SCHEMA.md#extended-binary-coverage-manifest-componentsjson).
+
+> **Coverage limitation — no container-image scanning yet.** The `covered_by_scan`
+> coverage shown on the **Extended binaries** page comes from a binary (Trivy)
+> scan of downloadable binary **archives (tarballs) only**. Extended components
+> distributed as container/OCI **images** — notably `kubernetes-binaries`
+> (`kubelet` / `kubectl`) and `azure-acr-credential-provider` — are **not**
+> scanned and appear as `aks_built` / `scan_pending` instead. Adding image
+> scanning is tracked in the feed repo's issue #8.
 
 ### Where it looks for the data
 

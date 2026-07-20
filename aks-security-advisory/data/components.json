@@ -1,0 +1,295 @@
+{
+  "schema_version": "1.0",
+  "type": "aks-vhd-components",
+  "generated": "2026-07-20T23:01:38Z",
+  "families": {
+    "azurelinux": {
+      "components": [
+        {
+          "name": "acr-mirror",
+          "coverage": "aks_built",
+          "version": "0.3.1",
+          "note": "built by AKS / upstream; not tracked by the distro advisory feed"
+        },
+        {
+          "name": "aks-secure-tls-bootstrap-client",
+          "coverage": "aks_built",
+          "version": "1.1.4-1.azl3",
+          "note": "built by AKS / upstream; not tracked by the distro advisory feed"
+        },
+        {
+          "name": "aznfs",
+          "coverage": "scan_pending",
+          "version": "3.0.15-1",
+          "package": "aznfs",
+          "note": "installed distro package not tracked by the base distro advisory feed; binary scan planned"
+        },
+        {
+          "name": "Azure CNI",
+          "coverage": "covered_by_scan",
+          "version": "1.5.38"
+        },
+        {
+          "name": "azure-acr-credential-provider",
+          "coverage": "aks_built",
+          "version": "v1.30.15",
+          "note": "built by AKS / upstream; not tracked by the distro advisory feed"
+        },
+        {
+          "name": "CNI plugin",
+          "coverage": "covered_by_scan",
+          "version": "1.6.2"
+        },
+        {
+          "name": "containerd",
+          "coverage": "covered_by_package",
+          "version": "2.2.4-4.azl3",
+          "package": "containerd2"
+        },
+        {
+          "name": "containernetworking-plugins",
+          "coverage": "covered_by_package",
+          "version": "1.6.2",
+          "package": "containernetworking-plugins"
+        },
+        {
+          "name": "datacenter-gpu-manager-4-core",
+          "coverage": "not_baked",
+          "version": "1:4.5.3-1",
+          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+        },
+        {
+          "name": "datacenter-gpu-manager-4-proprietary",
+          "coverage": "not_baked",
+          "version": "1:4.5.3-1",
+          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+        },
+        {
+          "name": "dcgm-exporter",
+          "coverage": "not_baked",
+          "version": "4.8.2-9.azl3",
+          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+        },
+        {
+          "name": "dra-driver-nvidia-gpu",
+          "coverage": "not_baked",
+          "version": "0.4.1-2.azl3",
+          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+        },
+        {
+          "name": "ig",
+          "coverage": "covered_by_package",
+          "version": "0.53.2-1.azl3",
+          "package": "ig"
+        },
+        {
+          "name": "kubectl",
+          "coverage": "aks_built",
+          "version": "1.34.8",
+          "note": "built by AKS / upstream; not tracked by the distro advisory feed"
+        },
+        {
+          "name": "kubelet",
+          "coverage": "aks_built",
+          "version": "1.34.8",
+          "note": "built by AKS / upstream; not tracked by the distro advisory feed"
+        },
+        {
+          "name": "kubernetes-binaries",
+          "coverage": "aks_built",
+          "version": "v1.28.103-akslts",
+          "note": "built by AKS / upstream; not tracked by the distro advisory feed"
+        },
+        {
+          "name": "node-exporter",
+          "coverage": "scan_pending",
+          "version": "1.9.1-12.azl3",
+          "package": "node-exporter-kubernetes",
+          "note": "installed distro package not tracked by the base distro advisory feed; binary scan planned"
+        },
+        {
+          "name": "nvidia-device-plugin",
+          "coverage": "not_baked",
+          "version": "0.19.3-3.azl3",
+          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+        },
+        {
+          "name": "oras",
+          "coverage": "covered_by_scan",
+          "version": "1.2.2"
+        },
+        {
+          "name": "runc",
+          "coverage": "covered_by_package",
+          "version": "1.3.3",
+          "package": "runc"
+        }
+      ],
+      "counts": {
+        "aks_built": 6,
+        "scan_pending": 2,
+        "covered_by_scan": 3,
+        "covered_by_package": 4,
+        "not_baked": 5
+      }
+    },
+    "ubuntu": {
+      "components": [
+        {
+          "name": "acr-mirror",
+          "coverage": "aks_built",
+          "version": "0.3.1",
+          "note": "built by AKS / upstream; not tracked by the distro advisory feed"
+        },
+        {
+          "name": "aks-secure-tls-bootstrap-client",
+          "coverage": "aks_built",
+          "version": "1.1.4-ubuntu24.04u1",
+          "note": "built by AKS / upstream; not tracked by the distro advisory feed"
+        },
+        {
+          "name": "Azure CNI",
+          "coverage": "covered_by_scan",
+          "version": "1.5.38"
+        },
+        {
+          "name": "azure-acr-credential-provider",
+          "coverage": "aks_built",
+          "version": "v1.30.15",
+          "note": "built by AKS / upstream; not tracked by the distro advisory feed"
+        },
+        {
+          "name": "blobfuse",
+          "coverage": "scan_pending",
+          "version": "1.4.5",
+          "package": "blobfuse",
+          "note": "installed distro package not tracked by the base distro advisory feed; binary scan planned"
+        },
+        {
+          "name": "blobfuse2",
+          "coverage": "scan_pending",
+          "version": "2.5.3",
+          "package": "blobfuse2",
+          "note": "installed distro package not tracked by the base distro advisory feed; binary scan planned"
+        },
+        {
+          "name": "CNI plugin",
+          "coverage": "covered_by_scan",
+          "version": "1.6.2"
+        },
+        {
+          "name": "containerd",
+          "coverage": "scan_pending",
+          "version": "2.3.2-ubuntu24.04u1",
+          "package": "moby-containerd",
+          "note": "installed distro package not tracked by the base distro advisory feed; binary scan planned"
+        },
+        {
+          "name": "containernetworking-plugins",
+          "coverage": "scan_pending",
+          "version": "1.9.0-ubuntu24.04u1",
+          "package": "containernetworking-plugins",
+          "note": "installed distro package not tracked by the base distro advisory feed; binary scan planned"
+        },
+        {
+          "name": "datacenter-gpu-manager-4-core",
+          "coverage": "not_baked",
+          "version": "1:4.5.3-1",
+          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+        },
+        {
+          "name": "datacenter-gpu-manager-4-proprietary",
+          "coverage": "not_baked",
+          "version": "1:4.5.3-1",
+          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+        },
+        {
+          "name": "dcgm-exporter",
+          "coverage": "not_baked",
+          "version": "4.8.2-ubuntu24.04u9",
+          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+        },
+        {
+          "name": "dra-driver-nvidia-gpu",
+          "coverage": "not_baked",
+          "version": "0.4.1-ubuntu24.04u2",
+          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+        },
+        {
+          "name": "ig",
+          "coverage": "scan_pending",
+          "version": "0.53.2-ubuntu24.04u1",
+          "package": "ig",
+          "note": "installed distro package not tracked by the base distro advisory feed; binary scan planned"
+        },
+        {
+          "name": "kubectl",
+          "coverage": "aks_built",
+          "version": "1.34.8",
+          "note": "built by AKS / upstream; not tracked by the distro advisory feed"
+        },
+        {
+          "name": "kubelet",
+          "coverage": "aks_built",
+          "version": "1.34.8",
+          "note": "built by AKS / upstream; not tracked by the distro advisory feed"
+        },
+        {
+          "name": "kubernetes-binaries",
+          "coverage": "aks_built",
+          "version": "v1.28.103-akslts",
+          "note": "built by AKS / upstream; not tracked by the distro advisory feed"
+        },
+        {
+          "name": "node-exporter",
+          "coverage": "scan_pending",
+          "version": "1.9.1-ubuntu24.04u12",
+          "package": "node-exporter-kubernetes",
+          "note": "installed distro package not tracked by the base distro advisory feed; binary scan planned"
+        },
+        {
+          "name": "nvidia-cuda-driver",
+          "coverage": "not_baked",
+          "version": "580.159.04-20260629214430",
+          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+        },
+        {
+          "name": "nvidia-cuda-driver-prebaked",
+          "coverage": "not_baked",
+          "version": "580.159.04-20260629214430",
+          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+        },
+        {
+          "name": "nvidia-device-plugin",
+          "coverage": "not_baked",
+          "version": "0.19.3-ubuntu24.04u3",
+          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+        },
+        {
+          "name": "nvidia-grid-driver",
+          "coverage": "not_baked",
+          "version": "570.211.01-20260522192315",
+          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+        },
+        {
+          "name": "oras",
+          "coverage": "covered_by_scan",
+          "version": "1.2.2"
+        },
+        {
+          "name": "runc",
+          "coverage": "scan_pending",
+          "version": "1.4.3-ubuntu24.04u1",
+          "package": "moby-runc",
+          "note": "installed distro package not tracked by the base distro advisory feed; binary scan planned"
+        }
+      ],
+      "counts": {
+        "aks_built": 6,
+        "covered_by_scan": 3,
+        "scan_pending": 7,
+        "not_baked": 8
+      }
+    }
+  }
+}

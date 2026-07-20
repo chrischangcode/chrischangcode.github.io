@@ -35,6 +35,25 @@ const STATUS_LABELS = {
   will_not_fix: "Will not fix",
 };
 
+// Coverage vocabulary for extended binaries (release-notes components).
+const COVERAGE_LABELS = {
+  covered_by_package: "Covered by package",
+  covered_by_scan: "Covered by scan",
+  scan_pending: "Scan pending",
+  aks_built: "AKS-built / upstream",
+  not_baked: "Not baked in",
+  not_assessed: "Not assessed",
+};
+
+const COVERAGE_HELP = {
+  covered_by_package: "This extended binary is the same artifact as an installed distro package that the distro advisory feed actually tracks, so its CVE status IS assessed \u2014 see the linked package's advisories.",
+  covered_by_scan: "Assessed by a binary (Trivy) scan of the extended binary itself, because the distro advisory feeds don't track it. Carries scan evidence rather than a distro package row. Note: only downloadable binary archives (tarballs) are scanned \u2014 components shipped as container/OCI images (e.g. kubelet/kubectl via the kubernetes-node image, and azure-acr-credential-provider) are NOT scanned yet and stay 'aks_built' / 'scan_pending'.",
+  scan_pending: "Installed as a distro package (typically a Microsoft-repackaged one from packages.microsoft.com \u2014 e.g. moby-containerd, moby-runc, aznfs) that the base distro's advisory feed does NOT track. Its status is honestly unknown here; a binary scan is planned. Not treated as covered.",
+  aks_built: "Built by AKS or downloaded from upstream (kubelet, kubectl, oras, Azure CNI). No distro package exists for it, so distro OVAL/CVE feeds do not track it and no fix status is asserted here.",
+  not_baked: "A distro package installed only conditionally (e.g. GPU drivers / DCGM at node provisioning) and absent from the mainstream baked image \u2014 nothing to assess for this lineage.",
+  not_assessed: "Not tracked by the distro advisory feeds (e.g. cached container images).",
+};
+
 // Field/column explanations. Keyed by a short id used across the list and the
 // detail view.
 const FIELD_HELP = {
@@ -51,8 +70,13 @@ const FIELD_HELP = {
   latest_build: "The newest scanned AKS VHD build (still on a pre-fix package version) — the baseline the 'fix available upstream' verdict was measured against.",
   advisory_id: "The distro advisory identifier the fixed version came from (e.g. an Azure Linux OVAL advisory id).",
   evidence: "Verifiable source links backing the verdict: the AgentBaker release-notes file listing the exact installed versions, and the distro OVAL/advisory feed.",
-  additive: "Binaries laid on top of the base image (kubelet, CNI, containerd/runc) and cached container images. These are tracked by their own upstreams, NOT the distro advisory feeds, so this feed does not assert a fix status for them (coverage: not_assessed).",
-  references: "External references for this CVE — NVD, the distro security tracker, and the advisory feed source.",
+  additive: "Extended binaries laid on top of the base image (kubelet, CNI, containerd/runc, oras) and cached container images. Some are the SAME artifact as an installed distro package the distro feed tracks (e.g. the containerd binary is the Azure Linux containerd2 package) and so ARE assessed \u2014 see 'covered_by_package' below. Others are Microsoft-repackaged and not in the base distro feed ('scan_pending'), or AKS-built/upstream ('aks_built'), tracked by their own upstreams, not the distro feeds.",
+  components: "Every extended binary AKS lays on top of the base image, with whether the distro advisory feeds can assess it. 'covered_by_package' = the same artifact as a distro package the feed actually tracks (its CVE status is in the advisories); 'scan_pending' = installed as a Microsoft-repackaged distro package the base distro feed doesn't track (e.g. moby-containerd on Ubuntu) \u2014 a binary scan is planned; 'aks_built' = built by AKS or downloaded from upstream (kubelet, oras, Azure CNI), in no distro feed; 'not_baked' = distro packages installed only conditionally (e.g. GPU drivers), absent from the mainstream image.",
+  references: "External references for this CVE — NVD, and the authoritative distro CVE status page: Ubuntu's CVE Tracker and, for Azure Linux, the Astrolabe advisory page. Also includes the advisory-feed source.",
+  paths: "The absolute install paths this package owns on the node image. Only executables under /bin and /sbin are indexed — the paths a scanner typically reports.",
+  path_lookup: "Type a path a scanner reported (e.g. /usr/bin/curl) or just a file name (e.g. curl). The lookup returns the owning package(s) for the selected OS/SKU, which you can click through to its advisories.",
+  path_os: "The AKS VHD lineage the path→package map was built for. Executable-path ownership is stable within an OS release, so every SKU of a release shares one map; the default is the mainstream Azure Linux 3 gen2 image.",
+  pkg_filter: "Show only advisories that name a package matching this text (substring, case-insensitive). Cleared by Reset.",
 };
 
 const SEVERITY_RANK = { Critical: 0, High: 1, Medium: 2, Low: 3 };
@@ -61,8 +85,15 @@ const state = {
   dataBase: "data",
   index: null,      // parsed index.json
   entries: [],      // index.advisories
-  filters: { q: "", release: "", status: "", severity: "" },
+  filters: { q: "", release: "", status: "", severity: "", pkg: "" },
   detailCache: new Map(),
+  // Installed-path -> package supplemental feed (loaded lazily on first visit
+  // to #/paths, or when an advisory cross-links into it).
+  pathmap: { index: null, docs: new Map(), triedIndex: false },
+  pathFilters: { os: "", q: "" },
+  // Extended-binary coverage manifest (components.json), loaded lazily.
+  components: { data: null, tried: false },
+  componentFilters: { os: "", coverage: "" },
 };
 
 const $app = () => document.getElementById("app");
@@ -98,6 +129,51 @@ async function loadAdvisory(id) {
   const adv = await r.json();
   state.detailCache.set(id, adv);
   return adv;
+}
+
+// Installed-path -> package feed. The index lists the available per-OS-release
+// maps; each map is fetched on demand. All calls are best-effort: an older feed
+// that predates the pathmap feed simply has no pathmap/ directory (404), and the
+// paths page degrades to an informative message rather than an error.
+async function loadPathmapIndex() {
+  if (state.pathmap.index || state.pathmap.triedIndex) return state.pathmap.index;
+  state.pathmap.triedIndex = true;
+  try {
+    const r = await fetch(state.dataBase + "/pathmap/index.json");
+    if (r.ok) state.pathmap.index = await r.json();
+  } catch (_e) { /* leave null */ }
+  return state.pathmap.index;
+}
+
+async function loadPathmapDoc(key) {
+  if (state.pathmap.docs.has(key)) return state.pathmap.docs.get(key);
+  const r = await fetch(state.dataBase + "/pathmap/" + encodeURIComponent(key) + ".json");
+  if (!r.ok) throw new Error(key + " HTTP " + r.status);
+  const doc = await r.json();
+  state.pathmap.docs.set(key, doc);
+  return doc;
+}
+
+// Extended-binary coverage manifest (components.json). Best-effort: a feed that
+// predates it simply 404s and the page degrades to an informative message.
+async function loadComponents() {
+  if (state.components.data || state.components.tried) return state.components.data;
+  state.components.tried = true;
+  try {
+    const r = await fetch(state.dataBase + "/components.json");
+    if (r.ok) state.components.data = await r.json();
+  } catch (_e) { /* leave null */ }
+  return state.components.data;
+}
+
+// Resolve a lineage label (e.g. "AKSAzureLinuxV3/gen2") to its map key via the
+// pathmap index, falling back to the index default when the label has no map.
+function pathmapKeyForLabel(label) {
+  const idx = state.pathmap.index;
+  if (!idx) return null;
+  if (label && idx.lineages && idx.lineages[label]) return idx.lineages[label];
+  const def = idx.default_lineage;
+  return (def && idx.lineages && idx.lineages[def]) || null;
 }
 
 /* ---------- dom helpers ---------- */
@@ -169,13 +245,15 @@ function compareCveDesc(a, b) {
 }
 
 function applyFilters() {
-  const { q, release, status, severity } = state.filters;
+  const { q, release, status, severity, pkg } = state.filters;
   const needle = q.trim().toLowerCase();
+  const pkgNeedle = pkg.trim().toLowerCase();
   return state.entries.filter((e) => {
     if (needle && !e.id.toLowerCase().includes(needle)) return false;
     if (release && !(e.releases || []).includes(release)) return false;
     if (status && e.headline_status !== status) return false;
     if (severity && e.severity !== severity) return false;
+    if (pkgNeedle && !(e.packages || []).some((p) => p.toLowerCase().includes(pkgNeedle))) return false;
     return true;
   }).sort(compareCveDesc);
 }
@@ -204,15 +282,22 @@ function renderControls() {
     id: "f-q", type: "search", placeholder: "Search CVE id, e.g. CVE-2026-4",
     value: state.filters.q, autocomplete: "off", spellcheck: "false",
   });
+  const pkgInput = el("input", {
+    id: "f-pkg", type: "search", placeholder: "e.g. openssl",
+    value: state.filters.pkg, autocomplete: "off", spellcheck: "false",
+  });
 
   search.addEventListener("input", () => { state.filters.q = search.value; renderList(); });
   releaseSel.addEventListener("change", () => { state.filters.release = releaseSel.value; renderList(); });
   statusSel.addEventListener("change", () => { state.filters.status = statusSel.value; renderList(); });
   sevSel.addEventListener("change", () => { state.filters.severity = sevSel.value; renderList(); });
+  pkgInput.addEventListener("input", () => { state.filters.pkg = pkgInput.value; renderList(); });
 
   return el("div", { class: "controls" }, [
     el("div", { class: "field" }, [
       el("label", { for: "f-q" }, [labelWithInfo("Search", "search")]), search]),
+    el("div", { class: "field" }, [
+      el("label", { for: "f-pkg" }, [labelWithInfo("Package", "pkg_filter")]), pkgInput]),
     el("div", { class: "field" }, [
       el("label", { for: "f-release" }, [labelWithInfo("OS / SKU", "release")]), releaseSel]),
     el("div", { class: "field" }, [
@@ -275,7 +360,7 @@ function renderList() {
 }
 
 function resetFilters() {
-  state.filters = { q: "", release: "", status: "", severity: "" };
+  state.filters = { q: "", release: "", status: "", severity: "", pkg: "" };
   $app().replaceChildren();  // force full rebuild so control values reset
   renderList();
 }
@@ -311,7 +396,20 @@ function packageCard(row) {
   kv(dl, "Statement", row.statement);
   const ev = evidenceLinks(row.evidence);
   const card = el("div", { class: "card" }, [
-    el("h3", null, [row.release + " \u00b7 ", el("span", { class: "mono" }, row.package)]),
+    el("h3", null, [
+      row.release + " \u00b7 ",
+      el("a", {
+        href: "#/paths?pkg=" + encodeURIComponent(row.package) +
+              (row.release ? "&os=" + encodeURIComponent(row.release) : ""),
+        class: "mono pkg-link",
+        title: "Show installed paths owned by " + row.package,
+      }, row.package),
+      " ",
+      el("a", {
+        href: "#/?pkg=" + encodeURIComponent(row.package),
+        class: "pkg-xref", title: "Other advisories that name " + row.package,
+      }, "other advisories \u2197"),
+    ]),
     dl,
   ]);
   if (ev) {
@@ -358,9 +456,31 @@ function renderDetail(adv) {
     el("h3", null, ["Additive surface", info(FIELD_HELP.additive)]),
     el("p", { class: "note" }, "Coverage: " + (add.coverage || "n/a") + " \u2014 " + (add.note || "")),
     (add.items && add.items.length)
-      ? el("ul", { class: "additive-items" }, add.items.map((i) =>
-          el("li", null, typeof i === "string" ? i : JSON.stringify(i))))
+      ? el("ul", { class: "additive-items" }, add.items.map((i) => {
+          if (typeof i === "string") return el("li", null, i);
+          const cov = i.coverage || "not_assessed";
+          const kids = [
+            el("span", { class: "comp-name" }, i.name || "?"),
+            i.version ? el("span", { class: "comp-ver mono" }, i.version) : null,
+            el("span", {
+              class: "coverage-badge cov-" + cov,
+              title: COVERAGE_HELP[cov] || "",
+            }, COVERAGE_LABELS[cov] || cov),
+          ];
+          if (i.package) {
+            kids.push(el("span", { class: "note" }, [
+              " \u2192 assessed as package ",
+              el("a", { href: "#/?pkg=" + encodeURIComponent(i.package) },
+                el("span", { class: "mono" }, i.package)),
+            ]));
+          }
+          return el("li", null, kids.filter(Boolean));
+        }))
       : null,
+    el("p", { class: "note" }, [
+      "See the full ", el("a", { href: "#/components" }, "extended-binaries"),
+      " coverage list for every binary and how it is assessed.",
+    ]),
   ]);
 
   const view = el("div", null, [
@@ -377,6 +497,153 @@ function renderDetail(adv) {
     el("div", { style: "margin-top:1.25rem" }, additiveCard),
   ]);
   $app().replaceChildren(view);
+}
+
+/* ---------- installed-paths view ---------- */
+
+// Match rows in a pathmap doc. Forward mode (needle set): match the full path or
+// its basename. Reverse mode (pkg set, no needle): every path owned by pkg. With
+// neither, return [] so we don't dump the whole (13k-row) map unprompted.
+function computePathRows(doc, needle, pkg) {
+  const byPath = doc.by_path || {};
+  const nq = (needle || "").trim().toLowerCase();
+  const rows = [];
+  for (const p of Object.keys(byPath)) {
+    const owners = byPath[p];
+    if (nq) {
+      const base = p.slice(p.lastIndexOf("/") + 1).toLowerCase();
+      if (!p.toLowerCase().includes(nq) && !base.includes(nq)) continue;
+    } else if (pkg) {
+      if (!owners.includes(pkg)) continue;
+    } else {
+      continue;
+    }
+    rows.push([p, owners]);
+  }
+  rows.sort((a, b) => a[0].localeCompare(b[0]));
+  return rows;
+}
+
+const PATH_ROW_CAP = 500;
+
+function renderPathRows(rows, hasQuery) {
+  if (!hasQuery) {
+    return el("p", { class: "empty" },
+      "Type a path or file name above to find its owning package.");
+  }
+  if (!rows.length) return el("p", { class: "empty" }, "No installed paths match.");
+  const shown = rows.slice(0, PATH_ROW_CAP);
+  const body = el("tbody", null, shown.map(([p, owners]) =>
+    el("tr", null, [
+      el("td", { class: "mono" }, p),
+      el("td", null, owners.map((pkg, i) => el("span", null, [
+        i ? ", " : "",
+        el("a", {
+          href: "#/?pkg=" + encodeURIComponent(pkg),
+          class: "mono pkg-link", title: "Advisories that name " + pkg,
+        }, pkg),
+      ]))),
+    ])));
+  const table = el("div", { class: "table-wrap" }, el("table", null, [
+    el("thead", null, el("tr", null, [
+      el("th", null, [labelWithInfo("Installed path", "path_lookup")]),
+      el("th", null, [labelWithInfo("Owning package", "package")]),
+    ])),
+    body,
+  ]));
+  if (rows.length > PATH_ROW_CAP) {
+    return el("div", null, [
+      el("p", { class: "note" },
+        "Showing the first " + PATH_ROW_CAP + " of " + rows.length +
+        " matches \u2014 refine your search."),
+      table,
+    ]);
+  }
+  return table;
+}
+
+async function renderPaths(query) {
+  $app().replaceChildren(el("p", { class: "loading" }, "Loading installed-path map\u2026"));
+  const idx = await loadPathmapIndex();
+  if (!idx || !idx.lineages || !Object.keys(idx.lineages).length) {
+    $app().replaceChildren(el("div", null, [
+      el("a", { class: "back", href: "#/" }, "\u2190 All advisories"),
+      el("h2", null, "Installed paths"),
+      el("p", { class: "empty" },
+        "The installed-path \u2192 package map is not available for this feed."),
+    ]));
+    window.scrollTo(0, 0);
+    return;
+  }
+
+  const labels = Object.keys(idx.lineages).sort();
+  let os = state.pathFilters.os || query.get("os") || idx.default_lineage;
+  if (!idx.lineages[os]) os = idx.lineages[idx.default_lineage] ? idx.default_lineage : labels[0];
+  state.pathFilters.os = os;
+
+  // A pkg param (cross-link from an advisory) seeds a reverse listing until the
+  // visitor types a forward query of their own.
+  const pkg = query.get("pkg") || "";
+  if (query.get("q") != null) state.pathFilters.q = query.get("q");
+
+  let doc;
+  try {
+    doc = await loadPathmapDoc(idx.lineages[os]);
+  } catch (e) {
+    $app().replaceChildren(el("div", { class: "error" },
+      "Could not load the path map for " + os + " (" + e.message + ")."));
+    return;
+  }
+
+  const osSel = el("select", { id: "p-os", "aria-label": "OS / SKU for the path map" },
+    labels.map((l) => el("option", { value: l, selected: l === os ? "selected" : null }, l)));
+  const search = el("input", {
+    id: "p-q", type: "search", placeholder: "e.g. /usr/bin/curl or curl",
+    value: state.pathFilters.q, autocomplete: "off", spellcheck: "false",
+  });
+
+  const results = el("div", { id: "path-results" });
+  const refresh = () => {
+    const needle = state.pathFilters.q;
+    const usePkg = pkg && !needle.trim();
+    const rows = computePathRows(doc, needle, usePkg ? pkg : "");
+    const heading = usePkg
+      ? el("p", { class: "note" }, ["Installed paths owned by ",
+          el("span", { class: "mono" }, pkg), " on ", el("span", { class: "mono" }, os), "."])
+      : null;
+    results.replaceChildren(...[heading, renderPathRows(rows, !!(needle.trim() || usePkg))].filter(Boolean));
+  };
+
+  search.addEventListener("input", () => { state.pathFilters.q = search.value; refresh(); });
+  osSel.addEventListener("change", () => {
+    state.pathFilters.os = osSel.value;
+    // Rebuild the whole view so the newly selected map is fetched/cached.
+    location.hash = "#/paths?os=" + encodeURIComponent(osSel.value) +
+      (state.pathFilters.q ? "&q=" + encodeURIComponent(state.pathFilters.q) : "");
+  });
+
+  const meta = idx.maps && idx.maps.find((m) => m.key === idx.lineages[os]);
+  const view = el("div", null, [
+    el("a", { class: "back", href: "#/" }, "\u2190 All advisories"),
+    el("h2", null, "Installed paths \u2192 package"),
+    el("p", { class: "intro" }, [
+      "Map an install path your scanner reported (e.g. ", el("span", { class: "mono" }, "/usr/bin/curl"),
+      ") to the package it belongs to, then jump to that package's advisories. ",
+      el("a", { href: "#/help" }, "How this works \u2192"),
+    ]),
+    el("div", { class: "controls" }, [
+      el("div", { class: "field" }, [
+        el("label", { for: "p-os" }, [labelWithInfo("OS / SKU", "path_os")]), osSel]),
+      el("div", { class: "field grow" }, [
+        el("label", { for: "p-q" }, [labelWithInfo("Path or file name", "path_lookup")]), search]),
+    ]),
+    meta ? el("p", { class: "result-meta muted" },
+      meta.path_count + " executable paths \u00b7 " + meta.package_count + " packages indexed.") : null,
+    results,
+  ]);
+  $app().replaceChildren(view);
+  refresh();
+  window.scrollTo(0, 0);
 }
 
 /* ---------- help view ---------- */
@@ -398,10 +665,8 @@ function renderHelp() {
       "This site reports the fix status of known CVEs in the ",
       el("strong", null, "base-OS packages"),
       " (Azure Linux and Ubuntu) of recent AKS node images (VHDs). It is a ",
-      "community project generated by the open-source ",
-      el("a", { href: "https://github.com/chrischangcode/aks-security-advisory", target: "_blank", rel: "noopener" },
-        "aks-security-advisory"),
-      " tool — it is not an official Microsoft security feed.",
+      "community project generated by an open-source tool",
+      " \u2014 it is not an official Microsoft security feed.",
     ]),
 
     el("h3", null, "Status vocabulary"),
@@ -431,7 +696,7 @@ function renderHelp() {
 
     el("h3", null, "Known limitations"),
     el("ul", { class: "bullets" }, [
-      el("li", null, [el("strong", null, "Additive surface not assessed. "),
+      el("li", null, [el("strong", null, "Additive surface only partly assessed. "),
         FIELD_HELP.additive]),
       el("li", null, [el("strong", null, "'Affected' is rarely emitted. "),
         "A CVE with no upstream fix can't be enumerated from OVAL alone, so 'affected' is only surfaced where the vendor VEX / Ubuntu CVE Tracker asserts it; otherwise the feed focuses on fixed / fix_available_upstream verdicts."]),
@@ -448,14 +713,160 @@ function renderHelp() {
       el("li", null, "OS / SKU filters by VHD lineage label; Status and Severity narrow further. Combine them freely, then Reset to clear."),
     ]),
 
+    el("h3", null, ["Installed paths \u2192 package", info(FIELD_HELP.paths)]),
     el("p", { class: "note" }, [
-      "Full schema and build documentation live in the ",
-      el("a", { href: "https://github.com/chrischangcode/aks-security-advisory/tree/main/docs", target: "_blank", rel: "noopener" },
-        "project docs"),
+      "Scanners report a file path (e.g. ", el("span", { class: "mono" }, "/usr/bin/curl"),
+      "), but advisories are keyed by package name. The ",
+      el("a", { href: "#/paths" }, "Installed paths"),
+      " page maps an executable path back to its owning package for a chosen OS/SKU, ",
+      "so you can find the right advisory. Only executables under ",
+      el("span", { class: "mono" }, "/bin"), " and ", el("span", { class: "mono" }, "/sbin"),
+      " are indexed \u2014 the paths scanners surface. Path ownership is stable within an ",
+      "OS release, so every SKU of a release shares one map; the default is the mainstream ",
+      "Azure Linux 3 gen2 image. From an advisory, each package name links to its installed paths, ",
+      "and each path links back to the advisories that name its package.",
+    ]),
+
+    el("h3", null, "Data contract"),
+    el("p", { class: "note" }, "The feed is plain JSON you can consume directly. Shapes:"),
+    el("dl", { class: "kv help-kv" }, [
+      el("dt", null, "data/index.json"),
+      el("dd", null, [el("span", { class: "mono" },
+        "{ schema_version, generated, count, releases[], statuses[], severities[], advisories[] }"),
+        " \u2014 each advisories[] entry: ",
+        el("span", { class: "mono" },
+          "{ id, headline_status, severity, updated, releases[], packages[], summary? }"),
+        "."]),
+      el("dt", null, "data/advisories/<CVE>.json"),
+      el("dd", null, [el("span", { class: "mono" },
+        "{ schema_version, id, severity, headline_status, updated, description?, references[], packages[], additive }"),
+        " \u2014 each packages[] row: ",
+        el("span", { class: "mono" },
+          "{ package, release, status, severity, advisory_id?, fixed_version?, upstream_fixed_version?, first_fixed_build?, latest_build?, justification?, statement?, evidence? }"),
+        "."]),
+      el("dt", null, "data/pathmap/index.json"),
+      el("dd", null, [el("span", { class: "mono" },
+        "{ schema_version, generated, default_lineage, lineages{label\u2192key}, maps[] }"),
+        "."]),
+      el("dt", null, "data/pathmap/<key>.json"),
+      el("dd", null, [el("span", { class: "mono" },
+        "{ schema_version, type, key, os_family, release, path_count, package_count, by_path{path\u2192[package,\u2026]} }"),
+        "."]),
+      el("dt", null, "data/components.json"),
+      el("dd", null, [el("span", { class: "mono" },
+        "{ schema_version, type, generated, families{family\u2192{components[], counts{}}} }"),
+        " \u2014 each components[] item: ",
+        el("span", { class: "mono" },
+          "{ name, coverage, version?, package?, note? }"),
+        "."]),
+    ]),
+    el("p", { class: "note" }, [
+      "Status values: ",
+      el("span", { class: "mono" }, Object.keys(STATUS_LABELS).join(", ")),
+      ". A canonical, versioned copy of this data contract is published in the ",
+      el("a", { href: "https://github.com/chrischangcode/chrischangcode.github.io/blob/main/DATA-CONTRACT.md", target: "_blank", rel: "noopener" },
+        "public site repository"),
       ".",
     ]),
   ]);
   $app().replaceChildren(view);
+  window.scrollTo(0, 0);
+}
+
+/* ---------- extended-binaries (components) view ---------- */
+
+async function renderComponents(query) {
+  $app().replaceChildren(el("p", { class: "loading" }, "Loading extended-binary coverage\u2026"));
+  const man = await loadComponents();
+  if (!man || !man.families || !Object.keys(man.families).length) {
+    $app().replaceChildren(el("div", null, [
+      el("a", { class: "back", href: "#/" }, "\u2190 All advisories"),
+      el("h2", null, "Extended binaries"),
+      el("p", { class: "empty" },
+        "The extended-binary coverage manifest is not available for this feed."),
+    ]));
+    window.scrollTo(0, 0);
+    return;
+  }
+
+  const fams = Object.keys(man.families).sort();
+  let fam = state.componentFilters.os || query.get("os") || fams[0];
+  if (!man.families[fam]) fam = fams[0];
+  state.componentFilters.os = fam;
+  if (query.get("coverage") != null) state.componentFilters.coverage = query.get("coverage");
+  const cov = state.componentFilters.coverage || "";
+
+  const famSel = el("select", { id: "c-fam", "aria-label": "OS family" },
+    fams.map((f) => el("option", { value: f, selected: f === fam ? "selected" : null }, f)));
+  const covSel = el("select", { id: "c-cov", "aria-label": "Coverage" },
+    [el("option", { value: "", selected: cov === "" ? "selected" : null }, "All coverage"),
+     ...Object.keys(COVERAGE_LABELS).map((c) =>
+       el("option", { value: c, selected: c === cov ? "selected" : null }, COVERAGE_LABELS[c]))]);
+
+  const results = el("div", { id: "comp-results" });
+  const refresh = () => {
+    const entry = man.families[state.componentFilters.os] || { components: [], counts: {} };
+    const items = entry.components.filter((i) =>
+      !state.componentFilters.coverage || i.coverage === state.componentFilters.coverage);
+    const counts = entry.counts || {};
+    const summary = el("p", { class: "note" }, Object.keys(COVERAGE_LABELS)
+      .filter((c) => counts[c])
+      .map((c) => el("span", { class: "coverage-badge cov-" + c, style: "margin-right:.4rem" },
+        COVERAGE_LABELS[c] + ": " + counts[c])));
+    const body = el("tbody", null, items.map((i) => el("tr", null, [
+      el("td", null, el("span", { class: "comp-name" }, i.name)),
+      el("td", { class: "mono" }, i.version || "\u2014"),
+      el("td", null, el("span", {
+        class: "coverage-badge cov-" + (i.coverage || "not_assessed"),
+        title: COVERAGE_HELP[i.coverage] || "",
+      }, COVERAGE_LABELS[i.coverage] || i.coverage)),
+      el("td", null, i.package
+        ? el("a", { href: "#/?pkg=" + encodeURIComponent(i.package),
+                    class: "mono pkg-link", title: "Advisories that name " + i.package }, i.package)
+        : el("span", { class: "note" }, i.note || "\u2014")),
+    ])));
+    const table = el("div", { class: "table-wrap" }, el("table", null, [
+      el("thead", null, el("tr", null, [
+        el("th", null, "Extended binary"),
+        el("th", null, "Version"),
+        el("th", null, [labelWithInfo("Coverage", "components")]),
+        el("th", null, "Assessed as / why not"),
+      ])),
+      body,
+    ]));
+    results.replaceChildren(summary, items.length ? table
+      : el("p", { class: "empty" }, "No extended binaries match."));
+  };
+
+  famSel.addEventListener("change", () => {
+    state.componentFilters.os = famSel.value;
+    refresh();
+  });
+  covSel.addEventListener("change", () => {
+    state.componentFilters.coverage = covSel.value;
+    refresh();
+  });
+
+  const view = el("div", null, [
+    el("a", { class: "back", href: "#/" }, "\u2190 All advisories"),
+    el("div", { class: "detail-head" }, [
+      el("h2", null, ["Extended binaries", info(FIELD_HELP.components)]),
+    ]),
+    el("p", { class: "note" }, [
+      "AKS lays additional binaries on top of the base OS image. Some are the ",
+      "same artifact as an installed distro package (so their CVE status is in the ",
+      el("a", { href: "#/" }, "advisories"),
+      "); others are AKS-built/upstream or installed only on some SKUs. This page ",
+      "shows how each one is \u2014 or is not \u2014 assessed by the distro advisory feeds.",
+    ]),
+    el("div", { class: "filters" }, [
+      el("label", null, ["OS family ", famSel]),
+      el("label", null, ["Coverage ", covSel]),
+    ]),
+    results,
+  ]);
+  $app().replaceChildren(view);
+  refresh();
   window.scrollTo(0, 0);
 }
 
@@ -469,21 +880,38 @@ function setGeneratedFooter() {
   }
 }
 
+// Split the hash into a path and a query string, supporting deep links like
+// `#/paths?pkg=curl&os=AKSAzureLinuxV3/gen2` and `#/?pkg=curl`.
+function parseHash() {
+  const raw = location.hash.replace(/^#\/?/, "");
+  const qi = raw.indexOf("?");
+  const path = qi >= 0 ? raw.slice(0, qi) : raw;
+  const query = new URLSearchParams(qi >= 0 ? raw.slice(qi + 1) : "");
+  return { path, query };
+}
+
 async function route() {
-  const hash = location.hash.replace(/^#\/?/, "");
   if (!state.index) return;  // initial load handles first render
-  if (/^help$/i.test(hash)) {
+  const { path, query } = parseHash();
+  if (/^help$/i.test(path)) {
     renderHelp();
-  } else if (hash && /^CVE-/i.test(hash)) {
-    $app().replaceChildren(el("p", { class: "loading" }, "Loading " + hash + "\u2026"));
+  } else if (/^paths$/i.test(path)) {
+    await renderPaths(query);
+  } else if (/^components$/i.test(path)) {
+    await renderComponents(query);
+  } else if (path && /^CVE-/i.test(path)) {
+    $app().replaceChildren(el("p", { class: "loading" }, "Loading " + path + "\u2026"));
     try {
-      renderDetail(await loadAdvisory(hash.toUpperCase()));
+      renderDetail(await loadAdvisory(path.toUpperCase()));
     } catch (e) {
       $app().replaceChildren(el("div", { class: "error" },
-        "Could not load advisory " + hash + " (" + e.message + ")."));
+        "Could not load advisory " + path + " (" + e.message + ")."));
     }
     window.scrollTo(0, 0);
   } else {
+    // List view, optionally seeded by a `?pkg=` deep link (from a cross-link).
+    state.filters.pkg = query.get("pkg") || "";
+    $app().replaceChildren();  // force a full rebuild so control values reflect state
     renderList();
   }
 }
