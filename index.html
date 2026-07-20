@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>chrischangcode · projects</title>
+  <style>
+    :root {
+      --azure: #0078d4;
+      --azure-dark: #005a9e;
+      --ink: #201f1e;
+      --muted: #605e5c;
+      --line: #edebe9;
+      --bg: #f3f9fd;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, var(--bg) 0%, #ffffff 40%);
+      min-height: 100vh;
+    }
+    header {
+      background: var(--azure);
+      color: #fff;
+      padding: 2.5rem 1.5rem;
+    }
+    .wrap { max-width: 880px; margin: 0 auto; padding: 0 1rem; }
+    header h1 { margin: 0; font-size: 1.9rem; font-weight: 600; }
+    header p { margin: .5rem 0 0; opacity: .92; }
+    main { padding: 2rem 0 3rem; }
+    .cards { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 1rem; }
+    @media (min-width: 640px) { .cards { grid-template-columns: 1fr 1fr; } }
+    .card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--azure);
+      border-radius: 8px;
+      padding: 1.1rem 1.2rem;
+      transition: box-shadow .15s ease, transform .15s ease, border-color .15s ease;
+    }
+    .card:hover {
+      box-shadow: 0 4px 16px rgba(0,120,212,.14);
+      transform: translateY(-2px);
+      border-left-color: var(--azure-dark);
+    }
+    .card h2 { margin: 0 0 .35rem; font-size: 1.15rem; color: var(--azure-dark); }
+    .card p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.45; }
+    .card .go { margin-top: .7rem; font-size: .85rem; color: var(--azure); font-weight: 600; }
+    .section-title { margin: 0 0 .2rem; font-size: 1.05rem; color: var(--muted); font-weight: 600; }
+    footer { color: var(--muted); font-size: .82rem; padding: 1.5rem 0 2rem; }
+    footer a { color: var(--azure); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>chrischangcode</h1>
+      <p>Static project sites and tools.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <p class="section-title">Projects</p>
+    <div class="cards">
+      <a class="card" href="./aks-security-advisory/">
+        <h2>AKS Security Advisory Feed</h2>
+        <p>Browse VHD / node-image CVE advisories for Azure Linux and Ubuntu:
+           search by CVE, filter by OS / SKU / status / severity, and see the
+           first fixed node-image build.</p>
+        <div class="go">Open site &rarr;</div>
+      </a>
+    </div>
+  </main>
+
+  <footer class="wrap">
+    Hosted on GitHub Pages. &middot;
+    <a href="https://github.com/chrischangcode">github.com/chrischangcode</a>
+  </footer>
+</body>
+</html>
