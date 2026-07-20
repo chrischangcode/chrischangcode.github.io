@@ -503,7 +503,7 @@ function renderDetail(adv) {
 
 // Match rows in a pathmap doc. Forward mode (needle set): match the full path or
 // its basename. Reverse mode (pkg set, no needle): every path owned by pkg. With
-// neither, return [] so we don't dump the whole (13k-row) map unprompted.
+// neither, return every path (browse mode) -- the caller caps how many are shown.
 function computePathRows(doc, needle, pkg) {
   const byPath = doc.by_path || {};
   const nq = (needle || "").trim().toLowerCase();
@@ -515,9 +515,8 @@ function computePathRows(doc, needle, pkg) {
       if (!p.toLowerCase().includes(nq) && !base.includes(nq)) continue;
     } else if (pkg) {
       if (!owners.includes(pkg)) continue;
-    } else {
-      continue;
     }
+    // else: no path/pkg filter -> browse the whole map (capped on render).
     rows.push([p, owners]);
   }
   rows.sort((a, b) => a[0].localeCompare(b[0]));
@@ -525,14 +524,15 @@ function computePathRows(doc, needle, pkg) {
 }
 
 const PATH_ROW_CAP = 500;
+const PATH_BROWSE_CAP = 100;
 
-function renderPathRows(rows, hasQuery) {
-  if (!hasQuery) {
+function renderPathRows(rows, filtered) {
+  if (!rows.length) {
     return el("p", { class: "empty" },
-      "Type a path or file name above to find its owning package.");
+      filtered ? "No installed paths match." : "No installed paths in this map.");
   }
-  if (!rows.length) return el("p", { class: "empty" }, "No installed paths match.");
-  const shown = rows.slice(0, PATH_ROW_CAP);
+  const cap = filtered ? PATH_ROW_CAP : PATH_BROWSE_CAP;
+  const shown = rows.slice(0, cap);
   const body = el("tbody", null, shown.map(([p, owners]) =>
     el("tr", null, [
       el("td", { class: "mono" }, p),
@@ -551,11 +551,13 @@ function renderPathRows(rows, hasQuery) {
     ])),
     body,
   ]));
-  if (rows.length > PATH_ROW_CAP) {
+  if (rows.length > cap) {
     return el("div", null, [
-      el("p", { class: "note" },
-        "Showing the first " + PATH_ROW_CAP + " of " + rows.length +
-        " matches \u2014 refine your search."),
+      el("p", { class: "note" }, filtered
+        ? ("Showing the first " + cap + " of " + rows.length +
+           " matches \u2014 refine your search.")
+        : ("Showing the first " + cap + " of " + rows.length +
+           " installed paths \u2014 type a path or file name to search.")),
       table,
     ]);
   }
@@ -577,14 +579,18 @@ async function renderPaths(query) {
   }
 
   const labels = Object.keys(idx.lineages).sort();
-  let os = state.pathFilters.os || query.get("os") || idx.default_lineage;
+  // A deep link's ?os= wins over the sticky filter so a cross-link from an
+  // advisory lands on that advisory's lineage; sticky state is the fallback.
+  let os = query.get("os") || state.pathFilters.os || idx.default_lineage;
   if (!idx.lineages[os]) os = idx.lineages[idx.default_lineage] ? idx.default_lineage : labels[0];
   state.pathFilters.os = os;
 
-  // A pkg param (cross-link from an advisory) seeds a reverse listing until the
-  // visitor types a forward query of their own.
+  // A pkg param (cross-link from an advisory) seeds a reverse listing of every
+  // path that package owns. Clear any sticky path needle (unless the link itself
+  // carries ?q=) so the reverse listing isn't masked by a stale forward search.
   const pkg = query.get("pkg") || "";
   if (query.get("q") != null) state.pathFilters.q = query.get("q");
+  else if (pkg) state.pathFilters.q = "";
 
   let doc;
   try {
@@ -606,12 +612,13 @@ async function renderPaths(query) {
   const refresh = () => {
     const needle = state.pathFilters.q;
     const usePkg = pkg && !needle.trim();
+    const filtered = !!(needle.trim() || usePkg);
     const rows = computePathRows(doc, needle, usePkg ? pkg : "");
     const heading = usePkg
       ? el("p", { class: "note" }, ["Installed paths owned by ",
           el("span", { class: "mono" }, pkg), " on ", el("span", { class: "mono" }, os), "."])
       : null;
-    results.replaceChildren(...[heading, renderPathRows(rows, !!(needle.trim() || usePkg))].filter(Boolean));
+    results.replaceChildren(...[heading, renderPathRows(rows, filtered)].filter(Boolean));
   };
 
   search.addEventListener("input", () => { state.pathFilters.q = search.value; refresh(); });
