@@ -1,0 +1,154 @@
+# AKS security-advisory feed — data contract
+
+This document is the canonical, versioned description of the JSON published under
+the [AKS security advisory site](https://chrischangcode.github.io/aks-security-advisory/).
+The site is a zero-build static front-end; all data is plain JSON you can consume
+directly from the `data/` directory. The internal tooling that produces the feed
+is intentionally out of scope here — only the published shapes are contractual.
+
+Schema version: **1.0** (see `schema_version` on every document).
+
+## Endpoints
+
+All paths are relative to the site root, e.g.
+`https://chrischangcode.github.io/aks-security-advisory/data/index.json`.
+
+| Path | Purpose |
+| --- | --- |
+| `data/index.json` | One summary row per advisory + global filter facets. |
+| `data/advisories/<CVE>.json` | Full per-CVE advisory. |
+| `data/pathmap/index.json` | Directory of installed-path → package maps. |
+| `data/pathmap/<key>.json` | One deduplicated path → package map for an OS release. |
+
+## `data/index.json`
+
+```json
+{
+  "schema_version": "1.0",
+  "generated": "<ISO-8601 UTC>",
+  "count": 2543,
+  "releases": ["AKSAzureLinuxV3/gen2", "..."],
+  "statuses": ["fixed", "fix_available_upstream", "..."],
+  "severities": ["Critical", "High", "Medium", "Low"],
+  "advisories": [
+    {
+      "id": "CVE-2025-12345",
+      "headline_status": "fixed",
+      "severity": "High",
+      "updated": "<ISO-8601 UTC>",
+      "releases": ["AKSAzureLinuxV3/gen2", "..."],
+      "packages": ["openssl", "..."],
+      "summary": "<optional short text>"
+    }
+  ]
+}
+```
+
+`releases`, `statuses`, and `severities` at the document level are sorted facet
+lists so the site can build its filter controls from `index.json` alone. Each
+`advisories[]` entry repeats the `releases` and `packages` that appear in that
+advisory so the list can be filtered without loading every advisory document.
+
+## `data/advisories/<CVE>.json`
+
+```json
+{
+  "schema_version": "1.0",
+  "id": "CVE-2025-12345",
+  "severity": "High",
+  "headline_status": "fixed",
+  "updated": "<ISO-8601 UTC>",
+  "description": "<optional>",
+  "references": ["https://nvd.nist.gov/vuln/detail/CVE-2025-12345", "..."],
+  "packages": [
+    {
+      "package": "openssl",
+      "release": "AKSAzureLinuxV3/gen2",
+      "status": "fixed",
+      "severity": "High",
+      "advisory_id": "<optional distro advisory id>",
+      "fixed_version": "<optional>",
+      "upstream_fixed_version": "<optional>",
+      "first_fixed_build": "<optional VHD build>",
+      "latest_build": "<optional VHD build>",
+      "justification": "<optional VEX justification>",
+      "statement": "<optional VEX statement>",
+      "evidence": { "<label>": "<url>" }
+    }
+  ],
+  "additive": { "coverage": "not_assessed" }
+}
+```
+
+### `references`
+
+External, human-readable links for the CVE:
+
+- **NVD** — `https://nvd.nist.gov/vuln/detail/<CVE>`.
+- **Ubuntu CVE Tracker** — `https://ubuntu.com/security/<CVE>` (Ubuntu advisories).
+- **Azure Linux (Astrolabe)** — the per-CVE status page for Azure Linux
+  advisories. Astrolabe is served from an Azure Static Web App whose hostname is
+  not stable, so the feed resolves `https://aka.ms/astrolabe` at build time and
+  appends the client-side route `/#/cve/<CVE>`.
+- The advisory-feed source(s) the row was derived from.
+
+### `additive`
+
+Additive VHD components (e.g. `kubelet`, CNI plugins, container images shipped
+into the node image rather than installed as base-OS packages) are reported with
+`{ "coverage": "not_assessed" }`. They are **never** represented as base-OS CVEs.
+
+### Status vocabulary (`status` / `headline_status`)
+
+Ordered from most to least severe headline precedence:
+
+| Status | Meaning |
+| --- | --- |
+| `affected` | Vulnerable; no upstream fix available yet. |
+| `fix_available_upstream` | Distro shipped a fixed version, but no AKS VHD build carries it yet. |
+| `will_not_fix` | Distro will not fix (e.g. Ubuntu `ignored`, "changes too intrusive"). |
+| `fixed` | A shipped AKS VHD build carries the fix (`first_fixed_build`). |
+| `not_affected` | Not affected (VEX `not_affected`, usually with a `justification`). |
+| `under_investigation` | Triage in progress. |
+
+`headline_status` is the single most relevant status across all `packages[]` rows
+for the CVE.
+
+## `data/pathmap/index.json`
+
+Maps a scanner-reported installed path (e.g. `/usr/bin/curl`) back to the owning
+package name(s) used in advisories, per OS release.
+
+```json
+{
+  "schema_version": "1.0",
+  "generated": "<ISO-8601 UTC>",
+  "default_lineage": "AKSAzureLinuxV3/gen2",
+  "lineages": { "AKSAzureLinuxV3/gen2": "azurelinux-3.0", "AKSUbuntu-2404/gen2": "ubuntu-noble" },
+  "maps": ["azurelinux-3.0", "ubuntu-noble", "..."]
+}
+```
+
+`lineages` maps a site OS/SKU label to the map `key`; `default_lineage` is the
+map the paths page selects first (the latest normal VHD of the most mainstream
+OS/SKU). Only lineages whose map built successfully are advertised.
+
+## `data/pathmap/<key>.json`
+
+```json
+{
+  "schema_version": "1.0",
+  "type": "pathmap",
+  "key": "azurelinux-3.0",
+  "os_family": "azurelinux",
+  "release": "3.0",
+  "path_count": 13711,
+  "package_count": 2075,
+  "by_path": { "/usr/bin/curl": ["curl"], "...": ["..."] }
+}
+```
+
+A single deduplicated map is shared by every SKU of the same OS family + release.
+`by_path` values are arrays because a path/basename can be owned by more than one
+package; the installed one is disambiguated against a build's package set. Per-key
+documents use compact JSON to keep transfer size down.
