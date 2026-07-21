@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "type": "aks-vhd-components",
-  "generated": "2026-07-21T17:59:08Z",
+  "generated": "2026-07-21T21:23:38Z",
   "families": {
     "azurelinux": {
       "components": [
@@ -102,10 +102,9 @@
         },
         {
           "name": "node-exporter",
-          "coverage": "scan_pending",
+          "coverage": "covered_by_scan",
           "version": "1.9.1-12.azl3",
-          "package": "node-exporter-kubernetes",
-          "note": "installed distro package not tracked by the base distro advisory feed; binary scan planned"
+          "package": "node-exporter-kubernetes"
         },
         {
           "name": "nvidia-device-plugin",
@@ -127,8 +126,8 @@
       ],
       "counts": {
         "aks_built": 6,
-        "scan_pending": 2,
-        "covered_by_scan": 3,
+        "scan_pending": 1,
+        "covered_by_scan": 4,
         "covered_by_package": 4,
         "not_baked": 5
       }
@@ -183,10 +182,9 @@
         },
         {
           "name": "containernetworking-plugins",
-          "coverage": "scan_pending",
+          "coverage": "covered_by_scan",
           "version": "1.9.0-ubuntu24.04u1",
-          "package": "containernetworking-plugins",
-          "note": "installed distro package not tracked by the base distro advisory feed; binary scan planned"
+          "package": "containernetworking-plugins"
         },
         {
           "name": "datacenter-gpu-manager-4-core",
@@ -274,17 +272,16 @@
         },
         {
           "name": "runc",
-          "coverage": "scan_pending",
+          "coverage": "covered_by_scan",
           "version": "1.4.3-ubuntu24.04u1",
-          "package": "moby-runc",
-          "note": "installed distro package not tracked by the base distro advisory feed; binary scan planned"
+          "package": "moby-runc"
         }
       ],
       "counts": {
         "aks_built": 6,
-        "covered_by_scan": 7,
-        "scan_pending": 3,
-        "not_baked": 8
+        "covered_by_scan": 9,
+        "not_baked": 8,
+        "scan_pending": 1
       }
     }
   }

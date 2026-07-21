@@ -3,7 +3,7 @@
   "id": "GO-2026-5932",
   "type": "aks-vhd-security-advisory",
   "severity": "Unknown",
-  "updated": "2026-07-21T17:59:07Z",
+  "updated": "2026-07-21T21:23:36Z",
   "references": [
     "https://nvd.nist.gov/vuln/detail/GO-2026-5932",
     "https://raw.githubusercontent.com/microsoft/AzureLinuxVulnerabilityData/main/azurelinux-3.0-oval.xml",
@@ -37,6 +37,18 @@
       }
     },
     {
+      "release": "AKSAzureLinuxV3/cvmgen2",
+      "package": "node-exporter",
+      "status": "affected",
+      "severity": "Unknown",
+      "latest_build": "AKSAzureLinuxV3-cvmgen2-202603.12.0",
+      "evidence": {
+        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.9.1-12.azl3.x86_64.rpm",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
+        "scan_pkg": "golang.org/x/crypto"
+      }
+    },
+    {
       "release": "AKSAzureLinuxV3/gen1",
       "package": "oras",
       "status": "affected",
@@ -56,6 +68,18 @@
       "latest_build": "AKSAzureLinuxV3-gen1-202607.09.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
+        "scan_pkg": "golang.org/x/crypto"
+      }
+    },
+    {
+      "release": "AKSAzureLinuxV3/gen1",
+      "package": "node-exporter",
+      "status": "affected",
+      "severity": "Unknown",
+      "latest_build": "AKSAzureLinuxV3-gen1-202603.12.0",
+      "evidence": {
+        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.9.1-12.azl3.x86_64.rpm",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -85,6 +109,18 @@
       }
     },
     {
+      "release": "AKSAzureLinuxV3/gen1fips",
+      "package": "node-exporter",
+      "status": "affected",
+      "severity": "Unknown",
+      "latest_build": "AKSAzureLinuxV3-gen1fips-202603.12.0",
+      "evidence": {
+        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.9.1-12.azl3.x86_64.rpm",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
+        "scan_pkg": "golang.org/x/crypto"
+      }
+    },
+    {
       "release": "AKSAzureLinuxV3/gen2",
       "package": "oras",
       "status": "affected",
@@ -104,6 +140,18 @@
       "latest_build": "AKSAzureLinuxV3-gen2-202607.09.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
+        "scan_pkg": "golang.org/x/crypto"
+      }
+    },
+    {
+      "release": "AKSAzureLinuxV3/gen2",
+      "package": "node-exporter",
+      "status": "affected",
+      "severity": "Unknown",
+      "latest_build": "AKSAzureLinuxV3-gen2-202603.12.0",
+      "evidence": {
+        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.9.1-12.azl3.x86_64.rpm",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -133,6 +181,18 @@
       }
     },
     {
+      "release": "AKSAzureLinuxV3/gen2arm64",
+      "package": "node-exporter",
+      "status": "affected",
+      "severity": "Unknown",
+      "latest_build": "AKSAzureLinuxV3-gen2arm64-202603.12.0",
+      "evidence": {
+        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.9.1-12.azl3.x86_64.rpm",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
+        "scan_pkg": "golang.org/x/crypto"
+      }
+    },
+    {
       "release": "AKSAzureLinuxV3/gen2arm64fips",
       "package": "oras",
       "status": "affected",
@@ -157,6 +217,18 @@
       }
     },
     {
+      "release": "AKSAzureLinuxV3/gen2arm64fips",
+      "package": "node-exporter",
+      "status": "affected",
+      "severity": "Unknown",
+      "latest_build": "AKSAzureLinuxV3-gen2arm64fips-202603.12.0",
+      "evidence": {
+        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.9.1-12.azl3.x86_64.rpm",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
+        "scan_pkg": "golang.org/x/crypto"
+      }
+    },
+    {
       "release": "AKSAzureLinuxV3/gen2fips",
       "package": "oras",
       "status": "affected",
@@ -176,6 +248,18 @@
       "latest_build": "AKSAzureLinuxV3-gen2fips-202607.09.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
+        "scan_pkg": "golang.org/x/crypto"
+      }
+    },
+    {
+      "release": "AKSAzureLinuxV3/gen2fips",
+      "package": "node-exporter",
+      "status": "affected",
+      "severity": "Unknown",
+      "latest_build": "AKSAzureLinuxV3-gen2fips-202603.12.0",
+      "evidence": {
+        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.9.1-12.azl3.x86_64.rpm",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -224,6 +308,18 @@
       "latest_build": "AKSAzureLinuxV3-gen2tl-202607.09.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
+        "scan_pkg": "golang.org/x/crypto"
+      }
+    },
+    {
+      "release": "AKSAzureLinuxV3/gen2tl",
+      "package": "node-exporter",
+      "status": "affected",
+      "severity": "Unknown",
+      "latest_build": "AKSAzureLinuxV3-gen2tl-202603.12.0",
+      "evidence": {
+        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.9.1-12.azl3.x86_64.rpm",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "golang.org/x/crypto"
       }

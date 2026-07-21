@@ -3,7 +3,7 @@
   "id": "GHSA-5J5W-G665-5M35",
   "type": "aks-vhd-security-advisory",
   "severity": "Low",
-  "updated": "2026-07-21T17:59:07Z",
+  "updated": "2026-07-21T21:23:37Z",
   "references": [
     "https://nvd.nist.gov/vuln/detail/GHSA-5J5W-G665-5M35",
     "https://ubuntu.com/security/GHSA-5J5W-G665-5M35",
