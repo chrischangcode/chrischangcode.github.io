@@ -100,6 +100,14 @@ const $app = () => document.getElementById("app");
 
 /* ---------- data loading ---------- */
 
+// GitHub Pages (and most static hosts) send ETag/Last-Modified but a short,
+// non-configurable Cache-Control. `cache: "no-cache"` does NOT disable caching:
+// it forces a conditional revalidation on every load, so an unchanged file comes
+// back as a tiny 304 (cached copy reused) and a rebuilt feed is picked up as a
+// fresh 200. Net effect: the site only re-downloads data that actually changed,
+// instead of showing a stale browser copy.
+const REVALIDATE = { cache: "no-cache" };
+
 async function resolveDataBase() {
   const override = new URLSearchParams(location.search).get("data");
   const candidates = override
@@ -107,7 +115,7 @@ async function resolveDataBase() {
     : ["data", "../feed-out"];
   for (const base of candidates) {
     try {
-      const r = await fetch(base + "/index.json", { method: "HEAD" });
+      const r = await fetch(base + "/index.json", { method: "HEAD", cache: "no-cache" });
       if (r.ok) return base;
     } catch (_e) { /* try next */ }
   }
@@ -116,7 +124,7 @@ async function resolveDataBase() {
 
 async function loadIndex() {
   state.dataBase = await resolveDataBase();
-  const r = await fetch(state.dataBase + "/index.json");
+  const r = await fetch(state.dataBase + "/index.json", REVALIDATE);
   if (!r.ok) throw new Error("index.json HTTP " + r.status);
   state.index = await r.json();
   state.entries = state.index.advisories || [];
@@ -124,7 +132,7 @@ async function loadIndex() {
 
 async function loadAdvisory(id) {
   if (state.detailCache.has(id)) return state.detailCache.get(id);
-  const r = await fetch(state.dataBase + "/advisories/" + encodeURIComponent(id) + ".json");
+  const r = await fetch(state.dataBase + "/advisories/" + encodeURIComponent(id) + ".json", REVALIDATE);
   if (!r.ok) throw new Error(id + " HTTP " + r.status);
   const adv = await r.json();
   state.detailCache.set(id, adv);
@@ -139,7 +147,7 @@ async function loadPathmapIndex() {
   if (state.pathmap.index || state.pathmap.triedIndex) return state.pathmap.index;
   state.pathmap.triedIndex = true;
   try {
-    const r = await fetch(state.dataBase + "/pathmap/index.json");
+    const r = await fetch(state.dataBase + "/pathmap/index.json", REVALIDATE);
     if (r.ok) state.pathmap.index = await r.json();
   } catch (_e) { /* leave null */ }
   return state.pathmap.index;
@@ -147,7 +155,7 @@ async function loadPathmapIndex() {
 
 async function loadPathmapDoc(key) {
   if (state.pathmap.docs.has(key)) return state.pathmap.docs.get(key);
-  const r = await fetch(state.dataBase + "/pathmap/" + encodeURIComponent(key) + ".json");
+  const r = await fetch(state.dataBase + "/pathmap/" + encodeURIComponent(key) + ".json", REVALIDATE);
   if (!r.ok) throw new Error(key + " HTTP " + r.status);
   const doc = await r.json();
   state.pathmap.docs.set(key, doc);
@@ -160,7 +168,7 @@ async function loadComponents() {
   if (state.components.data || state.components.tried) return state.components.data;
   state.components.tried = true;
   try {
-    const r = await fetch(state.dataBase + "/components.json");
+    const r = await fetch(state.dataBase + "/components.json", REVALIDATE);
     if (r.ok) state.components.data = await r.json();
   } catch (_e) { /* leave null */ }
   return state.components.data;
