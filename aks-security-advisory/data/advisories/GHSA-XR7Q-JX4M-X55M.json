@@ -3,7 +3,7 @@
   "id": "GHSA-XR7Q-JX4M-X55M",
   "type": "aks-vhd-security-advisory",
   "severity": "Low",
-  "updated": "2026-07-21T09:07:56Z",
+  "updated": "2026-07-21T17:59:07Z",
   "references": [
     "https://nvd.nist.gov/vuln/detail/GHSA-XR7Q-JX4M-X55M",
     "https://raw.githubusercontent.com/microsoft/AzureLinuxVulnerabilityData/main/azurelinux-3.0-oval.xml",
@@ -21,7 +21,7 @@
       "first_fixed_build": "AKSAzureLinuxV3-cvmgen2-202601.27.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -34,7 +34,7 @@
       "first_fixed_build": "AKSAzureLinuxV3-gen1-202601.07.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -47,7 +47,7 @@
       "first_fixed_build": "AKSAzureLinuxV3-gen1fips-202601.07.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -60,7 +60,7 @@
       "first_fixed_build": "AKSAzureLinuxV3-gen2-202601.07.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -73,7 +73,7 @@
       "first_fixed_build": "AKSAzureLinuxV3-gen2arm64-202601.07.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -86,7 +86,7 @@
       "first_fixed_build": "AKSAzureLinuxV3-gen2arm64fips-202601.27.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -99,7 +99,7 @@
       "first_fixed_build": "AKSAzureLinuxV3-gen2fips-202601.07.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -112,7 +112,7 @@
       "first_fixed_build": "AKSAzureLinuxV3-gen2kata-202601.27.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -125,7 +125,7 @@
       "first_fixed_build": "AKSAzureLinuxV3-gen2tl-202601.07.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -138,7 +138,7 @@
       "first_fixed_build": "AKSAzureLinuxV3-osguardgen2fipstl-202601.27.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -151,7 +151,7 @@
       "first_fixed_build": "AKSUbuntu-gen1-2004fipscontainerd-202601.07.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -164,7 +164,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2004cvmcontainerd-202601.07.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -177,7 +177,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2004fipscontainerd-202601.07.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -190,7 +190,7 @@
       "first_fixed_build": "AKSUbuntu-gen1-2204containerd-202601.07.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -203,7 +203,7 @@
       "first_fixed_build": "AKSUbuntu-gen1-2204fipscontainerd-202605.05.1",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -216,7 +216,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2204arm64containerd-202601.07.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -229,7 +229,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2204containerd-202601.07.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -242,7 +242,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2204fipscontainerd-202605.05.1",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -255,7 +255,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2204fipstlcontainerd-202605.05.1",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -268,7 +268,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2204tlcontainerd-202601.07.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -281,7 +281,7 @@
       "first_fixed_build": "AKSUbuntu-gen1-2404containerd-202601.07.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -294,7 +294,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2404arm64containerd-202601.07.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -307,7 +307,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2404containerd-202601.07.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -320,7 +320,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2404cvmcontainerd-202601.27.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -333,7 +333,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2404tlcontainerd-202601.07.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
         "scan_pkg": "google.golang.org/grpc"
       }
     }
@@ -355,6 +355,6 @@
     "https://security-metadata.canonical.com/oval/com.ubuntu.focal.cve.oval.xml.bz2",
     "https://security-metadata.canonical.com/oval/com.ubuntu.jammy.cve.oval.xml.bz2",
     "https://security-metadata.canonical.com/oval/com.ubuntu.noble.cve.oval.xml.bz2",
-    "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:92e660fb70c67650b55f49b5fc069ca423441e7aeeccc017279999fe58d9fc5e"
+    "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40"
   ]
 }

@@ -914,7 +914,10 @@ async function route() {
     await renderPaths(query);
   } else if (/^components$/i.test(path)) {
     await renderComponents(query);
-  } else if (path && /^CVE-/i.test(path)) {
+  } else if (path) {
+    // Any non-reserved, non-empty path is an advisory id. IDs come from several
+    // schemes -- CVE-*, GO-* (Go vuln DB), GHSA-* (GitHub advisories) -- so match
+    // them all rather than a single prefix. Advisory files are stored uppercase.
     $app().replaceChildren(el("p", { class: "loading" }, "Loading " + path + "\u2026"));
     try {
       renderDetail(await loadAdvisory(path.toUpperCase()));

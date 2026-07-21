@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "type": "aks-vhd-components",
-  "generated": "2026-07-21T09:07:57Z",
+  "generated": "2026-07-21T17:59:08Z",
   "families": {
     "azurelinux": {
       "components": [
@@ -160,17 +160,15 @@
         },
         {
           "name": "blobfuse",
-          "coverage": "scan_pending",
+          "coverage": "covered_by_scan",
           "version": "1.4.5",
-          "package": "blobfuse",
-          "note": "installed distro package not tracked by the base distro advisory feed; binary scan planned"
+          "package": "blobfuse"
         },
         {
           "name": "blobfuse2",
-          "coverage": "scan_pending",
+          "coverage": "covered_by_scan",
           "version": "2.5.3",
-          "package": "blobfuse2",
-          "note": "installed distro package not tracked by the base distro advisory feed; binary scan planned"
+          "package": "blobfuse2"
         },
         {
           "name": "CNI plugin",
@@ -179,10 +177,9 @@
         },
         {
           "name": "containerd",
-          "coverage": "scan_pending",
+          "coverage": "covered_by_scan",
           "version": "2.3.2-ubuntu24.04u1",
-          "package": "moby-containerd",
-          "note": "installed distro package not tracked by the base distro advisory feed; binary scan planned"
+          "package": "moby-containerd"
         },
         {
           "name": "containernetworking-plugins",
@@ -242,10 +239,9 @@
         },
         {
           "name": "node-exporter",
-          "coverage": "scan_pending",
+          "coverage": "covered_by_scan",
           "version": "1.9.1-ubuntu24.04u12",
-          "package": "node-exporter-kubernetes",
-          "note": "installed distro package not tracked by the base distro advisory feed; binary scan planned"
+          "package": "node-exporter-kubernetes"
         },
         {
           "name": "nvidia-cuda-driver",
@@ -286,8 +282,8 @@
       ],
       "counts": {
         "aks_built": 6,
-        "covered_by_scan": 3,
-        "scan_pending": 7,
+        "covered_by_scan": 7,
+        "scan_pending": 3,
         "not_baked": 8
       }
     }

@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0",
+  "id": "GHSA-5J5W-G665-5M35",
+  "type": "aks-vhd-security-advisory",
+  "severity": "Low",
+  "updated": "2026-07-21T17:59:07Z",
+  "references": [
+    "https://nvd.nist.gov/vuln/detail/GHSA-5J5W-G665-5M35",
+    "https://ubuntu.com/security/GHSA-5J5W-G665-5M35",
+    "https://security-metadata.canonical.com/oval/com.ubuntu.focal.cve.oval.xml.bz2"
+  ],
+  "headline_status": "fixed",
+  "packages": [
+    {
+      "release": "AKSUbuntu/gen1/2004fipscontainerd",
+      "package": "containerd",
+      "status": "fixed",
+      "severity": "Low",
+      "fixed_version": "1.7.30-ubuntu20.04u4",
+      "first_fixed_build": "AKSUbuntu-gen1-2004fipscontainerd-202604.24.0",
+      "evidence": {
+        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.30-ubuntu20.04u4_amd64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
+        "scan_pkg": "github.com/containerd/containerd"
+      }
+    },
+    {
+      "release": "AKSUbuntu/gen2/2004cvmcontainerd",
+      "package": "containerd",
+      "status": "fixed",
+      "severity": "Low",
+      "fixed_version": "1.7.30-ubuntu20.04u4",
+      "first_fixed_build": "AKSUbuntu-gen2-2004cvmcontainerd-202604.24.0",
+      "evidence": {
+        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.30-ubuntu20.04u4_amd64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
+        "scan_pkg": "github.com/containerd/containerd"
+      }
+    },
+    {
+      "release": "AKSUbuntu/gen2/2004fipscontainerd",
+      "package": "containerd",
+      "status": "fixed",
+      "severity": "Low",
+      "fixed_version": "1.7.30-ubuntu20.04u4",
+      "first_fixed_build": "AKSUbuntu-gen2-2004fipscontainerd-202604.24.0",
+      "evidence": {
+        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.30-ubuntu20.04u4_amd64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
+        "scan_pkg": "github.com/containerd/containerd"
+      }
+    },
+    {
+      "release": "AKSUbuntu/gen1/2204containerd",
+      "package": "containerd",
+      "status": "fixed",
+      "severity": "Low",
+      "fixed_version": "1.7.31-ubuntu22.04u1",
+      "first_fixed_build": "AKSUbuntu-gen1-2204containerd-202604.24.0",
+      "evidence": {
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.31-ubuntu22.04u1_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
+        "scan_pkg": "github.com/containerd/containerd"
+      }
+    },
+    {
+      "release": "AKSUbuntu/gen2/2204arm64containerd",
+      "package": "containerd",
+      "status": "fixed",
+      "severity": "Low",
+      "fixed_version": "1.7.31-ubuntu22.04u1",
+      "first_fixed_build": "AKSUbuntu-gen2-2204arm64containerd-202604.24.0",
+      "evidence": {
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.31-ubuntu22.04u1_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
+        "scan_pkg": "github.com/containerd/containerd"
+      }
+    },
+    {
+      "release": "AKSUbuntu/gen2/2204containerd",
+      "package": "containerd",
+      "status": "fixed",
+      "severity": "Low",
+      "fixed_version": "1.7.31-ubuntu22.04u1",
+      "first_fixed_build": "AKSUbuntu-gen2-2204containerd-202604.24.0",
+      "evidence": {
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.31-ubuntu22.04u1_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
+        "scan_pkg": "github.com/containerd/containerd"
+      }
+    },
+    {
+      "release": "AKSUbuntu/gen2/2204tlcontainerd",
+      "package": "containerd",
+      "status": "fixed",
+      "severity": "Low",
+      "fixed_version": "1.7.31-ubuntu22.04u1",
+      "first_fixed_build": "AKSUbuntu-gen2-2204tlcontainerd-202604.24.0",
+      "evidence": {
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.31-ubuntu22.04u1_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40",
+        "scan_pkg": "github.com/containerd/containerd"
+      }
+    }
+  ],
+  "additive": {
+    "coverage": "covered_by_scan",
+    "source": "component-upstream",
+    "note": "Some extended VHD binaries ARE assessed: those that are the same artifact as an installed distro package the base distro advisory feed tracks (e.g. on Azure Linux the containerd binary is the containerd2 package), and AKS-built / upstream binaries (e.g. oras, kubelet) via a Trivy binary scan -- see the linked package/scan rows. Microsoft-repackaged variants the base feed does NOT track (e.g. Ubuntu's moby-containerd), other binaries not yet scanned, and cached container images are tracked by their own upstream, not the distro advisory feeds.",
+    "items": [
+      {
+        "name": "containerd",
+        "coverage": "covered_by_scan",
+        "version": "2.3.2-ubuntu24.04u1",
+        "package": "moby-containerd"
+      }
+    ]
+  },
+  "sources": [
+    "https://security-metadata.canonical.com/oval/com.ubuntu.focal.cve.oval.xml.bz2",
+    "https://security-metadata.canonical.com/oval/com.ubuntu.jammy.cve.oval.xml.bz2",
+    "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:7ada5566bb1d19a55abf7942202d12947d808f310583ab711fbb581482c4bb40"
+  ]
+}
