@@ -3,7 +3,7 @@
   "id": "GHSA-VH4V-2XQ2-G5CG",
   "type": "aks-vhd-security-advisory",
   "severity": "Medium",
-  "updated": "2026-07-21T21:23:36Z",
+  "updated": "2026-07-22T11:06:39Z",
   "references": [
     "https://nvd.nist.gov/vuln/detail/GHSA-VH4V-2XQ2-G5CG",
     "https://raw.githubusercontent.com/microsoft/AzureLinuxVulnerabilityData/main/azurelinux-3.0-oval.xml",
