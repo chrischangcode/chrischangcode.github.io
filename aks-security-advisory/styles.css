@@ -156,6 +156,7 @@ td.cve a { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-wei
 .cov-covered_by_scan { background: rgba(16,124,16,.10); color: #0b7a0b; border-color: rgba(16,124,16,.26); }
 .cov-scan_pending { background: rgba(202,128,4,.14); color: #8a5a00; border-color: rgba(202,128,4,.34); }
 .cov-aks_built { background: rgba(0,120,212,.12); color: #0067c0; border-color: rgba(0,120,212,.30); }
+.cov-container_image { background: rgba(136,88,196,.12); color: #6b3fa0; border-color: rgba(136,88,196,.30); }
 .cov-not_baked { background: rgba(96,94,92,.12); color: var(--st-notaffected); border-color: rgba(96,94,92,.30); }
 .cov-not_assessed { background: rgba(96,94,92,.10); color: var(--st-notaffected); border-color: rgba(96,94,92,.24); }
 .comp-name { font-weight: 600; margin-right: .4rem; }

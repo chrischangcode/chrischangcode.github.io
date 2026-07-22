@@ -41,15 +41,17 @@ const COVERAGE_LABELS = {
   covered_by_scan: "Covered by scan",
   scan_pending: "Scan pending",
   aks_built: "AKS-built / upstream",
+  container_image: "Container image",
   not_baked: "Not baked in",
   not_assessed: "Not assessed",
 };
 
 const COVERAGE_HELP = {
   covered_by_package: "This extended binary is the same artifact as an installed distro package that the distro advisory feed actually tracks, so its CVE status IS assessed \u2014 see the linked package's advisories.",
-  covered_by_scan: "Assessed by a binary (Trivy) scan of the extended binary itself, because the distro advisory feeds don't track it. Carries scan evidence rather than a distro package row. Note: only downloadable binary archives (tarballs) are scanned \u2014 components shipped as container/OCI images (e.g. kubelet/kubectl via the kubernetes-node image, and azure-acr-credential-provider) are NOT scanned yet and stay 'aks_built' / 'scan_pending'.",
+  covered_by_scan: "Assessed by a binary (Trivy) scan of the extended binary itself, because the distro advisory feeds don't track it. Carries scan evidence rather than a distro package row. Only downloadable binary archives are scanned \u2014 tarballs and .deb/.rpm packages \u2014 while components shipped as container/OCI images are classified 'container_image' and not scanned.",
   scan_pending: "Installed as a distro package (typically a Microsoft-repackaged one from packages.microsoft.com \u2014 e.g. moby-containerd, moby-runc, aznfs) that the base distro's advisory feed does NOT track. Its status is honestly unknown here; a binary scan is planned. Not treated as covered.",
-  aks_built: "Built by AKS or downloaded from upstream (kubelet, kubectl, oras, Azure CNI). No distro package exists for it, so distro OVAL/CVE feeds do not track it and no fix status is asserted here.",
+  aks_built: "Built by AKS or downloaded from upstream as a downloadable archive/package (oras, Azure CNI, cni-plugins, acr-mirror). No distro package exists for it in the base feed, so distro OVAL/CVE feeds do not track it; it is scanned by the binary overlay where an archive is available.",
+  container_image: "Built/distributed by AKS as an OCI container image rather than a downloadable archive (kubelet/kubectl via the kubernetes-node image, azure-acr-credential-provider). The binary scan overlay assesses downloadable archives, not images, so these are not scanned here and are tracked by their own upstream.",
   not_baked: "A distro package installed only conditionally (e.g. GPU drivers / DCGM at node provisioning) and absent from the mainstream baked image \u2014 nothing to assess for this lineage.",
   not_assessed: "Not tracked by the distro advisory feeds (e.g. cached container images).",
 };
@@ -70,6 +72,7 @@ const FIELD_HELP = {
   latest_build: "The newest scanned AKS VHD build (still on a pre-fix package version) — the baseline the 'fix available upstream' verdict was measured against.",
   advisory_id: "The distro advisory identifier the fixed version came from (e.g. an Azure Linux OVAL advisory id).",
   evidence: "Verifiable source links backing the verdict: the AgentBaker release-notes file listing the exact installed versions, and the distro OVAL/advisory feed.",
+  retained_vulnerable_version: "Some install-only packages (notably the kernel) keep older versions on disk after an update so the node can roll back. The node boots the highest version \u2014 the one carrying the fix \u2014 so the verdict is 'fixed'. This is an older version still present on disk that is below the fix. Whether a vulnerability scanner reports this CVE for the node depends on its methodology: one that evaluates the running/highest version treats the node as fixed, while one that inventories every installed package version may still flag the retained older version.",
   additive: "Extended binaries laid on top of the base image (kubelet, CNI, containerd/runc, oras) and cached container images. Some are the SAME artifact as an installed distro package the distro feed tracks (e.g. the containerd binary is the Azure Linux containerd2 package) and so ARE assessed \u2014 see 'covered_by_package' below. Others are Microsoft-repackaged and not in the base distro feed ('scan_pending'), or AKS-built/upstream ('aks_built'), tracked by their own upstreams, not the distro feeds.",
   components: "Every extended binary AKS lays on top of the base image, with whether the distro advisory feeds can assess it. 'covered_by_package' = the same artifact as a distro package the feed actually tracks (its CVE status is in the advisories); 'scan_pending' = installed as a Microsoft-repackaged distro package the base distro feed doesn't track (e.g. moby-containerd on Ubuntu) \u2014 a binary scan is planned; 'aks_built' = built by AKS or downloaded from upstream (kubelet, oras, Azure CNI), in no distro feed; 'not_baked' = distro packages installed only conditionally (e.g. GPU drivers), absent from the mainstream image.",
   references: "External references for this CVE — NVD, and the authoritative distro CVE status page: Ubuntu's CVE Tracker and, for Azure Linux, the Astrolabe advisory page. Also includes the advisory-feed source.",
@@ -384,10 +387,13 @@ function kv(dl, label, value, helpKey) {
 
 function evidenceLinks(evidence) {
   if (!evidence) return null;
-  const items = Object.entries(evidence).map(([k, v]) =>
-    el("li", null, isExternal(v)
-      ? [k.replace(/_/g, " ") + ": ", el("a", { href: v, target: "_blank", rel: "noopener" }, v)]
-      : el("span", null, k.replace(/_/g, " ") + ": " + v)));
+  const items = Object.entries(evidence)
+    .filter(([k]) => k !== "retained_vulnerable_version")
+    .map(([k, v]) =>
+      el("li", null, isExternal(v)
+        ? [k.replace(/_/g, " ") + ": ", el("a", { href: v, target: "_blank", rel: "noopener" }, v)]
+        : el("span", null, k.replace(/_/g, " ") + ": " + v)));
+  if (!items.length) return null;
   return el("ul", { class: "ref-list" }, items);
 }
 
@@ -402,6 +408,10 @@ function packageCard(row) {
   kv(dl, "Latest build", row.latest_build && el("span", { class: "mono" }, row.latest_build), "latest_build");
   kv(dl, "Justification", row.justification);
   kv(dl, "Statement", row.statement);
+  kv(dl, "Retained vulnerable version",
+     row.evidence && row.evidence.retained_vulnerable_version &&
+       el("span", { class: "mono" }, row.evidence.retained_vulnerable_version),
+     "retained_vulnerable_version");
   const ev = evidenceLinks(row.evidence);
   const card = el("div", { class: "card" }, [
     el("h3", null, [
