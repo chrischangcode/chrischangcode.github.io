@@ -180,6 +180,20 @@ td.cve a { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-wei
 .error { color: var(--st-affected); padding: 1rem; border: 1px solid rgba(164,38,44,.30);
   background: rgba(164,38,44,.06); border-radius: 8px; }
 
+/* --- pager --- */
+.pager {
+  display: flex; align-items: center; justify-content: center; gap: 1rem;
+  margin: 1rem 0 .25rem;
+}
+.pager .page-btn {
+  background: var(--surface); color: var(--accent);
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: .4rem .8rem; cursor: pointer; font-size: .9rem;
+}
+.pager .page-btn:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-soft); }
+.pager .page-btn:disabled { opacity: .5; cursor: default; }
+.pager .page-label { color: var(--muted); font-size: .9rem; }
+
 /* --- detail view --- */
 .back { display: inline-block; margin: 1.25rem 0 .5rem; }
 .detail-head { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin: .25rem 0 1rem; }

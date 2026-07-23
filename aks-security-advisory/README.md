@@ -3,7 +3,9 @@
 A zero-build static front-end for browsing the AKS VHD security-advisory feed
 (the per-CVE JSON + `index.json` artifact produced by `aks-cve feed`). It offers
 live search by CVE id and filtering by OS/SKU lineage, headline status, and
-severity, a detail view per CVE, an **Installed paths** page that maps a
+severity (the advisory list is paged at 1,000 rows so a large feed never renders
+one giant table; changing any filter jumps back to the first page), a detail
+view per CVE, an **Installed paths** page that maps a
 scanner-reported path (e.g. `/usr/bin/curl`) to the owning package(s), an
 **Extended binaries** page that lists AKS-laid binaries and how each is covered,
 and a help/glossary page.
