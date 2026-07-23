@@ -56,6 +56,18 @@ const COVERAGE_HELP = {
   not_assessed: "Not tracked by the distro advisory feeds (e.g. cached container images).",
 };
 
+// Fallback text for the components "Assessed as / why not" column when a row
+// has neither a linked distro package nor its own note. Keeps that cell
+// meaningful for every coverage class instead of a bare em-dash.
+const COVERAGE_WHY = {
+  covered_by_scan: "Assessed by a binary scan; see its scan advisories.",
+  scan_pending: "Microsoft-repackaged distro package the base feed doesn't track; binary scan planned.",
+  container_image: "Assessed by its upstream container image, not this feed.",
+  aks_built: "Tracked by its own upstream, not a distro advisory feed.",
+  not_baked: "Not present in the mainstream baked image.",
+  not_assessed: "Not tracked by the distro advisory feeds.",
+};
+
 // Field/column explanations. Keyed by a short id used across the list and the
 // detail view.
 const FIELD_HELP = {
@@ -351,7 +363,7 @@ function renderRows(rows) {
   ]));
 }
 
-function renderPager(total, pageSize) {
+function renderPager(total, pageSize, pos) {
   const pages = Math.ceil(total / pageSize);
   if (pages <= 1) return null;
   const page = state.page;
@@ -372,7 +384,10 @@ function renderPager(total, pageSize) {
     onclick: () => go(page + 1),
   }, "Next \u2192");
   const label = el("span", { class: "page-label" }, "Page " + (page + 1) + " of " + pages);
-  return el("nav", { class: "pager", "aria-label": "Advisory list pages" }, [prev, label, next]);
+  return el("nav", {
+    class: "pager" + (pos ? " pager-" + pos : ""),
+    "aria-label": "Advisory list pages" + (pos ? " (" + pos + ")" : ""),
+  }, [prev, label, next]);
 }
 
 function renderList() {
@@ -402,8 +417,14 @@ function renderList() {
     $app().replaceChildren(view);
     container = document.getElementById("results");
   }
+  // A pager above and below the table: the top one saves a long scroll back up
+  // to change pages, the bottom one is reachable right after skimming the rows.
   container.replaceChildren(
-    ...[renderRows(pageRows), renderPager(total, LIST_PAGE_SIZE)].filter(Boolean));
+    ...[
+      renderPager(total, LIST_PAGE_SIZE, "top"),
+      renderRows(pageRows),
+      renderPager(total, LIST_PAGE_SIZE, "bottom"),
+    ].filter(Boolean));
   const count = document.getElementById("count");
   if (count) {
     if (total > LIST_PAGE_SIZE) {
@@ -694,7 +715,29 @@ async function renderPaths(query) {
       ? el("p", { class: "note" }, ["Installed paths owned by ",
           el("span", { class: "mono" }, pkg), " on ", el("span", { class: "mono" }, os), "."])
       : null;
-    results.replaceChildren(...[heading, renderPathRows(rows, filtered)].filter(Boolean));
+    // A reverse (pkg) listing with no rows is a common, expected case: many
+    // packages own no /bin|/sbin executable (the kernel, shared libraries,
+    // config-only packages) and AKS-built/downloaded binaries aren't in the
+    // distro file index at all. Explain that and offer the useful next hop
+    // instead of a bare "No installed paths match."
+    const body = (usePkg && !rows.length)
+      ? el("div", { class: "empty" }, [
+          el("p", null, ["No indexed executable paths are mapped to ",
+            el("span", { class: "mono" }, pkg), " on ",
+            el("span", { class: "mono" }, os), "."]),
+          el("p", { class: "note" }, ["Only executables under ",
+            el("span", { class: "mono" }, "/bin"), " and ",
+            el("span", { class: "mono" }, "/sbin"),
+            " are indexed. Packages whose files live elsewhere \u2014 the kernel, ",
+            "shared libraries, config-only packages \u2014 and binaries AKS builds ",
+            "or downloads (e.g. Azure CNI, oras) won't appear here, even though ",
+            "they may still be assessed."]),
+          el("p", null, el("a", { href: "#/?pkg=" + encodeURIComponent(pkg) },
+            ["See advisories that name ", el("span", { class: "mono" }, pkg),
+             " \u2192"])),
+        ])
+      : renderPathRows(rows, filtered);
+    results.replaceChildren(...[heading, body].filter(Boolean));
   };
 
   search.addEventListener("input", () => { state.pathFilters.q = search.value; refresh(); });
@@ -737,6 +780,35 @@ function statusGlossary() {
       statusBadge(s),
       el("p", null, STATUS_HELP[s]),
     ])));
+}
+
+function coverageGlossary() {
+  return el("div", { class: "glossary" }, Object.keys(COVERAGE_LABELS).map((c) =>
+    el("div", { class: "gloss-row" }, [
+      el("span", { class: "coverage-badge cov-" + c }, COVERAGE_LABELS[c]),
+      el("p", null, COVERAGE_HELP[c]),
+    ])));
+}
+
+// The components "Assessed as / why not" cell. covered_by_package links to the
+// distro package that tracks it; covered_by_scan links to the component's own
+// scan-derived advisories; scan_pending carries its own note; every other
+// coverage class gets a short reason so the column is never a bare em-dash.
+function assessedCell(i) {
+  if (i.package) {
+    return el("a", { href: "#/?pkg=" + encodeURIComponent(i.package),
+      class: "mono pkg-link", title: "Advisories that name " + i.package }, i.package);
+  }
+  // Normalize coverage the same way the badge does, so a row missing coverage
+  // (or a scan_pending row missing its note) never degrades to a bare em-dash.
+  const coverage = i.coverage || "not_assessed";
+  if (coverage === "covered_by_scan") {
+    return el("a", { href: "#/?pkg=" + encodeURIComponent(i.name),
+      class: "pkg-link", title: "Scan-derived advisories for " + i.name },
+      "scan advisories \u2192");
+  }
+  if (i.note) return el("span", { class: "note" }, i.note);
+  return el("span", { class: "note" }, COVERAGE_WHY[coverage] || "\u2014");
 }
 
 function renderHelp() {
@@ -795,6 +867,13 @@ function renderHelp() {
       el("li", null, "Search matches a CVE id substring (e.g. \"2026-4\")."),
       el("li", null, "OS / SKU filters by VHD lineage label; Status and Severity narrow further. Combine them freely, then Reset to clear."),
     ]),
+
+    el("h3", null, ["Extended-binary coverage", info(FIELD_HELP.components)]),
+    el("p", { class: "note" }, ["Binaries AKS lays on top of the base OS image (see the ",
+      el("a", { href: "#/components" }, "Extended binaries"),
+      " page) each get a coverage class describing whether \u2014 and how \u2014 the distro ",
+      "advisory feeds assess them."]),
+    coverageGlossary(),
 
     el("h3", null, ["Installed paths \u2192 package", info(FIELD_HELP.paths)]),
     el("p", { class: "note" }, [
@@ -903,10 +982,7 @@ async function renderComponents(query) {
         class: "coverage-badge cov-" + (i.coverage || "not_assessed"),
         title: COVERAGE_HELP[i.coverage] || "",
       }, COVERAGE_LABELS[i.coverage] || i.coverage)),
-      el("td", null, i.package
-        ? el("a", { href: "#/?pkg=" + encodeURIComponent(i.package),
-                    class: "mono pkg-link", title: "Advisories that name " + i.package }, i.package)
-        : el("span", { class: "note" }, i.note || "\u2014")),
+      el("td", null, assessedCell(i)),
     ])));
     const table = el("div", { class: "table-wrap" }, el("table", null, [
       el("thead", null, el("tr", null, [

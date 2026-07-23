@@ -185,6 +185,7 @@ td.cve a { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-wei
   display: flex; align-items: center; justify-content: center; gap: 1rem;
   margin: 1rem 0 .25rem;
 }
+.pager-top { margin: .25rem 0 1rem; }
 .pager .page-btn {
   background: var(--surface); color: var(--accent);
   border: 1px solid var(--border); border-radius: 6px;
