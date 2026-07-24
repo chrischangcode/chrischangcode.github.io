@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "type": "aks-vhd-components",
-  "generated": "2026-07-23T21:25:37Z",
+  "generated": "2026-07-24T16:02:08Z",
   "families": {
     "azurelinux": {
       "components": [

@@ -3,12 +3,12 @@
   "id": "GHSA-XR7Q-JX4M-X55M",
   "type": "aks-vhd-security-advisory",
   "severity": "Low",
-  "updated": "2026-07-23T21:25:27Z",
+  "updated": "2026-07-24T16:02:00Z",
   "references": [
     "https://nvd.nist.gov/vuln/detail/GHSA-XR7Q-JX4M-X55M",
     "https://raw.githubusercontent.com/microsoft/AzureLinuxVulnerabilityData/main/azurelinux-3.0-oval.xml",
     "https://ubuntu.com/security/GHSA-XR7Q-JX4M-X55M",
-    "https://thankful-sand-018d55810.3.azurestaticapps.net/#/cve/GHSA-XR7Q-JX4M-X55M"
+    "https://msrc.microsoft.com/update-guide/vulnerability/GHSA-XR7Q-JX4M-X55M"
   ],
   "headline_status": "fixed",
   "packages": [
