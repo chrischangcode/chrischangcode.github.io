@@ -3,7 +3,7 @@
   "id": "GHSA-HRXH-6V49-42GF",
   "type": "aks-vhd-security-advisory",
   "severity": "High",
-  "updated": "2026-07-24T16:02:00Z",
+  "updated": "2026-08-01T17:10:16Z",
   "references": [
     "https://nvd.nist.gov/vuln/detail/GHSA-HRXH-6V49-42GF",
     "https://raw.githubusercontent.com/microsoft/AzureLinuxVulnerabilityData/main/azurelinux-3.0-oval.xml",
@@ -18,10 +18,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSAzureLinuxV3-cvmgen2-202607.20.0",
+      "latest_build": "AKSAzureLinuxV3-cvmgen2-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -31,10 +31,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSAzureLinuxV3-gen1-202607.20.0",
+      "latest_build": "AKSAzureLinuxV3-gen1-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -44,10 +44,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSAzureLinuxV3-gen1fips-202607.20.0",
+      "latest_build": "AKSAzureLinuxV3-gen1fips-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -57,10 +57,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSAzureLinuxV3-gen2-202607.20.0",
+      "latest_build": "AKSAzureLinuxV3-gen2-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -70,10 +70,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSAzureLinuxV3-gen2arm64-202607.20.0",
+      "latest_build": "AKSAzureLinuxV3-gen2arm64-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -83,10 +83,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSAzureLinuxV3-gen2arm64fips-202607.20.0",
+      "latest_build": "AKSAzureLinuxV3-gen2arm64fips-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -96,10 +96,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSAzureLinuxV3-gen2fips-202607.20.0",
+      "latest_build": "AKSAzureLinuxV3-gen2fips-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -109,10 +109,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSAzureLinuxV3-gen2kata-202607.20.0",
+      "latest_build": "AKSAzureLinuxV3-gen2kata-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -122,10 +122,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSAzureLinuxV3-gen2tl-202607.20.0",
+      "latest_build": "AKSAzureLinuxV3-gen2tl-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -135,10 +135,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSAzureLinuxV3-osguardgen2fipstl-202607.20.0",
+      "latest_build": "AKSAzureLinuxV3-osguardgen2fipstl-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -148,36 +148,36 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen1-2004fipscontainerd-202606.19.0",
+      "latest_build": "AKSUbuntu-gen1-2004fipscontainerd-202607.29.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.33-ubuntu20.04u1_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.34-ubuntu20.04u1_amd64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
     {
       "release": "AKSUbuntu/gen1/2004fipscontainerd",
       "package": "Azure CNI",
+      "status": "fix_available_upstream",
+      "severity": "High",
+      "upstream_fixed_version": "1.82.1",
+      "latest_build": "AKSUbuntu-gen1-2004fipscontainerd-202607.29.0",
+      "evidence": {
+        "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
+        "scan_pkg": "google.golang.org/grpc"
+      }
+    },
+    {
+      "release": "AKSUbuntu/gen1/2004fipscontainerd",
+      "package": "ig",
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
       "latest_build": "AKSUbuntu-gen1-2004fipscontainerd-202607.20.0",
       "evidence": {
-        "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
-        "scan_pkg": "google.golang.org/grpc"
-      }
-    },
-    {
-      "release": "AKSUbuntu/gen1/2004fipscontainerd",
-      "package": "ig",
-      "status": "fix_available_upstream",
-      "severity": "High",
-      "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen1-2004fipscontainerd-202607.20.0",
-      "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu20.04u4_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -187,10 +187,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2004cvmcontainerd-202606.19.0",
+      "latest_build": "AKSUbuntu-gen2-2004cvmcontainerd-202607.29.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.33-ubuntu20.04u1_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.34-ubuntu20.04u1_amd64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -200,10 +200,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2004cvmcontainerd-202607.20.0",
+      "latest_build": "AKSUbuntu-gen2-2004cvmcontainerd-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -216,7 +216,7 @@
       "latest_build": "AKSUbuntu-gen2-2004cvmcontainerd-202607.20.0",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu20.04u4_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -226,10 +226,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2004fipscontainerd-202606.19.0",
+      "latest_build": "AKSUbuntu-gen2-2004fipscontainerd-202607.29.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.33-ubuntu20.04u1_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.34-ubuntu20.04u1_amd64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -239,10 +239,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2004fipscontainerd-202607.20.0",
+      "latest_build": "AKSUbuntu-gen2-2004fipscontainerd-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -255,7 +255,7 @@
       "latest_build": "AKSUbuntu-gen2-2004fipscontainerd-202607.20.0",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu20.04u4_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -265,36 +265,36 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen1-2204containerd-202606.19.0",
+      "latest_build": "AKSUbuntu-gen1-2204containerd-202607.29.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.33-ubuntu22.04u1_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.34-ubuntu22.04u1_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
     {
       "release": "AKSUbuntu/gen1/2204containerd",
       "package": "Azure CNI",
+      "status": "fix_available_upstream",
+      "severity": "High",
+      "upstream_fixed_version": "1.82.1",
+      "latest_build": "AKSUbuntu-gen1-2204containerd-202607.29.0",
+      "evidence": {
+        "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
+        "scan_pkg": "google.golang.org/grpc"
+      }
+    },
+    {
+      "release": "AKSUbuntu/gen1/2204containerd",
+      "package": "ig",
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
       "latest_build": "AKSUbuntu-gen1-2204containerd-202607.20.0",
       "evidence": {
-        "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
-        "scan_pkg": "google.golang.org/grpc"
-      }
-    },
-    {
-      "release": "AKSUbuntu/gen1/2204containerd",
-      "package": "ig",
-      "status": "fix_available_upstream",
-      "severity": "High",
-      "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen1-2204containerd-202607.20.0",
-      "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu22.04u4_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -304,10 +304,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen1-2204fipscontainerd-202606.19.0",
+      "latest_build": "AKSUbuntu-gen1-2204fipscontainerd-202607.29.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.33-ubuntu22.04u1_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.34-ubuntu22.04u1_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -317,10 +317,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen1-2204fipscontainerd-202607.20.0",
+      "latest_build": "AKSUbuntu-gen1-2204fipscontainerd-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -333,7 +333,7 @@
       "latest_build": "AKSUbuntu-gen1-2204fipscontainerd-202607.20.0",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu22.04u4_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -343,36 +343,36 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2204arm64containerd-202606.19.0",
+      "latest_build": "AKSUbuntu-gen2-2204arm64containerd-202607.29.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.33-ubuntu22.04u1_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.34-ubuntu22.04u1_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
     {
       "release": "AKSUbuntu/gen2/2204arm64containerd",
       "package": "Azure CNI",
+      "status": "fix_available_upstream",
+      "severity": "High",
+      "upstream_fixed_version": "1.82.1",
+      "latest_build": "AKSUbuntu-gen2-2204arm64containerd-202607.29.0",
+      "evidence": {
+        "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
+        "scan_pkg": "google.golang.org/grpc"
+      }
+    },
+    {
+      "release": "AKSUbuntu/gen2/2204arm64containerd",
+      "package": "ig",
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
       "latest_build": "AKSUbuntu-gen2-2204arm64containerd-202607.20.0",
       "evidence": {
-        "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
-        "scan_pkg": "google.golang.org/grpc"
-      }
-    },
-    {
-      "release": "AKSUbuntu/gen2/2204arm64containerd",
-      "package": "ig",
-      "status": "fix_available_upstream",
-      "severity": "High",
-      "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2204arm64containerd-202607.20.0",
-      "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu22.04u4_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -382,10 +382,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2204containerd-202606.19.0",
+      "latest_build": "AKSUbuntu-gen2-2204containerd-202607.29.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.33-ubuntu22.04u1_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.34-ubuntu22.04u1_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -395,10 +395,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2204containerd-202607.20.0",
+      "latest_build": "AKSUbuntu-gen2-2204containerd-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -411,7 +411,7 @@
       "latest_build": "AKSUbuntu-gen2-2204containerd-202607.20.0",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu22.04u4_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -421,36 +421,36 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2204fipscontainerd-202606.19.0",
+      "latest_build": "AKSUbuntu-gen2-2204fipscontainerd-202607.29.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.33-ubuntu22.04u1_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.34-ubuntu22.04u1_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
     {
       "release": "AKSUbuntu/gen2/2204fipscontainerd",
       "package": "Azure CNI",
+      "status": "fix_available_upstream",
+      "severity": "High",
+      "upstream_fixed_version": "1.82.1",
+      "latest_build": "AKSUbuntu-gen2-2204fipscontainerd-202607.29.0",
+      "evidence": {
+        "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
+        "scan_pkg": "google.golang.org/grpc"
+      }
+    },
+    {
+      "release": "AKSUbuntu/gen2/2204fipscontainerd",
+      "package": "ig",
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
       "latest_build": "AKSUbuntu-gen2-2204fipscontainerd-202607.20.0",
       "evidence": {
-        "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
-        "scan_pkg": "google.golang.org/grpc"
-      }
-    },
-    {
-      "release": "AKSUbuntu/gen2/2204fipscontainerd",
-      "package": "ig",
-      "status": "fix_available_upstream",
-      "severity": "High",
-      "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2204fipscontainerd-202607.20.0",
-      "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu22.04u4_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -460,10 +460,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2204fipstlcontainerd-202606.19.0",
+      "latest_build": "AKSUbuntu-gen2-2204fipstlcontainerd-202607.29.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.33-ubuntu22.04u1_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.34-ubuntu22.04u1_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -473,10 +473,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2204fipstlcontainerd-202607.20.0",
+      "latest_build": "AKSUbuntu-gen2-2204fipstlcontainerd-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -489,7 +489,7 @@
       "latest_build": "AKSUbuntu-gen2-2204fipstlcontainerd-202607.20.0",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu22.04u4_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -499,10 +499,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2204tlcontainerd-202606.19.0",
+      "latest_build": "AKSUbuntu-gen2-2204tlcontainerd-202607.29.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.33-ubuntu22.04u1_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.34-ubuntu22.04u1_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -512,10 +512,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2204tlcontainerd-202607.20.0",
+      "latest_build": "AKSUbuntu-gen2-2204tlcontainerd-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -528,7 +528,33 @@
       "latest_build": "AKSUbuntu-gen2-2204tlcontainerd-202607.20.0",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu22.04u4_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
+        "scan_pkg": "google.golang.org/grpc"
+      }
+    },
+    {
+      "release": "AKSUbuntu/gen2/2604minimalarm64containerd",
+      "package": "Azure CNI",
+      "status": "fix_available_upstream",
+      "severity": "High",
+      "upstream_fixed_version": "1.82.1",
+      "latest_build": "AKSUbuntu-gen2-2604minimalarm64containerd-202607.29.0",
+      "evidence": {
+        "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
+        "scan_pkg": "google.golang.org/grpc"
+      }
+    },
+    {
+      "release": "AKSUbuntu/gen2/2604minimalcontainerd",
+      "package": "Azure CNI",
+      "status": "fix_available_upstream",
+      "severity": "High",
+      "upstream_fixed_version": "1.82.1",
+      "latest_build": "AKSUbuntu-gen2-2604minimalcontainerd-202607.29.0",
+      "evidence": {
+        "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -538,10 +564,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen1-2404containerd-202607.20.0",
+      "latest_build": "AKSUbuntu-gen1-2404containerd-202607.29.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.2-ubuntu24.04u2_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.3-ubuntu24.04u2_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -551,10 +577,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen1-2404containerd-202607.20.0",
+      "latest_build": "AKSUbuntu-gen1-2404containerd-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -566,8 +592,8 @@
       "upstream_fixed_version": "1.82.1",
       "latest_build": "AKSUbuntu-gen1-2404containerd-202607.20.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu24.04u4_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu24.04u4_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -577,10 +603,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2404arm64containerd-202607.20.0",
+      "latest_build": "AKSUbuntu-gen2-2404arm64containerd-202607.29.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.2-ubuntu24.04u2_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.3-ubuntu24.04u2_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -590,10 +616,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2404arm64containerd-202607.20.0",
+      "latest_build": "AKSUbuntu-gen2-2404arm64containerd-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -605,8 +631,8 @@
       "upstream_fixed_version": "1.82.1",
       "latest_build": "AKSUbuntu-gen2-2404arm64containerd-202607.20.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu24.04u4_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu24.04u4_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -616,10 +642,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2404containerd-202607.20.0",
+      "latest_build": "AKSUbuntu-gen2-2404containerd-202607.29.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.2-ubuntu24.04u2_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.3-ubuntu24.04u2_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -629,10 +655,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2404containerd-202607.20.0",
+      "latest_build": "AKSUbuntu-gen2-2404containerd-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -644,8 +670,8 @@
       "upstream_fixed_version": "1.82.1",
       "latest_build": "AKSUbuntu-gen2-2404containerd-202607.20.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu24.04u4_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu24.04u4_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -655,10 +681,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2404cvmcontainerd-202607.20.0",
+      "latest_build": "AKSUbuntu-gen2-2404cvmcontainerd-202607.29.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.2-ubuntu24.04u2_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.3-ubuntu24.04u2_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -668,10 +694,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2404cvmcontainerd-202607.20.0",
+      "latest_build": "AKSUbuntu-gen2-2404cvmcontainerd-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -683,8 +709,8 @@
       "upstream_fixed_version": "1.82.1",
       "latest_build": "AKSUbuntu-gen2-2404cvmcontainerd-202607.20.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu24.04u4_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu24.04u4_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -694,10 +720,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2404tlcontainerd-202607.20.0",
+      "latest_build": "AKSUbuntu-gen2-2404tlcontainerd-202607.29.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.2-ubuntu24.04u2_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.3-ubuntu24.04u2_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -707,10 +733,10 @@
       "status": "fix_available_upstream",
       "severity": "High",
       "upstream_fixed_version": "1.82.1",
-      "latest_build": "AKSUbuntu-gen2-2404tlcontainerd-202607.20.0",
+      "latest_build": "AKSUbuntu-gen2-2404tlcontainerd-202607.29.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -722,8 +748,8 @@
       "upstream_fixed_version": "1.82.1",
       "latest_build": "AKSUbuntu-gen2-2404tlcontainerd-202607.20.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu24.04u4_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e",
+        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.53.2-ubuntu24.04u4_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005",
         "scan_pkg": "google.golang.org/grpc"
       }
     }
@@ -741,7 +767,7 @@
       {
         "name": "containerd",
         "coverage": "covered_by_scan",
-        "version": "2.3.2-ubuntu24.04u2",
+        "version": "2.3.3-ubuntu24.04u2",
         "package": "moby-containerd"
       },
       {
@@ -757,6 +783,6 @@
     "https://security-metadata.canonical.com/oval/com.ubuntu.focal.cve.oval.xml.bz2",
     "https://security-metadata.canonical.com/oval/com.ubuntu.jammy.cve.oval.xml.bz2",
     "https://security-metadata.canonical.com/oval/com.ubuntu.noble.cve.oval.xml.bz2",
-    "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:668dc35b19805c3fdfef13c96029c9953882d9786efbddae0a0f3fb54529f53e"
+    "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:18fbf630a9fff75f08fe4cdecf2af1561d6f6373f74bdd6cbcfd35a877cd2005"
   ]
 }

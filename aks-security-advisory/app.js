@@ -847,6 +847,7 @@ function renderHelp() {
       el("li", null, "The CVE universe is the distro OVAL feed intersected with the packages actually installed in the newest scanned VHD build."),
       el("li", null, "For each affected package the tool scans a set of recent VHD build release notes (anchored at a fixed floor version, e.g. the start of the year) plus the latest security-patch deltas, and records the earliest build that reaches the fixed version."),
       el("li", null, "Azure Linux uses Microsoft's OVAL plus the MSRC CSAF/VEX feed (for not_affected / under_investigation / affected verdicts); Ubuntu uses Canonical's per-release CVE OVAL plus the Ubuntu CVE Tracker (for not_affected / under_investigation / affected / will_not_fix verdicts)."),
+      el("li", null, "The Linux kernel is assessed too. Canonical encodes kernel fixes differently from ordinary packages, so the tool reads them separately and reports a single 'linux-azure' row that rolls up its many installed binaries (linux-image-*/linux-headers-*/\u2026). Azure Linux tracks its kernel as an ordinary package, so it needs no special handling."),
     ]),
 
     el("h3", null, "Known limitations"),
@@ -857,6 +858,8 @@ function renderHelp() {
         "A CVE with no upstream fix can't be enumerated from OVAL alone, so 'affected' is only surfaced where the vendor VEX / Ubuntu CVE Tracker asserts it; otherwise the feed focuses on fixed / fix_available_upstream verdicts."]),
       el("li", null, [el("strong", null, "Windowed. "),
         "Only CVEs whose fix status is determined within the scanned build window appear; issues fixed before the window are treated as old news."]),
+      el("li", null, [el("strong", null, "FIPS / some confidential-VM kernels not assessed. "),
+        "A few Ubuntu FIPS and CVM node images list no kernel binary in their release notes (only kernel tooling), so their running kernel version can't be observed and their kernel is left unassessed. FIPS kernels are also tracked only in a separate Ubuntu Pro FIPS feed, outside this public data. Other lineages' kernels \u2014 including noble CVM (full-disk-encryption) images \u2014 are covered."]),
     ]),
 
     el("h3", null, "Ordering"),
