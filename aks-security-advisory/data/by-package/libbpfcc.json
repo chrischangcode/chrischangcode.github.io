@@ -1,0 +1,1 @@
+{"schema_version":"1.0","type":"aks-vhd-by-package","package":"libbpfcc","count":1,"releases":["AKSUbuntu/gen2/2204arm64containerd","AKSUbuntu/gen2/2404arm64containerd"],"advisories":[{"id":"CVE-2024-2314","headline_status":"not_affected","releases":[0,1]}],"generated":"2026-08-03T10:25:36Z"}

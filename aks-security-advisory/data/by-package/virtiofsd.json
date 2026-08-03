@@ -1,0 +1,1 @@
+{"schema_version":"1.0","type":"aks-vhd-by-package","package":"virtiofsd","count":1,"releases":["AKSAzureLinuxV3/gen2kata"],"advisories":[{"id":"CVE-2023-50711","headline_status":"not_affected","severity":"Critical","releases":[0]}],"generated":"2026-08-03T10:25:36Z"}

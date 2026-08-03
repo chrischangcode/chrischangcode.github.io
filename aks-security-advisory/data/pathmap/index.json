@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "type": "aks-vhd-pathmap-index",
-  "generated": "2026-08-01T17:12:31Z",
+  "generated": "2026-08-03T10:25:36Z",
   "default_lineage": "AKSAzureLinuxV3/gen2",
   "lineages": {
     "AKSAzureLinuxV3/cvmgen2": "azurelinux-3.0",
@@ -37,29 +37,29 @@
       "key": "azurelinux-3.0",
       "os_family": "azurelinux",
       "release": "3.0",
-      "path_count": 13722,
-      "package_count": 2080
+      "path_count": 3092,
+      "package_count": 191
     },
     {
       "key": "ubuntu-focal",
       "os_family": "ubuntu",
       "release": "focal",
-      "path_count": 51619,
-      "package_count": 13700
+      "path_count": 2222,
+      "package_count": 194
     },
     {
       "key": "ubuntu-jammy",
       "os_family": "ubuntu",
       "release": "jammy",
-      "path_count": 55083,
-      "package_count": 14877
+      "path_count": 3398,
+      "package_count": 269
     },
     {
       "key": "ubuntu-noble",
       "os_family": "ubuntu",
       "release": "noble",
-      "path_count": 60083,
-      "package_count": 15761
+      "path_count": 3475,
+      "package_count": 284
     }
   ]
 }

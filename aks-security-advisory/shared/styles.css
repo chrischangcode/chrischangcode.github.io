@@ -261,6 +261,8 @@ td:last-child .info:hover::after, td:last-child .info:focus::after {
   background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
 }
 .gloss-row p { margin: 0; font-size: .9rem; color: var(--text-soft); }
+.gloss-key { display: flex; flex-direction: column; gap: .3rem; align-items: start; }
+.gloss-count { font-size: .78rem; }
 @media (max-width: 620px) { .gloss-row { grid-template-columns: 1fr; } }
 
 .help-kv {

@@ -16,19 +16,29 @@
 "use strict";
 
 /* ---------- glossary (single source of truth for tooltips + help page) ---------- */
+//
+// These objects are the BAKED-IN FALLBACK. The canonical vocabulary lives in
+// Python (aksadvisory/feed/vocab.py) and is emitted as `data/glossary.json` with
+// per-value counts measured from the build. `loadGlossary()` prefers that
+// document, replacing these defaults section-by-section (see `applyGlossary`);
+// when it is absent (the site can be served against an older feed artifact that
+// predates glossary.json) these baked-in copies keep every tooltip and the help
+// page working. They MUST stay identical to vocab.py -- tests/test_vocab.py
+// fails if they drift. They are `let`, not `const`, so the generated glossary
+// can override them at runtime.
 
 // Per-status explanation. Reused by badge tooltips and the help page so the two
 // never drift.
-const STATUS_HELP = {
+let STATUS_HELP = {
   fixed: "A scanned AKS VHD build ships a package version at or above the distro's fixed version. The 'first fixed build' field names the earliest build that carries the fix.",
   fix_available_upstream: "The distro (Azure Linux / Ubuntu) has published a fixed package, but none of the scanned VHD builds ship it yet. The fix exists upstream and is expected in a future node image.",
-  affected: "Vulnerable, with no upstream fix available yet. (Not enumerable from OVAL alone, so rarely emitted by this feed — see the help page.)",
+  affected: "Vulnerable, with no upstream fix available yet. Surfaced only where a vendor VEX / Ubuntu CVE Tracker asserts it, since a fixless CVE cannot be enumerated from OVAL alone. The generated glossary records how large a share of the feed it actually is.",
   not_affected: "Excluded by a vendor verdict — an Azure Linux CSAF/VEX justification or an Ubuntu CVE Tracker 'not-affected' (e.g. the vulnerable code path is not present/reachable). The justification is shown on the advisory.",
   under_investigation: "Triage is not complete — either no distro OVAL/VEX verdict exists yet, or the Ubuntu CVE Tracker marks the package 'needs-triage'.",
   will_not_fix: "The vendor will not ship a fix (Ubuntu CVE Tracker 'ignored' — e.g. the release is past standard support, or the fix is deemed too intrusive). The reason is shown on the advisory.",
 };
 
-const STATUS_LABELS = {
+let STATUS_LABELS = {
   fixed: "Fixed",
   fix_available_upstream: "Fix available upstream",
   affected: "Affected",
@@ -38,7 +48,7 @@ const STATUS_LABELS = {
 };
 
 // Coverage vocabulary for extended binaries (release-notes components).
-const COVERAGE_LABELS = {
+let COVERAGE_LABELS = {
   covered_by_package: "Covered by package",
   covered_by_scan: "Covered by scan",
   scan_pending: "Scan pending",
@@ -48,7 +58,7 @@ const COVERAGE_LABELS = {
   not_assessed: "Not assessed",
 };
 
-const COVERAGE_HELP = {
+let COVERAGE_HELP = {
   covered_by_package: "This extended binary is the same artifact as an installed distro package that the distro advisory feed actually tracks, so its CVE status IS assessed \u2014 see the linked package's advisories.",
   covered_by_scan: "Assessed by a binary (Trivy) scan of the extended binary itself, because the distro advisory feeds don't track it. Carries scan evidence rather than a distro package row. Only downloadable binary archives are scanned \u2014 tarballs and .deb/.rpm packages \u2014 while components shipped as container/OCI images are classified 'container_image' and not scanned.",
   scan_pending: "Installed as a distro package (typically a Microsoft-repackaged one from packages.microsoft.com \u2014 e.g. moby-containerd, moby-runc, aznfs) that the base distro's advisory feed does NOT track. Its status is honestly unknown here; a binary scan is planned. Not treated as covered.",
@@ -61,7 +71,7 @@ const COVERAGE_HELP = {
 // Fallback text for the components "Assessed as / why not" column when a row
 // has neither a linked distro package nor its own note. Keeps that cell
 // meaningful for every coverage class instead of a bare em-dash.
-const COVERAGE_WHY = {
+let COVERAGE_WHY = {
   covered_by_scan: "Assessed by a binary scan; see its scan advisories.",
   scan_pending: "Microsoft-repackaged distro package the base feed doesn't track; binary scan planned.",
   container_image: "Assessed by its upstream container image, not this feed.",
@@ -72,7 +82,7 @@ const COVERAGE_WHY = {
 
 // Field/column explanations. Keyed by a short id used across the list and the
 // detail view.
-const FIELD_HELP = {
+let FIELD_HELP = {
   cve: "The CVE identifier. Click it to open the full advisory with per-OS/SKU package status and evidence links.",
   severity: "Severity as reported by the distro advisory feed (OVAL): Critical, High, Medium, or Low. Sorted Critical → Low.",
   status: "The single most-actionable status across all OS/SKU lineages for this CVE (the 'headline' status). Open the advisory to see each lineage individually.",
@@ -130,6 +140,11 @@ const state = {
   // Extended-binary coverage manifest (components.json), loaded lazily.
   components: { data: null, tried: false },
   componentFilters: { os: "", coverage: "" },
+  // Generated vocabulary + per-value counts (glossary.json). Loaded once at
+  // startup and merged over the baked-in STATUS_HELP/COVERAGE_HELP/FIELD_HELP
+  // above; `data` also backs the live status distribution shown on the help
+  // page. Absent on older feed artifacts, in which case the baked-in copies win.
+  glossary: { data: null, tried: false },
 };
 
 const $app = () => document.getElementById("app");
@@ -241,6 +256,58 @@ async function loadComponents() {
     if (r.ok) state.components.data = await r.json();
   } catch (_e) { /* leave null */ }
   return state.components.data;
+}
+
+// Apply a generated glossary document over the baked-in vocabulary. When a
+// section is present and well-formed (a non-empty object) it REPLACES the baked
+// copy wholesale rather than merging into it: the generated document is
+// authoritative when available, so a key the feed no longer publishes must not
+// survive from the stale baked copy (that would re-introduce the very drift this
+// document exists to prevent). A missing or malformed section falls back to the
+// baked copy in full, so a partial/garbled document can never blank a tooltip.
+function applyGlossary(doc) {
+  if (!doc || typeof doc !== "object") return;
+  const st = doc.status || {};
+  const cov = doc.coverage || {};
+  const fld = doc.field || {};
+  const pick = (o, baked) =>
+    (o && typeof o === "object" && !Array.isArray(o) && Object.keys(o).length) ? o : baked;
+  STATUS_LABELS = pick(st.labels, STATUS_LABELS);
+  STATUS_HELP = pick(st.help, STATUS_HELP);
+  COVERAGE_LABELS = pick(cov.labels, COVERAGE_LABELS);
+  COVERAGE_HELP = pick(cov.help, COVERAGE_HELP);
+  COVERAGE_WHY = pick(cov.why, COVERAGE_WHY);
+  FIELD_HELP = pick(fld.help, FIELD_HELP);
+}
+
+// Generated vocabulary + per-value counts (glossary.json). Best-effort and
+// non-fatal: an older feed artifact that predates it simply 404s (or fails to
+// parse) and the baked-in STATUS_HELP/COVERAGE_HELP/FIELD_HELP keep the UI
+// fully functional. When present it is preferred (see applyGlossary) and its
+// measured counts drive the live status distribution on the help page, so the
+// vocabulary can never drift from the data (issue #39, F8).
+async function loadGlossary() {
+  if (state.glossary.tried) return state.glossary.data;
+  state.glossary.tried = true;
+  try {
+    // Time-box the fetch: loadGlossary is deliberately off the first-render path
+    // (see main), but a stalled connection (accepted, no body) must never be able
+    // to hold up a re-render either. AbortSignal.timeout is guarded for older
+    // browsers, which simply get an untimed best-effort fetch.
+    const opts = { cache: "no-cache" };
+    if (typeof AbortSignal !== "undefined" && AbortSignal.timeout) {
+      opts.signal = AbortSignal.timeout(6000);
+    }
+    const r = await fetch(state.dataBase + "/glossary.json", opts);
+    if (r.ok) {
+      const doc = await r.json();
+      if (doc && typeof doc === "object") {
+        state.glossary.data = doc;
+        applyGlossary(doc);
+      }
+    }
+  } catch (_e) { /* leave baked-in vocabulary in place */ }
+  return state.glossary.data;
 }
 
 // Resolve a lineage label (e.g. "AKSAzureLinuxV3/gen2") to its map key via the
@@ -871,10 +938,24 @@ async function renderPaths(query) {
 
 /* ---------- help view ---------- */
 
+// A measured share for a status, from the generated glossary counts. Returns
+// null when no glossary was loaded (older feed) so the legend simply omits it.
+function statusShareNote(status) {
+  const st = state.glossary.data && state.glossary.data.status;
+  if (!st || !st.counts || !st.total) return null;
+  const n = st.counts[status] || 0;
+  const share = st.shares && st.shares[status];
+  const pct = share != null
+    ? (share * 100).toFixed(1) + "%"
+    : Math.round((100 * n) / st.total) + "%";
+  return el("span", { class: "gloss-count muted" },
+    n.toLocaleString() + " \u00b7 " + pct + " of advisories");
+}
+
 function statusGlossary() {
   return el("div", { class: "glossary" }, Object.keys(STATUS_LABELS).map((s) =>
     el("div", { class: "gloss-row" }, [
-      statusBadge(s),
+      el("div", { class: "gloss-key" }, [statusBadge(s), statusShareNote(s)]),
       el("p", null, STATUS_HELP[s]),
     ])));
 }
@@ -924,6 +1005,12 @@ function renderHelp() {
     el("h3", null, "Status vocabulary"),
     el("p", { class: "note" }, "Each CVE gets a single headline status (the most actionable across all OS/SKU lineages). On an advisory page you can see each lineage's own status."),
     statusGlossary(),
+    state.glossary.data && state.glossary.data.status && state.glossary.data.status.total
+      ? el("p", { class: "note muted" },
+        "The share shown beside each status is measured from this build's " +
+        state.glossary.data.status.total.toLocaleString() +
+        " advisories (from data/glossary.json), not a fixed estimate.")
+      : null,
 
     el("h3", null, "Columns & fields"),
     (() => {
@@ -951,8 +1038,8 @@ function renderHelp() {
     el("ul", { class: "bullets" }, [
       el("li", null, [el("strong", null, "Additive surface only partly assessed. "),
         FIELD_HELP.additive]),
-      el("li", null, [el("strong", null, "'Affected' is rarely emitted. "),
-        "A CVE with no upstream fix can't be enumerated from OVAL alone, so 'affected' is only surfaced where the vendor VEX / Ubuntu CVE Tracker asserts it; otherwise the feed focuses on fixed / fix_available_upstream verdicts."]),
+      el("li", null, [el("strong", null, "'Affected' comes only from vendor verdicts. "),
+        "A CVE with no upstream fix can't be enumerated from OVAL alone, so 'affected' is surfaced only where the vendor VEX / Ubuntu CVE Tracker asserts it; otherwise the feed reports fixed / fix_available_upstream / under_investigation. See the measured share beside each status above for how much of this build it is."]),
       el("li", null, [el("strong", null, "Windowed. "),
         "Only CVEs whose fix status is determined within the scanned build window appear; issues fixed before the window are treated as old news."]),
       el("li", null, [el("strong", null, "FIPS / some confidential-VM kernels not assessed. "),
@@ -999,6 +1086,24 @@ function renderHelp() {
         el("span", { class: "mono" },
           "{ id, headline_status, severity, updated, releases[], packages[], summary? }"),
         "."]),
+      el("dt", null, "data/manifest.json"),
+      el("dd", null, [el("span", { class: "mono" },
+        "{ schema_version, type, generated, data_root, count, endpoints[] }"),
+        " \u2014 generated inventory of every endpoint with real byte sizes; read it first to plan fetches and avoid the large index. Optional (may be absent on older feeds)."]),
+      el("dt", null, "data/index-slim.json"),
+      el("dd", null, [el("span", { class: "mono" },
+        "{ schema_version, type, count, generated, advisories[{ id, headline_status, severity? }] }"),
+        " \u2014 id + headline_status + severity only (~3-4% of index.json). Optional."]),
+      el("dt", null, "data/by-package/index.json + <file>.json"),
+      el("dd", null, [el("span", { class: "mono" },
+        "{ \u2026 packages[{ name, file, count }], aliases[{ name, alias_of, file }]? }"),
+        " maps a package name to its per-package file: ",
+        el("span", { class: "mono" },
+          "{ package, count, releases[], advisories[{ id, headline_status, severity?, releases:[int\u2026] }] }"),
+        " (release labels interned). A (package, CVE) lookup is \u22642 fetches. Optional."]),
+      el("dt", null, "data/by-release/index.json + <file>.json"),
+      el("dd", null, [
+        "Same, keyed by VHD lineage label; per-release file interns the package names. Optional."]),
       el("dt", null, "data/advisories/<CVE>.json"),
       el("dd", null, [el("span", { class: "mono" },
         "{ schema_version, id, severity, headline_status, updated, description?, references[], packages[], additive }"),
@@ -1021,6 +1126,10 @@ function renderHelp() {
         el("span", { class: "mono" },
           "{ name, coverage, version?, package?, note? }"),
         "."]),
+      el("dt", null, "data/glossary.json"),
+      el("dd", null, [el("span", { class: "mono" },
+        "{ schema_version, type, generated, status{labels,help,counts,shares,total,counts_basis}, coverage{labels,help,why,counts,shares,total}, field{help} }"),
+        " \u2014 the status / coverage / field vocabulary with per-value counts and shares measured from this build (optional; older feeds may not publish it, in which case the app uses a baked-in copy). status.counts/shares are the per-advisory headline distribution (one most-actionable status per advisory), NOT per-package prevalence \u2014 see status.counts_basis (issue #39, F7)."]),
     ]),
     el("p", { class: "note" }, [
       "Status values: ",
@@ -1188,9 +1297,21 @@ async function main() {
       "If running locally, serve the repo root and open /site/vhd/, or pass ?data=<path>."));
     return;
   }
+  // First paint must not wait on the optional glossary. Render immediately from
+  // index.json, then load glossary.json off the critical path and re-render the
+  // current view only if a document actually arrived. A missing (404) or hung
+  // glossary can therefore never delay or block first paint -- loadGlossary is
+  // itself time-boxed as a second line of defence. This is the live path today:
+  // production 404s glossary.json until the next weekly feed build publishes it.
   setGeneratedFooter();
   window.addEventListener("hashchange", route);
   await route();
+  // LOAD-BEARING ORDER: route() (first paint) must run and be awaited BEFORE this
+  // line, and this loadGlossary() call must stay fire-and-forget (NOT awaited).
+  // Awaiting the optional glossary here reintroduces the blocking-hang bug (a
+  // stalled glossary.json would freeze first paint). Enforced by
+  // tests/test_vocab.py::MainRenderOrderTest -- do not "tidy" into an await.
+  loadGlossary().then((doc) => { if (doc) route(); });
 }
 
 document.addEventListener("DOMContentLoaded", main);

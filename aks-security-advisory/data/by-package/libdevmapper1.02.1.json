@@ -1,0 +1,1 @@
+{"schema_version":"1.0","type":"aks-vhd-by-package","package":"libdevmapper1.02.1","count":1,"releases":["AKSUbuntu/gen1/2004fipscontainerd","AKSUbuntu/gen2/2004cvmcontainerd","AKSUbuntu/gen2/2004fipscontainerd"],"advisories":[{"id":"CVE-2020-8991","headline_status":"not_affected","releases":[0,1,2]}],"generated":"2026-08-03T10:25:36Z"}

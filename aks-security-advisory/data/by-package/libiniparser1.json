@@ -1,0 +1,1 @@
+{"schema_version":"1.0","type":"aks-vhd-by-package","package":"libiniparser1","count":1,"releases":["AKSUbuntu/gen2/2404arm64containerd"],"advisories":[{"id":"CVE-2023-33461","headline_status":"not_affected","severity":"Medium","releases":[0]}],"generated":"2026-08-03T10:25:36Z"}

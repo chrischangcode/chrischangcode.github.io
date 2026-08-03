@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "type": "aks-vhd-glossary",
+  "status": {
+    "labels": {
+      "fixed": "Fixed",
+      "fix_available_upstream": "Fix available upstream",
+      "affected": "Affected",
+      "not_affected": "Not affected",
+      "under_investigation": "Under investigation",
+      "will_not_fix": "Will not fix"
+    },
+    "help": {
+      "fixed": "A scanned AKS VHD build ships a package version at or above the distro's fixed version. The 'first fixed build' field names the earliest build that carries the fix.",
+      "fix_available_upstream": "The distro (Azure Linux / Ubuntu) has published a fixed package, but none of the scanned VHD builds ship it yet. The fix exists upstream and is expected in a future node image.",
+      "affected": "Vulnerable, with no upstream fix available yet. Surfaced only where a vendor VEX / Ubuntu CVE Tracker asserts it, since a fixless CVE cannot be enumerated from OVAL alone. The generated glossary records how large a share of the feed it actually is.",
+      "not_affected": "Excluded by a vendor verdict \u2014 an Azure Linux CSAF/VEX justification or an Ubuntu CVE Tracker 'not-affected' (e.g. the vulnerable code path is not present/reachable). The justification is shown on the advisory.",
+      "under_investigation": "Triage is not complete \u2014 either no distro OVAL/VEX verdict exists yet, or the Ubuntu CVE Tracker marks the package 'needs-triage'.",
+      "will_not_fix": "The vendor will not ship a fix (Ubuntu CVE Tracker 'ignored' \u2014 e.g. the release is past standard support, or the fix is deemed too intrusive). The reason is shown on the advisory."
+    },
+    "counts": {
+      "fixed": 447,
+      "fix_available_upstream": 142,
+      "affected": 4983,
+      "not_affected": 10400,
+      "under_investigation": 815,
+      "will_not_fix": 783
+    },
+    "shares": {
+      "not_affected": 0.5919,
+      "will_not_fix": 0.0446,
+      "under_investigation": 0.0464,
+      "affected": 0.2836,
+      "fixed": 0.0254,
+      "fix_available_upstream": 0.0081
+    },
+    "total": 17570,
+    "counts_basis": "per-advisory headline_status -- the single most-actionable status across all OS/SKU lineages, counted once per advisory (see issue #39, F7). This is NOT a per-package-row distribution: do not read status.shares as 'the share of my packages that are affected'; it over-weights the actionable buckets relative to true per-SKU prevalence."
+  },
+  "coverage": {
+    "labels": {
+      "covered_by_package": "Covered by package",
+      "covered_by_scan": "Covered by scan",
+      "scan_pending": "Scan pending",
+      "aks_built": "AKS-built / upstream",
+      "container_image": "Container image",
+      "not_baked": "Not baked in",
+      "not_assessed": "Not assessed"
+    },
+    "help": {
+      "covered_by_package": "This extended binary is the same artifact as an installed distro package that the distro advisory feed actually tracks, so its CVE status IS assessed \u2014 see the linked package's advisories.",
+      "covered_by_scan": "Assessed by a binary (Trivy) scan of the extended binary itself, because the distro advisory feeds don't track it. Carries scan evidence rather than a distro package row. Only downloadable binary archives are scanned \u2014 tarballs and .deb/.rpm packages \u2014 while components shipped as container/OCI images are classified 'container_image' and not scanned.",
+      "scan_pending": "Installed as a distro package (typically a Microsoft-repackaged one from packages.microsoft.com \u2014 e.g. moby-containerd, moby-runc, aznfs) that the base distro's advisory feed does NOT track. Its status is honestly unknown here; a binary scan is planned. Not treated as covered.",
+      "aks_built": "Built by AKS or downloaded from upstream as a downloadable archive/package (oras, Azure CNI, cni-plugins, acr-mirror). No distro package exists for it in the base feed, so distro OVAL/CVE feeds do not track it; it is scanned by the binary overlay where an archive is available.",
+      "container_image": "Built/distributed by AKS as an OCI container image rather than a downloadable archive (kubelet/kubectl via the kubernetes-node image, azure-acr-credential-provider). The binary scan overlay assesses downloadable archives, not images, so these are not scanned here and are tracked by their own upstream.",
+      "not_baked": "A distro package installed only conditionally (e.g. GPU drivers / DCGM at node provisioning) and absent from the mainstream baked image \u2014 nothing to assess for this lineage.",
+      "not_assessed": "Not tracked by the distro advisory feeds (e.g. cached container images)."
+    },
+    "why": {
+      "covered_by_scan": "Assessed by a binary scan; see its scan advisories.",
+      "scan_pending": "Microsoft-repackaged distro package the base feed doesn't track; binary scan planned.",
+      "container_image": "Assessed by its upstream container image, not this feed.",
+      "aks_built": "Tracked by its own upstream, not a distro advisory feed.",
+      "not_baked": "Not present in the mainstream baked image.",
+      "not_assessed": "Not tracked by the distro advisory feeds."
+    },
+    "counts": {
+      "covered_by_package": 3,
+      "covered_by_scan": 16,
+      "scan_pending": 0,
+      "aks_built": 1,
+      "container_image": 8,
+      "not_baked": 15,
+      "not_assessed": 0
+    },
+    "shares": {
+      "aks_built": 0.0233,
+      "not_baked": 0.3488,
+      "covered_by_scan": 0.3721,
+      "container_image": 0.186,
+      "covered_by_package": 0.0698
+    },
+    "total": 43
+  },
+  "field": {
+    "help": {
+      "cve": "The CVE identifier. Click it to open the full advisory with per-OS/SKU package status and evidence links.",
+      "severity": "Severity as reported by the distro advisory feed (OVAL): Critical, High, Medium, or Low. Sorted Critical \u2192 Low.",
+      "status": "The single most-actionable status across all OS/SKU lineages for this CVE (the 'headline' status). Open the advisory to see each lineage individually.",
+      "release": "The AKS VHD lineage(s) \u2014 OS family + generation/SKU, e.g. 'AzureLinux-V3/gen2' \u2014 where this CVE was assessed. Use the OS/SKU filter to narrow the list.",
+      "updated": "When this advisory record was last regenerated by the feed builder (UTC date).",
+      "search": "Filter the list live by CVE id substring, e.g. type '2026-4' to match CVE-2026-4xxx.",
+      "package": "The base-OS package (as named in the distro OVAL feed) affected by this CVE, e.g. 'expat' or 'openssl'.",
+      "binary_packages": "When one advisory row stands in for a source package that installs several binaries (most visibly the kernel: one 'linux-azure' row for its many linux-headers-*/linux-modules-* binaries), these are the individual installed binary packages it rolls up. Each links to other advisories naming that binary.",
+      "fixed_version": "The distro package version that resolves the CVE, and which a shipping VHD build was confirmed to carry.",
+      "upstream_fixed_version": "The distro package version that resolves the CVE upstream. No scanned VHD build ships it yet.",
+      "first_fixed_build": "The earliest scanned AKS VHD build whose installed package reaches the fixed version. A 'security-patch:<version>' value means the fix landed via a security-patch delta rather than a full build.",
+      "latest_build": "The newest scanned AKS VHD build (still on a pre-fix package version) \u2014 the baseline the 'fix available upstream' verdict was measured against.",
+      "advisory_id": "The distro advisory identifier the fixed version came from (e.g. an Azure Linux OVAL advisory id).",
+      "evidence": "Verifiable source links backing the verdict: the AgentBaker release-notes file listing the exact installed versions, and the distro OVAL/advisory feed.",
+      "retained_vulnerable_version": "Some install-only packages (notably the kernel) keep older versions on disk after an update so the node can roll back. The node boots the highest version \u2014 the one carrying the fix \u2014 so the verdict is 'fixed'. This is an older version still present on disk that is below the fix. Whether a vulnerability scanner reports this CVE for the node depends on its methodology: one that evaluates the running/highest version treats the node as fixed, while one that inventories every installed package version may still flag the retained older version.",
+      "additive": "Extended binaries laid on top of the base image (kubelet, CNI, containerd/runc, oras) and cached container images. Some are the SAME artifact as an installed distro package the distro feed tracks (e.g. the containerd binary is the Azure Linux containerd2 package) and so ARE assessed \u2014 see 'covered_by_package' below. Others are Microsoft-repackaged and not in the base distro feed ('scan_pending'), or AKS-built/upstream ('aks_built'), tracked by their own upstreams, not the distro feeds.",
+      "components": "Every extended binary AKS lays on top of the base image, with whether the distro advisory feeds can assess it. 'covered_by_package' = the same artifact as a distro package the feed actually tracks (its CVE status is in the advisories); 'scan_pending' = installed as a Microsoft-repackaged distro package the base distro feed doesn't track (e.g. moby-containerd on Ubuntu) \u2014 a binary scan is planned; 'aks_built' = built by AKS or downloaded from upstream (kubelet, oras, Azure CNI), in no distro feed; 'not_baked' = distro packages installed only conditionally (e.g. GPU drivers), absent from the mainstream image.",
+      "references": "External references for this CVE \u2014 NVD, and the authoritative distro CVE status page: Ubuntu's CVE Tracker and, for Azure Linux, the MSRC Update Guide page. Also includes the advisory-feed source.",
+      "paths": "The absolute install paths this package owns on the node image. Only executables under /bin and /sbin are indexed \u2014 the paths a scanner typically reports.",
+      "path_lookup": "Type a path a scanner reported (e.g. /usr/bin/curl) or just a file name (e.g. curl). The lookup returns the owning package(s) for the selected OS/SKU, which you can click through to its advisories.",
+      "path_os": "The AKS VHD lineage the path\u2192package map was built for. Executable-path ownership is stable within an OS release, so every SKU of a release shares one map; the default is the mainstream Azure Linux 3 gen2 image.",
+      "pkg_filter": "Show only advisories that name a package matching this text (substring, case-insensitive). Cleared by Reset."
+    }
+  },
+  "generated": "2026-08-03T10:25:32Z"
+}

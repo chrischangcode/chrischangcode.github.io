@@ -39,6 +39,44 @@ root). All files are plain JSON. Endpoint shapes:
     Each advisories[] entry:
     { id, headline_status, severity, updated, releases[], packages[], summary? }
 
+- data/manifest.json    (OPTIONAL -- may be absent on older feeds)
+    Generated inventory of every endpoint this feed publishes, with real byte
+    sizes -- read this FIRST to plan fetches and avoid the ~32 MiB index.json:
+    { schema_version, type, generated, data_root, count, endpoints[] }
+    Each endpoints[] item is a document or a collection:
+    { path, kind, bytes, media_type, schema_version, optional, entries? }  or
+    { path, kind:"collection", files, bytes, schema_version, optional,
+      pattern?, index? }
+    pattern (e.g. advisories/{id}.json) is present ONLY when item names are used
+    verbatim; by-package/ and by-release/ have NO pattern -- their filenames are
+    sanitized, so resolve a name through the collection's index, never build it.
+
+- data/index-slim.json  (OPTIONAL -- may be absent on older feeds)
+    id + headline_status + severity only (~3-4% of index.json). Enough to
+    enumerate + triage without the packages[]/releases[] bulk:
+    { schema_version, type, count, generated, advisories[{ id, headline_status,
+      severity? }] }
+
+- data/by-package/index.json   (OPTIONAL -- may be absent on older feeds)
+    Reverse index: which advisories name a package. Resolve a name to a file
+    here (filenames are sanitized; do not guess), then fetch the small per-package
+    file. A (package, CVE) lookup is <=2 fetches, <100 KB:
+    { schema_version, type, generated, count, packages[{ name, file, count }],
+      aliases[{ name, alias_of, file }]? }
+- data/by-package/<file>.json
+    Advisories naming this package. Release labels are interned into a document-
+    top releases[] table addressed by integer index:
+    { schema_version, type, package, count, generated, releases[],
+      advisories[{ id, headline_status, severity?, releases:[int,...] }] }
+
+- data/by-release/index.json   (OPTIONAL -- may be absent on older feeds)
+    Same, keyed by VHD lineage label (label -> file mapping):
+    { schema_version, type, generated, count, releases[{ name, file, count }] }
+- data/by-release/<file>.json
+    Advisories touching this lineage. Package names are interned:
+    { schema_version, type, release, count, generated, packages[],
+      advisories[{ id, headline_status, severity?, packages:[int,...] }] }
+
 - data/advisories/<ID>.json
     Full per-advisory detail. <ID> is uppercase and may be CVE-*, GO-* (Go vuln
     DB) or GHSA-* (GitHub advisories):
@@ -80,16 +118,44 @@ root). All files are plain JSON. Endpoint shapes:
     Each components[] item:
     { name, coverage, version?, package?, note? }
 
+- data/glossary.json         (OPTIONAL -- may be absent on older feeds)
+    The status / coverage / field vocabulary, with per-value counts and shares
+    MEASURED from the advisories in THIS build (so "how common is a status" is a
+    fact about the build, not a hand-written claim):
+    { schema_version, type, generated,
+      status{labels{}, help{}, counts{status->n}, shares{status->fraction}, total, counts_basis},
+      coverage{labels{}, help{}, why{}, counts{}, shares{}, total},
+      field{help{}} }
+    Use status.help for what each status means and status.counts/shares for how
+    often each status is emitted in this build. Do NOT assume `affected` is rare
+    -- consult status.counts/shares rather than any prior expectation of its
+    magnitude. IMPORTANT: status.counts/shares are the per-advisory HEADLINE
+    distribution (one most-actionable status per advisory, via headline_status),
+    NOT per-package-row prevalence -- do not read status.shares.affected as "the
+    share of my packages that are affected" (that is the F7 misread). The
+    status.counts_basis field states this basis inline.
+
 A canonical, versioned copy of this data contract is published as
 DATA-CONTRACT.md in the public site repository
 (https://github.com/chrischangcode/chrischangcode.github.io).
 
 ## Suggested fetch order
 
-1. GET data/index.json -- enumerate advisories and facets.
-2. GET data/advisories/<ID>.json -- per-CVE detail on demand.
-3. GET data/pathmap/index.json then data/pathmap/<key>.json -- map a scanner
+1. GET data/manifest.json -- inventory every endpoint (with real byte sizes) so
+   you can plan fetches and avoid the ~34 MB index.json. Optional; treat a 404 as
+   "this feed predates the manifest", then fall back to the endpoints below.
+2. GET data/index-slim.json -- enumerate every advisory (id + headline_status +
+   severity) cheaply, or data/index.json for the full listing + facets.
+3. To answer "which CVEs affect <package>?": GET data/by-package/index.json,
+   resolve <package> to its file (or its alias), then GET
+   data/by-package/<file>.json. <=2 fetches, <100 KB. Symmetrically,
+   data/by-release/ answers "which CVEs touch <lineage>?".
+4. GET data/advisories/<ID>.json -- per-CVE detail on demand.
+5. GET data/pathmap/index.json then data/pathmap/<key>.json -- map a scanner
    path (e.g. /usr/bin/curl) to owning packages. Both are optional; treat a 404
    as "this feed does not publish path maps", not as an error.
-4. GET data/components.json -- extended-binary coverage. Optional; treat a 404
+6. GET data/components.json -- extended-binary coverage. Optional; treat a 404
    as "this feed does not publish a coverage manifest", not as an error.
+5. GET data/glossary.json -- status/coverage/field vocabulary with per-value
+   counts measured from this build. Optional; treat a 404 as "this feed does not
+   publish a glossary", not as an error.
