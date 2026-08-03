@@ -6,10 +6,12 @@
  * per CVE, plus `releases`/`severities`/`statuses` facets) and, on demand, the
  * per-CVE `advisories/<CVE>.json` files.
  *
- * Data location: resolved once at startup. On GitHub Pages the workflow places
- * the feed under `./data/`; for local preview (`python -m http.server` from the
- * repo root, open `/site/`) it transparently falls back to `../feed-out`. A
- * `?data=<base>` query override wins over both.
+ * Data location: see `candidateDataBases()`. This app lives in `site/vhd/`, one
+ * level below where the feed is deployed. On GitHub Pages the workflow places
+ * the feed at `/aks-security-advisory/data/`, i.e. `../data` relative to this
+ * app; for local preview (`python -m http.server` from the repo root, open
+ * `/site/vhd/`) it transparently falls back to `../../feed-out` (the repo-root
+ * `feed-out/`). A `?data=<base>` query override wins over both.
  */
 "use strict";
 
@@ -102,8 +104,20 @@ const SEVERITY_RANK = { Critical: 0, High: 1, Medium: 2, Low: 3 };
 // are put in the DOM; filters reset back to the first page.
 const LIST_PAGE_SIZE = 1000;
 
+// This app is served from `<root>/vhd/`, one level below the feed:
+//
+//   deployed (GitHub Pages)  <root>/data/     -> "../data"
+//   local dev (server at repo root, open      -> "../../feed-out"
+//             /site/vhd/)   <repo>/feed-out/
+//
+// Both are tried in order and the first that yields a document that actually
+// *looks like* a feed index wins. `?data=<base>` overrides both. See
+// `loadIndex()` for the resolution itself.
+const DEPLOYED_DATA_BASE = "../data";
+const LOCAL_DEV_DATA_BASE = "../../feed-out";
+
 const state = {
-  dataBase: "data",
+  dataBase: DEPLOYED_DATA_BASE,
   index: null,      // parsed index.json
   entries: [],      // index.advisories
   filters: { q: "", release: "", status: "", severity: "", pkg: "" },
@@ -130,26 +144,59 @@ const $app = () => document.getElementById("app");
 // instead of showing a stale browser copy.
 const REVALIDATE = { cache: "no-cache" };
 
-async function resolveDataBase() {
+/* ---------- feed location ---------- */
+
+// Bases are declared above `state` (they seed its default). Resolution below.
+//
+// Deliberately no separate HEAD pre-flight: the probe IS the real GET, so the
+// deployed path costs one round trip instead of two and the app does not depend
+// on the host supporting HEAD. A base is only accepted when it returns parseable
+// JSON with an `advisories` array, so a host that answers 200 with an HTML
+// fallback for missing files cannot be mistaken for a feed.
+
+function candidateDataBases() {
   const override = new URLSearchParams(location.search).get("data");
-  const candidates = override
-    ? [override.replace(/\/+$/, "")]
-    : ["data", "../feed-out"];
-  for (const base of candidates) {
-    try {
-      const r = await fetch(base + "/index.json", { method: "HEAD", cache: "no-cache" });
-      if (r.ok) return base;
-    } catch (_e) { /* try next */ }
-  }
-  return candidates[0];
+  const strip = (b) => b.replace(/\/+$/, "");
+  return override
+    ? [strip(override)]
+    : [DEPLOYED_DATA_BASE, LOCAL_DEV_DATA_BASE];
+}
+
+function looksLikeFeedIndex(doc) {
+  return !!doc && typeof doc === "object" && Array.isArray(doc.advisories);
 }
 
 async function loadIndex() {
-  state.dataBase = await resolveDataBase();
-  const r = await fetch(state.dataBase + "/index.json", REVALIDATE);
-  if (!r.ok) throw new Error("index.json HTTP " + r.status);
-  state.index = await r.json();
-  state.entries = state.index.advisories || [];
+  const tried = [];
+  for (const base of candidateDataBases()) {
+    let r;
+    try {
+      r = await fetch(base + "/index.json", REVALIDATE);
+    } catch (e) {
+      tried.push(base + " (network error)");
+      continue;
+    }
+    if (!r.ok) {
+      tried.push(base + " (HTTP " + r.status + ")");
+      continue;
+    }
+    let doc;
+    try {
+      doc = await r.json();
+    } catch (_e) {
+      tried.push(base + " (not JSON)");
+      continue;
+    }
+    if (!looksLikeFeedIndex(doc)) {
+      tried.push(base + " (no advisories[])");
+      continue;
+    }
+    state.dataBase = base;
+    state.index = doc;
+    state.entries = doc.advisories;
+    return;
+  }
+  throw new Error("no feed index found — tried " + tried.join("; "));
 }
 
 async function loadAdvisory(id) {
@@ -601,20 +648,43 @@ function renderDetail(adv) {
 // Match rows in a pathmap doc. Forward mode (needle set): match the full path or
 // its basename. Reverse mode (pkg set, no needle): every path owned by pkg. With
 // neither, return every path (browse mode) -- the caller caps how many are shown.
+// usr-merge twins that the feed materialized (doc.alias_of maps a derived
+// spelling -> the canonical one the distro actually recorded) are collapsed to a
+// single row so a human doesn't see /bin/tar and /usr/bin/tar as duplicates;
+// agents still get both working keys in by_path. Older feeds have no alias_of, so
+// this is a no-op and the table renders exactly as before.
 function computePathRows(doc, needle, pkg) {
   const byPath = doc.by_path || {};
+  const aliasOf = doc.alias_of || {};
+  // Reverse the alias map (canonical -> [derived twin, ...]). A collapsed row
+  // must still be findable by the spelling that was collapsed away: the distro
+  // records plenty of binaries under /bin (bash, cat, chmod, the btrfs tools),
+  // so the canonical row is /bin/bash while a user almost always pastes
+  // /usr/bin/bash. Matching only the canonical would report a real indexed path
+  // as a miss -- and the miss branch renders the "out of scope, not clean" note,
+  // which is precisely the ambiguity this feed exists to remove.
+  const twinsOf = {};
+  for (const derived of Object.keys(aliasOf)) {
+    const canonical = aliasOf[derived];
+    (twinsOf[canonical] = twinsOf[canonical] || []).push(derived);
+  }
   const nq = (needle || "").trim().toLowerCase();
   const rows = [];
   for (const p of Object.keys(byPath)) {
+    if (aliasOf[p]) continue;  // derived twin -> collapsed into its canonical row
     const owners = byPath[p];
+    const twins = twinsOf[p] || [];
     if (nq) {
-      const base = p.slice(p.lastIndexOf("/") + 1).toLowerCase();
-      if (!p.toLowerCase().includes(nq) && !base.includes(nq)) continue;
+      const spellings = [p].concat(twins);
+      const hit = spellings.some((s) =>
+        s.toLowerCase().includes(nq)
+        || s.slice(s.lastIndexOf("/") + 1).toLowerCase().includes(nq));
+      if (!hit) continue;
     } else if (pkg) {
       if (!owners.includes(pkg)) continue;
     }
     // else: no path/pkg filter -> browse the whole map (capped on render).
-    rows.push([p, owners]);
+    rows.push([p, owners, twins]);
   }
   rows.sort((a, b) => a[0].localeCompare(b[0]));
   return rows;
@@ -630,9 +700,14 @@ function renderPathRows(rows, filtered) {
   }
   const cap = filtered ? PATH_ROW_CAP : PATH_BROWSE_CAP;
   const shown = rows.slice(0, cap);
-  const body = el("tbody", null, shown.map(([p, owners]) =>
+  const body = el("tbody", null, shown.map(([p, owners, twins]) =>
     el("tr", null, [
-      el("td", { class: "mono" }, p),
+      el("td", {
+        class: "mono",
+        title: (twins && twins.length)
+          ? "Same file, also resolves as: " + twins.join(", ")
+          : null,
+      }, p),
       el("td", null, owners.map((pkg, i) => el("span", null, [
         i ? ", " : "",
         el("a", {
@@ -736,6 +811,23 @@ async function renderPaths(query) {
             ["See advisories that name ", el("span", { class: "mono" }, pkg),
              " \u2192"])),
         ])
+      : (filtered && !usePkg && !rows.length)
+      // A forward (path) search with no hit is the "is this clean or out of
+      // scope?" ambiguity F6 warns about: a miss is NOT evidence the node is
+      // unaffected. Say so honestly instead of a bare "No installed paths match."
+      ? el("div", { class: "empty" }, [
+          el("p", null, "No indexed path matches that search."),
+          el("p", { class: "note" }, [
+            "A miss here is ", el("strong", null, "not"),
+            " evidence the node is unaffected. Only executables under ",
+            el("span", { class: "mono" }, "/bin"), " and ",
+            el("span", { class: "mono" }, "/sbin"),
+            " are indexed, so a library (", el("span", { class: "mono" }, "/usr/lib"),
+            ") or a path under ", el("span", { class: "mono" }, "/opt"),
+            " not listed here is out of scope, not clean. Try the file name alone ",
+            "(e.g. ", el("span", { class: "mono" }, "curl"),
+            ") in case your scanner reported a different directory."]),
+        ])
       : renderPathRows(rows, filtered);
     results.replaceChildren(...[heading, body].filter(Boolean));
   };
@@ -749,6 +841,10 @@ async function renderPaths(query) {
   });
 
   const meta = idx.maps && idx.maps.find((m) => m.key === idx.lineages[os]);
+  // Count canonical paths (excluding materialized usr-merge twins) so the meta
+  // line matches the collapsed table a human sees. Older feeds have no alias_of,
+  // so aliasCount is 0 and this equals meta.path_count exactly.
+  const aliasCount = doc.alias_of ? Object.keys(doc.alias_of).length : 0;
   const view = el("div", null, [
     el("a", { class: "back", href: "#/" }, "\u2190 All advisories"),
     el("h2", null, "Installed paths \u2192 package"),
@@ -764,7 +860,8 @@ async function renderPaths(query) {
         el("label", { for: "p-q" }, [labelWithInfo("Path or file name", "path_lookup")]), search]),
     ]),
     meta ? el("p", { class: "result-meta muted" },
-      meta.path_count + " executable paths \u00b7 " + meta.package_count + " packages indexed.") : null,
+      (meta.path_count - aliasCount) + " executable paths \u00b7 " +
+      meta.package_count + " packages indexed.") : null,
     results,
   ]);
   $app().replaceChildren(view);
@@ -915,8 +1012,8 @@ function renderHelp() {
         "."]),
       el("dt", null, "data/pathmap/<key>.json"),
       el("dd", null, [el("span", { class: "mono" },
-        "{ schema_version, type, key, os_family, release, path_count, package_count, by_path{path\u2192[package,\u2026]} }"),
-        "."]),
+        "{ schema_version, type, key, os_family, release, path_count, package_count, owner_scope, indexed_prefixes[], usr_merge, path_normalization{}, coverage_note, ambiguous_paths[], alias_of{derived\u2192canonical}, by_path{path\u2192[package,\u2026]}, by_base{basename\u2192[package,\u2026]}, packages[name,\u2026] }"),
+        " \u2014 scoped to installed packages and usr-merge normalized; a miss is not \u201cnot vulnerable\u201d (see coverage_note)."]),
       el("dt", null, "data/components.json"),
       el("dd", null, [el("span", { class: "mono" },
         "{ schema_version, type, generated, families{family\u2192{components[], counts{}}} }"),
@@ -1088,7 +1185,7 @@ async function main() {
   } catch (e) {
     $app().replaceChildren(el("div", { class: "error" },
       "Failed to load the advisory feed (" + e.message + "). " +
-      "If running locally, serve the repo root and open /site/, or pass ?data=<path>."));
+      "If running locally, serve the repo root and open /site/vhd/, or pass ?data=<path>."));
     return;
   }
   setGeneratedFooter();

@@ -1,0 +1,95 @@
+# AKS Security Advisories
+
+> Community, open-source security-advisory site for Azure Kubernetes Service
+> (AKS) artifacts. It tracks per-CVE fix status sourced from public data. It is
+> NOT an official Microsoft/Azure product and NOT an authoritative source of
+> truth for AKS security posture.
+
+Base URL: https://chrischangcode.github.io/aks-security-advisory/
+
+## Important for agents
+
+The human-facing pages under vhd/ are a hash-routed single-page app (SPA). The
+content of an advisory route such as `vhd/#/CVE-2025-1234` is rendered
+client-side by JavaScript; fetching that URL WITHOUT a JS runtime returns only
+an empty HTML shell. Do NOT scrape the rendered HTML. Read the JSON feed
+directly (below) -- it is the machine-readable source and needs no JavaScript.
+
+The site root (this page's directory) is static HTML and is safe to fetch: it
+is a hub linking to each advisory set. Legacy links of the form
+`/aks-security-advisory/#/<route>` are redirected by the hub into `vhd/`.
+
+## Sections
+
+- VHD (node image) advisory -- LIVE. Per-CVE fix status for AKS node images
+  (Azure Linux and Ubuntu base packages baked into the VHD).
+  Human UI: /aks-security-advisory/vhd/#/
+- Container image advisory -- PLANNED, not yet published. Will cover the
+  container/OCI images AKS ships. Tracked in issue #40.
+
+## JSON feed (read this, not the HTML)
+
+The feed is deployed at `/aks-security-advisory/data/` (relative to the site
+root). All files are plain JSON. Endpoint shapes:
+
+- data/index.json
+    Listing + facets:
+    { schema_version, generated, count, releases[], statuses[], severities[],
+      advisories[] }
+    Each advisories[] entry:
+    { id, headline_status, severity, updated, releases[], packages[], summary? }
+
+- data/advisories/<ID>.json
+    Full per-advisory detail. <ID> is uppercase and may be CVE-*, GO-* (Go vuln
+    DB) or GHSA-* (GitHub advisories):
+    { schema_version, id, severity, headline_status, updated, description?,
+      references[], packages[], additive }
+    Each packages[] row:
+    { package, release, status, severity, advisory_id?, fixed_version?,
+      upstream_fixed_version?, first_fixed_build?, latest_build?,
+      justification?, statement?, evidence? }
+
+- data/pathmap/index.json    (OPTIONAL -- may be absent on older feeds)
+    Installed-path -> package map index:
+    { schema_version, generated, default_lineage, lineages{label->key}, maps[] }
+
+- data/pathmap/<key>.json
+    One installed-path -> package map (key comes from pathmap/index.json).
+    Usually scoped to packages installed on the node (see owner_scope) and
+    usr-merge normalized (both /bin and /usr/bin spellings of a path are present
+    as real keys):
+    { schema_version, type, key, os_family, release, path_count, package_count,
+      owner_scope, indexed_prefixes[], usr_merge, path_normalization{},
+      coverage_note, ambiguous_paths[], alias_of{derived->canonical},
+      by_path{path->[package,...]}, by_base{basename->[package,...]},
+      packages[name,...] }
+    A MISS is NOT "not vulnerable": see coverage_note. owner_scope is always
+    present: "installed" means owners were filtered to packages baked on the node;
+    "archive" means no roster was available and every distro-archive owner is
+    still listed (a listed owner is then NOT evidence the package is on the node).
+    indexed_prefixes lists the executable prefixes indexed (paths containing /bin/
+    or /sbin/); a probe outside them is out of scope, not clean. Both usr-merge
+    spellings of a path are real keys in by_path; alias_of maps each materialized
+    twin to the spelling the distro recorded (collapse for display, but either key
+    resolves). packages is a sorted array of the installed owners surviving the
+    filter, emitted only when owner_scope is "installed".
+
+- data/components.json       (OPTIONAL -- may be absent on older feeds)
+    Extended-binary coverage manifest:
+    { schema_version, type, generated, families{family->{components[], counts{}}} }
+    Each components[] item:
+    { name, coverage, version?, package?, note? }
+
+A canonical, versioned copy of this data contract is published as
+DATA-CONTRACT.md in the public site repository
+(https://github.com/chrischangcode/chrischangcode.github.io).
+
+## Suggested fetch order
+
+1. GET data/index.json -- enumerate advisories and facets.
+2. GET data/advisories/<ID>.json -- per-CVE detail on demand.
+3. GET data/pathmap/index.json then data/pathmap/<key>.json -- map a scanner
+   path (e.g. /usr/bin/curl) to owning packages. Both are optional; treat a 404
+   as "this feed does not publish path maps", not as an error.
+4. GET data/components.json -- extended-binary coverage. Optional; treat a 404
+   as "this feed does not publish a coverage manifest", not as an error.

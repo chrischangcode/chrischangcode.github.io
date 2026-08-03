@@ -1,4 +1,28 @@
-# AKS VHD security-advisory site
+# AKS security-advisory site
+
+This directory is published verbatim to
+**<https://chrischangcode.github.io/aks-security-advisory/>**. It is split into a
+small static **hub** at the root and one sub-directory per advisory set (see
+[issue #40](https://github.com/chrischangcode/aks-security-advisory/issues/40)):
+
+```
+site/
+  index.html        Static hub / chooser. Explains the site and links to each
+                    advisory set. Also carries the legacy-hash redirect shim
+                    (old /#/<route> links -> /vhd/#/<route>). No JS needed for
+                    its own content.
+  llms.txt          Machine-readable entry point for AI agents (feed shapes).
+  robots.txt        Permissive (allow all).
+  shared/
+    styles.css      Azure light theme shared by the hub and every app.
+  vhd/              The VHD (node image) advisory SPA (live).
+    index.html      Page shell + header nav.
+    app.js          The whole front-end (see below).
+  README.md         This file.
+```
+
+Only `vhd/` is live today; a container-image advisory is planned under a sibling
+directory. Everything below describes the **VHD app** in `vhd/`.
 
 A zero-build static front-end for browsing the AKS VHD security-advisory feed
 (the per-CVE JSON + `index.json` artifact produced by `aks-cve feed`). It offers
@@ -18,9 +42,10 @@ and a help/glossary page.
 
 - Plain **HTML + CSS + vanilla JS** — no framework, no bundler, no build step.
   Just static files served over HTTP.
-- `index.html` — page shell + header nav (Advisories / Installed paths / Extended binaries / Help).
-- `styles.css` — Azure light theme (white surfaces, `#0078d4` accent).
-- `app.js` — the whole front-end: data loading, search/filter, detail view,
+- `vhd/index.html` — page shell + header nav (Advisories / Installed paths / Extended binaries / Help).
+- `shared/styles.css` — Azure light theme (white surfaces, `#0078d4` accent);
+  shared by the hub and the app.
+- `vhd/app.js` — the whole front-end: data loading, search/filter, detail view,
   tooltips, and the help page. The `STATUS_HELP` / `FIELD_HELP` glossaries in
   `app.js` are the single source of truth for both the ⓘ tooltips and the help
   page, so the two never drift.
@@ -53,22 +78,30 @@ The site reads the feed produced by [`aks-cve feed`](../docs/CLI.md):
 
 ### Where it looks for the data
 
-`app.js` resolves the feed base at load time:
+`vhd/app.js` resolves the feed base at load time. Because the app lives one
+level deep in `vhd/`, the probe paths are relative to `vhd/`:
 
 1. `?data=<url>` query-string override, if present; else
-2. `data/` (used by the deployed GitHub Pages site — the feed is copied there); else
-3. `../feed-out` (used for local preview from a repo checkout).
+2. `../data` (the deployed GitHub Pages site — the feed is copied to
+   `/aks-security-advisory/data/`, i.e. one level up from `vhd/`); else
+3. `../../feed-out` (local preview from a repo checkout — the repo-root
+   `feed-out/`, two levels up from `site/vhd/`).
 
 ## Local preview
 
-Serve the **repository root** (so both `site/` and `feed-out/` are reachable)
-and open the site path:
+Serve the **repository root** (so `site/`, its sub-directories, and `feed-out/`
+are all reachable) and open the app path:
 
 ```bash
 # from the repo root, after building a feed into ./feed-out
 python3 -m http.server 8799
-# then open:  http://localhost:8799/site/
+# then open the hub:     http://localhost:8799/site/
+# or the VHD app direct: http://localhost:8799/site/vhd/
 ```
+
+The hub (`/site/`) is plain static HTML; the VHD app lives at `/site/vhd/` and
+falls back to `../../feed-out` (the repo-root `feed-out/`) when `../data` is
+absent. Legacy `#/<route>` links opened on the hub are forwarded into `vhd/`.
 
 If you don't have a `feed-out/` yet, build one first:
 
@@ -76,10 +109,10 @@ If you don't have a `feed-out/` yet, build one first:
 aks-cve feed --lineage azurelinux:gen2:3.0containerd --out ./feed-out
 ```
 
-You can also point the site at any feed without moving files:
+You can also point the app at any feed without moving files:
 
 ```
-http://localhost:8799/site/?data=/feed-out
+http://localhost:8799/site/vhd/?data=/feed-out
 ```
 
 ## Deployment

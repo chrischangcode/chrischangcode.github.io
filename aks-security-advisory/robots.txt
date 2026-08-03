@@ -1,0 +1,3 @@
+# Community AKS Security Advisories -- all content is public and crawlable.
+User-agent: *
+Allow: /
