@@ -1,0 +1,13 @@
+# AKS Security Advisories -- agent entrypoint (well-known path)
+
+This is the RFC 8615 well-known location. The canonical agent entrypoint is one
+directory up, at the site root:
+
+    https://chrischangcode.github.io/aks-security-advisory/llms.txt
+
+Read that file. It is intentionally the single prose copy: duplicating its text
+here would let the two drift apart (this repo's tracked F8 defect: docs that
+assert something the data no longer guarantees). The build-consistent, size-
+bearing companion is generated with the feed at:
+
+    https://chrischangcode.github.io/aks-security-advisory/data/llms.txt

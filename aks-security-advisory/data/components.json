@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "type": "aks-vhd-components",
-  "generated": "2026-08-03T10:25:32Z",
+  "generated": "2026-08-07T20:16:39Z",
   "families": {
     "azurelinux": {
       "components": [
@@ -20,8 +20,7 @@
         {
           "name": "aznfs",
           "coverage": "covered_by_scan",
-          "version": "3.0.15-1",
-          "package": "aznfs"
+          "version": "3.0.15-1"
         },
         {
           "name": "Azure CNI",
@@ -102,8 +101,7 @@
         {
           "name": "node-exporter",
           "coverage": "covered_by_scan",
-          "version": "1.9.1-20.azl3",
-          "package": "node-exporter-kubernetes"
+          "version": "1.9.1-20.azl3"
         },
         {
           "name": "nvidia-device-plugin",
@@ -152,14 +150,12 @@
         {
           "name": "blobfuse",
           "coverage": "covered_by_scan",
-          "version": "1.4.5",
-          "package": "blobfuse"
+          "version": "1.4.5"
         },
         {
           "name": "blobfuse2",
           "coverage": "covered_by_scan",
-          "version": "2.5.4",
-          "package": "blobfuse2"
+          "version": "2.5.4"
         },
         {
           "name": "CNI plugin",
@@ -169,14 +165,12 @@
         {
           "name": "containerd",
           "coverage": "covered_by_scan",
-          "version": "2.3.3-ubuntu24.04u2",
-          "package": "moby-containerd"
+          "version": "2.3.3-ubuntu24.04u2"
         },
         {
           "name": "containernetworking-plugins",
           "coverage": "covered_by_scan",
-          "version": "1.9.0-ubuntu24.04u1",
-          "package": "containernetworking-plugins"
+          "version": "1.9.0-ubuntu24.04u1"
         },
         {
           "name": "datacenter-gpu-manager-4-core",
@@ -205,8 +199,7 @@
         {
           "name": "ig",
           "coverage": "covered_by_scan",
-          "version": "0.53.2-ubuntu24.04u4",
-          "package": "ig"
+          "version": "0.53.2-ubuntu24.04u4"
         },
         {
           "name": "kubectl",
@@ -229,8 +222,7 @@
         {
           "name": "node-exporter",
           "coverage": "covered_by_scan",
-          "version": "1.9.1-ubuntu24.04u21",
-          "package": "node-exporter-kubernetes"
+          "version": "1.9.1-ubuntu24.04u21"
         },
         {
           "name": "nvidia-cuda-driver",
@@ -264,8 +256,7 @@
         {
           "name": "runc",
           "coverage": "covered_by_scan",
-          "version": "1.4.3-ubuntu24.04u2",
-          "package": "moby-runc"
+          "version": "1.4.3-ubuntu24.04u2"
         }
       ],
       "counts": {

@@ -1,0 +1,246 @@
+# AKS Container Image Security Advisories
+
+> Community, open-source security-advisory site for the container/OCI images
+> Azure Kubernetes Service (AKS) runs on your cluster -- control plane, addons,
+> CSI drivers, service mesh and Arc agents -- keyed on your Kubernetes version.
+> It tracks per-CVE status sourced from public AKS CVE data. It is NOT an
+> official Microsoft/Azure product and NOT an authoritative source of truth for
+> AKS security posture.
+
+Base URL: https://chrischangcode.github.io/aks-security-advisory/images/
+
+## Important for agents
+
+This human-facing page under images/ is a hash-routed single-page app (SPA). The
+content of a route such as `images/#/1.33/CVE-2025-1234` is rendered client-side
+by JavaScript; fetching that URL WITHOUT a JS runtime returns only an empty HTML
+shell. Do NOT scrape the rendered HTML. Read the JSON feed directly (below) -- it
+is the machine-readable source and needs no JavaScript.
+
+EVERY endpoint named below is OPTIONAL / 404-tolerant. The feed under `data/` is
+built by a SEPARATE job from the one that deploys this page (see
+.github/workflows/pages.yml): a site-only deploy re-serves the newest EXISTING
+feed and does NOT rebuild it, and on `main` today the images feed is not yet
+published at all. So on a first deploy the WHOLE `data/` tree can 404. Treat any
+404 as "this feed build does not publish it yet", never as an error and never as
+"clean / not affected". For exact byte sizes and endpoint inventory read
+`data/manifest.json` when it is present; it is generated next to the feed it
+describes, so the two can never disagree.
+
+The site root (one level up, `../`) is static HTML and is safe to fetch: it is a
+hub linking to each advisory set (the VHD node-image advisory and this
+container-image advisory).
+
+## Two axes -- never blend them (the whole point of this feed)
+
+This product reports two DIFFERENT kinds of evidence and never merges them into
+one number or one table. Always keep track of which axis a row came from; a
+record's `basis` field names it:
+
+- Kubernetes snapshot axis (`basis: k8s_snapshot`) -- a FROZEN, point-in-time
+  scan of the images a given Kubernetes version shipped. Answers "what did the
+  scan of version X see?". Counts are only comparable WITHIN one scan cohort
+  (`report_time`); see `comparable_with`.
+- AKS release-history axis (`basis: release_history`) -- derived from the AKS
+  release chain (mitigation history + computed diffs), continuously rescanned.
+  The ONLY axis that answers "when was this first fixed?".
+
+The two axes can legitimately DISAGREE (a frozen snapshot is older than the
+release train). That disagreement is signal, not a bug -- present both, labelled,
+never a blended total.
+
+## JSON feed (read this, not the HTML)
+
+The feed is deployed at `images/data/` -- i.e. `data/` relative to this file (a
+SIBLING of the VHD `data/` tree, one directory over, NOT the same tree). All
+files are plain JSON. Endpoint shapes:
+
+- data/_index.json    (OPTIONAL -- treat a 404 as "this feed build is not
+  published yet"; on first deploy the whole data/ tree can be absent)
+    Entry point. Scanned Kubernetes versions and AKS releases, plus the cohort
+    map and cross-version chain issues:
+    { schema_version, type, generated, source,
+      counts{ k8s_versions, aks_releases, cohorts },
+      cohorts{ report_time -> [version,...] },
+      chain_issues[],
+      k8s_versions[{ version, minor, report_time, scan_age_days, cohort,
+                     image_count, cve_count, comparable_with[], source_url }],
+      aks_releases[{ version, previous_release, report_time, image_count,
+                     unmapped_image_count, source_url }] }
+    A version's absence from k8s_versions[] means it was NOT scanned ("not
+    assessed"), never "clean". comparable_with lists the OTHER versions in the
+    same scan cohort; comparing counts across cohorts is not valid.
+
+- data/k8s/<version>.json    (OPTIONAL -- treat a 404 as "this version has no
+  published snapshot in this feed build", never as "not affected")
+    One Kubernetes version's frozen snapshot. images[] is PRE-SORTED by CVE count
+    descending (issue #40 F7), so the worst images are first:
+    { schema_version, type, basis:"k8s_snapshot", version, minor, report_time,
+      scan_age_days, cohort, comparable_with[], source_url,
+      images[{ image, repo, tag, cve_count, cves[] }] }
+    An image listed here whose cves[] omits a CVE is "not affected AS OF this
+    scan" (not observed), NOT proven unaffected. An image ABSENT from images[] is
+    "not present on this version".
+
+- data/release/<version>.json    (OPTIONAL -- treat a 404 as "this release has
+  no published document in this feed build")
+    One AKS release on the release-history axis. This is the HOME of images that
+    cannot be mapped to any Kubernetes version (k8s_attribution.state
+    k8s_unmapped):
+    { schema_version, type, basis:"release_history", version, previous_release,
+      report_time, source_url, attribution_counts{}, unmapped_image_count,
+      images[{ pod_namespace, container_name, image, repo, tag, tags[],
+               active_cve_count,
+               k8s_attribution{ mode, state, unmapped_reason? } }],
+      first_fixes[{ cve, pod_namespace, container_name, release,
+                    previous_release, first_fixed_source, in_computed,
+                    in_upstream, basis, report_time }] }
+
+- data/cve/<CVE>.json    (OPTIONAL -- treat a 404 as "this CVE is not observed in
+  this feed build", never as "not affected")
+    One CVE across BOTH axes, kept separate:
+    { id, affected_minors[], release_only,
+      k8s[{ k8s_version, minor, image, repo, tag, report_time, scan_age_days,
+            basis:"k8s_snapshot", source_url }],
+      releases[{ release, pod_namespace, container_name, image,
+                 k8s_attribution{ mode, state }, basis:"release_history",
+                 source_url }] }
+
+- data/cve-index.json    (OPTIONAL -- may be absent on older feeds; treat a 404
+  as "this feed build does not publish the slim triage index")
+    Slim triage index. The Kubernetes minors are interned into a top-level
+    minors[] table addressed by integer index in each entry's m[]:
+    { schema_version, type, generated, minors[],
+      cves[{ id, release_only, m:[int,...] }] }
+    Use this to enumerate/triage cheaply, then fetch the per-CVE document.
+
+- data/image/index.json    (OPTIONAL -- the per-image document family is added by
+  a separate change and may be ABSENT entirely; treat a 404 as "per-image
+  documents are not present in this feed build", then stop -- do not guess a
+  filename)
+    Authoritative repo -> filename map for the per-image documents. Image repo
+    names contain "/", so filenames are sanitized and you MUST resolve through
+    this index, never construct a name. The `name` key is the HOST-QUALIFIED repo
+    exactly as it appears in k8s/ and release/ documents (e.g.
+    "mcr.microsoft.com/oss/kubernetes/kube-proxy") -- use any such repo verbatim,
+    do NOT strip the registry host or normalize it:
+    { schema_version, type, count, items[{ name:"<repo>", file:"<slug>.json" }] }
+- data/image/<slug>.json    (OPTIONAL -- resolve <slug> ONLY via
+  data/image/index.json; treat a 404 as "this image has no per-image document in
+  this feed build")
+    One image repository, both axes side by side (never summed):
+    { schema_version, type:"aks-images-image", generated, repo, tags[],
+      k8s_version_count, release_count, cve_count, cves[],
+      k8s[{ k8s_version, minor, image, tag, cve_count, cves[], report_time,
+            scan_age_days, source_url }],
+      releases[{ release, image, tag, pod_namespace, container_name,
+                 active_cve_count, k8s_attribution{ mode, state }, report_time,
+                 source_url }] }
+
+- data/glossary.json    (OPTIONAL -- treat a 404 as "this feed build does not
+  publish a glossary", then use the baked vocabulary below)
+    The controlled vocabulary with per-value counts MEASURED from this build:
+    { schema_version, type, generated,
+      attribution{ labels{}, help{}, unmapped_reason_help{}, counts{}, shares{}, total },
+      first_fixed_source{ labels{}, help{}, counts{}, shares{}, total },
+      presentation_state{ labels{}, help{}, derivation_note },
+      basis{ labels{}, help{} } }
+    Render state names from THIS document, not a hard-coded copy; the UI's baked
+    fallback is pinned equal to it by a test and is only used when it 404s.
+
+- data/manifest.json    (OPTIONAL -- may be absent on older feeds; treat a 404 as
+  "this feed build does not publish an inventory")
+    Generated inventory of every endpoint this feed publishes, with real byte
+    sizes -- read this FIRST to plan fetches:
+    { schema_version, type, generated, data_root, count, endpoints[] }
+    Collection entries (k8s/, release/, cve/, image/) whose filenames are
+    sanitized carry an `index` pointer; resolve a name through that index, never
+    build the filename.
+
+## Controlled vocabulary
+
+Full meanings + per-value counts measured from the current build are in
+`data/glossary.json` (OPTIONAL -- treat a 404 as "this feed build does not
+publish a glossary"). The stable names:
+
+Presentation state (per Kubernetes version x image x CVE, DERIVED by the
+consumer from the feed's explicit coverage):
+- active -- the scan reports this CVE on this image on this version (a stored
+  fact).
+- not_affected -- the image runs on this version and its scan does NOT report the
+  CVE (not observed in this scan; NOT proven unaffected).
+- not_present -- this image does not run on this version.
+- not_assessed -- this version has no scan report (it is absent from
+  _index.json). This is an explicit signal, NEVER a missing key read as clean.
+- unknown_not_tracked -- the image is not in the AKS release train, so its fix
+  history is unavailable. Not the same as "not fixed".
+
+Attribution state (how an AKS-release image maps onto the Kubernetes axis):
+- k8s_exact -- same repo:tag or same digest (strongest claim).
+- k8s_repo_tagskew -- repo matches, tag differs (release train moved ahead).
+- k8s_registry_variant -- repo matches only after registry-path normalization.
+- k8s_unmapped -- absent from every Kubernetes snapshot; listed under its AKS
+  release only. The only claim is absent_from_all_k8s_reports.
+
+First-fixed source (provenance of a first-fix record on the release axis):
+- computed -- computed diff and the upstream mitigated list agree (confident).
+- upstream -- only the upstream list could answer (e.g. the oldest release).
+- disputed -- computed diff and upstream disagree; both signals are recorded.
+
+Basis (which axis a record came from; the three are never blended): k8s_snapshot,
+release_history, image_current.
+
+## Hard rules for agents (do not violate)
+
+- Two axes are never blended. A k8s_snapshot count and a release_history count
+  are different evidence; never add or compare them as one number. Keep the
+  `basis` with every row.
+- Absence is "not observed", never "not affected". A CVE missing from a document
+  means it was not seen in THAT scan, not that the image is proven clean. A
+  Kubernetes version missing from _index.json is "not assessed", not clean.
+- Scan staleness is real. Every k8s version carries report_time / scan_age_days /
+  cohort. Versions in different cohorts (different report_time) are NOT
+  comparable; honour comparable_with before comparing counts.
+- No invented severity. The upstream API publishes no per-CVE severity, so this
+  feed emits none. Report "severity not published by this source"; never guess.
+- Render the vocabulary from data/glossary.json (OPTIONAL -- fall back to the
+  baked names above on a 404), never from a divergent private copy.
+- Unknown enum values from a newer feed are surfaced verbatim, not dropped or
+  rendered blank.
+
+## No crawl -- suggested fetch order
+
+You never need to walk every document. To answer "what CVEs are on Kubernetes
+version X, worst images first?":
+
+1. GET data/_index.json (OPTIONAL -- treat a 404 as "feed not published yet").
+   Confirm X is in k8s_versions[] (absent => not assessed) and read its
+   report_time / scan_age_days / cohort / comparable_with for provenance.
+2. GET data/k8s/<X>.json (OPTIONAL -- treat a 404 as "no snapshot for X"). Its
+   images[] is already sorted by cve_count descending, so the worst images are
+   first; each image's cves[] is the active set for that scan.
+3. For one CVE across both axes, GET data/cve/<CVE>.json (OPTIONAL). Read k8s[]
+   and releases[] SEPARATELY; do not merge them.
+4. For "when did AKS first fix this?", use data/release/<version>.json (OPTIONAL)
+   first_fixes[] on the release-history axis -- the k8s snapshot axis cannot
+   answer it.
+5. For a single image's whole story, resolve its repo through
+   data/image/index.json (OPTIONAL -- if it 404s, per-image documents are not in
+   this build; stop, do not guess a filename), then GET the mapped
+   data/image/<slug>.json (OPTIONAL).
+
+## Worked example -- a spreadsheet column of CVE ids against one version
+
+You have a column of CVE ids exported from a scanner and a Kubernetes version X,
+and want per-image status for each:
+
+1. GET data/k8s/<X>.json (OPTIONAL). Build, from images[], the set of CVEs active
+   on each image (image.cves[]).
+2. For each pasted CVE id: if it appears in an image's cves[], that image is
+   `active` for it; if the image is present but the CVE is not in its cves[], it
+   is `not_affected` (not observed in this scan, NOT proven clean); if X is not
+   in _index.json at all, every answer is `not_assessed`.
+3. Report the state per (image, CVE) with the version's report_time / cohort
+   attached, so a reader knows how fresh -- and how comparable -- the evidence is.
+   The human UI does exactly this (its bulk-paste box) and exports the result as
+   TSV/CSV for the same spreadsheet.

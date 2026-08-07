@@ -1,25 +1,25 @@
 {
   "schema_version": "1.0",
   "type": "aks-vhd-feed-manifest",
-  "generated": "2026-08-03T10:25:47Z",
+  "generated": "2026-08-07T20:17:45Z",
   "data_root": ".",
-  "count": 9,
+  "count": 13,
   "endpoints": [
     {
       "path": "advisories/",
       "kind": "collection",
-      "files": 17570,
-      "bytes": 369596316,
+      "files": 18388,
+      "bytes": 231289829,
       "media_type": "application/json",
-      "schema_version": "1.0",
+      "schema_version": "2.0",
       "optional": false,
       "pattern": "advisories/{id}.json"
     },
     {
       "path": "by-package/",
       "kind": "collection",
-      "files": 374,
-      "bytes": 13103537,
+      "files": 549,
+      "bytes": 11012360,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": true,
@@ -29,7 +29,7 @@
       "path": "by-release/",
       "kind": "collection",
       "files": 27,
-      "bytes": 51235889,
+      "bytes": 41936672,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": true,
@@ -38,41 +38,57 @@
     {
       "path": "components.json",
       "kind": "document",
-      "bytes": 9550,
+      "bytes": 9202,
       "media_type": "application/json",
+      "schema_version": "2.0",
+      "optional": true
+    },
+    {
+      "path": "dataset.jsonld",
+      "kind": "document",
+      "bytes": 2628,
+      "media_type": "application/ld+json",
       "schema_version": "1.0",
       "optional": true
     },
     {
       "path": "glossary.json",
       "kind": "document",
-      "bytes": 10585,
+      "bytes": 12946,
       "media_type": "application/json",
-      "schema_version": "1.0",
+      "schema_version": "2.0",
       "optional": true
     },
     {
       "path": "index-slim.json",
       "kind": "document",
-      "bytes": 1324961,
+      "bytes": 1334867,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": true,
-      "entries": 17570
+      "entries": 18388
     },
     {
       "path": "index.json",
       "kind": "document",
-      "bytes": 34057987,
+      "bytes": 26190051,
       "media_type": "application/json",
-      "schema_version": "1.0",
+      "schema_version": "2.0",
       "optional": false,
-      "entries": 17570
+      "entries": 18388
+    },
+    {
+      "path": "llms.txt",
+      "kind": "document",
+      "bytes": 11613,
+      "media_type": "text/plain",
+      "schema_version": "1.0",
+      "optional": true
     },
     {
       "path": "manifest.json",
       "kind": "document",
-      "bytes": 2171,
+      "bytes": 2904,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": false
@@ -87,6 +103,22 @@
       "optional": true,
       "pattern": "pathmap/{key}.json",
       "index": "pathmap/index.json"
+    },
+    {
+      "path": "schema.json",
+      "kind": "document",
+      "bytes": 6487,
+      "media_type": "application/json",
+      "schema_version": "1.0",
+      "optional": true
+    },
+    {
+      "path": "sitemap.xml",
+      "kind": "document",
+      "bytes": 2647492,
+      "media_type": "application/xml",
+      "schema_version": "1.0",
+      "optional": true
     }
   ]
 }

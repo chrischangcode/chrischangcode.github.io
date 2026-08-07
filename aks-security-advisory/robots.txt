@@ -1,3 +1,5 @@
 # Community AKS Security Advisories -- all content is public and crawlable.
 User-agent: *
 Allow: /
+
+Sitemap: https://chrischangcode.github.io/aks-security-advisory/sitemap.xml

@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "type": "aks-images-feed-manifest",
+  "generated": "2026-08-07T20:18:08Z",
+  "data_root": ".",
+  "count": 8,
+  "endpoints": [
+    {
+      "path": "_index.json",
+      "kind": "document",
+      "bytes": 65355,
+      "media_type": "application/json",
+      "schema_version": "1.0",
+      "optional": false
+    },
+    {
+      "path": "cve-index.json",
+      "kind": "document",
+      "bytes": 175558,
+      "media_type": "application/json",
+      "schema_version": "1.0",
+      "optional": true,
+      "entries": 4512
+    },
+    {
+      "path": "cve/",
+      "kind": "collection",
+      "files": 4512,
+      "bytes": 66660012,
+      "media_type": "application/json",
+      "schema_version": "1.0",
+      "optional": false,
+      "pattern": "cve/{id}.json"
+    },
+    {
+      "path": "glossary.json",
+      "kind": "document",
+      "bytes": 4888,
+      "media_type": "application/json",
+      "schema_version": "1.0",
+      "optional": true
+    },
+    {
+      "path": "image/",
+      "kind": "collection",
+      "files": 161,
+      "bytes": 5175674,
+      "media_type": "application/json",
+      "schema_version": "1.0",
+      "optional": false,
+      "index": "image/index.json"
+    },
+    {
+      "path": "k8s/",
+      "kind": "collection",
+      "files": 87,
+      "bytes": 3419831,
+      "media_type": "application/json",
+      "schema_version": "1.0",
+      "optional": false,
+      "pattern": "k8s/{k8s_version}.json"
+    },
+    {
+      "path": "manifest.json",
+      "kind": "document",
+      "bytes": 1897,
+      "media_type": "application/json",
+      "schema_version": "1.0",
+      "optional": false
+    },
+    {
+      "path": "release/",
+      "kind": "collection",
+      "files": 16,
+      "bytes": 3948266,
+      "media_type": "application/json",
+      "schema_version": "1.0",
+      "optional": false,
+      "pattern": "release/{release}.json"
+    }
+  ]
+}

@@ -18,11 +18,19 @@ site/
   vhd/              The VHD (node image) advisory SPA (live).
     index.html      Page shell + header nav.
     app.js          The whole front-end (see below).
+  images/           The container-image / control-plane advisory SPA (live).
+    index.html      Page shell + header nav + non-JS data-contract block.
+    app.js          The whole front-end (Kubernetes-version keyed; two axes).
+    llms.txt        Machine-readable entry point for the images feed shapes.
   README.md         This file.
 ```
 
-Only `vhd/` is live today; a container-image advisory is planned under a sibling
-directory. Everything below describes the **VHD app** in `vhd/`.
+Both `vhd/` and `images/` are live. `vhd/` browses the VHD (node image) feed;
+`images/` browses the container-image / control-plane feed (keyed on Kubernetes
+version, with a bulk CVE paste box and TSV/CSV export). Its feed is built by a
+separate job and deploys to a sibling `images/data/` tree, so the images app can
+ship ahead of its feed and every endpoint it reads is treated as 404-tolerant.
+Everything below describes the **VHD app** in `vhd/`.
 
 A zero-build static front-end for browsing the AKS VHD security-advisory feed
 (the per-CVE JSON + `index.json` artifact produced by `aks-cve feed`). It offers
@@ -114,6 +122,30 @@ You can also point the app at any feed without moving files:
 ```
 http://localhost:8799/site/vhd/?data=/feed-out
 ```
+
+## Testing a change to this directory
+
+There is no build step and no unit tests for the front end, so the browser tier
+of the end-to-end suite is the safety net. It renders each of the three real
+serving layouts (deployed, local-dev, and no-feed) in headless Chromium and
+asserts against what the page actually shows:
+
+```bash
+cd e2e
+npm ci                              # once -- downloads Chromium
+python3 run.py --tier T4
+```
+
+Also run the static and serving tiers, which cover the things that are easy to
+break here without noticing — a script that throws at load and blanks the page,
+a missing `<noscript>` fallback, an absolute-root asset path that 404s under the
+`/aks-security-advisory/` prefix, or a route whose shell stops being served:
+
+```bash
+python3 run.py --tier T0 --tier T2
+```
+
+See [`e2e/README.md`](../e2e/README.md).
 
 ## Deployment
 

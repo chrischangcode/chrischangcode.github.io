@@ -27,6 +27,42 @@
     })();
   </script>
   <link rel="stylesheet" href="shared/styles.css" />
+
+  <!--
+    Machine-readable discovery hints for LLM agents and crawlers (issue #39).
+    - rel=describedby points at the agent entrypoint (llms.txt).
+    - rel=alternate exposes the JSON feed index and the full JSON-LD Dataset
+      descriptor, both of which are GENERATED with the feed under data/ so their
+      volatile facts (endpoint sizes, distribution list) stay build-consistent.
+    The inline Dataset below carries only STABLE identity fields; the generated
+    data/dataset.jsonld carries the full, size-bearing distribution list.
+  -->
+  <link rel="describedby" href="llms.txt" />
+  <link rel="alternate" type="application/json" href="data/index.json" title="AKS VHD advisory feed (JSON)" />
+  <link rel="alternate" type="application/ld+json" href="data/dataset.jsonld" title="AKS VHD advisory Dataset (JSON-LD)" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "AKS Security Advisories (VHD node image)",
+    "description": "Community, machine-readable per-CVE fix status for the Azure Linux and Ubuntu base packages baked into Azure Kubernetes Service (AKS) node images (VHDs). Not an official Microsoft/Azure product.",
+    "url": "https://chrischangcode.github.io/aks-security-advisory/",
+    "sameAs": "https://github.com/chrischangcode/aks-security-advisory",
+    "license": "https://opensource.org/licenses/MIT",
+    "isAccessibleForFree": true,
+    "creator": {
+      "@type": "Organization",
+      "name": "AKS Security Advisories (community project)",
+      "url": "https://github.com/chrischangcode/aks-security-advisory"
+    },
+    "keywords": ["AKS", "Azure Kubernetes Service", "CVE", "security advisory", "VHD", "node image", "Azure Linux", "Ubuntu"],
+    "distribution": {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://chrischangcode.github.io/aks-security-advisory/data/dataset.jsonld"
+    }
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -42,6 +78,24 @@
   </header>
 
   <main id="main" class="wrap">
+    <!--
+      Deep-link fallback for non-JS clients (issue #39, F1/F2). A legacy
+      "#/CVE-..." deep link is JS-redirected into vhd/ above; without
+      JavaScript that redirect never runs, so surface the same deterministic
+      pointer to the static JSON here too. Guarded by
+      tests/test_site_deeplink.py.
+    -->
+    <noscript>
+      <section class="agent-deeplink-help">
+        <p>
+          Following a per-CVE deep link without JavaScript? The advisory data
+          is published as static JSON at
+          <code>data/advisories/&lt;ID&gt;.json</code> (upper-case the id) and
+          the full feed at <code>data/index.json</code>. See
+          <a href="llms.txt">llms.txt</a> for the machine-readable contract.
+        </p>
+      </section>
+    </noscript>
     <p class="intro">
       Choose an advisory set. Each section tracks per-CVE fix status for a
       different class of AKS artifact.
@@ -58,16 +112,17 @@
         <span class="hub-card-cta">Open the VHD advisory &rarr;</span>
       </a>
 
-      <div class="hub-card hub-card--soon" aria-disabled="true">
-        <span class="hub-badge">Coming soon</span>
+      <a class="hub-card" href="images/">
         <h2 class="hub-card-title">Container image advisory</h2>
         <p class="hub-card-desc">
-          Per-CVE fix status for the container/OCI images AKS ships (system
-          add-ons and their layers). Not published yet &mdash; tracked in
+          Per-CVE status for the container/OCI images AKS runs on your cluster
+          &mdash; control plane, addons, CSI drivers, service mesh and Arc agents
+          &mdash; keyed on your Kubernetes version. Bulk CVE paste, TSV/CSV
+          export, and two evidence axes kept separate. Tracked in
           <a href="https://github.com/chrischangcode/aks-security-advisory/issues/40" rel="noopener">issue&nbsp;#40</a>.
         </p>
-        <span class="hub-card-cta hub-card-cta--disabled">Not available yet</span>
-      </div>
+        <span class="hub-card-cta">Open the container-image advisory &rarr;</span>
+      </a>
     </div>
   </main>
 
@@ -80,7 +135,8 @@
       </p>
       <p class="muted">
         Building an agent? Start at <a href="llms.txt">llms.txt</a> for a
-        machine-readable overview of the site and its JSON feed.
+        machine-readable overview of the site and its JSON feed, and see the
+        <a href="DATA-CONTRACT.md">data contract</a> for stability guarantees.
       </p>
     </div>
   </footer>

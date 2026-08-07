@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AKS Container Image Security Advisories</title>
+  <meta name="description" content="Community security advisory for the container/OCI images AKS runs on your cluster (control plane, addons, CSI, service mesh, Arc), keyed on your Kubernetes version." />
+  <link rel="stylesheet" href="../shared/styles.css" />
+
+  <!--
+    Machine-readable discovery hints for LLM agents and crawlers (issue #40,
+    Phase 5). rel=describedby points at the agent entrypoint (llms.txt). The
+    JSON feed under data/ is deployed ALONGSIDE this app (a sibling of the VHD
+    data/ tree), so its endpoints are named in llms.txt, not hard-linked here:
+    on first deploy the whole images/data/ tree can 404 (the site can ship ahead
+    of the feed), and a 404 on a rel=alternate is worse than not advertising it.
+  -->
+  <link rel="describedby" href="llms.txt" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <h1><a href="#/">AKS Container Image Security Advisories</a></h1>
+      <p class="tagline">
+        Per-CVE status for the container images AKS runs on your cluster
+        &mdash; control plane, addons, CSI drivers, service mesh and Arc agents
+        &mdash; keyed on your <strong>Kubernetes version</strong>.
+        Community project &mdash; not an official Microsoft feed.
+      </p>
+      <nav class="site-nav">
+        <a href="#/">Kubernetes versions</a>
+        <a href="#/help">Help &amp; glossary</a>
+        <a href="../">All advisories</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <!-- Populated by app.js; view switches on the URL hash. -->
+    <div id="app" aria-live="polite">
+      <p class="loading">Loading&hellip;</p>
+    </div>
+    <!--
+      Non-JS entry point (issue #40, Phase 5, item 3). This browser renders every
+      screen client-side from a URL fragment (e.g. "#/1.33.11/CVE-2026-1234"),
+      which a fragment-based deep link cannot deliver to a server. The same data
+      is published as static JSON, so a non-JS agent that lands here still gets a
+      deterministic pointer to the machine-readable data contract rather than an
+      empty shell. Every endpoint is 404-tolerant: the images feed under data/ is
+      built by a separate job and the site can deploy ahead of it, so on a first
+      deploy the whole tree may be absent. Guarded by tests/test_ccp_site_vocab.py.
+    -->
+    <noscript>
+      <section class="agent-deeplink-help">
+        <h2>Reading this without JavaScript?</h2>
+        <p>
+          Every screen here is rendered in-browser from the URL fragment, so a
+          deep link shows no content without JavaScript. Read the JSON feed
+          directly instead. All paths are relative to this page and every one is
+          OPTIONAL &mdash; the feed is built by a separate job and this site can
+          deploy ahead of it, so treat a 404 as &ldquo;this feed build does not
+          publish it yet,&rdquo; never as an error or as &ldquo;clean.&rdquo;
+        </p>
+        <ul>
+          <li>Entry point (scanned Kubernetes versions, cohorts, AKS releases):
+            <code>data/_index.json</code></li>
+          <li>One Kubernetes version (images grouped by CVE count):
+            <code>data/k8s/&lt;version&gt;.json</code></li>
+          <li>One CVE across both axes (Kubernetes snapshot + AKS release history):
+            <code>data/cve/&lt;CVE&gt;.json</code></li>
+          <li>One AKS release (home of images not mapped to any Kubernetes version):
+            <code>data/release/&lt;version&gt;.json</code></li>
+          <li>Slim CVE triage index (CVE &rarr; affected Kubernetes minors):
+            <code>data/cve-index.json</code></li>
+          <li>Per-image detail (resolve the repo through the index, never guess
+            the filename): <code>data/image/index.json</code> then
+            <code>data/image/&lt;slug&gt;.json</code></li>
+          <li>Controlled vocabulary (states, attribution, first-fix provenance):
+            <code>data/glossary.json</code></li>
+          <li>Generated endpoint inventory with real byte sizes:
+            <code>data/manifest.json</code></li>
+          <li>Agent overview and the full JSON contract:
+            <a href="llms.txt">llms.txt</a>.</li>
+        </ul>
+        <p>
+          Two axes are never blended: the Kubernetes snapshot
+          (<code>basis: k8s_snapshot</code>, frozen point-in-time) and the AKS
+          release history (<code>basis: release_history</code>, continuously
+          rescanned) are different evidence and may legitimately disagree. Counts
+          are only comparable within a scan cohort (see each version's
+          <code>comparable_with</code>).
+        </p>
+      </section>
+    </noscript>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>
+        Community project &mdash; independent and open-source. Not an official
+        Microsoft/Azure product and not an authoritative source of truth for AKS
+        security posture. State vocabulary and known limitations are on the
+        <a href="#/help">Help &amp; glossary</a> page.
+      </p>
+      <p id="feed-generated" class="muted"></p>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

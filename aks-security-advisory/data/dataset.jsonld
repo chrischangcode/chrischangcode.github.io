@@ -1,0 +1,73 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "AKS VHD security advisories",
+  "description": "Per-CVE fix status for AKS node-image (VHD) base packages -- Azure Linux and Ubuntu -- across VHD lineages. Community project, not an official Microsoft feed. Machine-readable JSON feed; see llms.txt for an agent guide and manifest.json for the endpoint inventory.",
+  "url": "https://chrischangcode.github.io/aks-security-advisory/",
+  "license": "https://github.com/chrischangcode/aks-security-advisory/blob/main/LICENSE",
+  "creator": {
+    "@type": "Organization",
+    "name": "aks-security-advisory (community)"
+  },
+  "isAccessibleForFree": true,
+  "keywords": [
+    "AKS",
+    "CVE",
+    "security advisory",
+    "Azure Linux",
+    "Ubuntu",
+    "VHD",
+    "node image",
+    "vulnerability"
+  ],
+  "dateModified": "2026-08-07T20:17:45Z",
+  "encodingFormat": "application/json",
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "name": "data/by-package/index.json",
+      "contentUrl": "https://chrischangcode.github.io/aks-security-advisory/data/by-package/index.json",
+      "encodingFormat": "application/json"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "data/by-release/index.json",
+      "contentUrl": "https://chrischangcode.github.io/aks-security-advisory/data/by-release/index.json",
+      "encodingFormat": "application/json"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "data/components.json",
+      "contentUrl": "https://chrischangcode.github.io/aks-security-advisory/data/components.json",
+      "encodingFormat": "application/json",
+      "contentSize": 9202
+    },
+    {
+      "@type": "DataDownload",
+      "name": "data/glossary.json",
+      "contentUrl": "https://chrischangcode.github.io/aks-security-advisory/data/glossary.json",
+      "encodingFormat": "application/json",
+      "contentSize": 12946
+    },
+    {
+      "@type": "DataDownload",
+      "name": "data/index-slim.json",
+      "contentUrl": "https://chrischangcode.github.io/aks-security-advisory/data/index-slim.json",
+      "encodingFormat": "application/json",
+      "contentSize": 1334867
+    },
+    {
+      "@type": "DataDownload",
+      "name": "data/index.json",
+      "contentUrl": "https://chrischangcode.github.io/aks-security-advisory/data/index.json",
+      "encodingFormat": "application/json",
+      "contentSize": 26190051
+    },
+    {
+      "@type": "DataDownload",
+      "name": "data/pathmap/index.json",
+      "contentUrl": "https://chrischangcode.github.io/aks-security-advisory/data/pathmap/index.json",
+      "encodingFormat": "application/json"
+    }
+  ]
+}

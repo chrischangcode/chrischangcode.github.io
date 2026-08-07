@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Static sitemap INDEX. The per-advisory URL list is volatile (it changes on
+  every weekly feed rebuild), so it is generated with the feed at
+  data/sitemap.xml (a urlset covering the site root, the JSON endpoints and every
+  advisory page). This index only points at that generated sitemap, so it never
+  states a URL list it cannot verify. lastmod is intentionally omitted here to
+  avoid a hand-typed date going stale; the generated urlset carries lastmod.
+-->
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://chrischangcode.github.io/aks-security-advisory/data/sitemap.xml</loc>
+  </sitemap>
+</sitemapindex>

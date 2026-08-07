@@ -1,0 +1,190 @@
+# AKS Security Advisories -- machine-readable feed guide
+
+> GENERATED with this feed build (2026-08-07T20:17:45Z). Every byte size, release label and
+> count below is a fact about THIS build, walked from manifest.json and the
+> canonical vocabulary -- not a hand-written claim. Re-read manifest.json /
+> glossary.json for the authoritative live inventory.
+
+Community, open-source security-advisory data for Azure Kubernetes Service
+(AKS) node images. It tracks per-CVE fix status for the Azure Linux and
+Ubuntu base packages baked into the AKS VHD. It is NOT an official
+Microsoft/Azure product and NOT an authoritative source of truth for AKS
+security posture.
+
+Base URL: https://chrischangcode.github.io/aks-security-advisory/
+Data root: https://chrischangcode.github.io/aks-security-advisory/data/
+
+## Scope boundaries
+
+- Covers: AKS node-image (VHD) base OS packages (Azure Linux + Ubuntu).
+- Does NOT cover: the container/OCI images AKS ships (a separate product,
+  tracked in issue #40) -- do not answer container-image questions from
+  this feed.
+- Only executables under /bin and /sbin are indexed by the path maps; a
+  path outside those prefixes is OUT OF SCOPE, not 'clean' (see F6 below).
+- Absence of data for a (CVE, lineage) pair means NOT ASSESSED, not NOT
+  AFFECTED. Never infer safety from a miss.
+
+## Endpoints in THIS build (byte sizes from manifest.json)
+
+  data/advisories/  --  18,388 files, 231,289,829 B  --  required  --  schema 2.0
+  data/by-package/  --  549 files, 11,012,360 B  --  optional  --  schema 1.0
+  data/by-release/  --  27 files, 41,936,672 B  --  optional  --  schema 1.0
+  data/components.json  --  9,202 B  --  optional  --  schema 2.0
+  data/glossary.json  --  12,946 B  --  optional  --  schema 2.0
+  data/index-slim.json  --  1,334,867 B, 18,388 entries  --  optional  --  schema 1.0
+  data/index.json  --  26,190,051 B, 18,388 entries  --  required  --  schema 2.0
+  data/pathmap/  --  4 files, 841,978 B  --  optional  --  schema 1.1
+
+Read manifest.json FIRST to plan fetches and avoid the large index.json.
+Endpoints marked 'optional' may be absent on an older feed artifact; treat
+a 404 on them as 'this feed predates the endpoint', not an error.
+Every path above is data-root-relative, e.g. https://chrischangcode.github.io/aks-security-advisory/data/index.json
+
+## VHD release labels in THIS build (27)
+
+These are the lineage labels used in advisories[].packages[].releases[] and as
+by-release keys. Resolve a scanner path WITHIN one of these lineages:
+  - AKSAzureLinuxV3/cvmgen2
+  - AKSAzureLinuxV3/gen1
+  - AKSAzureLinuxV3/gen1fips
+  - AKSAzureLinuxV3/gen2
+  - AKSAzureLinuxV3/gen2arm64
+  - AKSAzureLinuxV3/gen2arm64fips
+  - AKSAzureLinuxV3/gen2fips
+  - AKSAzureLinuxV3/gen2kata
+  - AKSAzureLinuxV3/gen2tl
+  - AKSAzureLinuxV3/osguardgen2fipstl
+  - AKSUbuntu/gen1/2004fipscontainerd
+  - AKSUbuntu/gen1/2204containerd
+  - AKSUbuntu/gen1/2204fipscontainerd
+  - AKSUbuntu/gen1/2404containerd
+  - AKSUbuntu/gen2/2004cvmcontainerd
+  - AKSUbuntu/gen2/2004fipscontainerd
+  - AKSUbuntu/gen2/2204arm64containerd
+  - AKSUbuntu/gen2/2204containerd
+  - AKSUbuntu/gen2/2204fipscontainerd
+  - AKSUbuntu/gen2/2204fipstlcontainerd
+  - AKSUbuntu/gen2/2204tlcontainerd
+  - AKSUbuntu/gen2/2404arm64containerd
+  - AKSUbuntu/gen2/2404containerd
+  - AKSUbuntu/gen2/2404cvmcontainerd
+  - AKSUbuntu/gen2/2404tlcontainerd
+  - AKSUbuntu/gen2/2604minimalarm64containerd
+  - AKSUbuntu/gen2/2604minimalcontainerd
+
+## Status vocabulary (from glossary.json; counts measured in this build)
+
+- fixed (Fixed) -- count 7123
+    A scanned AKS VHD build ships a package version at or above the distro's fixed version. The 'first fixed build' field names the earliest build that carries the fix.
+- fix_available_upstream (Fix available upstream) -- count 13
+    The distro (Azure Linux / Ubuntu) has published a fixed package, but none of the scanned VHD builds ship it yet. The fix exists upstream and is expected in a future node image.
+- affected (Affected) -- count 5120
+    Vulnerable, with no fix AKS can ship yet. Comes from a vendor VEX / Ubuntu CVE Tracker assertion (a fixless CVE cannot be enumerated from OVAL alone), or from the binary scan overlay when a CVE survives to the newest scanned build. A scanned binary stays affected even if the scanner reports a fixed version, because that fix is in the bundled module and not in any artifact AKS ships — see evidence.module_fixed_version. The generated glossary records how large a share of the feed it is.
+- not_affected (Not affected) -- count 5016
+    Excluded by a vendor verdict — an Azure Linux CSAF/VEX justification or an Ubuntu CVE Tracker 'not-affected' (e.g. the vulnerable code path is not present/reachable). The justification is shown on the advisory.
+- under_investigation (Under investigation) -- count 326
+    Triage is not complete — either no distro OVAL/VEX verdict exists yet, or the Ubuntu CVE Tracker marks the package 'needs-triage'.
+- will_not_fix (Will not fix) -- count 790
+    The vendor will not ship a fix (Ubuntu CVE Tracker 'ignored' — e.g. the release is past standard support, or the fix is deemed too intrusive). The reason is shown on the advisory.
+
+Do NOT assume any status is rare; consult glossary.json status.counts /
+shares. IMPORTANT: those are the per-advisory HEADLINE distribution (one
+most-actionable status per advisory), NOT per-package-row prevalence -- do
+not read status.shares.affected as 'the share of my packages that are
+affected' (that is the F7 misread). glossary.json status.counts_basis states
+this inline.
+
+## Coverage vocabulary (extended binaries; from glossary.json)
+
+- covered_by_package (Covered by package)
+    This extended binary is the same artifact as an installed distro package that the distro advisory feed actually tracks, so its CVE status IS assessed — see the linked package's advisories.
+- covered_by_scan (Covered by scan)
+    Assessed by a binary (Trivy) scan of the extended binary itself, because the distro advisory feeds don't track it. Carries scan evidence rather than a distro package row. Only downloadable binary archives are scanned — tarballs and .deb/.rpm packages — while components shipped as container/OCI images are classified 'container_image' and not scanned.
+- scan_pending (Scan pending)
+    Installed as a distro package (typically a Microsoft-repackaged one from packages.microsoft.com — e.g. moby-containerd, moby-runc, aznfs) that the base distro's advisory feed does NOT track. Its status is honestly unknown here; a binary scan is planned. Not treated as covered.
+- aks_built (AKS-built / upstream)
+    Built by AKS or downloaded from upstream as a downloadable archive/package (oras, Azure CNI, cni-plugins, acr-mirror). No distro package exists for it in the base feed, so distro OVAL/CVE feeds do not track it; it is scanned by the binary overlay where an archive is available.
+- container_image (Container image)
+    Built/distributed by AKS as an OCI container image rather than a downloadable archive (kubelet/kubectl via the kubernetes-node image, azure-acr-credential-provider). The binary scan overlay assesses downloadable archives, not images, so these are not scanned here and are tracked by their own upstream.
+- not_baked (Not baked in)
+    A distro package installed only conditionally (e.g. GPU drivers / DCGM at node provisioning) and absent from the mainstream baked image — nothing to assess for this lineage.
+- not_assessed (Not assessed)
+    Not tracked by the distro advisory feeds (e.g. cached container images).
+
+## Hard rules for agents (do not violate)
+
+F4/F5 -- INSTALL PATHS ARE PER-FAMILY. Each VHD family (Ubuntu vs Azure
+Linux, and each generation/SKU lineage) has DIFFERENT binary install paths.
+A path that owns package X on one family may not exist, or may map
+elsewhere, on another. Resolve a path WITHIN a lineage (pick the pathmap for
+that lineage), NEVER against a global/merged map. Both usr-merge spellings
+(/bin/x and /usr/bin/x) are materialized as real keys in by_path; use
+by_base for a basename fallback.
+
+F6 -- A MISS IS 'UNKNOWN', NOT 'NOT VULNERABLE'. If a path lookup, a
+by-package lookup, or a (CVE, lineage) pair finds nothing, that is UNKNOWN /
+not-assessed, never 'safe'. The pathmap carries coverage_note and
+indexed_prefixes saying so; only /bin and /sbin executables are indexed, so
+a .so / JAR / Go binary path is out of scope, not clean. Report unknown.
+
+F7 -- headline_status IS NOT PER-SKU. advisory.headline_status is the
+MOST-ACTIONABLE status across ALL lineages (ranked). Reading it as the
+status of one specific SKU is wrong. For a SKU-level answer read the
+packages[] row whose releases[] CONTAINS your lineage label in
+advisories/<ID>.json -- one row covers every lineage sharing that
+assessment, so test membership, not equality.
+glossary.json status.counts is likewise headline-derived -- its
+status.counts_basis field says so; do not contradict it.
+
+## Worked recipe: a (binary path, CVE) spreadsheet row
+
+Goal: given a scanner row (absolute binary path, CVE) and the node's VHD
+lineage, report the AKS fix status -- without guessing.
+
+1. GET manifest.json -- inventory endpoints + sizes; plan fetches.
+2. Pick the pathmap for the row's lineage: GET pathmap/index.json, map the
+   lineage label to its key, then GET pathmap/<key>.json. Look up the exact
+   path in by_path (try both usr-merge spellings; fall back to by_base on the
+   basename). This yields the owning package(s) FOR THAT FAMILY (F4/F5). No
+   owner -> UNKNOWN, not clean (F6).
+3. GET by-package/index.json, resolve the package name to its file (or its
+   alias); do NOT construct the filename. Then GET by-package/<file>.json and
+   find your CVE id in advisories[].
+   If MORE THAN ONE row matches your lineage (rare, but possible), take the
+   MOST ACTIONABLE status -- the same ranking headline_status uses -- rather
+   than the first match.
+
+4. GET advisories/<CVE>.json and read the packages[] row whose releases[]
+   CONTAINS your lineage label -- THAT row's status is the SKU-level answer
+   (NOT headline_status, F7). Rows identical apart from the lineage are
+   merged, so match by membership. No row listing your lineage -> NOT
+   ASSESSED (F6).
+
+Worked example resolved from THIS build (replay it verbatim -- every
+identifier is verified to resolve):
+
+  input path : /usr/bin/openssl
+  input CVE  : CVE-2026-42769
+  lineage    : AKSAzureLinuxV3/gen2  (pathmap key: azurelinux-3.0)
+  step 2     : pathmap/azurelinux-3.0.json by_path['/usr/bin/openssl'] -> owns 'openssl'
+  step 3     : by-package/index.json -> 'openssl' resolves to by-package/openssl.json
+  step 3     : by-package/openssl.json lists CVE-2026-42769 in advisories[]
+  step 4     : advisories/CVE-2026-42769.json packages[] -> read the row whose
+               releases[] contains your lineage, for the SKU-level status
+
+Machine-readable form of the worked example:
+{"cve": "CVE-2026-42769", "lineage": "AKSAzureLinuxV3/gen2", "package": "openssl", "package_file": "openssl.json", "path": "/usr/bin/openssl", "pathmap_key": "azurelinux-3.0"}
+
+## Other descriptors
+
+- schema.json    -- JSON Schema for these documents (data-root).
+- dataset.jsonld -- schema.org Dataset (distribution[] mirrors the data
+                    endpoints above).
+- sitemap.xml    -- every endpoint + per-advisory URL.
+- A stable, human-readable data contract is published as DATA-CONTRACT.md at
+  the site root.
+
+These four descriptor files are themselves inventoried in manifest.json (the
+endpoint inventory is exhaustive), so enumerating manifest.json reveals the
+whole discovery layer, not just the data endpoints.

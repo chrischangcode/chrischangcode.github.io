@@ -9,6 +9,19 @@ Base URL: https://chrischangcode.github.io/aks-security-advisory/
 
 ## Important for agents
 
+A GENERATED, build-consistent companion to this file is published at
+`data/llms.txt` (OPTIONAL -- a NEW endpoint that may be absent on an older feed
+artifact; a site-only deploy re-serves the newest EXISTING feed, so the site can
+be newer than the feed it renders. Treat a 404 as "this feed predates it", then
+use `data/manifest.json` + `data/glossary.json` instead). When present it
+additionally carries the live per-endpoint byte sizes, the current VHD
+release-label list, and a worked `(path, CVE)` example whose identifiers are
+resolved from that same build (so replaying that example is reliable). This
+static file states only stable facts; for any exact byte size, count or release
+label read `data/manifest.json` / `data/glossary.json` /
+`data/by-release/index.json` (or `data/llms.txt` when the feed publishes it),
+which are generated next to the feed they describe.
+
 The human-facing pages under vhd/ are a hash-routed single-page app (SPA). The
 content of an advisory route such as `vhd/#/CVE-2025-1234` is rendered
 client-side by JavaScript; fetching that URL WITHOUT a JS runtime returns only
@@ -41,7 +54,11 @@ root). All files are plain JSON. Endpoint shapes:
 
 - data/manifest.json    (OPTIONAL -- may be absent on older feeds)
     Generated inventory of every endpoint this feed publishes, with real byte
-    sizes -- read this FIRST to plan fetches and avoid the ~32 MiB index.json:
+    sizes -- read this FIRST to plan fetches and avoid the large index.json
+    (its exact byte size, and every other endpoint's, is recorded here). The
+    inventory is exhaustive: it also lists the discovery descriptors themselves
+    (llms.txt, schema.json, dataset.jsonld, sitemap.xml), so enumerating it
+    reveals the whole discovery layer:
     { schema_version, type, generated, data_root, count, endpoints[] }
     Each endpoints[] item is a document or a collection:
     { path, kind, bytes, media_type, schema_version, optional, entries? }  or
@@ -52,8 +69,8 @@ root). All files are plain JSON. Endpoint shapes:
     sanitized, so resolve a name through the collection's index, never build it.
 
 - data/index-slim.json  (OPTIONAL -- may be absent on older feeds)
-    id + headline_status + severity only (~3-4% of index.json). Enough to
-    enumerate + triage without the packages[]/releases[] bulk:
+    id + headline_status + severity only (a small fraction of index.json).
+    Enough to enumerate + triage without the packages[]/releases[] bulk:
     { schema_version, type, count, generated, advisories[{ id, headline_status,
       severity? }] }
 
@@ -80,12 +97,44 @@ root). All files are plain JSON. Endpoint shapes:
 - data/advisories/<ID>.json
     Full per-advisory detail. <ID> is uppercase and may be CVE-*, GO-* (Go vuln
     DB) or GHSA-* (GitHub advisories):
-    { schema_version, id, severity, headline_status, updated, description?,
-      references[], packages[], additive }
+    { schema_version, id, severity, headline_status, headline_status_note,
+      updated, description?, references[], packages[], assessed_releases?,
+      assessment_scope, additive }
     Each packages[] row:
-    { package, release, status, severity, advisory_id?, fixed_version?,
+    { package, releases[], status, severity, advisory_id?, fixed_version?,
       upstream_fixed_version?, first_fixed_build?, latest_build?,
       justification?, statement?, evidence? }
+    releases[] lists EVERY lineage this assessment covers. Rows identical apart
+    from the lineage are merged into one, so match your SKU by MEMBERSHIP
+    (your_label in row.releases), never by equality on a single field. Any
+    genuine per-lineage difference (a different first_fixed_build or
+    fixed_version) keeps the rows separate, so the merge hides nothing.
+    (release, package) is USUALLY unique, so normally exactly one row answers
+    "what is the status of package P on lineage L" -- but do not assume it. A
+    rare overlay artefact can leave two rows for one SKU with conflicting
+    statuses. If more than one row matches, apply the same rule the feed uses
+    for headline_status: take the MOST ACTIONABLE status, ordering
+    affected > fix_available_upstream > under_investigation > fixed >
+    not_affected. Never just take the first match.
+    headline_status is the single most-actionable status across ALL OS/SKU
+    lineages -- a cross-lineage triage summary, NOT the answer for one SKU. For a
+    specific SKU read packages[].status on the row whose releases[] CONTAINS
+    your lineage label; headline_status_note repeats this caveat inline on
+    every advisory.
+    assessed_releases (OPTIONAL -- may be absent on older feeds) lists every VHD
+    lineage label GENUINELY assessed for this CVE. A label present here with NO
+    packages[] row means "assessed and NOT affected on that lineage"; a label
+    ABSENT was never assessed (no data source -- shared distro feed or that
+    lineage's own binary scan -- covered it for that lineage), so its absence is
+    UNKNOWN, never "clean". It is always a superset of the union of
+    every packages[].releases[]. Use it so you never have to infer coverage
+    from the mere absence of a lineage from the package rows.
+    assessment_scope tells you WHICH build produced the document, by value (never
+    by a missing key): "vhd-lineage-feed" = the published feed, assessed_releases
+    is present and authoritative; "single-cve-query" = an ad-hoc single-CVE build
+    that did NOT compute the assessed set, so assessed_releases is absent (means
+    "not computed", never "assessed nowhere"). Feed documents are always
+    "vhd-lineage-feed".
 
 - data/pathmap/index.json    (OPTIONAL -- may be absent on older feeds)
     Installed-path -> package map index:
@@ -135,14 +184,113 @@ root). All files are plain JSON. Endpoint shapes:
     share of my packages that are affected" (that is the F7 misread). The
     status.counts_basis field states this basis inline.
 
-A canonical, versioned copy of this data contract is published as
-DATA-CONTRACT.md in the public site repository
-(https://github.com/chrischangcode/chrischangcode.github.io).
+- data/llms.txt              (OPTIONAL -- may be absent on older feeds)
+    This file's build-consistent companion, generated with the feed. NEW
+    endpoint: a feed artifact built before it existed does not carry it, and a
+    site-only deploy re-serves the newest EXISTING feed, so the site can be newer
+    than the feed it renders. Treat a 404 as "this feed predates it", then fall
+    back to data/manifest.json + data/glossary.json. Adds live per-endpoint byte
+    sizes, the VHD release-label list and a build-verified worked example.
+- data/schema.json           (OPTIONAL -- may be absent on older feeds)
+    JSON Schema (draft-07) for the feed documents. NEW endpoint; treat a 404 as
+    "this feed predates it".
+- data/dataset.jsonld        (OPTIONAL -- may be absent on older feeds)
+    schema.org Dataset whose distribution[] mirrors the data endpoints. NEW
+    endpoint; treat a 404 as "this feed predates it".
+- data/sitemap.xml           (OPTIONAL -- may be absent on older feeds)
+    urlset of the site pages, feed endpoints and per-advisory URLs. NEW
+    endpoint; treat a 404 as "this feed predates it".
+
+A stable, human-readable data contract is published as DATA-CONTRACT.md at the
+site root (same directory as this file). It states what consumers may rely on,
+what may change, and how versioning is signalled; it defers to
+`data/manifest.json` for the authoritative endpoint list and optional flags, so
+the two can never disagree about whether a 404 is an error.
+
+## Controlled vocabularies
+
+Full meanings + per-value counts MEASURED from the current build are in
+`data/glossary.json` (status.help / coverage.help / field.help, with
+status.counts / status.shares). The stable status names are:
+
+- fixed -- a scanned VHD build ships a package at/above the distro's fixed
+  version.
+- fix_available_upstream -- the DISTRO (Azure Linux / Ubuntu) published a fixed
+  package, but no scanned VHD build ships it yet. Only distro-packaged rows ever
+  carry this; a Trivy-scanned AKS binary never does.
+- affected -- vulnerable, with no fix AKS can ship yet. This also covers a
+  Trivy-scanned binary whose bundled module has an upstream fix but which has not
+  been rebuilt and shipped: a module fix is not a shippable artifact, so the row
+  stays affected and records the module fix in evidence.module_fixed_version.
+  This is NOT rare; read glossary.json status.counts rather than assuming its
+  magnitude.
+- not_affected -- excluded by a vendor verdict (with justification).
+- under_investigation -- triage incomplete / no verdict yet.
+- will_not_fix -- the vendor will not ship a fix.
+
+The extended-binary coverage names (components.json / glossary.json coverage):
+covered_by_package, covered_by_scan, scan_pending, aks_built, container_image,
+not_baked, not_assessed.
+
+## VHD release labels
+
+The lineage labels (OS family + generation/SKU, e.g. `AKSAzureLinuxV3/gen2`)
+this feed assessed appear in advisories[].packages[].releases[], are the keys of
+`data/by-release/`, and are listed with counts in `data/by-release/index.json`.
+The generated `data/llms.txt`, when the feed publishes it (OPTIONAL -- treat a
+404 as "this feed predates it"), enumerates the exact set for the current build.
+Resolve a scanner path WITHIN one of these lineages (see F4/F5 below), never
+against a merged/global map.
+
+## Hard rules for agents (do not violate)
+
+- F4 / F5 -- INSTALL PATHS ARE PER-FAMILY. Each VHD family (Ubuntu vs Azure
+  Linux, and each generation/SKU lineage) has DIFFERENT binary install paths. A
+  path that owns package X on one family may be absent, or map elsewhere, on
+  another. Resolve a path using the pathmap for THAT lineage, never a global
+  map. Both usr-merge spellings (`/bin/x` and `/usr/bin/x`) are real keys in
+  `by_path`; fall back to `by_base` on the basename.
+- F6 -- A MISS IS "UNKNOWN", NOT "NOT VULNERABLE". If a path, a package, or a
+  (CVE, lineage) pair finds nothing, that is unknown / not-assessed, never safe.
+  The pathmap says so via `coverage_note` and `indexed_prefixes` (only /bin and
+  /sbin executables are indexed, so a .so / JAR / Go-binary path is out of
+  scope, not clean). Report unknown.
+- F7 -- `headline_status` IS NOT PER-SKU. It is the single most-actionable status
+  across ALL lineages (ranked). For a specific SKU, read the `packages[]` row in
+  `data/advisories/<ID>.json` whose `releases[]` CONTAINS your lineage label --
+  one row covers every lineage sharing that assessment, so test membership, not
+  equality. Absence of your lineage from every row means NOT ASSESSED, not
+  not-affected. `status.counts` in
+  glossary.json is likewise headline-derived -- its `counts_basis` field says so;
+  do not read `status.shares.affected` as "the share of my packages affected".
+
+## Worked recipe -- a (binary path, CVE) spreadsheet row
+
+Given a scanner row (absolute binary path, CVE) and the node's VHD lineage,
+report the AKS fix status without guessing:
+
+1. GET data/manifest.json -- inventory endpoints + byte sizes; plan fetches.
+2. GET data/pathmap/index.json, map your lineage label to its key, then GET
+   data/pathmap/<key>.json. Look up the exact path in `by_path` (try both
+   usr-merge spellings; fall back to `by_base` on the basename) to get the owning
+   package(s) FOR THAT FAMILY (F4/F5). No owner -> UNKNOWN (F6).
+3. GET data/by-package/index.json, resolve the package to its file (or alias)
+   -- do NOT construct the filename -- then GET data/by-package/<file>.json and
+   find your CVE id in advisories[]. (<=2 fetches, <100 KB.)
+4. GET data/advisories/<CVE>.json and read the `packages[]` row whose
+   `releases[]` CONTAINS your lineage label -- that row's `status` is the
+   SKU-level answer (NOT `headline_status`, F7). Rows identical apart from the
+   lineage are merged, so match by membership, not equality. No row listing your
+   lineage -> NOT ASSESSED (F6).
+
+When the feed publishes it, `data/llms.txt` contains a concrete, build-verified
+instance of this recipe (a NEW, OPTIONAL endpoint -- treat a 404 as "this feed
+predates it").
 
 ## Suggested fetch order
 
 1. GET data/manifest.json -- inventory every endpoint (with real byte sizes) so
-   you can plan fetches and avoid the ~34 MB index.json. Optional; treat a 404 as
+   you can plan fetches and avoid the large index.json. Optional; treat a 404 as
    "this feed predates the manifest", then fall back to the endpoints below.
 2. GET data/index-slim.json -- enumerate every advisory (id + headline_status +
    severity) cheaply, or data/index.json for the full listing + facets.
@@ -156,6 +304,6 @@ DATA-CONTRACT.md in the public site repository
    as "this feed does not publish path maps", not as an error.
 6. GET data/components.json -- extended-binary coverage. Optional; treat a 404
    as "this feed does not publish a coverage manifest", not as an error.
-5. GET data/glossary.json -- status/coverage/field vocabulary with per-value
+7. GET data/glossary.json -- status/coverage/field vocabulary with per-value
    counts measured from this build. Optional; treat a 404 as "this feed does not
    publish a glossary", not as an error.

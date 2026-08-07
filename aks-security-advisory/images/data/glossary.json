@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0",
+  "type": "aks-images-glossary",
+  "attribution": {
+    "labels": {
+      "k8s_exact": "Exact match",
+      "k8s_repo_tagskew": "Repo match, tag skew",
+      "k8s_registry_variant": "Registry-path variant",
+      "k8s_unmapped": "Not mapped to a Kubernetes version"
+    },
+    "help": {
+      "k8s_exact": "The AKS-release image matches an image in a frozen Kubernetes snapshot exactly -- same repo:tag, or same sha256 digest. The strongest attribution claim.",
+      "k8s_repo_tagskew": "The image repository matches a Kubernetes snapshot but the tag differs: the AKS release train moved ahead of the frozen snapshot. The component is the same; the exact build is not.",
+      "k8s_registry_variant": "The repository matches only after conservative registry-path normalization (e.g. an oss/ vs containernetworking/ spelling of the same component). The component is the same; the registry path differs.",
+      "k8s_unmapped": "This image is absent from every frozen Kubernetes snapshot, so it cannot be attributed to any Kubernetes version. It is listed under its AKS release version(s) only. This is the demonstrable fact; the feed does NOT claim a reason (e.g. 'served regardless of Kubernetes version') the data cannot establish."
+    },
+    "unmapped_reason_help": {
+      "absent_from_all_k8s_reports": "The image reference does not appear in any per-Kubernetes-version scan report. This is the only claim made about an unmapped image."
+    },
+    "counts": {
+      "k8s_exact": 406,
+      "k8s_repo_tagskew": 478,
+      "k8s_registry_variant": 60,
+      "k8s_unmapped": 595
+    },
+    "shares": {
+      "k8s_exact": 0.2638,
+      "k8s_repo_tagskew": 0.3106,
+      "k8s_registry_variant": 0.039,
+      "k8s_unmapped": 0.3866
+    },
+    "total": 1539
+  },
+  "first_fixed_source": {
+    "labels": {
+      "computed": "Computed (upstream agrees)",
+      "upstream": "Upstream only",
+      "disputed": "Disputed"
+    },
+    "help": {
+      "computed": "First-fix computed by diffing active_cves across the AKS release chain, and the upstream mitigated_cves_from_previous_release list agrees. The confident case.",
+      "upstream": "The target could not be compared across releases (e.g. the oldest release, or a target new in this release), so the upstream mitigated_cves_from_previous_release list is used verbatim.",
+      "disputed": "The computed diff and the upstream mitigated list disagree for this CVE. The feed records both signals (in_computed / in_upstream) rather than silently choosing one."
+    },
+    "counts": {
+      "computed": 10718,
+      "upstream": 0,
+      "disputed": 750
+    },
+    "shares": {
+      "computed": 0.9346,
+      "upstream": 0.0,
+      "disputed": 0.0654
+    },
+    "total": 11468
+  },
+  "presentation_state": {
+    "labels": {
+      "active": "Active",
+      "not_affected": "Not affected",
+      "not_present": "Not present on this version",
+      "not_assessed": "Not assessed",
+      "unknown_not_tracked": "Fix history not tracked"
+    },
+    "help": {
+      "active": "The scanner reports this CVE on this image on this Kubernetes version. Stored as an explicit fact in k8s/<version>.json and cve/<CVE>.json.",
+      "not_affected": "The image runs on this Kubernetes version and its scan does NOT report the CVE. Derived: the image is listed in k8s/<version>.json but the CVE is not among its active_cves.",
+      "not_present": "This image does not run on this Kubernetes version. Derived: the image is not listed in k8s/<version>.json.",
+      "not_assessed": "This Kubernetes version has no scan report. Derived: the version is not listed in _index.json. It is NEVER a missing key -- absence of a version from the index is the explicit signal, not clean.",
+      "unknown_not_tracked": "The image is not tracked in the AKS release train, so its fix history is unavailable and 'the first AKS release that fixes this' cannot be answered. Not the same as 'not fixed'."
+    },
+    "derivation_note": "Presentation states are derived by the consumer from the feed's explicit coverage (the set of scanned versions in _index.json and the images listed per version). They are not stored as rows and carry no counts."
+  },
+  "basis": {
+    "labels": {
+      "k8s_snapshot": "Kubernetes snapshot",
+      "release_history": "AKS release history",
+      "image_current": "Per-image (current) scan"
+    },
+    "help": {
+      "k8s_snapshot": "From a frozen per-Kubernetes-version scan report. Counts are only comparable within a report_time cohort (see comparable_with).",
+      "release_history": "Derived from the AKS release chain (mitigation history + computed diffs). The only axis that answers 'when was this fixed?'.",
+      "image_current": "From a continuously-rescanned per-image report. Drifts ahead of the frozen snapshots, so it is never blended with them."
+    }
+  },
+  "generated": "2026-08-07T20:18:08Z"
+}

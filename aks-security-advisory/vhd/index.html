@@ -30,6 +30,34 @@
     <div id="app" aria-live="polite">
       <p class="loading">Loading advisories&hellip;</p>
     </div>
+    <!--
+      Deep-link fallback for non-JS clients (issue #39, F1/F2). This browser
+      renders per-CVE detail client-side from a URL fragment (e.g.
+      "#/CVE-2025-1234"), which a fragment-based deep link cannot deliver
+      without JavaScript. The same data is published as static JSON, so a
+      non-JS agent that lands here still gets a deterministic pointer to the
+      machine-readable content rather than an empty shell. Kept in <noscript>
+      so it is inert for JS clients (app.js owns #app) and visible to text
+      fetchers. Guarded by tests/test_site_deeplink.py.
+    -->
+    <noscript>
+      <section class="agent-deeplink-help">
+        <h2>Reading this without JavaScript?</h2>
+        <p>
+          Per-CVE detail is rendered in-browser from the URL fragment, so a
+          deep link shows no content without JavaScript. The same data is
+          available as static JSON:
+        </p>
+        <ul>
+          <li>One advisory:
+            <code>../data/advisories/&lt;ID&gt;.json</code>
+            (upper-case the id, e.g. <code>CVE-2025-1234</code>).</li>
+          <li>Full feed index: <code>../data/index.json</code>.</li>
+          <li>Agent overview and the full JSON contract:
+            <a href="../llms.txt">llms.txt</a>.</li>
+        </ul>
+      </section>
+    </noscript>
   </main>
 
   <footer class="site-footer">

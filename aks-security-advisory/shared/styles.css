@@ -211,6 +211,8 @@ td.cve a { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-wei
 .ref-list, .additive-items { margin: 0; padding-left: 1.2rem; }
 .ref-list li, .additive-items li { margin: .2rem 0; word-break: break-all; }
 .note { font-size: .9rem; color: var(--muted); }
+/* a scanned-and-clean component is a positive result, not an absent one */
+.note.scan-clean { color: var(--st-fixed); }
 code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .88em; }
 
 /* --- info-icon tooltips --- */
@@ -316,3 +318,161 @@ a.hub-card:hover .hub-card-title { color: var(--accent-hover); }
   font-size: .7rem; font-weight: 700; text-transform: uppercase;
   letter-spacing: .04em; padding: .2rem .5rem; border-radius: 999px;
 }
+
+/* =====================================================================
+   Container-image advisory (site/images/) — additive classes only.
+   Reuses the tokens above; does not override any VHD rule.
+   ===================================================================== */
+
+/* per-image CVE state badges */
+.badge.img-st { border: 1px solid transparent; }
+.img-st-active { background: rgba(164,38,44,.12); color: var(--st-affected); border-color: rgba(164,38,44,.30); }
+.img-st-not_affected { background: rgba(16,124,16,.10); color: var(--st-fixed); border-color: rgba(16,124,16,.26); }
+.img-st-not_observed { background: rgba(96,94,92,.12); color: var(--st-notaffected); border-color: rgba(96,94,92,.30); }
+.img-st-not_present { background: rgba(96,94,92,.10); color: var(--st-notaffected); border-color: rgba(96,94,92,.24); }
+.img-st-not_assessed { background: rgba(202,128,4,.14); color: #8a5a00; border-color: rgba(202,128,4,.34); }
+.img-st-unknown_not_tracked { background: rgba(92,46,145,.12); color: var(--st-investigating); border-color: rgba(92,46,145,.30); }
+
+/* attribution badges (image -> Kubernetes axis) */
+.badge.attr { border: 1px solid transparent; }
+.attr-k8s_exact { background: rgba(16,124,16,.12); color: var(--st-fixed); border-color: rgba(16,124,16,.30); }
+.attr-k8s_repo_tagskew { background: rgba(202,128,4,.14); color: #8a5a00; border-color: rgba(202,128,4,.34); }
+.attr-k8s_registry_variant { background: rgba(0,120,212,.12); color: #0067c0; border-color: rgba(0,120,212,.30); }
+.attr-k8s_unmapped { background: rgba(96,94,92,.12); color: var(--st-notaffected); border-color: rgba(96,94,92,.30); }
+
+/* evidence-axis (basis) + first-fix provenance badges */
+.badge.basis { background: var(--accent-soft); color: var(--accent-hover); border: 1px solid var(--border); }
+.badge.ffsrc { border: 1px solid transparent; }
+.ffsrc-computed { background: rgba(16,124,16,.12); color: var(--st-fixed); border-color: rgba(16,124,16,.30); }
+.ffsrc-upstream { background: rgba(0,120,212,.12); color: #0067c0; border-color: rgba(0,120,212,.30); }
+.ffsrc-disputed { background: rgba(202,128,4,.14); color: #8a5a00; border-color: rgba(202,128,4,.34); }
+
+/* "severity not published by this source" */
+.sev-none { font-style: italic; color: var(--muted); font-size: .85em; }
+
+/* scan provenance + cohort staleness warning */
+.provenance h3 { margin-bottom: .5rem; }
+.cohort-warn {
+  margin: .75rem 0 1.25rem; padding: .8rem 1rem; border-radius: 8px;
+  background: rgba(202,128,4,.08); border: 1px solid rgba(202,128,4,.30);
+  color: var(--text-soft); font-size: .9rem;
+}
+.cohort-warn strong { color: #8a5a00; }
+.cohort-warn .comparable { margin-top: .5rem; }
+.cohort-warn summary { cursor: pointer; color: var(--accent-hover); font-weight: 600; }
+
+/* scan-age badges: escalating weight so a year-old snapshot (real ages reach
+   ~396 days) is visually unmissable, not a subtle grey label (issue #40 F2). */
+.badge.age { font-weight: 600; }
+.age-fresh { background: rgba(16,124,16,.12); color: var(--st-fixed); border-color: rgba(16,124,16,.30); }
+.age-aging { background: rgba(202,128,4,.12); color: #8a5a00; border-color: rgba(202,128,4,.32); }
+.age-stale { background: rgba(164,38,44,.14); color: var(--st-affected); border-color: rgba(164,38,44,.38); font-weight: 700; }
+.age-very_stale { background: var(--st-affected); color: #fff; border-color: var(--st-affected); font-weight: 700; }
+/* unknown age is NOT fresh: a neutral-but-flagged treatment, never green. */
+.age-unknown { background: rgba(96,94,92,.14); color: var(--st-notaffected); border-color: rgba(96,94,92,.36); font-weight: 700; }
+
+.stale-banner {
+  margin: .75rem 0 1.25rem; padding: .85rem 1rem; border-radius: 8px;
+  background: rgba(164,38,44,.08); border: 1px solid rgba(164,38,44,.34);
+  color: var(--text-soft); font-size: .9rem;
+}
+.stale-banner strong { color: var(--st-affected); }
+.stale-very_stale { border-width: 2px; background: rgba(164,38,44,.13); }
+.stale-unknown { background: rgba(96,94,92,.09); border-color: rgba(96,94,92,.40); }
+.stale-unknown strong { color: var(--st-notaffected); }
+.chips { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .4rem; }
+.chip-strong { font-weight: 700; border-color: var(--accent); }
+
+/* visible scan-freshness strip on Screen 3 (finding #5): the age must not hide
+   in a tooltip on a page that renders per-version status. */
+.scan-strip { margin: .4rem 0 .2rem; font-size: .9rem; color: var(--text-soft); }
+.scan-strip .badge.age { margin: 0 .25rem; }
+
+/* Path A chip staleness surfaced in visible text, not only title= (finding #4). */
+.chip-meta { margin-left: .35rem; font-size: .82em; color: var(--st-affected); font-weight: 600; }
+.chip-stale { border-color: rgba(164,38,44,.42); }
+
+/* release-load error must read as an error, never as "no fix" reassurance
+   (finding #3). */
+.note.load-error { background: rgba(164,38,44,.08); border-left: 3px solid var(--st-affected);
+  padding: .55rem .75rem; border-radius: 4px; color: var(--text-soft); }
+.note.load-error strong { color: var(--st-affected); }
+
+/* bulk-paste unrecognized-input panel (finding #1): unparsed lines must be
+   shown prominently, never dropped silently. */
+.bulk-unrec {
+  margin: .75rem 0; padding: .75rem 1rem; border-radius: 8px;
+  background: rgba(202,128,4,.09); border: 1px solid rgba(202,128,4,.36);
+  color: var(--text-soft); font-size: .9rem;
+}
+.bulk-unrec strong { color: #8a5a00; }
+.unrec-list { margin: .4rem 0 0; padding-left: 1.1rem; font-family: var(--mono, monospace); font-size: .85rem; }
+.unrec-list li { margin: .1rem 0; word-break: break-all; }
+.count-unrec { color: #8a5a00; font-weight: 700; }
+
+/* version selector (Screen 1) */
+.selector .sel-grid { display: grid; gap: .75rem; grid-template-columns: 1fr; margin: .5rem 0; }
+@media (min-width: 620px) { .selector .sel-grid { grid-template-columns: 1fr 1fr; } }
+.not-sure { display: block; margin: .5rem 0; font-size: .9rem; color: var(--text-soft); }
+.not-sure input { margin-right: .4rem; }
+.sel-actions { display: flex; gap: .6rem; flex-wrap: wrap; margin: .6rem 0; }
+.inline-find { display: flex; gap: .5rem; }
+.inline-find input { flex: 1; }
+hr.soft { border: none; border-top: 1px solid var(--border); margin: 1rem 0; }
+
+.primary-btn {
+  background: var(--accent); color: #fff; border: 1px solid var(--accent);
+  border-radius: 6px; padding: .55rem 1rem; cursor: pointer; font-size: .95rem; font-weight: 600;
+}
+.primary-btn:hover:not(:disabled) { background: var(--accent-hover); border-color: var(--accent-hover); }
+.primary-btn:disabled { opacity: .5; cursor: default; }
+.primary-btn.ghost { background: var(--surface); color: var(--accent); }
+.primary-btn.ghost:hover { background: var(--accent-soft); }
+.ghost-btn {
+  background: var(--surface); color: var(--accent); border: 1px solid var(--border);
+  border-radius: 6px; padding: .5rem .85rem; cursor: pointer; font-size: .88rem;
+}
+.ghost-btn:hover { border-color: var(--accent); background: var(--accent-soft); }
+
+/* bulk triage (Screen 2) */
+.bulk textarea {
+  width: 100%; padding: .6rem .7rem; border: 1px solid var(--border); border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .88rem;
+  background: var(--surface); color: var(--text); resize: vertical;
+}
+.bulk textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,120,212,.2); }
+.export-bar { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin: .6rem 0; }
+.result-summary { margin: .5rem 0; color: var(--text-soft); }
+.result-summary .count-active { color: var(--st-affected); }
+td.small, .small { font-size: .82rem; }
+#bulk-out td.mono { white-space: pre-wrap; word-break: break-all; }
+
+/* image groups (Screen 2) */
+.image-groups { list-style: none; margin: .5rem 0 0; padding: 0; }
+.image-group {
+  border: 1px solid var(--border); border-radius: 8px; margin: .4rem 0; background: var(--surface);
+}
+.image-group summary {
+  cursor: pointer; padding: .6rem .8rem; display: flex; align-items: baseline; gap: .5rem;
+}
+.image-group summary::-webkit-details-marker { display: none; }
+.img-count { font-weight: 700; color: var(--st-affected); font-size: 1.05rem; min-width: 3ch; text-align: right; }
+.img-count-label { color: var(--muted); font-size: .72rem; text-transform: uppercase; letter-spacing: .04em; }
+.img-ref { margin-left: .3rem; word-break: break-all; }
+.cve-chip-wrap { padding: 0 .8rem .7rem; display: flex; flex-wrap: wrap; gap: .3rem; }
+
+/* resolution paths (Screen 3) */
+.path { border: 1px solid var(--border); border-radius: 8px; padding: .8rem 1rem; margin: .6rem 0; }
+.path-head { display: flex; justify-content: space-between; align-items: center; gap: .5rem; flex-wrap: wrap; }
+.path-title { font-weight: 700; color: var(--text-soft); }
+.path-status { font-size: .85rem; font-weight: 600; }
+.path-ok { border-left: 4px solid var(--st-fixed); }
+.path-pending { border-left: 4px solid #8a5a00; }
+.path-unknown { border-left: 4px solid var(--st-investigating); }
+.mono.strong, .strong { font-weight: 700; }
+
+/* notice cards (Screen 4 graceful degradation) */
+.card.notice { background: var(--surface-2); }
+.gloss-name { font-weight: 600; color: var(--accent-hover); }
+.gloss-key code { font-size: .78rem; color: var(--muted); }
+.agent-deeplink-help { margin: 1.5rem 0; }

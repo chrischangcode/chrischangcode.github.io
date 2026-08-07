@@ -1,0 +1,239 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://chrischangcode.github.io/aks-security-advisory/data/schema.json",
+  "schema_version": "1.0",
+  "x-type": "aks-vhd-feed-schema",
+  "title": "AKS VHD security-advisory feed",
+  "description": "Machine-readable schema for the JSON documents published under https://chrischangcode.github.io/aks-security-advisory/data/. Endpoint inventory with live byte sizes is in manifest.json; controlled-vocabulary meanings and counts are in glossary.json.",
+  "document_versions": {
+    "advisory": "2.0",
+    "index": "2.0",
+    "glossary": "2.0",
+    "components": "2.0",
+    "slices": "1.0",
+    "manifest": "1.0",
+    "pathmap": "1.1"
+  },
+  "definitions": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "fixed",
+        "fix_available_upstream",
+        "affected",
+        "not_affected",
+        "under_investigation",
+        "will_not_fix"
+      ],
+      "description": "Per-(lineage, package) fix status. See glossary.json status.help for each meaning."
+    },
+    "coverage": {
+      "type": "string",
+      "enum": [
+        "covered_by_package",
+        "covered_by_scan",
+        "scan_pending",
+        "aks_built",
+        "container_image",
+        "not_baked",
+        "not_assessed"
+      ],
+      "description": "Extended-binary coverage class. See glossary.json coverage.help."
+    },
+    "advisory": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "id",
+        "type",
+        "headline_status",
+        "packages"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "2.0"
+        },
+        "id": {
+          "type": "string",
+          "description": "Uppercase CVE-*/GO-*/GHSA-* id."
+        },
+        "type": {
+          "const": "aks-vhd-security-advisory"
+        },
+        "severity": {
+          "type": "string"
+        },
+        "headline_status": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/status"
+            }
+          ],
+          "description": "Most-actionable status across ALL lineages (ranked). NOT per-SKU: for a specific SKU read the matching packages[].status row (issue #39, F7)."
+        },
+        "updated": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "references": {
+          "type": "array"
+        },
+        "additive": {},
+        "packages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/package_row"
+          }
+        }
+      }
+    },
+    "package_row": {
+      "type": "object",
+      "required": [
+        "package",
+        "releases",
+        "status"
+      ],
+      "properties": {
+        "package": {
+          "type": "string"
+        },
+        "releases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "Every VHD lineage label this assessment covers. Rows identical apart from lineage are merged, so match your SKU with membership (L in releases), not equality. (release, package) is USUALLY unique, but if more than one row matches your SKU take the most actionable status (the headline_status rule), never just the first match."
+        },
+        "status": {
+          "$ref": "#/definitions/status"
+        },
+        "severity": {
+          "type": "string"
+        },
+        "fixed_version": {
+          "type": "string"
+        },
+        "upstream_fixed_version": {
+          "type": "string"
+        },
+        "first_fixed_build": {
+          "type": "string"
+        },
+        "first_fixed_before": {
+          "type": "string"
+        },
+        "latest_build": {
+          "type": "string"
+        },
+        "binary_packages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "justification": {
+          "type": "string"
+        },
+        "statement": {
+          "type": "string"
+        },
+        "evidence": {}
+      },
+      "description": "Absence of a lineage from every row's releases[] means NOT ASSESSED, not 'not affected' (issue #39, F6/F7)."
+    },
+    "pathmap": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "type",
+        "by_path",
+        "owner_scope",
+        "coverage_note"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "1.1"
+        },
+        "type": {
+          "const": "aks-vhd-pathmap"
+        },
+        "owner_scope": {
+          "type": "string",
+          "enum": [
+            "installed",
+            "archive"
+          ]
+        },
+        "indexed_prefixes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "coverage_note": {
+          "type": "string",
+          "description": "A miss is UNKNOWN, not 'not vulnerable' (F6)."
+        },
+        "by_path": {
+          "type": "object",
+          "description": "Absolute path -> owning package(s). usr-merge normalized: both /bin and /usr/bin spellings are real keys. Owners are per-family; resolve WITHIN a lineage, never globally (issue #39, F4/F5).",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "by_base": {
+          "type": "object"
+        },
+        "alias_of": {
+          "type": "object"
+        }
+      }
+    },
+    "manifest": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "type",
+        "endpoints"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "type": {
+          "const": "aks-vhd-feed-manifest"
+        },
+        "endpoints": {
+          "type": "array"
+        }
+      },
+      "description": "Generated endpoint inventory with real byte sizes -- read FIRST to plan fetches."
+    },
+    "glossary": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "type",
+        "status",
+        "coverage"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "2.0"
+        },
+        "type": {
+          "const": "aks-vhd-glossary"
+        }
+      },
+      "description": "Controlled vocabulary + per-value counts measured from this build. status.counts are per-advisory headline, not per-SKU prevalence (see status.counts_basis)."
+    }
+  }
+}
