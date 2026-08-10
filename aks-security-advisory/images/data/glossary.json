@@ -1,6 +1,57 @@
 {
   "schema_version": "1.0",
   "type": "aks-images-glossary",
+  "cve_source": {
+    "labels": {
+      "per_tag": "This tag's own CVEs",
+      "target_union": "Union across the target's tags (upper bound)",
+      "target_unattributed": "On the container, tag unknown (upper bound)"
+    },
+    "help": {
+      "per_tag": "The count is this image tag's OWN CVE set. An AKS release ships several tags of one image (one per supported Kubernetes minor) and the scanned container's CVE list is the union across them, so this split is what makes a per-tag count truthful. For a container shipping a single reference the aggregate already IS that reference's set; for several, it was de-aggregated using each tag's own per-image report.",
+      "target_union": "The per-image report was unavailable for at least one of the tags on this container, so the split could not be derived. The number shown is the union across ALL of the container's tags and is an UPPER BOUND for this tag -- it is never silently pinned to one tag.",
+      "target_unattributed": "This CVE is on the scanned container by the release report's own account, but no tag's per-image report claimed it, so it cannot be pinned to one tag. It is listed against every tag of the container as an UPPER BOUND rather than withheld -- withholding it would make the container look unaffected when it is not."
+    },
+    "split_exact_help": "True when the per-tag split is exact. False for either reason a split can fail: no per-image report was available for some tag (cve_source target_union), or a CVE the container reports matched no tag's report (listed as unattributed_cves and published against every tag, never dropped). So False does not by itself imply unattributed_cves is present -- read cve_source as well. A per-image report carrying ids the frozen release does not is intersected away and does NOT make a split inexact: measured over a full build, 192 of 411 multi-tag containers carry such ids (8,917 in total) against 24 carrying unattributable ones (281).",
+    "counts": {
+      "per_tag": 2489,
+      "target_union": 0,
+      "target_unattributed": 77
+    },
+    "shares": {
+      "per_tag": 0.97,
+      "target_union": 0.0,
+      "target_unattributed": 0.03
+    },
+    "total": 2566
+  },
+  "comparability": {
+    "labels": {
+      "same_scan": "Same scan run (fully comparable)",
+      "cross_scan": "Different scan runs (one direction only)"
+    },
+    "help": {
+      "same_scan": "Both release reports were produced by the same scan run, so the scanner's vulnerability database is identical on both sides. A CVE appearing or disappearing between them is a real change in AKS, and both directions are published.",
+      "cross_scan": "The two release reports were scanned at different times and are never re-scanned, so the vulnerability database moved between them. CVEs the newer release appears to ADD are overwhelmingly database growth rather than regressions -- measured on live data, same-scan pairs differ by 3 and 15 ids while cross-scan pairs differ by 288 and 380 -- so new_in_latest is omitted entirely rather than published as fact. The fix direction is still shown but is marked no_longer_reported, because an id can also vanish by being withdrawn or rescored."
+    },
+    "field_help": {
+      "buckets": "fixed, partially_fixed and still_present are MUTUALLY EXCLUSIVE at the CVE level: an id appears in exactly one of them. Bucketing per (container, CVE) instead would put the same id under both fixed and still_present -- measured on one live pair, 150 of 171 ids fixed somewhere were still active elsewhere -- and a reader seeing such an id under fixed would wrongly conclude the upgrade clears it.",
+      "fixed": "CVEs cleared from EVERY container that carried them. Upgrading resolves these cluster-wide. Each names first_fixed_release: the release you must actually REACH, which is the NEWEST of the per-container first fixes, since the CVE is only cleared once every affected container is fixed. It is also the release the CVE stays gone FROM -- a CVE can disappear and recur, and naming the first lapse would point at a release where it is active again later.",
+      "partially_fixed": "CVEs cleared on SOME containers and still active on others. Upgrading reduces exposure but does NOT clear these. fixed_on lists where they go away, still_on where they remain. Do not read these as fixed.",
+      "still_present": "CVEs active on BOTH releases and cleared nowhere. Upgrading does not touch these. This is first-class output, not a footnote: it is usually far larger than fixed, and a customer deciding whether to upgrade needs it.",
+      "new_in_latest": "CVEs on NO container before the upgrade and on at least one after. An id you already carry elsewhere is not something the upgrade introduces, so it is excluded. Published ONLY on a same_scan pair. On a cross_scan pair the key is ABSENT, which means 'cannot be determined' -- an empty list would wrongly assert 'none'.",
+      "targets": "Containers compared, plus those present in only one of the two releases. Containers that exist in only one release are excluded from every count: folding them in would report a CVE as fixed or new when the container merely came or went."
+    },
+    "counts": {
+      "same_scan": 2,
+      "cross_scan": 2
+    },
+    "shares": {
+      "same_scan": 0.5,
+      "cross_scan": 0.5
+    },
+    "total": 4
+  },
   "attribution": {
     "labels": {
       "k8s_exact": "Exact match",
@@ -18,18 +69,18 @@
       "absent_from_all_k8s_reports": "The image reference does not appear in any per-Kubernetes-version scan report. This is the only claim made about an unmapped image."
     },
     "counts": {
-      "k8s_exact": 406,
-      "k8s_repo_tagskew": 478,
-      "k8s_registry_variant": 60,
-      "k8s_unmapped": 595
+      "k8s_exact": 497,
+      "k8s_repo_tagskew": 933,
+      "k8s_registry_variant": 242,
+      "k8s_unmapped": 817
     },
     "shares": {
-      "k8s_exact": 0.2638,
-      "k8s_repo_tagskew": 0.3106,
-      "k8s_registry_variant": 0.039,
-      "k8s_unmapped": 0.3866
+      "k8s_exact": 0.1997,
+      "k8s_repo_tagskew": 0.3748,
+      "k8s_registry_variant": 0.0972,
+      "k8s_unmapped": 0.3282
     },
-    "total": 1539
+    "total": 2489
   },
   "first_fixed_source": {
     "labels": {
@@ -83,5 +134,5 @@
       "image_current": "From a continuously-rescanned per-image report. Drifts ahead of the frozen snapshots, so it is never blended with them."
     }
   },
-  "generated": "2026-08-07T20:18:08Z"
+  "generated": "2026-08-10T08:32:22Z"
 }

@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "type": "aks-release-upgrade-index",
+  "generated": "2026-08-10T08:32:22Z",
+  "basis": "release_history",
+  "to_release": "v20260717",
+  "count": 4,
+  "items": [
+    {
+      "name": "v20260402",
+      "file": "v20260402.json"
+    },
+    {
+      "name": "v20260428",
+      "file": "v20260428.json"
+    },
+    {
+      "name": "v20260529",
+      "file": "v20260529.json"
+    },
+    {
+      "name": "v20260619",
+      "file": "v20260619.json"
+    }
+  ],
+  "upgrades": [
+    {
+      "from_release": "v20260402",
+      "to_release": "v20260717",
+      "comparability": "cross_scan",
+      "release_gap": 4,
+      "summary": {
+        "fixed": 95,
+        "partially_fixed": 115,
+        "still_present": 111
+      },
+      "file": "v20260402.json"
+    },
+    {
+      "from_release": "v20260428",
+      "to_release": "v20260717",
+      "comparability": "cross_scan",
+      "release_gap": 3,
+      "summary": {
+        "fixed": 67,
+        "partially_fixed": 129,
+        "still_present": 203
+      },
+      "file": "v20260428.json"
+    },
+    {
+      "from_release": "v20260529",
+      "to_release": "v20260717",
+      "comparability": "same_scan",
+      "release_gap": 2,
+      "summary": {
+        "fixed": 29,
+        "partially_fixed": 190,
+        "still_present": 437,
+        "new_in_latest": 3
+      },
+      "file": "v20260529.json"
+    },
+    {
+      "from_release": "v20260619",
+      "to_release": "v20260717",
+      "comparability": "same_scan",
+      "release_gap": 1,
+      "summary": {
+        "fixed": 21,
+        "partially_fixed": 150,
+        "still_present": 471,
+        "new_in_latest": 15
+      },
+      "file": "v20260619.json"
+    }
+  ]
+}

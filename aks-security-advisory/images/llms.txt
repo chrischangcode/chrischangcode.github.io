@@ -86,15 +86,47 @@ files are plain JSON. Endpoint shapes:
   no published document in this feed build")
     One AKS release on the release-history axis. This is the HOME of images that
     cannot be mapped to any Kubernetes version (k8s_attribution.state
-    k8s_unmapped):
+    k8s_unmapped).
+    IMPORTANT: images[] has ONE ENTRY PER SHIPPED IMAGE TAG. A release ships
+    several tags of the same image (usually one per supported Kubernetes minor)
+    on a single scanned container, so image_count (entries) is >= target_count
+    (scanned containers). Each entry is independently true: its tag, its
+    attribution, its CVE list. Do NOT sum active_cve_count across entries of one
+    (pod_namespace, container_name) -- their CVE sets overlap.
     { schema_version, type, basis:"release_history", version, previous_release,
       report_time, source_url, attribution_counts{}, unmapped_image_count,
+      image_count, target_count,
       images[{ pod_namespace, container_name, image, repo, tag, tags[],
-               active_cve_count,
+               active_cve_count, cves[], cve_source, split_exact,
+               unattributed_cves?[], unattributed_cve_count?,
                k8s_attribution{ mode, state, unmapped_reason? } }],
+      unattributed_cves?[{ pod_namespace, container_name, images[], cves[] }],
       first_fixes[{ cve, pod_namespace, container_name, release,
                     previous_release, first_fixed_source, in_computed,
                     in_upstream, basis, report_time }] }
+    cve_source tells you HOW that entry's CVE list was derived:
+      "per_tag"      -- the count is about that tag alone. For a container
+                        shipping one reference the aggregate already IS that
+                        reference's set; for several, it was intersected with
+                        each tag's own scan report. (This is the normal case.)
+      "target_union" -- a per-tag report was unavailable for at least one tag on
+                        the container, so the union across ALL its tags is
+                        reported for EVERY tag. Treat the count as an UPPER
+                        BOUND for that tag, not as a fact about it.
+    split_exact is false when the split is not exact, for EITHER reason: the
+    report was unavailable (cve_source "target_union"), or some CVE matched no
+    tag's report (then unattributed_cves is present). False alone does not imply
+    unattributed_cves exists -- read cve_source too.
+    unattributed_cves are CVEs the container carries by the release report's own
+    account that could not be pinned to one tag. They are listed on EVERY tag of
+    that container, and they DO appear in cve/ and image/ documents labelled
+    cve_source "target_unattributed". They are an upper bound for any single tag,
+    but they are never withheld -- withholding them would make the container look
+    unaffected.
+    NOTE on first_fixes: these are per scanned container (pod_namespace,
+    container_name), NOT per tag. That pair is not unique -- two unrelated images
+    can share it -- so do not join first_fixes to images[] on it and assume one
+    match; a join can fan out across tags and across repositories.
 
 - data/cve/<CVE>.json    (OPTIONAL -- treat a 404 as "this CVE is not observed in
   this feed build", never as "not affected")
@@ -102,9 +134,14 @@ files are plain JSON. Endpoint shapes:
     { id, affected_minors[], release_only,
       k8s[{ k8s_version, minor, image, repo, tag, report_time, scan_age_days,
             basis:"k8s_snapshot", source_url }],
-      releases[{ release, pod_namespace, container_name, image,
-                 k8s_attribution{ mode, state }, basis:"release_history",
-                 source_url }] }
+      releases[{ release, pod_namespace, container_name, image, repo, tag,
+                 k8s_attribution{ mode, state }, cve_source,
+                 basis:"release_history", source_url }] }
+    Each release occurrence names the exact image TAG that carries the CVE, not
+    just the repository. Read cve_source before treating it as that tag's own
+    finding: "per_tag" is a fact about that tag; "target_union" and
+    "target_unattributed" are upper bounds, meaning the CVE is on that scanned
+    container but could not be pinned to this specific tag.
 
 - data/cve-index.json    (OPTIONAL -- may be absent on older feeds; treat a 404
   as "this feed build does not publish the slim triage index")
@@ -131,11 +168,136 @@ files are plain JSON. Endpoint shapes:
     One image repository, both axes side by side (never summed):
     { schema_version, type:"aks-images-image", generated, repo, tags[],
       k8s_version_count, release_count, cve_count, cves[],
+      tags_by_release[{ release, tags[] }],
       k8s[{ k8s_version, minor, image, tag, cve_count, cves[], report_time,
             scan_age_days, source_url }],
       releases[{ release, image, tag, pod_namespace, container_name,
-                 active_cve_count, k8s_attribution{ mode, state }, report_time,
+                 active_cve_count, cves[], cve_source, split_exact,
+                 unattributed_cves?[],
+                 k8s_attribution{ mode, state }, report_time,
                  source_url }] }
+    tags_by_release answers "which tag of this image ships in AKS release X" --
+    the flat tags[] is a union across all releases and CANNOT answer it. As in
+    release/ documents, releases[] has one entry per shipped tag, so a release
+    may appear more than once here; read cve_source before trusting a count.
+    releases[].cves is that tag's own CVE ids, so "what is on REPO:TAG" is
+    answerable from this document alone. The top-level cves[] is the union over
+    every tag AND every release of this repository -- never report it as one
+    tag's exposure.
+
+- data/upgrade/index.json    (OPTIONAL -- the upgrade-delta family is added by a
+  later feed build than the one that introduced release/; treat a 404 as "this
+  build does not publish upgrade deltas", NEVER as "upgrading changes nothing")
+    Which AKS releases can be asked "what does upgrading fix?", and whether the
+    answer is fully trustworthy for each:
+    { schema_version, type, generated, basis:"release_history", to_release,
+      count,
+      items[{ name, file }],
+      upgrades[{ from_release, to_release, comparability, release_gap,
+                 summary{ fixed, partially_fixed, still_present,
+                          new_in_latest? }, file }] }
+    items[] is the authoritative name -> file map; resolve a release through it
+    rather than constructing upgrade/<release>.json. Only the last few releases
+    before the newest get a document -- the newest IS the upgrade target, so it
+    never has one.
+    An ABSENT summary.new_in_latest means "cannot be determined for this pair",
+    NOT zero. See comparability below.
+
+- data/upgrade/<from_release>.json    (OPTIONAL -- resolve <from_release>
+  through data/upgrade/index.json; treat a 404 as "no delta published for that
+  release")
+    What upgrading from that release to the newest one actually does. This is
+    the ONLY endpoint that answers a customer more than one release behind:
+    release/<v>.json carries first_fixes[], but that is strictly single-hop
+    (release N vs N-1) and cannot serve someone three releases back.
+    { schema_version, type, generated, basis:"release_history",
+      from_release, to_release, from_report_time, to_report_time,
+      from_scan_age_days, to_scan_age_days,
+      comparability, comparability_note, releases_crossed[], release_gap,
+      summary{ fixed, partially_fixed, still_present, new_in_latest? },
+      targets{ compared, only_in_from[], only_in_to[] },
+      fixed[{ cve, first_fixed_release, first_fixed_source, no_longer_reported?,
+              targets[{ pod_namespace, container_name, first_fixed_release,
+                        first_fixed_source, from_images[], from_images_exact?,
+                        to_images[] }] }],
+      partially_fixed[{ cve, first_fixed_release, first_fixed_source,
+                        no_longer_reported?, fixed_on[...], still_on[...] }],
+      still_present[{ cve, targets[...] }],
+      new_in_latest?[{ cve, targets[...] }],
+      source_url, from_source_url }
+
+    READ THIS BEFORE USING THE NUMBERS:
+
+    fixed, partially_fixed and still_present are MUTUALLY EXCLUSIVE at the CVE
+    level -- an id appears in exactly ONE of them, so you may sum them and you
+    must not look up an id in only one list.
+      fixed[]           -- cleared from EVERY container that carried it.
+                           Upgrading resolves it. This is the only bucket you
+                           may report to a customer as "fixed by upgrading".
+      partially_fixed[] -- cleared on SOME containers, still active on others.
+                           Upgrading REDUCES exposure but does NOT clear the
+                           CVE. fixed_on[] is where it goes away, still_on[] is
+                           where it remains. Reporting these as fixed is the
+                           single easiest way to overstate an upgrade.
+      still_present[]   -- active on both sides, cleared nowhere.
+    Bucketing per (container, CVE) instead of per CVE would put the same id in
+    both fixed and still_present: measured on one live pair, 150 of the 171 ids
+    that are fixed somewhere are still active elsewhere, leaving only 21 truly
+    cleared. If you are reconciling counts against a naive per-container diff,
+    that is the difference.
+
+    comparability is "same_scan" or "cross_scan" and it decides what you may
+    assert. AKS release reports are scanned ONCE and never re-scanned, so two
+    releases scanned on different dates were measured against DIFFERENT
+    vulnerability databases.
+      "same_scan"  -- both reports came from one scan run. Appearance AND
+                      disappearance of a CVE are both meaningful. new_in_latest
+                      is published.
+      "cross_scan" -- different scan runs. new_in_latest is OMITTED ENTIRELY
+                      (the key is ABSENT, which means "cannot be determined" --
+                      do not read absence as an empty list or as "nothing new").
+                      Every entry in fixed[] and partially_fixed[] additionally
+                      carries no_longer_reported: true, because across scan
+                      dates a CVE can also vanish by being withdrawn or rescored
+                      rather than fixed. Report it as "no longer reported", not
+                      "fixed".
+    Measured on live data: same-scan pairs differ by 3 and 15 ids while
+    cross-scan pairs differ by 288 and 380. That gap is the scanner database
+    advancing, NOT AKS shipping regressions. Presenting it as regressions is the
+    single biggest way to misuse this endpoint.
+
+    first_fixed_release is the release the customer must actually REACH. When a
+    CVE affects several containers it is the NEWEST of the per-container first
+    fixes (each container's own value is in targets[].first_fixed_release);
+    reporting the earliest would tell someone they are done while another
+    container still carries it. It is also the release the CVE stays gone FROM,
+    not merely the first release that happens to lack it -- a CVE can disappear
+    and come back, and naming the first lapse would point at a release where it
+    is active again later (365 such ids in one live document). first_fixed_source
+    uses the same computed/upstream/disputed vocabulary as release/ first_fixes,
+    and the CVE-level value is the LEAST confident across the listed containers.
+
+    still_present is first-class and is normally MUCH larger than fixed (621 vs
+    21 on one live pair, with a further 150 only partly fixed). An answer that
+    reports only what an upgrade fixes is misleading -- say what it does not fix
+    too.
+
+    new_in_latest is cluster-wide: an id already active on ANOTHER container
+    before the upgrade is not something the upgrade introduces, so it is
+    excluded.
+
+    targets.only_in_from / only_in_to are containers present in just one of the
+    two releases. They are EXCLUDED from every count: a container that came or
+    went is not a CVE that was fixed or introduced.
+
+    releases_crossed[] lists every release you move THROUGH, ending at
+    to_release, which is therefore included; release_gap is its length. It is
+    not an exclusive "between" list.
+
+    from_images[] is which of the container's image references carried the CVE
+    on the release the customer is running -- that is the reference to look for
+    locally. When from_images_exact is false the CVE could not be pinned to one
+    tag and every reference is listed as an UPPER BOUND.
 
 - data/glossary.json    (OPTIONAL -- treat a 404 as "this feed build does not
   publish a glossary", then use the baked vocabulary below)
@@ -144,6 +306,8 @@ files are plain JSON. Endpoint shapes:
       attribution{ labels{}, help{}, unmapped_reason_help{}, counts{}, shares{}, total },
       first_fixed_source{ labels{}, help{}, counts{}, shares{}, total },
       presentation_state{ labels{}, help{}, derivation_note },
+      cve_source{ labels{}, help{}, split_exact_help, counts{}, shares{}, total },
+      comparability{ labels{}, help{}, field_help{}, counts{}, shares{}, total },
       basis{ labels{}, help{} } }
     Render state names from THIS document, not a hard-coded copy; the UI's baked
     fallback is pinned equal to it by a test and is only used when it 404s.
@@ -228,6 +392,12 @@ version X, worst images first?":
    data/image/index.json (OPTIONAL -- if it 404s, per-image documents are not in
    this build; stop, do not guess a filename), then GET the mapped
    data/image/<slug>.json (OPTIONAL).
+6. For "I am running image REPO:TAG -- what is on it?": resolve REPO through
+   data/image/index.json, GET the per-image document, and MATCH ON tag. Use
+   tags_by_release to see which AKS release ships that tag. Do NOT report the
+   repo's whole cves[] (a union across every tag and release) as that tag's
+   exposure, and do NOT assume the first tag listed for a release is yours -- a
+   release commonly ships several tags of the same image.
 
 ## Worked example -- a spreadsheet column of CVE ids against one version
 

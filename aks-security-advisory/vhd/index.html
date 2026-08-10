@@ -44,14 +44,21 @@
       <section class="agent-deeplink-help">
         <h2>Reading this without JavaScript?</h2>
         <p>
-          Per-CVE detail is rendered in-browser from the URL fragment, so a
-          deep link shows no content without JavaScript. The same data is
-          available as static JSON:
+          Per-CVE detail is rendered in-browser from the URL fragment, and a
+          fragment is never sent to the server, so <em>this</em> page cannot
+          know which CVE you asked for without JavaScript. Every advisory is
+          also published at its own address, which does not need JavaScript:
         </p>
         <ul>
-          <li>One advisory:
+          <li>One advisory as a page:
+            <code>../data/advisory-pages/&lt;ID&gt;.html</code>
+            (upper-case the id, e.g. <code>CVE-2025-1234</code>) &mdash; the
+            same facts as the JSON, readable without JavaScript. This is a
+            new endpoint: if it returns 404 the published feed predates it,
+            so use the JSON below.</li>
+          <li>One advisory as JSON:
             <code>../data/advisories/&lt;ID&gt;.json</code>
-            (upper-case the id, e.g. <code>CVE-2025-1234</code>).</li>
+            &mdash; authoritative; prefer it if you can parse JSON.</li>
           <li>Full feed index: <code>../data/index.json</code>.</li>
           <li>Agent overview and the full JSON contract:
             <a href="../llms.txt">llms.txt</a>.</li>

@@ -21,20 +21,20 @@
     "counts": {
       "fixed": 7123,
       "fix_available_upstream": 13,
-      "affected": 5120,
-      "not_affected": 5016,
-      "under_investigation": 326,
-      "will_not_fix": 790
+      "affected": 5106,
+      "not_affected": 5020,
+      "under_investigation": 350,
+      "will_not_fix": 793
     },
     "shares": {
-      "fixed": 0.3874,
+      "fixed": 0.387,
       "not_affected": 0.2728,
-      "will_not_fix": 0.043,
-      "under_investigation": 0.0177,
-      "affected": 0.2784,
+      "will_not_fix": 0.0431,
+      "under_investigation": 0.019,
+      "affected": 0.2774,
       "fix_available_upstream": 0.0007
     },
-    "total": 18388,
+    "total": 18405,
     "counts_basis": "per-advisory headline_status -- the single most-actionable status across all OS/SKU lineages, counted once per advisory (see issue #39, F7). This is NOT a per-package-row distribution: do not read status.shares as 'the share of my packages that are affected'; it over-weights the actionable buckets relative to true per-SKU prevalence."
   },
   "coverage": {
@@ -128,5 +128,5 @@
     },
     "release_notes_verified": true
   },
-  "generated": "2026-08-07T20:16:39Z"
+  "generated": "2026-08-10T08:30:22Z"
 }

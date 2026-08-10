@@ -88,10 +88,12 @@
     <noscript>
       <section class="agent-deeplink-help">
         <p>
-          Following a per-CVE deep link without JavaScript? The advisory data
-          is published as static JSON at
-          <code>data/advisories/&lt;ID&gt;.json</code> (upper-case the id) and
-          the full feed at <code>data/index.json</code>. See
+          Following a per-CVE deep link without JavaScript? Every advisory is
+          published at its own address as a page,
+          <code>data/advisory-pages/&lt;ID&gt;.html</code> (a new endpoint
+          &mdash; a 404 means the published feed predates it), and as JSON at
+          <code>data/advisories/&lt;ID&gt;.json</code> (upper-case the id);
+          the full feed is at <code>data/index.json</code>. See
           <a href="llms.txt">llms.txt</a> for the machine-readable contract.
         </p>
       </section>

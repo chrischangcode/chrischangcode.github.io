@@ -94,6 +94,14 @@ root). All files are plain JSON. Endpoint shapes:
     { schema_version, type, release, count, generated, packages[],
       advisories[{ id, headline_status, severity?, packages:[int,...] }] }
 
+- data/advisory-pages/<ID>.html  (OPTIONAL -- may be absent on older feeds)
+    The same advisory as a pre-rendered page, for clients that cannot run the
+    browser's JavaScript. The browser deep link (vhd/#/<ID>) is hash-routed, so
+    the server never receives the id and returns an empty shell; this path
+    returns the advisory itself. Carries the summary, the packages[] table and
+    a schema.org JSON-LD block. The JSON below stays authoritative -- prefer it
+    whenever you can parse JSON.
+
 - data/advisories/<ID>.json
     Full per-advisory detail. <ID> is uppercase and may be CVE-*, GO-* (Go vuln
     DB) or GHSA-* (GitHub advisories):

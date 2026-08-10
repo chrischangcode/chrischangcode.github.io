@@ -38,8 +38,15 @@ are volatile and are published, build-consistent, in the feed itself:
 
 - **Base endpoints exist.** `data/index.json` (full advisory listing) and
   `data/advisories/<CVE>.json` (one document per advisory) are non-optional.
+- **Every advisory has an HTML twin.** `data/advisory-pages/<CVE>.html` renders
+  the same record as `data/advisories/<CVE>.json` and needs no JavaScript, so a
+  pasted URL returns the advisory rather than an empty shell. The JSON remains
+  authoritative; the page is a representation of it, never a second source of
+  truth. The collection is optional -- check `manifest.json` before relying on
+  it, and fall back to the JSON, which is not optional.
 - **Identifiers are stable keys.** A `<CVE>` id maps to
-  `data/advisories/<CVE>.json`. Do not construct any other filename yourself:
+  `data/advisories/<CVE>.json` and `data/advisory-pages/<CVE>.html`. Do not
+  construct any other filename yourself:
   resolve package and pathmap filenames through the relevant
   `index.json` (`by-package/index.json`, `pathmap/index.json`), which may map a
   logical name to a different or aliased file.

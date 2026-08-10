@@ -54,6 +54,41 @@ let ATTRIBUTION_HELP = {
   k8s_unmapped: "This image is absent from every frozen Kubernetes snapshot, so it cannot be attributed to any Kubernetes version. It is listed under its AKS release version(s) only. This is the demonstrable fact; the feed does NOT claim a reason (e.g. 'served regardless of Kubernetes version') the data cannot establish.",
 };
 
+// CVE source: whether a per-tag CVE count is that tag's own set or an upper bound.
+let CVE_SOURCE_LABELS = {
+  per_tag: "This tag's own CVEs",
+  target_union: "Union across the target's tags (upper bound)",
+  target_unattributed: "On the container, tag unknown (upper bound)",
+};
+
+let CVE_SOURCE_HELP = {
+  per_tag: "The count is this image tag's OWN CVE set. An AKS release ships several tags of one image (one per supported Kubernetes minor) and the scanned container's CVE list is the union across them, so this split is what makes a per-tag count truthful. For a container shipping a single reference the aggregate already IS that reference's set; for several, it was de-aggregated using each tag's own per-image report.",
+  target_union: "The per-image report was unavailable for at least one of the tags on this container, so the split could not be derived. The number shown is the union across ALL of the container's tags and is an UPPER BOUND for this tag -- it is never silently pinned to one tag.",
+  target_unattributed: "This CVE is on the scanned container by the release report's own account, but no tag's per-image report claimed it, so it cannot be pinned to one tag. It is listed against every tag of the container as an UPPER BOUND rather than withheld -- withholding it would make the container look unaffected when it is not.",
+};
+
+// Comparability: whether an upgrade delta's two release reports share a scan run.
+let COMPARABILITY_LABELS = {
+  same_scan: "Same scan run (fully comparable)",
+  cross_scan: "Different scan runs (one direction only)",
+};
+
+let COMPARABILITY_HELP = {
+  same_scan: "Both release reports were produced by the same scan run, so the scanner's vulnerability database is identical on both sides. A CVE appearing or disappearing between them is a real change in AKS, and both directions are published.",
+  cross_scan: "The two release reports were scanned at different times and are never re-scanned, so the vulnerability database moved between them. CVEs the newer release appears to ADD are overwhelmingly database growth rather than regressions -- measured on live data, same-scan pairs differ by 3 and 15 ids while cross-scan pairs differ by 288 and 380 -- so new_in_latest is omitted entirely rather than published as fact. The fix direction is still shown but is marked no_longer_reported, because an id can also vanish by being withdrawn or rescored.",
+};
+
+let UPGRADE_FIELD_HELP = {
+  buckets: "fixed, partially_fixed and still_present are MUTUALLY EXCLUSIVE at the CVE level: an id appears in exactly one of them. Bucketing per (container, CVE) instead would put the same id under both fixed and still_present -- measured on one live pair, 150 of 171 ids fixed somewhere were still active elsewhere -- and a reader seeing such an id under fixed would wrongly conclude the upgrade clears it.",
+  fixed: "CVEs cleared from EVERY container that carried them. Upgrading resolves these cluster-wide. Each names first_fixed_release: the release you must actually REACH, which is the NEWEST of the per-container first fixes, since the CVE is only cleared once every affected container is fixed. It is also the release the CVE stays gone FROM -- a CVE can disappear and recur, and naming the first lapse would point at a release where it is active again later.",
+  partially_fixed: "CVEs cleared on SOME containers and still active on others. Upgrading reduces exposure but does NOT clear these. fixed_on lists where they go away, still_on where they remain. Do not read these as fixed.",
+  still_present: "CVEs active on BOTH releases and cleared nowhere. Upgrading does not touch these. This is first-class output, not a footnote: it is usually far larger than fixed, and a customer deciding whether to upgrade needs it.",
+  new_in_latest: "CVEs on NO container before the upgrade and on at least one after. An id you already carry elsewhere is not something the upgrade introduces, so it is excluded. Published ONLY on a same_scan pair. On a cross_scan pair the key is ABSENT, which means 'cannot be determined' -- an empty list would wrongly assert 'none'.",
+  targets: "Containers compared, plus those present in only one of the two releases. Containers that exist in only one release are excluded from every count: folding them in would report a CVE as fixed or new when the container merely came or went.",
+};
+
+let SPLIT_EXACT_HELP = "True when the per-tag split is exact. for either reason a split can fail: no per-image report was available for some tag (cve_source target_union), or a CVE the container reports matched no tag's report (listed as unattributed_cves and published against every tag, never dropped). So False does not by itself imply unattributed_cves is present -- read cve_source as well. A per-image report carrying ids the frozen release does not is intersected away and does NOT make a split inexact: measured over a full build, 192 of 411 multi-tag containers carry such ids (8,917 in total) against 24 carrying unattributable ones (281).";
+
 // The single demonstrable reason attached to a k8s_unmapped image.
 let UNMAPPED_REASON_HELP = {
   absent_from_all_k8s_reports: "The image reference does not appear in any per-Kubernetes-version scan report. This is the only claim made about an unmapped image.",
@@ -118,6 +153,8 @@ const state = {
   firstFixIndex: null,               // cve -> [first-fix record...], derived from releaseDocs
   imageIndex: undefined,             // image/index.json ({name->file}); null once tried+absent
   imageDocCache: new Map(),
+  upgradeIndex: undefined,           // upgrade/index.json; null once tried+absent
+  upgradeCache: new Map(),           // from_release -> upgrade/<from>.json
   glossary: { data: null, tried: false },
   bulk: { raw: "", results: null, version: null },  // Screen 2 bulk-triage state
 };
@@ -247,6 +284,8 @@ function applyGlossary(doc) {
   if (!doc || typeof doc !== "object") return;
   const attr = doc.attribution || {};
   const ff = doc.first_fixed_source || {};
+  const cs = doc.cve_source || {};
+  const cmp = doc.comparability || {};
   const ps = doc.presentation_state || {};
   const basis = doc.basis || {};
   const pick = (o, baked) =>
@@ -256,6 +295,14 @@ function applyGlossary(doc) {
   UNMAPPED_REASON_HELP = pick(attr.unmapped_reason_help, UNMAPPED_REASON_HELP);
   FIRST_FIXED_SOURCE_LABELS = pick(ff.labels, FIRST_FIXED_SOURCE_LABELS);
   FIRST_FIXED_SOURCE_HELP = pick(ff.help, FIRST_FIXED_SOURCE_HELP);
+  CVE_SOURCE_LABELS = pick(cs.labels, CVE_SOURCE_LABELS);
+  CVE_SOURCE_HELP = pick(cs.help, CVE_SOURCE_HELP);
+  if (typeof cs.split_exact_help === "string" && cs.split_exact_help) {
+    SPLIT_EXACT_HELP = cs.split_exact_help;
+  }
+  COMPARABILITY_LABELS = pick(cmp.labels, COMPARABILITY_LABELS);
+  COMPARABILITY_HELP = pick(cmp.help, COMPARABILITY_HELP);
+  UPGRADE_FIELD_HELP = pick(cmp.field_help, UPGRADE_FIELD_HELP);
   PRESENTATION_LABELS = pick(ps.labels, PRESENTATION_LABELS);
   PRESENTATION_HELP = pick(ps.help, PRESENTATION_HELP);
   BASIS_LABELS = pick(basis.labels, BASIS_LABELS);
@@ -651,6 +698,10 @@ function renderHome(opts) {
       el("p", { class: "note" }, "The scanned versions below were captured at different times. A naive CVE count is INVERTED by this: an older scan reports fewer CVEs only because it ran against an older vulnerability database, not because that version is safer. Counts are only comparable within a cohort (a scan date)."),
       el("p", { class: "note" }, "Scan cohorts in this feed (newest first):"),
       el("ul", { class: "bullets" }, cohortRows),
+    ]),
+    el("div", { class: "card" }, [
+      el("h3", null, ["Already know your AKS release? See what upgrading fixes", info("AKS releases roll out progressively, so most clusters are running a release that is not the newest. This view compares the release you are on with the newest one: what an upgrade fixes, what it does NOT fix, and which release fixed each CVE.")]),
+      el("p", { class: "note" }, ["The per-version screens above answer \u201Cwhat is in this version\u201D. ", el("a", { href: "#/upgrade" }, "Upgrade impact"), " answers \u201Cwhat do I gain by moving\u201D \u2014 including the CVEs an upgrade will not clear."]),
     ]),
     el("p", { class: "note" }, [state.index.aks_releases ? state.index.aks_releases.length + " AKS release trains are also indexed. " : "", "See the ", el("a", { href: "#/help" }, "Help & glossary"), " page for how the two evidence axes differ and must never be blended."]),
   ]);
@@ -1206,6 +1257,45 @@ async function renderImage(repoRaw) {
   renderImageDoc(head, doc);
 }
 
+function cveSourceBadge(e) {
+  // Only mark the honest exception. A per_tag count is the norm and needs no
+  // decoration; an upper bound must never be mistaken for this tag's own count.
+  const src = e && e.cve_source;
+  if (!src || src === "per_tag") {
+    if (e && e.split_exact === false) {
+      const n = e.unattributed_cve_count || 0;
+      return el("span", { class: "badge warn", title: SPLIT_EXACT_HELP },
+                n ? "+" + n + " tag unknown" : "approx");
+    }
+    return null;
+  }
+  return el("span", { class: "badge warn", title: CVE_SOURCE_HELP[src] || "" },
+            CVE_SOURCE_LABELS[src] || src);
+}
+
+function tagsByReleaseCard(doc) {
+  // The flat `tags` union cannot answer "which tag ships in release X" — the
+  // question a customer holding one tag actually has (issue #69).
+  const rows = (doc.tags_by_release || []).slice().reverse().map((e) =>
+    el("tr", null, [
+      el("td", { class: "mono" }, e.release),
+      el("td", null, (e.tags || []).length
+        ? el("div", { class: "tag-list" }, (e.tags || []).map((t) =>
+            el("span", { class: "mono chip-static" }, t)))
+        : "\u2014"),
+    ]));
+  return el("div", { class: "card" }, [
+    el("h3", null, ["Which tag ships in which AKS release",
+                    info("An AKS release ships one tag of this image per supported Kubernetes minor, so a release can list several tags. Newest release first.")]),
+    basisBadge("release_history"),
+    rows.length
+      ? el("div", { class: "table-wrap" }, el("table", null, [
+          el("thead", null, el("tr", null, [el("th", null, "AKS release"), el("th", null, "Tag(s) shipped")])),
+          el("tbody", null, rows)]))
+      : el("p", { class: "note" }, "This image is not tracked in any AKS release report."),
+  ]);
+}
+
 function renderImageDoc(head, doc) {
   const k8sRows = (doc.k8s || []).slice().sort((a, b) => cmpVersion(b.k8s_version, a.k8s_version)).map((e) =>
     el("tr", null, [
@@ -1224,12 +1314,13 @@ function renderImageDoc(head, doc) {
       : el("p", { class: "note" }, "This image is not present in any frozen Kubernetes snapshot."),
   ]);
 
-  const relRows = (doc.releases || []).map((e) =>
+  const relRows = (doc.releases || []).slice().reverse().map((e) =>
     el("tr", null, [
       el("td", { class: "mono" }, e.release),
       el("td", { class: "mono" }, e.tag || "\u2014"),
       el("td", { class: "mono small" }, (e.pod_namespace || "") + "/" + (e.container_name || "")),
-      el("td", null, String(e.active_cve_count != null ? e.active_cve_count : "\u2014")),
+      el("td", null, [String(e.active_cve_count != null ? e.active_cve_count : "\u2014"), " ",
+                      cveSourceBadge(e)]),
       el("td", null, attrBadge((e.k8s_attribution || {}).state)),
       el("td", null, e.report_time ? [fmtDate(e.report_time) + " ", ageBadge(e)] : ageBadge(e)),
     ]));
@@ -1238,7 +1329,7 @@ function renderImageDoc(head, doc) {
     basisBadge("release_history"),
     (doc.releases || []).length
       ? el("div", { class: "table-wrap" }, el("table", null, [
-          el("thead", null, el("tr", null, [el("th", null, "Release"), el("th", null, "Tag"), el("th", null, "Target"), el("th", null, "Active CVEs"), el("th", null, "Attribution"), el("th", null, ["Scanned", info("The AKS release axis is continuously rescanned; this is when THIS release's scan ran. An old release scan under-reports newer CVEs exactly like an old k8s snapshot (issue #40 F2).")])])),
+          el("thead", null, el("tr", null, [el("th", null, "Release"), el("th", null, "Tag"), el("th", null, "Target"), el("th", null, ["Active CVEs", info(CVE_SOURCE_HELP.per_tag)]), el("th", null, "Attribution"), el("th", null, ["Scanned", info("The AKS release axis is continuously rescanned; this is when THIS release's scan ran. An old release scan under-reports newer CVEs exactly like an old k8s snapshot (issue #40 F2).")])])),
           el("tbody", null, relRows)]))
       : el("p", { class: "note" }, "This image is not tracked in any AKS release report."),
   ]);
@@ -1256,7 +1347,257 @@ function renderImageDoc(head, doc) {
     })(),
   ]);
 
-  $app().replaceChildren(el("div", null, [head, summary, k8sCard, relCard]));
+  $app().replaceChildren(el("div", null, [head, summary, tagsByReleaseCard(doc), k8sCard, relCard]));
+  setGeneratedFooter();
+}
+
+/* ---------- Screen 6: upgrade impact  #/upgrade[/<from_release>] ----------
+
+   AKS rolls out progressively, so most of the fleet is running a release that
+   is NOT the newest. Screens 1-4 answer "what does release N contain"; this one
+   answers the question a customer on an older release actually has: if I
+   upgrade, what gets fixed, what does NOT, and which release fixed it.
+
+   The comparability gate is the load-bearing part of this screen. Release
+   reports are scanned once and never re-scanned, so across two scan dates the
+   scanner's own database has moved and "new in the target release" is mostly
+   database growth, not regressions. The feed omits that direction entirely on a
+   cross_scan pair; this screen must SAY SO rather than render an empty list,
+   which would read as "nothing new" — the same silence-as-reassurance defect
+   the whole site is built to avoid. */
+
+async function loadUpgradeIndex() {
+  if (state.upgradeIndex !== undefined) return state.upgradeIndex;
+  try { state.upgradeIndex = await fetchJson("upgrade/index.json"); }
+  catch (_e) { state.upgradeIndex = null; }   // feed may pre-date this family
+  return state.upgradeIndex;
+}
+
+async function loadUpgrade(from) {
+  if (state.upgradeCache.has(from)) return state.upgradeCache.get(from);
+  // Resolve through upgrade/index.json rather than constructing the filename.
+  // The manifest advertises no build-your-own pattern for this collection
+  // precisely because it ships an index, and the same discipline the image
+  // screen follows applies here: never guess a path.
+  const idx = await loadUpgradeIndex();
+  const entry = ((idx && idx.items) || []).find((it) => it.name === from);
+  if (!entry) { const e = new Error("not in upgrade/index.json"); e.status = 404; throw e; }
+  const doc = await fetchJson("upgrade/" + entry.file);
+  state.upgradeCache.set(from, doc);
+  return doc;
+}
+
+function comparabilityBadge(c) {
+  return el("span", {
+    class: "badge " + (c === "same_scan" ? "ok" : "warn"),
+    title: labelOf(COMPARABILITY_LABELS, c) + " \u2014 " + (COMPARABILITY_HELP[c] || ""),
+  }, labelOf(COMPARABILITY_LABELS, c));
+}
+
+function upgradeHead(sub) {
+  return el("div", null, [
+    el("a", { class: "back", href: "#/" }, "\u2190 Choose a version"),
+    el("h2", null, "Upgrade impact"),
+    sub ? el("p", { class: "note" }, sub) : null,
+  ]);
+}
+
+async function renderUpgradeHome() {
+  const idx = await loadUpgradeIndex();
+  const head = upgradeHead(null);
+  if (!idx || !(idx.upgrades || []).length) {
+    $app().replaceChildren(el("div", null, [head, el("div", { class: "card notice" }, [
+      el("h3", null, "Upgrade deltas are not present in this feed build"),
+      el("p", { class: "note" }, ["This screen is driven by ", el("span", { class: "mono" }, "upgrade/index.json"), ", which this build does not publish. Nothing is broken \u2014 the site can deploy ahead of the feed."]),
+    ])]));
+    return;
+  }
+  const rows = (idx.upgrades || []).slice().reverse().map((r) => {
+    const s = r.summary || {};
+    return el("tr", null, [
+      el("td", { class: "mono" }, el("a", { href: "#/upgrade/" + encodeURIComponent(r.from_release) }, r.from_release)),
+      el("td", null, String(r.release_gap != null ? r.release_gap : "\u2014")),
+      el("td", null, String(s.fixed != null ? s.fixed : "\u2014")),
+      el("td", null, String(s.partially_fixed != null ? s.partially_fixed : "\u2014")),
+      el("td", null, String(s.still_present != null ? s.still_present : "\u2014")),
+      // An absent count is "cannot be determined", NOT zero. Rendering 0 here
+      // would assert the target release introduced nothing, which is exactly
+      // the claim a cross-scan pair cannot support.
+      el("td", null, s.new_in_latest != null ? String(s.new_in_latest)
+        : el("span", { class: "muted", title: COMPARABILITY_HELP.cross_scan }, "not determinable")),
+      el("td", null, comparabilityBadge(r.comparability)),
+    ]);
+  });
+  $app().replaceChildren(el("div", null, [
+    head,
+    el("div", { class: "card" }, [
+      el("h3", null, ["Pick the AKS release you are running", info("Run az aks show --query currentKubernetesVersion, or check the AKS release notes for the release train your cluster is on.")]),
+      el("p", { class: "note" }, ["Every row compares that release with ", el("span", { class: "mono" }, idx.to_release || "the newest release"), ", the newest in this feed."]),
+      basisBadge("release_history"),
+      el("div", { class: "table-wrap" }, el("table", null, [
+        el("thead", null, el("tr", null, [
+          el("th", null, "You are on"),
+          el("th", null, ["Releases behind", info("How many releases the upgrade crosses.")]),
+          el("th", null, ["Fixed", info(UPGRADE_FIELD_HELP.fixed)]),
+          el("th", null, ["Partly fixed", info(UPGRADE_FIELD_HELP.partially_fixed)]),
+          el("th", null, ["Still present", info(UPGRADE_FIELD_HELP.still_present)]),
+          el("th", null, ["New in target", info(UPGRADE_FIELD_HELP.new_in_latest)]),
+          el("th", null, "Comparability"),
+        ])),
+        el("tbody", null, rows)])),
+    ]),
+  ]));
+  setGeneratedFooter();
+}
+
+function upgradeCveRows(records, opts) {
+  return (records || []).map((r) => {
+    const targets = r[opts.field || "targets"] || [];
+    const imgs = [];
+    for (const t of targets) {
+      for (const im of (opts.toSide ? t.to_images : t.from_images) || []) {
+        if (imgs.indexOf(im) < 0) imgs.push(im);
+      }
+    }
+    const cells = [
+      el("td", { class: "mono" }, r.cve),
+      el("td", null, el("div", { class: "tag-list" }, targets.map((t) =>
+        el("span", { class: "mono small chip-static" },
+           (t.pod_namespace || "") + "/" + (t.container_name || ""))))),
+      el("td", null, el("div", { class: "tag-list" }, imgs.map((im) =>
+        el("span", { class: "mono small chip-static" }, im)))),
+    ];
+    if (opts.showFix) {
+      cells.push(el("td", { class: "mono" }, [
+        r.first_fixed_release || "\u2014",
+        " ",
+        r.first_fixed_source
+          ? el("span", { class: "badge", title: labelOf(FIRST_FIXED_SOURCE_LABELS, r.first_fixed_source) + " \u2014 " + (FIRST_FIXED_SOURCE_HELP[r.first_fixed_source] || "") },
+               labelOf(FIRST_FIXED_SOURCE_LABELS, r.first_fixed_source))
+          : null,
+        r.no_longer_reported
+          ? el("span", { class: "badge warn", title: COMPARABILITY_HELP.cross_scan }, "no longer reported")
+          : null,
+      ]));
+    }
+    return el("tr", null, cells);
+  });
+}
+
+function upgradeCveCard(title, help, records, opts) {
+  const rows = upgradeCveRows(records, opts || {});
+  const heads = [el("th", null, "CVE"), el("th", null, "Container"),
+                 el("th", null, opts && opts.toSide ? "Image you upgrade to" : "Image you are running")];
+  if (opts && opts.showFix) {
+    heads.push(el("th", null, ["Fixed in release", info(UPGRADE_FIELD_HELP.fixed)]));
+  }
+  return el("div", { class: "card" }, [
+    el("h3", null, [title + " (" + (records || []).length + ")", info(help)]),
+    rows.length
+      ? el("div", { class: "table-wrap" }, el("table", null, [
+          el("thead", null, el("tr", null, heads)), el("tbody", null, rows)]))
+      : el("p", { class: "note" }, "None."),
+  ]);
+}
+
+function upgradePartialCard(records, toRelease) {
+  const rows = (records || []).map((r) => {
+    const chips = (list, side) => el("div", { class: "tag-list" }, (list || []).map((t) =>
+      el("span", { class: "mono small chip-static" },
+         (t.pod_namespace || "") + "/" + (t.container_name || ""))));
+    return el("tr", null, [
+      el("td", { class: "mono" }, r.cve),
+      el("td", null, chips(r.fixed_on)),
+      el("td", null, chips(r.still_on)),
+      el("td", { class: "mono" }, [
+        r.first_fixed_release || "\u2014", " ",
+        r.no_longer_reported
+          ? el("span", { class: "badge warn", title: COMPARABILITY_HELP.cross_scan }, "no longer reported")
+          : null,
+      ]),
+    ]);
+  });
+  return el("div", { class: "card" }, [
+    el("h3", null, ["Only partly fixed by upgrading (" + (records || []).length + ")",
+                    info(UPGRADE_FIELD_HELP.partially_fixed)]),
+    el("p", { class: "note" }, ["These CVEs go away on some containers and stay on others, so upgrading to ",
+      el("span", { class: "mono" }, toRelease),
+      " reduces your exposure but does not clear them. They are listed here rather than under \u201Cfixed\u201D on purpose \u2014 counting them as fixed is the single easiest way to overstate what an upgrade buys you."]),
+    rows.length
+      ? el("div", { class: "table-wrap" }, el("table", null, [
+          el("thead", null, el("tr", null, [
+            el("th", null, "CVE"),
+            el("th", null, "Goes away on"),
+            el("th", null, ["Still remains on", info(UPGRADE_FIELD_HELP.still_present)]),
+            el("th", null, "Cleared everywhere it goes away by"),
+          ])),
+          el("tbody", null, rows)]))
+      : el("p", { class: "note" }, "None."),
+  ]);
+}
+
+async function renderUpgrade(from) {
+  const head = upgradeHead(null);
+  let doc;
+  try { doc = await loadUpgrade(from); }
+  catch (e) {
+    $app().replaceChildren(el("div", null, [head, el("div", { class: "card notice" }, [
+      el("h3", null, "No upgrade delta for this release"),
+      el("p", { class: "note" }, ["There is no ", el("span", { class: "mono" }, "upgrade/" + from + ".json"), " in this feed (" + e.message + "). Only the most recent releases get one \u2014 pick one from the ", el("a", { href: "#/upgrade" }, "upgrade impact"), " list."]),
+    ])]));
+    return;
+  }
+  const s = doc.summary || {};
+  const cross = doc.comparability !== "same_scan";
+  const dl = el("dl", { class: "kv" }, [
+    el("dt", null, "You are on"), el("dd", { class: "mono" }, doc.from_release),
+    el("dt", null, "Upgrading to"), el("dd", { class: "mono" }, doc.to_release),
+    el("dt", null, "Releases crossed"), el("dd", null, (doc.releases_crossed || []).join(", ") || "\u2014"),
+    el("dt", null, "Containers compared"), el("dd", null, String((doc.targets || {}).compared != null ? doc.targets.compared : "\u2014")),
+    el("dt", null, "Your release scanned"), el("dd", null, [fmtDate(doc.from_report_time), " ", ageBadge({ scan_age_days: doc.from_scan_age_days })]),
+    el("dt", null, "Target release scanned"), el("dd", null, [fmtDate(doc.to_report_time), " ", ageBadge({ scan_age_days: doc.to_scan_age_days })]),
+  ]);
+  const onlyFrom = ((doc.targets || {}).only_in_from || []).length;
+  const onlyTo = ((doc.targets || {}).only_in_to || []).length;
+  const summary = el("div", { class: "card" }, [
+    el("h3", null, ["Upgrading " + doc.from_release + " \u2192 " + doc.to_release, info(BASIS_HELP.release_history)]),
+    el("p", null, [basisBadge("release_history"), " ", comparabilityBadge(doc.comparability)]),
+    el("p", { class: "note" }, doc.comparability_note || COMPARABILITY_HELP[doc.comparability] || ""),
+    dl,
+    (onlyFrom || onlyTo)
+      ? el("p", { class: "note" }, [
+          info(UPGRADE_FIELD_HELP.targets), " ",
+          onlyFrom + " container(s) exist only on " + doc.from_release + " and " + onlyTo +
+          " only on " + doc.to_release + ". They are excluded from every count above \u2014 a container that came or went is not a CVE that was fixed or introduced."])
+      : null,
+  ]);
+  const cards = [
+    head, summary,
+    upgradeCveCard("Fixed by upgrading", UPGRADE_FIELD_HELP.fixed, doc.fixed,
+                   { showFix: true }),
+    upgradePartialCard(doc.partially_fixed, doc.to_release),
+    upgradeCveCard("Still present after upgrading", UPGRADE_FIELD_HELP.still_present,
+                   doc.still_present, { toSide: true }),
+  ];
+  if (Array.isArray(doc.new_in_latest)) {
+    cards.push(upgradeCveCard("New in " + doc.to_release, UPGRADE_FIELD_HELP.new_in_latest,
+                              doc.new_in_latest, { toSide: true }));
+  } else {
+    // The key is absent, not empty. Say why, loudly, instead of showing an empty
+    // table that a reader would take as "the upgrade introduces nothing".
+    cards.push(el("div", { class: "card notice" }, [
+      el("h3", null, ["What the upgrade might ADD cannot be determined here", info(UPGRADE_FIELD_HELP.new_in_latest)]),
+      el("p", { class: "note" }, COMPARABILITY_HELP.cross_scan),
+      el("p", { class: "note" }, "This is deliberately blank rather than an empty list: an empty list would claim the newer release introduces nothing, and these two reports were scanned against different vulnerability databases, so that claim is not supported."),
+    ]));
+  }
+  if (cross) {
+    cards.splice(2, 0, el("p", { class: "note" }, [
+      el("strong", null, "Read the fixed list as \u201Cno longer reported\u201D. "),
+      "These two releases were scanned at different times, so a CVE can also disappear by being withdrawn or rescored rather than fixed.",
+    ]));
+  }
+  $app().replaceChildren(el("div", null, cards));
   setGeneratedFooter();
 }
 
@@ -1281,6 +1622,8 @@ function renderHelp() {
   const g = state.glossary.data || {};
   const attr = g.attribution || {};
   const ff = g.first_fixed_source || {};
+  const cs = g.cve_source || {};
+  const cmp = g.comparability || {};
   const ps = g.presentation_state || {};
 
   const view = el("div", { class: "help" }, [
@@ -1310,6 +1653,19 @@ function renderHelp() {
       ff.total ? "Counts are measured from the current build." : null,
       FIRST_FIXED_SOURCE_LABELS, FIRST_FIXED_SOURCE_HELP, ff.counts, ff.shares, ff.total),
 
+    el("h3", null, "One image, several tags per AKS release"),
+    el("p", { class: "note" }, "An AKS release ships several tags of the same image \u2014 typically one per supported Kubernetes minor \u2014 and the scanner reports one CVE list for the whole scanned container, which is the UNION across those tags. Every shipped tag is listed separately with its own de-aggregated CVE count, so a tag is never credited with a sibling tag's CVEs (issue #69)."),
+    glossarySection("Per-tag CVE counts",
+      cs.total ? "Counts are measured from the current build." : null,
+      CVE_SOURCE_LABELS, CVE_SOURCE_HELP, cs.counts, cs.shares, cs.total),
+
+    el("h3", null, "Upgrading when you are several releases behind"),
+    el("p", { class: "note" }, ["AKS releases roll out progressively, so at any moment most clusters run a release that is not the newest. ", el("a", { href: "#/upgrade" }, "Upgrade impact"), " compares the release you are on with the newest one and names the release that fixed each CVE. The per-release ", el("span", { class: "mono" }, "first_fixes"), " is single-hop and only answers \u201Cwhat did this release fix relative to the one before it\u201D, which is no help if you are three releases behind."]),
+    el("p", { class: "note" }, "Whether that comparison is fully trustworthy depends on scan dates. Release reports are scanned once and never re-scanned, so across two scan dates the scanner's vulnerability database has moved: CVEs the newer release appears to ADD are overwhelmingly database growth, not regressions. The feed omits that direction entirely rather than publishing it as fact."),
+    glossarySection("Upgrade comparability",
+      cmp.total ? "Counts are measured from the current build." : null,
+      COMPARABILITY_LABELS, COMPARABILITY_HELP, cmp.counts, cmp.shares, cmp.total),
+
     el("h3", null, "Data contract"),
     el("p", { class: "note" }, "The feed is plain JSON you can consume directly. Read the endpoints, don't scrape this HTML:"),
     el("dl", { class: "kv help-kv" }, [
@@ -1317,6 +1673,7 @@ function renderHelp() {
       el("dt", null, "data/k8s/<version>.json"), el("dd", null, "One Kubernetes version; images[] pre-sorted by CVE count descending."),
       el("dt", null, "data/cve/<CVE>.json"), el("dd", null, "One CVE across both axes, kept separate: k8s[] (snapshots) and releases[] (release history, each with its attribution)."),
       el("dt", null, "data/release/<version>.json"), el("dd", null, "One AKS release; home of images that cannot be mapped to any Kubernetes version (k8s_unmapped). Carries first_fixes[]."),
+      el("dt", null, "data/upgrade/index.json + <release>.json"), el("dd", null, "What upgrading from a given release to the newest fixes, does not fix, and (only on a same_scan pair) adds. Each fixed CVE names the release that fixed it. new_in_latest is ABSENT, not empty, when the two releases were scanned at different times."),
       el("dt", null, "data/cve-index.json"), el("dd", null, "Slim triage: CVE → affected Kubernetes minors, interned."),
       el("dt", null, "data/image/index.json + <slug>.json"), el("dd", null, "Per-image detail. Resolve a repo to its file through the index — never guess the filename. Optional (may be absent in this build)."),
       el("dt", null, "data/glossary.json"), el("dd", null, "This controlled vocabulary, with per-value counts measured from the build."),
@@ -1359,6 +1716,11 @@ async function route() {
     if (!seg0) { renderHome(); return; }
     if (/^(help|glossary)$/i.test(seg0)) { renderHelp(); return; }
     if (/^image$/i.test(seg0)) { await renderImage(parts.slice(1).join("/")); return; }
+    if (/^upgrade$/i.test(seg0)) {
+      if (parts.length >= 2) { await renderUpgrade(parts[1]); return; }
+      await renderUpgradeHome();
+      return;
+    }
     if (/^\d+\.\d+/.test(seg0)) {
       if (parts.length >= 2) { await renderCve(seg0, parts[1]); return; }
       await renderVersion(seg0, query);

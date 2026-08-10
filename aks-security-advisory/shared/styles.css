@@ -176,8 +176,20 @@ td.cve a { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-wei
   color: var(--accent-hover);
 }
 
-.loading, .empty { color: var(--muted); padding: 2rem 0; text-align: center; }
-.error { color: var(--st-affected); padding: 1rem; border: 1px solid rgba(164,38,44,.30);
+/* A non-navigating chip: a tag string that is a fact, not a link. */
+.chip-static {
+  display: inline-block; background: var(--accent-soft); border: 1px solid var(--border);
+  border-radius: 6px; padding: .1rem .45rem; margin: .1rem .2rem .1rem 0;
+  font-size: .78rem; color: var(--fg, inherit);
+}
+.tag-list { display: flex; flex-wrap: wrap; gap: .15rem; }
+
+/* Marks a count that is an upper bound rather than that tag's own (issue #69). */
+.badge.warn {
+  background: rgba(202,128,4,.14); color: #8a5a00; border-color: rgba(202,128,4,.34);
+}
+
+.loading, .empty { color: var(--muted); padding: 2rem 0; text-align: center; }.error { color: var(--st-affected); padding: 1rem; border: 1px solid rgba(164,38,44,.30);
   background: rgba(164,38,44,.06); border-radius: 8px; }
 
 /* --- pager --- */

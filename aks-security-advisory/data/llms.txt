@@ -1,6 +1,6 @@
 # AKS Security Advisories -- machine-readable feed guide
 
-> GENERATED with this feed build (2026-08-07T20:17:45Z). Every byte size, release label and
+> GENERATED with this feed build (2026-08-10T08:31:26Z). Every byte size, release label and
 > count below is a fact about THIS build, walked from manifest.json and the
 > canonical vocabulary -- not a hand-written claim. Re-read manifest.json /
 > glossary.json for the authoritative live inventory.
@@ -27,14 +27,15 @@ Data root: https://chrischangcode.github.io/aks-security-advisory/data/
 
 ## Endpoints in THIS build (byte sizes from manifest.json)
 
-  data/advisories/  --  18,388 files, 231,289,829 B  --  required  --  schema 2.0
-  data/by-package/  --  549 files, 11,012,360 B  --  optional  --  schema 1.0
-  data/by-release/  --  27 files, 41,936,672 B  --  optional  --  schema 1.0
+  data/advisories/  --  18,405 files, 231,273,881 B  --  required  --  schema 2.0
+  data/advisory-pages/  --  18,405 files, 131,905,045 B  --  optional  --  schema 1.0
+  data/by-package/  --  552 files, 11,004,257 B  --  optional  --  schema 1.0
+  data/by-release/  --  27 files, 41,870,881 B  --  optional  --  schema 1.0
   data/components.json  --  9,202 B  --  optional  --  schema 2.0
-  data/glossary.json  --  12,946 B  --  optional  --  schema 2.0
-  data/index-slim.json  --  1,334,867 B, 18,388 entries  --  optional  --  schema 1.0
-  data/index.json  --  26,190,051 B, 18,388 entries  --  required  --  schema 2.0
-  data/pathmap/  --  4 files, 841,978 B  --  optional  --  schema 1.1
+  data/glossary.json  --  12,945 B  --  optional  --  schema 2.0
+  data/index-slim.json  --  1,336,207 B, 18,405 entries  --  optional  --  schema 1.0
+  data/index.json  --  26,179,060 B, 18,405 entries  --  required  --  schema 2.0
+  data/pathmap/  --  4 files, 842,218 B  --  optional  --  schema 1.1
 
 Read manifest.json FIRST to plan fetches and avoid the large index.json.
 Endpoints marked 'optional' may be absent on an older feed artifact; treat
@@ -79,13 +80,13 @@ by-release keys. Resolve a scanner path WITHIN one of these lineages:
     A scanned AKS VHD build ships a package version at or above the distro's fixed version. The 'first fixed build' field names the earliest build that carries the fix.
 - fix_available_upstream (Fix available upstream) -- count 13
     The distro (Azure Linux / Ubuntu) has published a fixed package, but none of the scanned VHD builds ship it yet. The fix exists upstream and is expected in a future node image.
-- affected (Affected) -- count 5120
+- affected (Affected) -- count 5106
     Vulnerable, with no fix AKS can ship yet. Comes from a vendor VEX / Ubuntu CVE Tracker assertion (a fixless CVE cannot be enumerated from OVAL alone), or from the binary scan overlay when a CVE survives to the newest scanned build. A scanned binary stays affected even if the scanner reports a fixed version, because that fix is in the bundled module and not in any artifact AKS ships — see evidence.module_fixed_version. The generated glossary records how large a share of the feed it is.
-- not_affected (Not affected) -- count 5016
+- not_affected (Not affected) -- count 5020
     Excluded by a vendor verdict — an Azure Linux CSAF/VEX justification or an Ubuntu CVE Tracker 'not-affected' (e.g. the vulnerable code path is not present/reachable). The justification is shown on the advisory.
-- under_investigation (Under investigation) -- count 326
+- under_investigation (Under investigation) -- count 350
     Triage is not complete — either no distro OVAL/VEX verdict exists yet, or the Ubuntu CVE Tracker marks the package 'needs-triage'.
-- will_not_fix (Will not fix) -- count 790
+- will_not_fix (Will not fix) -- count 793
     The vendor will not ship a fix (Ubuntu CVE Tracker 'ignored' — e.g. the release is past standard support, or the fix is deemed too intrusive). The reason is shown on the advisory.
 
 Do NOT assume any status is rare; consult glossary.json status.counts /
@@ -182,6 +183,13 @@ Machine-readable form of the worked example:
 - dataset.jsonld -- schema.org Dataset (distribution[] mirrors the data
                     endpoints above).
 - sitemap.xml    -- every endpoint + per-advisory URL.
+- data/advisory-pages/<ID>.html -- pre-rendered HTML twin of
+                    data/advisories/<ID>.json, from the same record.
+                    Use it when you cannot run JavaScript: the browser
+                    deep link vhd/#/<ID> is hash-routed, so the server
+                    never sees the id and returns an empty shell, while
+                    this path returns the advisory. The JSON stays
+                    authoritative -- prefer it when you can parse JSON.
 - A stable, human-readable data contract is published as DATA-CONTRACT.md at
   the site root.
 

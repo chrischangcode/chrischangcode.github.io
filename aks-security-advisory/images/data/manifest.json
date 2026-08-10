@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0",
   "type": "aks-images-feed-manifest",
-  "generated": "2026-08-07T20:18:08Z",
+  "generated": "2026-08-10T08:32:22Z",
   "data_root": ".",
-  "count": 8,
+  "count": 9,
   "endpoints": [
     {
       "path": "_index.json",
       "kind": "document",
-      "bytes": 65355,
+      "bytes": 65649,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": false
@@ -26,7 +26,7 @@
       "path": "cve/",
       "kind": "collection",
       "files": 4512,
-      "bytes": 66660012,
+      "bytes": 79459163,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": false,
@@ -35,7 +35,7 @@
     {
       "path": "glossary.json",
       "kind": "document",
-      "bytes": 4888,
+      "bytes": 10229,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": true
@@ -43,8 +43,8 @@
     {
       "path": "image/",
       "kind": "collection",
-      "files": 161,
-      "bytes": 5175674,
+      "files": 162,
+      "bytes": 6830654,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": false,
@@ -54,7 +54,7 @@
       "path": "k8s/",
       "kind": "collection",
       "files": 87,
-      "bytes": 3419831,
+      "bytes": 3419843,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": false,
@@ -63,7 +63,7 @@
     {
       "path": "manifest.json",
       "kind": "document",
-      "bytes": 1897,
+      "bytes": 2139,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": false
@@ -72,11 +72,21 @@
       "path": "release/",
       "kind": "collection",
       "files": 16,
-      "bytes": 3948266,
+      "bytes": 6182095,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": false,
       "pattern": "release/{release}.json"
+    },
+    {
+      "path": "upgrade/",
+      "kind": "collection",
+      "files": 4,
+      "bytes": 5935472,
+      "media_type": "application/json",
+      "schema_version": "1.0",
+      "optional": false,
+      "index": "upgrade/index.json"
     }
   ]
 }

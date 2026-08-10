@@ -1,1 +1,1 @@
-{"schema_version":"1.0","type":"aks-vhd-by-package","package":"tpm2-tools","count":1,"releases":["AKSAzureLinuxV3/cvmgen2"],"advisories":[{"id":"CVE-2024-29039","headline_status":"fixed","severity":"High","releases":[0]}],"generated":"2026-08-07T20:17:36Z"}
+{"schema_version":"1.0","type":"aks-vhd-by-package","package":"tpm2-tools","count":1,"releases":["AKSAzureLinuxV3/cvmgen2"],"advisories":[{"id":"CVE-2024-29039","headline_status":"fixed","severity":"High","releases":[0]}],"generated":"2026-08-10T08:31:13Z"}
