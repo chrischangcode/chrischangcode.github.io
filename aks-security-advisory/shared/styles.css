@@ -159,6 +159,11 @@ td.cve a { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-wei
 .cov-container_image { background: rgba(136,88,196,.12); color: #6b3fa0; border-color: rgba(136,88,196,.30); }
 .cov-not_baked { background: rgba(96,94,92,.12); color: var(--st-notaffected); border-color: rgba(96,94,92,.30); }
 .cov-not_assessed { background: rgba(96,94,92,.10); color: var(--st-notaffected); border-color: rgba(96,94,92,.24); }
+/* Install condition -- a different axis from coverage (see schema.CONDITION_*),
+   so it is deliberately styled as an outlined badge rather than another filled
+   coverage colour: it sits NEXT TO a coverage badge and must not read as one. */
+.condition-badge { background: transparent; border-style: dashed; font-weight: 500; }
+.cond-gpu_node { color: #6b3fa0; border-color: rgba(136,88,196,.55); }
 .comp-name { font-weight: 600; margin-right: .4rem; }
 .comp-ver { margin-right: .4rem; color: var(--muted, #605e5c); }
 .additive-items li { margin: .35rem 0; }

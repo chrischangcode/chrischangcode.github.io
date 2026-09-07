@@ -19,22 +19,22 @@
       "will_not_fix": "The vendor will not ship a fix (Ubuntu CVE Tracker 'ignored' \u2014 e.g. the release is past standard support, or the fix is deemed too intrusive). The reason is shown on the advisory."
     },
     "counts": {
-      "fixed": 7123,
-      "fix_available_upstream": 13,
-      "affected": 5106,
-      "not_affected": 5020,
-      "under_investigation": 350,
-      "will_not_fix": 793
+      "fixed": 6664,
+      "fix_available_upstream": 49,
+      "affected": 6367,
+      "not_affected": 5042,
+      "under_investigation": 949,
+      "will_not_fix": 1257
     },
     "shares": {
-      "fixed": 0.387,
-      "not_affected": 0.2728,
-      "will_not_fix": 0.0431,
-      "under_investigation": 0.019,
-      "affected": 0.2774,
-      "fix_available_upstream": 0.0007
+      "fixed": 0.3278,
+      "not_affected": 0.248,
+      "will_not_fix": 0.0618,
+      "under_investigation": 0.0467,
+      "affected": 0.3132,
+      "fix_available_upstream": 0.0024
     },
-    "total": 18405,
+    "total": 20328,
     "counts_basis": "per-advisory headline_status -- the single most-actionable status across all OS/SKU lineages, counted once per advisory (see issue #39, F7). This is NOT a per-package-row distribution: do not read status.shares as 'the share of my packages that are affected'; it over-weights the actionable buckets relative to true per-SKU prevalence."
   },
   "coverage": {
@@ -53,7 +53,7 @@
       "scan_pending": "Installed as a distro package (typically a Microsoft-repackaged one from packages.microsoft.com \u2014 e.g. moby-containerd, moby-runc, aznfs) that the base distro's advisory feed does NOT track. Its status is honestly unknown here; a binary scan is planned. Not treated as covered.",
       "aks_built": "Built by AKS or downloaded from upstream as a downloadable archive/package (oras, Azure CNI, cni-plugins, acr-mirror). No distro package exists for it in the base feed, so distro OVAL/CVE feeds do not track it; it is scanned by the binary overlay where an archive is available.",
       "container_image": "Built/distributed by AKS as an OCI container image rather than a downloadable archive (kubelet/kubectl via the kubernetes-node image, azure-acr-credential-provider). The binary scan overlay assesses downloadable archives, not images, so these are not scanned here and are tracked by their own upstream.",
-      "not_baked": "A distro package installed only conditionally (e.g. GPU drivers / DCGM at node provisioning) and absent from the mainstream baked image \u2014 nothing to assess for this lineage.",
+      "not_baked": "Listed in the release notes but never actually installed on this lineage \u2014 in practice a GPU component on an ARM64 image, where AgentBaker gates GPU driver install off entirely. Nothing to assess, and an advisory here would be a false positive.",
       "not_assessed": "Not tracked by the distro advisory feeds (e.g. cached container images)."
     },
     "why": {
@@ -61,26 +61,35 @@
       "scan_pending": "Microsoft-repackaged distro package the base feed doesn't track; binary scan planned.",
       "container_image": "Assessed by its upstream container image, not this feed.",
       "aks_built": "Tracked by its own upstream, not a distro advisory feed.",
-      "not_baked": "Not present in the mainstream baked image.",
+      "not_baked": "Never installed on this lineage's architecture.",
       "not_assessed": "Not tracked by the distro advisory feeds."
     },
     "counts": {
       "covered_by_package": 3,
-      "covered_by_scan": 16,
-      "scan_pending": 0,
+      "covered_by_scan": 22,
+      "scan_pending": 4,
       "aks_built": 1,
-      "container_image": 8,
-      "not_baked": 15,
+      "container_image": 11,
+      "not_baked": 2,
       "not_assessed": 0
     },
     "shares": {
       "aks_built": 0.0233,
-      "not_baked": 0.3488,
-      "covered_by_scan": 0.3721,
-      "container_image": 0.186,
-      "covered_by_package": 0.0698
+      "not_baked": 0.0465,
+      "covered_by_scan": 0.5116,
+      "container_image": 0.2558,
+      "covered_by_package": 0.0698,
+      "scan_pending": 0.093
     },
     "total": 43
+  },
+  "condition": {
+    "labels": {
+      "gpu_node": "GPU nodes only"
+    },
+    "help": {
+      "gpu_node": "AKS ships one VHD for GPU and non-GPU node pools, so this component is cached in every image but only installed on nodes whose VM size has an NVIDIA GPU (the N-series families) and whose pool did not opt out with --gpu-driver none. On any other node AgentBaker deletes the cached artifact during provisioning, so the advisory does not apply there. Treat it as: applies to your GPU node pools on this image, and to nothing else."
+    }
   },
   "field": {
     "help": {
@@ -101,7 +110,7 @@
       "evidence": "Verifiable source links backing the verdict. The AgentBaker release-notes file that lists the exact installed package versions \u2014 as a human GitHub page (release_notes) and a raw URL (release_notes_raw), plus its machine-readable <version>-image-list.json companion (release_notes_image_list) when present \u2014 the distro OVAL/advisory feed, and, when the fix arrived via a live security-patch delta rather than a full build, that delta file. Whether the release-note links were existence-checked for this feed build is recorded by evidence.release_notes_verified: when true, every release-note link here was confirmed to return HTTP 200 before emission and any that could not be confirmed was omitted; when false (verification disabled, e.g. an offline build), the links were emitted without that check and are not guaranteed to resolve.",
       "retained_vulnerable_version": "Some install-only packages (notably the kernel) keep older versions on disk after an update so the node can roll back. The node boots the highest version \u2014 the one carrying the fix \u2014 so the verdict is 'fixed'. This is an older version still present on disk that is below the fix. Whether a vulnerability scanner reports this CVE for the node depends on its methodology: one that evaluates the running/highest version treats the node as fixed, while one that inventories every installed package version may still flag the retained older version.",
       "additive": "Extended binaries laid on top of the base image (kubelet, CNI, containerd/runc, oras) and cached container images. Some are the SAME artifact as an installed distro package the distro feed tracks (e.g. the containerd binary is the Azure Linux containerd2 package) and so ARE assessed \u2014 see 'covered_by_package' below. Others are Microsoft-repackaged and not in the base distro feed ('scan_pending'), or AKS-built/upstream ('aks_built'), tracked by their own upstreams, not the distro feeds.",
-      "components": "Every extended binary AKS lays on top of the base image, with whether the distro advisory feeds can assess it. 'covered_by_package' = the same artifact as a distro package the feed actually tracks (its CVE status is in the advisories); 'scan_pending' = installed as a Microsoft-repackaged distro package the base distro feed doesn't track (e.g. moby-containerd on Ubuntu) \u2014 a binary scan is planned; 'aks_built' = built by AKS or downloaded from upstream (kubelet, oras, Azure CNI), in no distro feed; 'not_baked' = distro packages installed only conditionally (e.g. GPU drivers), absent from the mainstream image.",
+      "components": "Every extended binary AKS lays on top of the base image, with whether the distro advisory feeds can assess it. 'covered_by_package' = the same artifact as a distro package the feed actually tracks (its CVE status is in the advisories); 'scan_pending' = installed as a Microsoft-repackaged distro package the base distro feed doesn't track (e.g. moby-containerd on Ubuntu) \u2014 a binary scan is planned; 'aks_built' = built by AKS or downloaded from upstream (kubelet, oras, Azure CNI), in no distro feed; 'container_image' = shipped as an OCI image (including the NVIDIA driver images), tracked by its own upstream; 'not_baked' = listed in the release notes but never installed on this lineage's architecture. Separately, a component may carry a condition such as 'GPU nodes only', which narrows which of your nodes it runs on without changing whether it is assessed.",
       "references": "External references for this CVE \u2014 NVD, and the authoritative distro CVE status page: Ubuntu's CVE Tracker and, for Azure Linux, the MSRC Update Guide page. Ubuntu advisories also cite Canonical's machine-readable per-CVE OSV and OpenVEX documents \u2014 the same records this feed was built from, one file per CVE.",
       "paths": "The absolute install paths this package owns on the node image. Only executables under /bin and /sbin are indexed \u2014 the paths a scanner typically reports.",
       "path_lookup": "Type a path a scanner reported (e.g. /usr/bin/curl) or just a file name (e.g. curl). The lookup returns the owning package(s) for the selected OS/SKU, which you can click through to its advisories.",
@@ -128,5 +137,5 @@
     },
     "release_notes_verified": true
   },
-  "generated": "2026-08-10T08:30:22Z"
+  "generated": "2026-09-07T13:11:53Z"
 }

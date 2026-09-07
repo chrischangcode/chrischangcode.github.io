@@ -1,21 +1,21 @@
 {
   "schema_version": "2.0",
   "type": "aks-vhd-components",
-  "generated": "2026-08-10T08:30:22Z",
+  "generated": "2026-09-07T13:11:53Z",
   "families": {
     "azurelinux": {
       "components": [
         {
           "name": "acr-mirror",
           "coverage": "aks_built",
-          "version": "0.3.1",
+          "version": "1.0.0",
           "note": "built by AKS / upstream; not tracked by the distro advisory feed"
         },
         {
           "name": "aks-secure-tls-bootstrap-client",
           "coverage": "not_baked",
           "version": "1.1.4-2.azl3",
-          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "aznfs",
@@ -41,7 +41,7 @@
         {
           "name": "containerd",
           "coverage": "covered_by_package",
-          "version": "2.2.4-5.azl3",
+          "version": "2.2.4-6.azl3",
           "package": "containerd2"
         },
         {
@@ -52,44 +52,46 @@
         },
         {
           "name": "datacenter-gpu-manager-4-core",
-          "coverage": "not_baked",
+          "coverage": "scan_pending",
           "version": "1:4.5.3-1",
-          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+          "condition": "gpu_node",
+          "note": "published in NVIDIA's own package repository, which this feed does not yet resolve; binary scan planned"
         },
         {
           "name": "datacenter-gpu-manager-4-proprietary",
-          "coverage": "not_baked",
+          "coverage": "scan_pending",
           "version": "1:4.5.3-1",
-          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+          "condition": "gpu_node",
+          "note": "published in NVIDIA's own package repository, which this feed does not yet resolve; binary scan planned"
         },
         {
           "name": "dcgm-exporter",
-          "coverage": "not_baked",
+          "coverage": "covered_by_scan",
           "version": "4.8.2-10.azl3",
-          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+          "condition": "gpu_node"
         },
         {
           "name": "dra-driver-nvidia-gpu",
-          "coverage": "not_baked",
-          "version": "0.4.1-3.azl3",
-          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+          "coverage": "covered_by_scan",
+          "version": "0.4.1-5.azl3",
+          "condition": "gpu_node"
         },
         {
           "name": "ig",
           "coverage": "covered_by_package",
-          "version": "0.53.2-3.azl3",
+          "version": "0.55.0-4.azl3",
           "package": "ig"
         },
         {
           "name": "kubectl",
           "coverage": "container_image",
-          "version": "1.34.9",
+          "version": "1.34.10",
           "note": "distributed as an OCI container image; not scanned by the binary overlay (which assesses downloadable archives)"
         },
         {
           "name": "kubelet",
           "coverage": "container_image",
-          "version": "1.34.9",
+          "version": "1.34.10",
           "note": "distributed as an OCI container image; not scanned by the binary overlay (which assesses downloadable archives)"
         },
         {
@@ -101,13 +103,13 @@
         {
           "name": "node-exporter",
           "coverage": "covered_by_scan",
-          "version": "1.9.1-20.azl3"
+          "version": "1.9.1-26.azl3"
         },
         {
           "name": "nvidia-device-plugin",
-          "coverage": "not_baked",
+          "coverage": "covered_by_scan",
           "version": "0.19.3-6.azl3",
-          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+          "condition": "gpu_node"
         },
         {
           "name": "oras",
@@ -117,10 +119,11 @@
       ],
       "counts": {
         "aks_built": 1,
-        "not_baked": 6,
-        "covered_by_scan": 5,
+        "not_baked": 1,
+        "covered_by_scan": 8,
         "container_image": 4,
-        "covered_by_package": 3
+        "covered_by_package": 3,
+        "scan_pending": 2
       }
     },
     "ubuntu": {
@@ -128,13 +131,13 @@
         {
           "name": "acr-mirror",
           "coverage": "covered_by_scan",
-          "version": "0.3.1"
+          "version": "1.0.0"
         },
         {
           "name": "aks-secure-tls-bootstrap-client",
           "coverage": "not_baked",
           "version": "1.1.4-ubuntu24.04u2",
-          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "Azure CNI",
@@ -155,7 +158,7 @@
         {
           "name": "blobfuse2",
           "coverage": "covered_by_scan",
-          "version": "2.5.4"
+          "version": "2.5.5"
         },
         {
           "name": "CNI plugin",
@@ -174,43 +177,45 @@
         },
         {
           "name": "datacenter-gpu-manager-4-core",
-          "coverage": "not_baked",
+          "coverage": "scan_pending",
           "version": "1:4.5.3-1",
-          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+          "condition": "gpu_node",
+          "note": "published in NVIDIA's own package repository, which this feed does not yet resolve; binary scan planned"
         },
         {
           "name": "datacenter-gpu-manager-4-proprietary",
-          "coverage": "not_baked",
+          "coverage": "scan_pending",
           "version": "1:4.5.3-1",
-          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+          "condition": "gpu_node",
+          "note": "published in NVIDIA's own package repository, which this feed does not yet resolve; binary scan planned"
         },
         {
           "name": "dcgm-exporter",
-          "coverage": "not_baked",
+          "coverage": "covered_by_scan",
           "version": "4.8.2-ubuntu24.04u10",
-          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+          "condition": "gpu_node"
         },
         {
           "name": "dra-driver-nvidia-gpu",
-          "coverage": "not_baked",
+          "coverage": "covered_by_scan",
           "version": "0.4.1-ubuntu24.04u5",
-          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+          "condition": "gpu_node"
         },
         {
           "name": "ig",
           "coverage": "covered_by_scan",
-          "version": "0.53.2-ubuntu24.04u4"
+          "version": "0.55.0-ubuntu24.04u4"
         },
         {
           "name": "kubectl",
           "coverage": "container_image",
-          "version": "1.34.9",
+          "version": "1.34.10",
           "note": "distributed as an OCI container image; not scanned by the binary overlay (which assesses downloadable archives)"
         },
         {
           "name": "kubelet",
           "coverage": "container_image",
-          "version": "1.34.9",
+          "version": "1.34.10",
           "note": "distributed as an OCI container image; not scanned by the binary overlay (which assesses downloadable archives)"
         },
         {
@@ -222,31 +227,37 @@
         {
           "name": "node-exporter",
           "coverage": "covered_by_scan",
-          "version": "1.9.1-ubuntu24.04u21"
+          "version": "1.9.1-ubuntu24.04u26"
         },
         {
           "name": "nvidia-cuda-driver",
-          "coverage": "not_baked",
+          "coverage": "container_image",
           "version": "580.159.04-20260629214430",
-          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+          "image": "mcr.microsoft.com/aks/aks-gpu-cuda-lts",
+          "condition": "gpu_node",
+          "note": "NVIDIA driver, shipped as the OCI image mcr.microsoft.com/aks/aks-gpu-cuda-lts and pulled at node provisioning time; tracked by its own image advisory, not the distro feed"
         },
         {
           "name": "nvidia-cuda-driver-prebaked",
-          "coverage": "not_baked",
+          "coverage": "container_image",
           "version": "580.159.04-20260629214430",
-          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+          "image": "mcr.microsoft.com/aks/aks-gpu-cuda-lts",
+          "condition": "gpu_node",
+          "note": "NVIDIA driver, shipped as the OCI image mcr.microsoft.com/aks/aks-gpu-cuda-lts and its kernel module is pre-built into this VHD; tracked by its own image advisory, not the distro feed"
         },
         {
           "name": "nvidia-device-plugin",
-          "coverage": "not_baked",
+          "coverage": "covered_by_scan",
           "version": "0.19.3-ubuntu24.04u6",
-          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+          "condition": "gpu_node"
         },
         {
           "name": "nvidia-grid-driver",
-          "coverage": "not_baked",
+          "coverage": "container_image",
           "version": "570.211.01-20260522192315",
-          "note": "distro package installed conditionally (e.g. GPU); not present in this build's baked image"
+          "image": "mcr.microsoft.com/aks/aks-gpu-grid",
+          "condition": "gpu_node",
+          "note": "NVIDIA driver, shipped as the OCI image mcr.microsoft.com/aks/aks-gpu-grid and pulled at node provisioning time; tracked by its own image advisory, not the distro feed"
         },
         {
           "name": "oras",
@@ -260,9 +271,10 @@
         }
       ],
       "counts": {
-        "covered_by_scan": 11,
-        "not_baked": 9,
-        "container_image": 4
+        "covered_by_scan": 14,
+        "not_baked": 1,
+        "container_image": 7,
+        "scan_pending": 2
       }
     }
   }

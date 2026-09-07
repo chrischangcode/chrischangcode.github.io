@@ -64,7 +64,7 @@ let COVERAGE_HELP = {
   scan_pending: "Installed as a distro package (typically a Microsoft-repackaged one from packages.microsoft.com \u2014 e.g. moby-containerd, moby-runc, aznfs) that the base distro's advisory feed does NOT track. Its status is honestly unknown here; a binary scan is planned. Not treated as covered.",
   aks_built: "Built by AKS or downloaded from upstream as a downloadable archive/package (oras, Azure CNI, cni-plugins, acr-mirror). No distro package exists for it in the base feed, so distro OVAL/CVE feeds do not track it; it is scanned by the binary overlay where an archive is available.",
   container_image: "Built/distributed by AKS as an OCI container image rather than a downloadable archive (kubelet/kubectl via the kubernetes-node image, azure-acr-credential-provider). The binary scan overlay assesses downloadable archives, not images, so these are not scanned here and are tracked by their own upstream.",
-  not_baked: "A distro package installed only conditionally (e.g. GPU drivers / DCGM at node provisioning) and absent from the mainstream baked image \u2014 nothing to assess for this lineage.",
+  not_baked: "Listed in the release notes but never actually installed on this lineage \u2014 in practice a GPU component on an ARM64 image, where AgentBaker gates GPU driver install off entirely. Nothing to assess, and an advisory here would be a false positive.",
   not_assessed: "Not tracked by the distro advisory feeds (e.g. cached container images).",
 };
 
@@ -76,8 +76,20 @@ let COVERAGE_WHY = {
   scan_pending: "Microsoft-repackaged distro package the base feed doesn't track; binary scan planned.",
   container_image: "Assessed by its upstream container image, not this feed.",
   aks_built: "Tracked by its own upstream, not a distro advisory feed.",
-  not_baked: "Not present in the mainstream baked image.",
+  not_baked: "Never installed on this lineage's architecture.",
   not_assessed: "Not tracked by the distro advisory feeds.",
+};
+
+// Install-condition vocabulary. Mirrors aksadvisory/feed/vocab.py
+// CONDITION_LABELS / CONDITION_HELP (asserted equal by tests/test_vocab.py).
+// Orthogonal to coverage: rendered as an extra badge so a conditional component
+// keeps showing its real coverage class.
+let CONDITION_LABELS = {
+  gpu_node: "GPU nodes only",
+};
+
+let CONDITION_HELP = {
+  gpu_node: "AKS ships one VHD for GPU and non-GPU node pools, so this component is cached in every image but only installed on nodes whose VM size has an NVIDIA GPU (the N-series families) and whose pool did not opt out with --gpu-driver none. On any other node AgentBaker deletes the cached artifact during provisioning, so the advisory does not apply there. Treat it as: applies to your GPU node pools on this image, and to nothing else.",
 };
 
 // Evidence-link labels. Mirrors aksadvisory/feed/vocab.py EVIDENCE_LABELS
@@ -120,7 +132,7 @@ let FIELD_HELP = {
   evidence: "Verifiable source links backing the verdict. The AgentBaker release-notes file that lists the exact installed package versions \u2014 as a human GitHub page (release_notes) and a raw URL (release_notes_raw), plus its machine-readable <version>-image-list.json companion (release_notes_image_list) when present \u2014 the distro OVAL/advisory feed, and, when the fix arrived via a live security-patch delta rather than a full build, that delta file. Whether the release-note links were existence-checked for this feed build is recorded by evidence.release_notes_verified: when true, every release-note link here was confirmed to return HTTP 200 before emission and any that could not be confirmed was omitted; when false (verification disabled, e.g. an offline build), the links were emitted without that check and are not guaranteed to resolve.",
   retained_vulnerable_version: "Some install-only packages (notably the kernel) keep older versions on disk after an update so the node can roll back. The node boots the highest version \u2014 the one carrying the fix \u2014 so the verdict is 'fixed'. This is an older version still present on disk that is below the fix. Whether a vulnerability scanner reports this CVE for the node depends on its methodology: one that evaluates the running/highest version treats the node as fixed, while one that inventories every installed package version may still flag the retained older version.",
   additive: "Extended binaries laid on top of the base image (kubelet, CNI, containerd/runc, oras) and cached container images. Some are the SAME artifact as an installed distro package the distro feed tracks (e.g. the containerd binary is the Azure Linux containerd2 package) and so ARE assessed \u2014 see 'covered_by_package' below. Others are Microsoft-repackaged and not in the base distro feed ('scan_pending'), or AKS-built/upstream ('aks_built'), tracked by their own upstreams, not the distro feeds.",
-  components: "Every extended binary AKS lays on top of the base image, with whether the distro advisory feeds can assess it. 'covered_by_package' = the same artifact as a distro package the feed actually tracks (its CVE status is in the advisories); 'scan_pending' = installed as a Microsoft-repackaged distro package the base distro feed doesn't track (e.g. moby-containerd on Ubuntu) \u2014 a binary scan is planned; 'aks_built' = built by AKS or downloaded from upstream (kubelet, oras, Azure CNI), in no distro feed; 'not_baked' = distro packages installed only conditionally (e.g. GPU drivers), absent from the mainstream image.",
+  components: "Every extended binary AKS lays on top of the base image, with whether the distro advisory feeds can assess it. 'covered_by_package' = the same artifact as a distro package the feed actually tracks (its CVE status is in the advisories); 'scan_pending' = installed as a Microsoft-repackaged distro package the base distro feed doesn't track (e.g. moby-containerd on Ubuntu) \u2014 a binary scan is planned; 'aks_built' = built by AKS or downloaded from upstream (kubelet, oras, Azure CNI), in no distro feed; 'container_image' = shipped as an OCI image (including the NVIDIA driver images), tracked by its own upstream; 'not_baked' = listed in the release notes but never installed on this lineage's architecture. Separately, a component may carry a condition such as 'GPU nodes only', which narrows which of your nodes it runs on without changing whether it is assessed.",
   references: "External references for this CVE — NVD, and the authoritative distro CVE status page: Ubuntu's CVE Tracker and, for Azure Linux, the MSRC Update Guide page. Ubuntu advisories also cite Canonical's machine-readable per-CVE OSV and OpenVEX documents — the same records this feed was built from, one file per CVE.",
   paths: "The absolute install paths this package owns on the node image. Only executables under /bin and /sbin are indexed — the paths a scanner typically reports.",
   path_lookup: "Type a path a scanner reported (e.g. /usr/bin/curl) or just a file name (e.g. curl). The lookup returns the owning package(s) for the selected OS/SKU, which you can click through to its advisories.",
@@ -295,6 +307,7 @@ function applyGlossary(doc) {
   if (!doc || typeof doc !== "object") return;
   const st = doc.status || {};
   const cov = doc.coverage || {};
+  const cond = doc.condition || {};
   const fld = doc.field || {};
   const ev = doc.evidence || {};
   const pick = (o, baked) =>
@@ -304,6 +317,8 @@ function applyGlossary(doc) {
   COVERAGE_LABELS = pick(cov.labels, COVERAGE_LABELS);
   COVERAGE_HELP = pick(cov.help, COVERAGE_HELP);
   COVERAGE_WHY = pick(cov.why, COVERAGE_WHY);
+  CONDITION_LABELS = pick(cond.labels, CONDITION_LABELS);
+  CONDITION_HELP = pick(cond.help, CONDITION_HELP);
   FIELD_HELP = pick(fld.help, FIELD_HELP);
   EVIDENCE_LABELS = pick(ev.labels, EVIDENCE_LABELS);
 }
@@ -738,6 +753,7 @@ function renderDetail(adv) {
               class: "coverage-badge cov-" + cov,
               title: COVERAGE_HELP[cov] || "",
             }, COVERAGE_LABELS[cov] || cov),
+            conditionBadge(i),
           ];
           // Same ordering rule as assessedCell(): a scan-covered component is
           // assessed by its own scan rows (keyed on the component name), so a
@@ -1032,11 +1048,20 @@ function statusGlossary() {
 }
 
 function coverageGlossary() {
-  return el("div", { class: "glossary" }, Object.keys(COVERAGE_LABELS).map((c) =>
+  const rows = Object.keys(COVERAGE_LABELS).map((c) =>
     el("div", { class: "gloss-row" }, [
       el("span", { class: "coverage-badge cov-" + c }, COVERAGE_LABELS[c]),
       el("p", null, COVERAGE_HELP[c]),
+    ]));
+  // Conditions are a separate axis from coverage, so they are explained in the
+  // same glossary but visibly as their own kind of badge.
+  Object.keys(CONDITION_LABELS).forEach((c) => rows.push(
+    el("div", { class: "gloss-row" }, [
+      el("span", { class: "coverage-badge condition-badge cond-" + c },
+        CONDITION_LABELS[c]),
+      el("p", null, CONDITION_HELP[c]),
     ])));
+  return el("div", { class: "glossary" }, rows);
 }
 
 // Every package name named by at least one advisory, lowercased. Used to tell
@@ -1053,6 +1078,19 @@ function advisoryPackageNames() {
   }
   _pkgNameSet = { src: entries, set: set };
   return set;
+}
+
+// A component's install condition, rendered as a badge next to (not instead of)
+// its coverage badge -- the two axes are independent, and collapsing them is what
+// previously made conditionally-installed GPU components look unassessable.
+// Returns null for unconditional components, which `el` skips.
+function conditionBadge(i) {
+  if (!i.condition) return null;
+  return el("span", {
+    class: "coverage-badge condition-badge cond-" + i.condition,
+    title: CONDITION_HELP[i.condition] || "",
+    style: "margin-left:.35rem",
+  }, CONDITION_LABELS[i.condition] || i.condition);
 }
 
 // The components "Assessed as / why not" cell. covered_by_package links to the
@@ -1081,6 +1119,11 @@ function assessedCell(i) {
   if (i.package) {
     return el("a", { href: "#/?pkg=" + encodeURIComponent(i.package),
       class: "mono pkg-link", title: "Advisories that name " + i.package }, i.package);
+  }
+  // A container_image component resolves to an OCI repository rather than a
+  // distro package -- name it, so the reader knows which artifact to go scan.
+  if (i.image) {
+    return el("span", { class: "mono", title: i.note || "" }, i.image);
   }
   if (i.note) return el("span", { class: "note" }, i.note);
   return el("span", { class: "note" }, COVERAGE_WHY[coverage] || "\u2014");
@@ -1284,10 +1327,13 @@ async function renderComponents(query) {
     const body = el("tbody", null, items.map((i) => el("tr", null, [
       el("td", null, el("span", { class: "comp-name" }, i.name)),
       el("td", { class: "mono" }, i.version || "\u2014"),
-      el("td", null, el("span", {
-        class: "coverage-badge cov-" + (i.coverage || "not_assessed"),
-        title: COVERAGE_HELP[i.coverage] || "",
-      }, COVERAGE_LABELS[i.coverage] || i.coverage)),
+      el("td", null, [
+        el("span", {
+          class: "coverage-badge cov-" + (i.coverage || "not_assessed"),
+          title: COVERAGE_HELP[i.coverage] || "",
+        }, COVERAGE_LABELS[i.coverage] || i.coverage),
+        conditionBadge(i),
+      ]),
       el("td", null, assessedCell(i)),
     ])));
     const table = el("div", { class: "table-wrap" }, el("table", null, [

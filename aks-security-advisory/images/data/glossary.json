@@ -14,16 +14,16 @@
     },
     "split_exact_help": "True when the per-tag split is exact. False for either reason a split can fail: no per-image report was available for some tag (cve_source target_union), or a CVE the container reports matched no tag's report (listed as unattributed_cves and published against every tag, never dropped). So False does not by itself imply unattributed_cves is present -- read cve_source as well. A per-image report carrying ids the frozen release does not is intersected away and does NOT make a split inexact: measured over a full build, 192 of 411 multi-tag containers carry such ids (8,917 in total) against 24 carrying unattributable ones (281).",
     "counts": {
-      "per_tag": 2489,
+      "per_tag": 2663,
       "target_union": 0,
-      "target_unattributed": 77
+      "target_unattributed": 80
     },
     "shares": {
-      "per_tag": 0.97,
+      "per_tag": 0.9708,
       "target_union": 0.0,
-      "target_unattributed": 0.03
+      "target_unattributed": 0.0292
     },
-    "total": 2566
+    "total": 2743
   },
   "comparability": {
     "labels": {
@@ -43,12 +43,12 @@
       "targets": "Containers compared, plus those present in only one of the two releases. Containers that exist in only one release are excluded from every count: folding them in would report a CVE as fixed or new when the container merely came or went."
     },
     "counts": {
-      "same_scan": 2,
-      "cross_scan": 2
+      "same_scan": 1,
+      "cross_scan": 3
     },
     "shares": {
-      "same_scan": 0.5,
-      "cross_scan": 0.5
+      "same_scan": 0.25,
+      "cross_scan": 0.75
     },
     "total": 4
   },
@@ -69,18 +69,18 @@
       "absent_from_all_k8s_reports": "The image reference does not appear in any per-Kubernetes-version scan report. This is the only claim made about an unmapped image."
     },
     "counts": {
-      "k8s_exact": 497,
-      "k8s_repo_tagskew": 933,
-      "k8s_registry_variant": 242,
-      "k8s_unmapped": 817
+      "k8s_exact": 526,
+      "k8s_repo_tagskew": 1011,
+      "k8s_registry_variant": 253,
+      "k8s_unmapped": 873
     },
     "shares": {
-      "k8s_exact": 0.1997,
-      "k8s_repo_tagskew": 0.3748,
-      "k8s_registry_variant": 0.0972,
-      "k8s_unmapped": 0.3282
+      "k8s_exact": 0.1975,
+      "k8s_repo_tagskew": 0.3796,
+      "k8s_registry_variant": 0.095,
+      "k8s_unmapped": 0.3278
     },
-    "total": 2489
+    "total": 2663
   },
   "first_fixed_source": {
     "labels": {
@@ -94,16 +94,16 @@
       "disputed": "The computed diff and the upstream mitigated list disagree for this CVE. The feed records both signals (in_computed / in_upstream) rather than silently choosing one."
     },
     "counts": {
-      "computed": 10718,
+      "computed": 11767,
       "upstream": 0,
-      "disputed": 750
+      "disputed": 893
     },
     "shares": {
-      "computed": 0.9346,
+      "computed": 0.9295,
       "upstream": 0.0,
-      "disputed": 0.0654
+      "disputed": 0.0705
     },
-    "total": 11468
+    "total": 12660
   },
   "presentation_state": {
     "labels": {
@@ -134,5 +134,5 @@
       "image_current": "From a continuously-rescanned per-image report. Drifts ahead of the frozen snapshots, so it is never blended with them."
     }
   },
-  "generated": "2026-08-10T08:32:22Z"
+  "generated": "2026-09-07T13:15:06Z"
 }

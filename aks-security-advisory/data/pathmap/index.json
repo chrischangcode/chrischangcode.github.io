@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "type": "aks-vhd-pathmap-index",
-  "generated": "2026-08-10T08:31:13Z",
+  "generated": "2026-09-07T13:13:50Z",
   "default_lineage": "AKSAzureLinuxV3/gen2",
   "lineages": {
     "AKSAzureLinuxV3/cvmgen2": "azurelinux-3.0",
@@ -37,8 +37,8 @@
       "key": "azurelinux-3.0",
       "os_family": "azurelinux",
       "release": "3.0",
-      "path_count": 3094,
-      "package_count": 191
+      "path_count": 3125,
+      "package_count": 194
     },
     {
       "key": "ubuntu-focal",
