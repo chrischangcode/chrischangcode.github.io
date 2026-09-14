@@ -3,7 +3,7 @@
   "id": "GHSA-C9CP-9C75-9V8C",
   "type": "aks-vhd-security-advisory",
   "severity": "Low",
-  "updated": "2026-09-07T13:11:41Z",
+  "updated": "2026-09-14T13:24:53Z",
   "references": [
     "https://nvd.nist.gov/vuln/detail/GHSA-C9CP-9C75-9V8C",
     "https://ubuntu.com/security/GHSA-C9CP-9C75-9V8C",

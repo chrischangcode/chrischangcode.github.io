@@ -3,7 +3,7 @@
   "id": "GHSA-VH4V-2XQ2-G5CG",
   "type": "aks-vhd-security-advisory",
   "severity": "Medium",
-  "updated": "2026-09-07T13:11:41Z",
+  "updated": "2026-09-14T13:24:53Z",
   "references": [
     "https://nvd.nist.gov/vuln/detail/GHSA-VH4V-2XQ2-G5CG",
     "https://raw.githubusercontent.com/microsoft/AzureLinuxVulnerabilityData/main/azurelinux-3.0-oval.xml",
@@ -634,7 +634,7 @@
       {
         "name": "ig",
         "coverage": "covered_by_scan",
-        "version": "0.55.0-ubuntu24.04u4"
+        "version": "0.55.1-ubuntu24.04u2"
       },
       {
         "name": "oras",

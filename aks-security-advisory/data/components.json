@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "type": "aks-vhd-components",
-  "generated": "2026-09-07T13:11:53Z",
+  "generated": "2026-09-14T13:25:07Z",
   "families": {
     "azurelinux": {
       "components": [
@@ -79,7 +79,7 @@
         {
           "name": "ig",
           "coverage": "covered_by_package",
-          "version": "0.55.0-4.azl3",
+          "version": "0.55.1-2.azl3",
           "package": "ig"
         },
         {
@@ -103,7 +103,7 @@
         {
           "name": "node-exporter",
           "coverage": "covered_by_scan",
-          "version": "1.9.1-26.azl3"
+          "version": "1.9.1-28.azl3"
         },
         {
           "name": "nvidia-device-plugin",
@@ -204,7 +204,7 @@
         {
           "name": "ig",
           "coverage": "covered_by_scan",
-          "version": "0.55.0-ubuntu24.04u4"
+          "version": "0.55.1-ubuntu24.04u2"
         },
         {
           "name": "kubectl",
@@ -227,7 +227,7 @@
         {
           "name": "node-exporter",
           "coverage": "covered_by_scan",
-          "version": "1.9.1-ubuntu24.04u26"
+          "version": "1.9.1-ubuntu24.04u28"
         },
         {
           "name": "nvidia-cuda-driver",
