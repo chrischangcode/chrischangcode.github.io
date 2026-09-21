@@ -1,15 +1,11 @@
 {
   "schema_version": "1.0",
   "type": "aks-release-upgrade-index",
-  "generated": "2026-09-14T13:27:30Z",
+  "generated": "2026-09-21T13:27:12Z",
   "basis": "release_history",
-  "to_release": "v20260807",
+  "to_release": "v20260904",
   "count": 4,
   "items": [
-    {
-      "name": "v20260428",
-      "file": "v20260428.json"
-    },
     {
       "name": "v20260529",
       "file": "v20260529.json"
@@ -21,57 +17,62 @@
     {
       "name": "v20260717",
       "file": "v20260717.json"
+    },
+    {
+      "name": "v20260807",
+      "file": "v20260807.json"
     }
   ],
   "upgrades": [
     {
-      "from_release": "v20260428",
-      "to_release": "v20260807",
+      "from_release": "v20260529",
+      "to_release": "v20260904",
       "comparability": "cross_scan",
       "release_gap": 4,
       "summary": {
-        "fixed": 93,
-        "partially_fixed": 133,
-        "still_present": 173
-      },
-      "file": "v20260428.json"
-    },
-    {
-      "from_release": "v20260529",
-      "to_release": "v20260807",
-      "comparability": "cross_scan",
-      "release_gap": 3,
-      "summary": {
-        "fixed": 62,
-        "partially_fixed": 226,
-        "still_present": 368
+        "fixed": 137,
+        "partially_fixed": 263,
+        "still_present": 212
       },
       "file": "v20260529.json"
     },
     {
       "from_release": "v20260619",
-      "to_release": "v20260807",
+      "to_release": "v20260904",
       "comparability": "cross_scan",
-      "release_gap": 2,
+      "release_gap": 3,
       "summary": {
-        "fixed": 41,
-        "partially_fixed": 187,
-        "still_present": 506
+        "fixed": 115,
+        "partially_fixed": 265,
+        "still_present": 313
       },
       "file": "v20260619.json"
     },
     {
       "from_release": "v20260717",
-      "to_release": "v20260807",
+      "to_release": "v20260904",
+      "comparability": "same_scan",
+      "release_gap": 2,
+      "summary": {
+        "fixed": 108,
+        "partially_fixed": 311,
+        "still_present": 345,
+        "new_in_latest": 4
+      },
+      "file": "v20260717.json"
+    },
+    {
+      "from_release": "v20260807",
+      "to_release": "v20260904",
       "comparability": "same_scan",
       "release_gap": 1,
       "summary": {
-        "fixed": 38,
-        "partially_fixed": 158,
-        "still_present": 583,
-        "new_in_latest": 0
+        "fixed": 70,
+        "partially_fixed": 264,
+        "still_present": 394,
+        "new_in_latest": 2
       },
-      "file": "v20260717.json"
+      "file": "v20260807.json"
     }
   ]
 }

@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0",
   "type": "aks-images-feed-manifest",
-  "generated": "2026-09-14T13:27:30Z",
+  "generated": "2026-09-21T13:27:12Z",
   "data_root": ".",
   "count": 9,
   "endpoints": [
     {
       "path": "_index.json",
       "kind": "document",
-      "bytes": 70039,
+      "bytes": 71673,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": false
@@ -16,17 +16,17 @@
     {
       "path": "cve-index.json",
       "kind": "document",
-      "bytes": 198668,
+      "bytes": 221487,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": true,
-      "entries": 5185
+      "entries": 5825
     },
     {
       "path": "cve/",
       "kind": "collection",
-      "files": 5185,
-      "bytes": 88953276,
+      "files": 5825,
+      "bytes": 97578511,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": false,
@@ -35,7 +35,7 @@
     {
       "path": "glossary.json",
       "kind": "document",
-      "bytes": 10235,
+      "bytes": 10234,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": true
@@ -43,8 +43,8 @@
     {
       "path": "image/",
       "kind": "collection",
-      "files": 163,
-      "bytes": 7396077,
+      "files": 169,
+      "bytes": 7885218,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": false,
@@ -53,8 +53,8 @@
     {
       "path": "k8s/",
       "kind": "collection",
-      "files": 90,
-      "bytes": 3667480,
+      "files": 91,
+      "bytes": 3892337,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": false,
@@ -71,8 +71,8 @@
     {
       "path": "release/",
       "kind": "collection",
-      "files": 17,
-      "bytes": 6845253,
+      "files": 18,
+      "bytes": 7573610,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": false,
@@ -82,7 +82,7 @@
       "path": "upgrade/",
       "kind": "collection",
       "files": 4,
-      "bytes": 7671540,
+      "bytes": 9136067,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": false,

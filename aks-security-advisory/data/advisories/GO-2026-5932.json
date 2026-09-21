@@ -3,7 +3,7 @@
   "id": "GO-2026-5932",
   "type": "aks-vhd-security-advisory",
   "severity": "Unknown",
-  "updated": "2026-09-14T13:24:53Z",
+  "updated": "2026-09-21T13:24:39Z",
   "references": [
     "https://nvd.nist.gov/vuln/detail/GO-2026-5932",
     "https://raw.githubusercontent.com/microsoft/AzureLinuxVulnerabilityData/main/azurelinux-3.0-oval.xml",
@@ -34,7 +34,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSAzureLinuxV3-cvmgen2-202609.03.1",
+      "latest_build": "AKSAzureLinuxV3-cvmgen2-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -62,9 +62,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSAzureLinuxV3-cvmgen2-202609.03.1",
+      "latest_build": "AKSAzureLinuxV3-cvmgen2-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.9.1-28.azl3.x86_64.rpm",
+        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.12.1-7.azl3.x86_64.rpm",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -90,7 +90,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSAzureLinuxV3-gen1-202609.03.1",
+      "latest_build": "AKSAzureLinuxV3-gen1-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -118,9 +118,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSAzureLinuxV3-gen1-202609.03.1",
+      "latest_build": "AKSAzureLinuxV3-gen1-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.9.1-28.azl3.x86_64.rpm",
+        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.12.1-7.azl3.x86_64.rpm",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -146,7 +146,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSAzureLinuxV3-gen1fips-202609.03.1",
+      "latest_build": "AKSAzureLinuxV3-gen1fips-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -174,9 +174,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSAzureLinuxV3-gen1fips-202609.03.1",
+      "latest_build": "AKSAzureLinuxV3-gen1fips-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.9.1-28.azl3.x86_64.rpm",
+        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.12.1-7.azl3.x86_64.rpm",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -202,7 +202,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSAzureLinuxV3-gen2-202609.03.1",
+      "latest_build": "AKSAzureLinuxV3-gen2-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -230,9 +230,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSAzureLinuxV3-gen2-202609.03.1",
+      "latest_build": "AKSAzureLinuxV3-gen2-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.9.1-28.azl3.x86_64.rpm",
+        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.12.1-7.azl3.x86_64.rpm",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -258,7 +258,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSAzureLinuxV3-gen2arm64-202609.03.1",
+      "latest_build": "AKSAzureLinuxV3-gen2arm64-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -286,9 +286,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSAzureLinuxV3-gen2arm64-202609.03.1",
+      "latest_build": "AKSAzureLinuxV3-gen2arm64-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.9.1-28.azl3.x86_64.rpm",
+        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.12.1-7.azl3.x86_64.rpm",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -314,7 +314,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSAzureLinuxV3-gen2arm64fips-202609.03.1",
+      "latest_build": "AKSAzureLinuxV3-gen2arm64fips-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -342,9 +342,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSAzureLinuxV3-gen2arm64fips-202609.03.1",
+      "latest_build": "AKSAzureLinuxV3-gen2arm64fips-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.9.1-28.azl3.x86_64.rpm",
+        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.12.1-7.azl3.x86_64.rpm",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -370,7 +370,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSAzureLinuxV3-gen2fips-202609.03.1",
+      "latest_build": "AKSAzureLinuxV3-gen2fips-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -398,9 +398,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSAzureLinuxV3-gen2fips-202609.03.1",
+      "latest_build": "AKSAzureLinuxV3-gen2fips-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.9.1-28.azl3.x86_64.rpm",
+        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.12.1-7.azl3.x86_64.rpm",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -426,7 +426,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSAzureLinuxV3-gen2kata-202609.03.1",
+      "latest_build": "AKSAzureLinuxV3-gen2kata-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -454,7 +454,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSAzureLinuxV3-gen2tl-202609.03.1",
+      "latest_build": "AKSAzureLinuxV3-gen2tl-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -482,9 +482,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSAzureLinuxV3-gen2tl-202609.03.1",
+      "latest_build": "AKSAzureLinuxV3-gen2tl-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.9.1-28.azl3.x86_64.rpm",
+        "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.12.1-7.azl3.x86_64.rpm",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -496,7 +496,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSAzureLinuxV3-osguardgen2fipstl-202609.03.1",
+      "latest_build": "AKSAzureLinuxV3-osguardgen2fipstl-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -552,7 +552,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen1-2004fipscontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen1-2004fipscontainerd-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -566,9 +566,9 @@
       "package": "ig",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen1-2004fipscontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen1-2004fipscontainerd-202609.15.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu20.04u2_amd64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu20.04u3_amd64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -580,9 +580,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen1-2004fipscontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen1-2004fipscontainerd-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.9.1-ubuntu20.04u28_amd64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu20.04u7_amd64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -636,7 +636,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2004cvmcontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2004cvmcontainerd-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -650,9 +650,9 @@
       "package": "ig",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2004cvmcontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2004cvmcontainerd-202609.15.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu20.04u2_amd64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu20.04u3_amd64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -664,9 +664,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2004cvmcontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2004cvmcontainerd-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.9.1-ubuntu20.04u28_amd64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu20.04u7_amd64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -720,7 +720,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2004fipscontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2004fipscontainerd-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -734,9 +734,9 @@
       "package": "ig",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2004fipscontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2004fipscontainerd-202609.15.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu20.04u2_amd64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu20.04u3_amd64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -748,9 +748,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2004fipscontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2004fipscontainerd-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.9.1-ubuntu20.04u28_amd64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu20.04u7_amd64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -804,7 +804,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen1-2204containerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen1-2204containerd-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -832,9 +832,9 @@
       "package": "ig",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen1-2204containerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen1-2204containerd-202609.15.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu22.04u2_arm64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu22.04u3_arm64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -846,9 +846,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen1-2204containerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen1-2204containerd-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.9.1-ubuntu22.04u28_arm64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu22.04u7_arm64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -902,7 +902,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen1-2204fipscontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen1-2204fipscontainerd-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -916,9 +916,9 @@
       "package": "ig",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen1-2204fipscontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen1-2204fipscontainerd-202609.15.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu22.04u2_arm64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu22.04u3_arm64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -944,9 +944,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen1-2204fipscontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen1-2204fipscontainerd-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.9.1-ubuntu22.04u28_arm64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu22.04u7_arm64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -1000,7 +1000,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2204arm64containerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2204arm64containerd-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -1028,9 +1028,9 @@
       "package": "ig",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2204arm64containerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2204arm64containerd-202609.15.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu22.04u2_arm64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu22.04u3_arm64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -1042,9 +1042,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2204arm64containerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2204arm64containerd-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.9.1-ubuntu22.04u28_arm64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu22.04u7_arm64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -1098,7 +1098,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2204containerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2204containerd-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -1126,9 +1126,9 @@
       "package": "ig",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2204containerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2204containerd-202609.15.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu22.04u2_arm64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu22.04u3_arm64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -1140,9 +1140,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2204containerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2204containerd-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.9.1-ubuntu22.04u28_arm64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu22.04u7_arm64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -1196,7 +1196,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2204fipscontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2204fipscontainerd-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -1210,9 +1210,9 @@
       "package": "ig",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2204fipscontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2204fipscontainerd-202609.15.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu22.04u2_arm64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu22.04u3_arm64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -1238,9 +1238,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2204fipscontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2204fipscontainerd-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.9.1-ubuntu22.04u28_arm64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu22.04u7_arm64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -1294,7 +1294,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2204fipstlcontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2204fipstlcontainerd-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -1308,9 +1308,9 @@
       "package": "ig",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2204fipstlcontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2204fipstlcontainerd-202609.15.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu22.04u2_arm64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu22.04u3_arm64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -1336,9 +1336,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2204fipstlcontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2204fipstlcontainerd-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.9.1-ubuntu22.04u28_arm64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu22.04u7_arm64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -1392,7 +1392,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2204tlcontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2204tlcontainerd-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -1420,9 +1420,9 @@
       "package": "ig",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2204tlcontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2204tlcontainerd-202609.15.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu22.04u2_arm64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.55.1-ubuntu22.04u3_arm64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -1434,9 +1434,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2204tlcontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2204tlcontainerd-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.9.1-ubuntu22.04u28_arm64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu22.04u7_arm64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -1476,7 +1476,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2604minimalarm64containerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2604minimalarm64containerd-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -1518,7 +1518,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2604minimalcontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2604minimalcontainerd-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -1574,7 +1574,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen1-2404containerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen1-2404containerd-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -1616,9 +1616,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen1-2404containerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen1-2404containerd-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.9.1-ubuntu24.04u28_arm64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu24.04u7_arm64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -1672,7 +1672,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2404arm64containerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2404arm64containerd-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -1714,9 +1714,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2404arm64containerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2404arm64containerd-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.9.1-ubuntu24.04u28_arm64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu24.04u7_arm64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -1770,7 +1770,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2404containerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2404containerd-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -1812,9 +1812,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2404containerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2404containerd-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.9.1-ubuntu24.04u28_arm64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu24.04u7_arm64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -1868,7 +1868,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2404cvmcontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2404cvmcontainerd-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -1910,9 +1910,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2404cvmcontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2404cvmcontainerd-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.9.1-ubuntu24.04u28_arm64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu24.04u7_arm64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -1966,7 +1966,7 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2404tlcontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2404tlcontainerd-202609.15.0",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
@@ -2008,9 +2008,9 @@
       "package": "node-exporter",
       "status": "affected",
       "severity": "Unknown",
-      "latest_build": "AKSUbuntu-gen2-2404tlcontainerd-202609.03.1",
+      "latest_build": "AKSUbuntu-gen2-2404tlcontainerd-202609.09.0",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.9.1-ubuntu24.04u28_arm64.deb",
+        "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu24.04u7_arm64.deb",
         "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
         "scan_pkg": "golang.org/x/crypto"
       }
@@ -2094,7 +2094,7 @@
       {
         "name": "node-exporter",
         "coverage": "covered_by_scan",
-        "version": "1.9.1-ubuntu24.04u28"
+        "version": "1.12.1-ubuntu24.04u7"
       },
       {
         "name": "oras",

@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "type": "aks-vhd-components",
-  "generated": "2026-09-14T13:25:07Z",
+  "generated": "2026-09-21T13:24:49Z",
   "families": {
     "azurelinux": {
       "components": [
@@ -97,13 +97,13 @@
         {
           "name": "kubernetes-binaries",
           "coverage": "container_image",
-          "version": "v1.28.103-akslts",
+          "version": "v1.33.13",
           "note": "distributed as an OCI container image; not scanned by the binary overlay (which assesses downloadable archives)"
         },
         {
           "name": "node-exporter",
           "coverage": "covered_by_scan",
-          "version": "1.9.1-28.azl3"
+          "version": "1.12.1-7.azl3"
         },
         {
           "name": "nvidia-device-plugin",
@@ -221,13 +221,13 @@
         {
           "name": "kubernetes-binaries",
           "coverage": "container_image",
-          "version": "v1.28.103-akslts",
+          "version": "v1.33.13",
           "note": "distributed as an OCI container image; not scanned by the binary overlay (which assesses downloadable archives)"
         },
         {
           "name": "node-exporter",
           "coverage": "covered_by_scan",
-          "version": "1.9.1-ubuntu24.04u28"
+          "version": "1.12.1-ubuntu24.04u7"
         },
         {
           "name": "nvidia-cuda-driver",
@@ -254,7 +254,7 @@
         {
           "name": "nvidia-grid-driver",
           "coverage": "container_image",
-          "version": "570.211.01-20260522192315",
+          "version": "570.237-20260817204535",
           "image": "mcr.microsoft.com/aks/aks-gpu-grid",
           "condition": "gpu_node",
           "note": "NVIDIA driver, shipped as the OCI image mcr.microsoft.com/aks/aks-gpu-grid and pulled at node provisioning time; tracked by its own image advisory, not the distro feed"
