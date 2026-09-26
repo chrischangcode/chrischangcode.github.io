@@ -76,7 +76,15 @@ advisory so the list can be filtered without loading every advisory document.
       "evidence": { "<label>": "<url>" }
     }
   ],
-  "additive": { "coverage": "not_assessed" }
+  "additive": {
+    "coverage": "covered_by_package",
+    "source": "component-upstream",
+    "note": "<human-readable explanation of the coverage>",
+    "items": [
+      { "name": "containerd", "coverage": "covered_by_package",
+        "version": "2.2.4-4.azl3", "package": "containerd2" }
+    ]
+  }
 }
 ```
 
@@ -94,9 +102,55 @@ External, human-readable links for the CVE:
 
 ### `additive`
 
-Additive VHD components (e.g. `kubelet`, CNI plugins, container images shipped
-into the node image rather than installed as base-OS packages) are reported with
-`{ "coverage": "not_assessed" }`. They are **never** represented as base-OS CVEs.
+The **additive surface** is the set of binaries and container images laid on top
+of the base OS image (e.g. `kubelet`, `containerd`, CNI plugins, `oras`) rather
+than installed as base-OS packages. The `additive` object summarises how much of
+that surface this feed can assess for the CVE:
+
+```json
+"additive": {
+  "coverage": "covered_by_package",
+  "source": "component-upstream",
+  "note": "<human-readable explanation of the coverage posture>",
+  "items": [
+    { "name": "containerd", "coverage": "covered_by_package",
+      "version": "2.2.4-4.azl3", "package": "containerd2" }
+  ]
+}
+```
+
+- **`coverage`** (section level) — `covered_by_package` when at least one item is
+  assessed (maps to a tracked distro package, or was assessed by a binary scan);
+  otherwise `not_assessed`.
+- **`source`** — provenance tag for the section; currently always
+  `component-upstream`.
+- **`note`** — a human-readable sentence explaining the coverage posture.
+- **`items[]`** — the extended binaries relevant to *this* CVE. Each item carries:
+  - **`name`** — the binary / component name.
+  - **`coverage`** — the per-item posture (see table below); this is the
+    authoritative statement for that binary.
+  - **`version`** — the version baked into the node image (optional).
+  - **`package`** — for `covered_by_package` items, the installed distro package
+    whose rows in *this same advisory* assess the binary (use it to cross-link).
+  - **`note`** — optional per-item explanation.
+
+Only items relevant to this CVE are attached here. A full per-build inventory of
+every extended binary (including ones that never appear in any CVE) is published
+separately and backs the site's *Extended binaries* page.
+
+#### Additive coverage vocabulary (`items[].coverage`)
+
+| coverage | meaning |
+| --- | --- |
+| `covered_by_package` | The binary is the **same artifact** as an installed distro package the base distro advisory feed tracks (e.g. the `containerd` binary is the `containerd2` package on Azure Linux). Its CVE status **is** assessed — the item carries `package`, and that package's rows appear in this advisory. |
+| `covered_by_scan` | Assessed by an **independent binary scan** of the extended binary itself, because the distro feeds don't track it. The relevant package rows carry scan-derived `evidence` (the scanned artifact and the scanner reference) instead of a distro advisory id. |
+| `scan_pending` | Installed as a distro package but **absent from the base distro's advisory feed** — typically a Microsoft-repackaged build (e.g. `moby-containerd` on Ubuntu). Status is not asserted and it is **never** treated as covered. Carries `package`. |
+| `aks_built` | Built by AKS or downloaded from upstream and never distro-packaged (`kubelet`, `kubectl`, `oras`, Azure CNI, ...). No distro feed tracks it, so no fix status is asserted. |
+| `not_baked` | A distro package installed only conditionally (e.g. GPU drivers) and absent from the mainstream baked image for this lineage — nothing to assess here. |
+| `not_assessed` | Section-level fallback when no item is assessed. |
+
+Items with `scan_pending`, `aks_built`, `not_baked`, or `not_assessed` coverage
+are **never** represented as base-OS CVEs and carry no assured fix status.
 
 ### Status vocabulary (`status` / `headline_status`)
 
