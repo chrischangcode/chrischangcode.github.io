@@ -19,22 +19,22 @@
       "will_not_fix": "The vendor will not ship a fix (Ubuntu CVE Tracker 'ignored' \u2014 e.g. the release is past standard support, or the fix is deemed too intrusive). The reason is shown on the advisory."
     },
     "counts": {
-      "fixed": 7158,
-      "fix_available_upstream": 48,
-      "affected": 7129,
-      "not_affected": 5049,
-      "under_investigation": 866,
-      "will_not_fix": 1516
+      "fixed": 6688,
+      "fix_available_upstream": 53,
+      "affected": 7800,
+      "not_affected": 5035,
+      "under_investigation": 1138,
+      "will_not_fix": 1686
     },
     "shares": {
-      "fixed": 0.3289,
-      "not_affected": 0.232,
-      "will_not_fix": 0.0696,
-      "under_investigation": 0.0398,
-      "affected": 0.3275,
-      "fix_available_upstream": 0.0022
+      "fixed": 0.2986,
+      "not_affected": 0.2248,
+      "will_not_fix": 0.0753,
+      "under_investigation": 0.0508,
+      "affected": 0.3482,
+      "fix_available_upstream": 0.0024
     },
-    "total": 21766,
+    "total": 22400,
     "counts_basis": "per-advisory headline_status -- the single most-actionable status across all OS/SKU lineages, counted once per advisory (see issue #39, F7). This is NOT a per-package-row distribution: do not read status.shares as 'the share of my packages that are affected'; it over-weights the actionable buckets relative to true per-SKU prevalence."
   },
   "coverage": {
@@ -66,22 +66,22 @@
     },
     "counts": {
       "covered_by_package": 3,
-      "covered_by_scan": 22,
-      "scan_pending": 4,
-      "aks_built": 1,
+      "covered_by_scan": 19,
+      "scan_pending": 7,
+      "aks_built": 2,
       "container_image": 11,
-      "not_baked": 2,
+      "not_baked": 32,
       "not_assessed": 0
     },
     "shares": {
-      "aks_built": 0.0233,
-      "not_baked": 0.0465,
-      "covered_by_scan": 0.5116,
-      "container_image": 0.2558,
-      "covered_by_package": 0.0698,
-      "scan_pending": 0.093
+      "aks_built": 0.027,
+      "not_baked": 0.4324,
+      "covered_by_scan": 0.2568,
+      "container_image": 0.1486,
+      "covered_by_package": 0.0405,
+      "scan_pending": 0.0946
     },
-    "total": 43
+    "total": 74
   },
   "condition": {
     "labels": {
@@ -137,5 +137,5 @@
     },
     "release_notes_verified": true
   },
-  "generated": "2026-09-21T13:24:49Z"
+  "generated": "2026-09-28T14:41:10Z"
 }

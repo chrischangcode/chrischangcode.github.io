@@ -3,7 +3,7 @@
   "id": "GHSA-W67G-5RQW-F597",
   "type": "aks-vhd-security-advisory",
   "severity": "Medium",
-  "updated": "2026-09-21T13:24:44Z",
+  "updated": "2026-09-28T14:41:03Z",
   "references": [
     "https://nvd.nist.gov/vuln/detail/GHSA-W67G-5RQW-F597",
     "https://ubuntu.com/security/GHSA-W67G-5RQW-F597",
@@ -23,7 +23,7 @@
       "first_fixed_build": "AKSUbuntu-gen1-2404containerd-202606.08.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.2.4-ubuntu24.04u2_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bbe95cda9595773740db050652648fbc6e1bd5fa0e57887941e0aed721746347",
         "scan_pkg": "github.com/gorilla/websocket"
       }
     },
@@ -38,7 +38,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2404arm64containerd-202606.08.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.2.4-ubuntu24.04u2_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bbe95cda9595773740db050652648fbc6e1bd5fa0e57887941e0aed721746347",
         "scan_pkg": "github.com/gorilla/websocket"
       }
     },
@@ -53,7 +53,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2404containerd-202606.08.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.2.4-ubuntu24.04u2_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bbe95cda9595773740db050652648fbc6e1bd5fa0e57887941e0aed721746347",
         "scan_pkg": "github.com/gorilla/websocket"
       }
     },
@@ -68,7 +68,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2404cvmcontainerd-202606.08.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.2.4-ubuntu24.04u2_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bbe95cda9595773740db050652648fbc6e1bd5fa0e57887941e0aed721746347",
         "scan_pkg": "github.com/gorilla/websocket"
       }
     },
@@ -83,7 +83,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2404tlcontainerd-202606.08.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.2.4-ubuntu24.04u2_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bbe95cda9595773740db050652648fbc6e1bd5fa0e57887941e0aed721746347",
         "scan_pkg": "github.com/gorilla/websocket"
       }
     }
@@ -104,12 +104,12 @@
       {
         "name": "containerd",
         "coverage": "covered_by_scan",
-        "version": "2.3.3-ubuntu24.04u2"
+        "version": "2.3.5"
       }
     ]
   },
   "sources": [
     "https://security-metadata.canonical.com/oval/com.ubuntu.noble.cve.oval.xml.bz2",
-    "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bcacc73fbfc3e35b826d4bc819b60acc7f13625695936cd748a5a7f4dd8fa848"
+    "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:bbe95cda9595773740db050652648fbc6e1bd5fa0e57887941e0aed721746347"
   ]
 }

@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "type": "aks-vhd-components",
-  "generated": "2026-09-21T13:24:49Z",
+  "generated": "2026-09-28T14:41:10Z",
   "families": {
     "azurelinux": {
       "components": [
@@ -13,6 +13,12 @@
         },
         {
           "name": "aks-secure-tls-bootstrap-client",
+          "coverage": "not_baked",
+          "version": "1.1.4-2.azl3",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
+        },
+        {
+          "name": "aks-secure-tls-bootstrap-client package",
           "coverage": "not_baked",
           "version": "1.1.4-2.azl3",
           "note": "distro-versioned component with no matching installed package in this build's baked image"
@@ -34,6 +40,12 @@
           "note": "distributed as an OCI container image; not scanned by the binary overlay (which assesses downloadable archives)"
         },
         {
+          "name": "azure-acr-credential-provider package",
+          "coverage": "not_baked",
+          "version": "1.33.18-1.azl3",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
+        },
+        {
           "name": "CNI plugin",
           "coverage": "covered_by_scan",
           "version": "1.6.2"
@@ -41,8 +53,14 @@
         {
           "name": "containerd",
           "coverage": "covered_by_package",
-          "version": "2.2.4-6.azl3",
+          "version": "2.2.4",
           "package": "containerd2"
+        },
+        {
+          "name": "containerd2 package",
+          "coverage": "not_baked",
+          "version": "2.2.4-8.azl3",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "containernetworking-plugins",
@@ -51,24 +69,48 @@
           "package": "containernetworking-plugins"
         },
         {
+          "name": "containernetworking-plugins package",
+          "coverage": "not_baked",
+          "version": "1.9.0-44.azl3",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
+        },
+        {
           "name": "datacenter-gpu-manager-4-core",
           "coverage": "scan_pending",
-          "version": "1:4.5.3-1",
+          "version": "4.5.3",
           "condition": "gpu_node",
           "note": "published in NVIDIA's own package repository, which this feed does not yet resolve; binary scan planned"
+        },
+        {
+          "name": "datacenter-gpu-manager-4-core package",
+          "coverage": "not_baked",
+          "version": "4.5.3-1",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "datacenter-gpu-manager-4-proprietary",
           "coverage": "scan_pending",
-          "version": "1:4.5.3-1",
+          "version": "4.5.3",
           "condition": "gpu_node",
           "note": "published in NVIDIA's own package repository, which this feed does not yet resolve; binary scan planned"
         },
         {
+          "name": "datacenter-gpu-manager-4-proprietary package",
+          "coverage": "not_baked",
+          "version": "4.5.3-1",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
+        },
+        {
           "name": "dcgm-exporter",
           "coverage": "covered_by_scan",
-          "version": "4.8.2-10.azl3",
+          "version": "4.8.2",
           "condition": "gpu_node"
+        },
+        {
+          "name": "dcgm-exporter package",
+          "coverage": "not_baked",
+          "version": "4.8.2-16.azl3",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "dra-driver-nvidia-gpu",
@@ -77,10 +119,28 @@
           "condition": "gpu_node"
         },
         {
+          "name": "dra-driver-nvidia-gpu package",
+          "coverage": "not_baked",
+          "version": "0.4.1-11.azl3",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
+        },
+        {
           "name": "ig",
           "coverage": "covered_by_package",
-          "version": "0.55.1-2.azl3",
+          "version": "0.56.0",
           "package": "ig"
+        },
+        {
+          "name": "ig package",
+          "coverage": "not_baked",
+          "version": "0.56.0-3.azl3",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
+        },
+        {
+          "name": "ig-gadgets package",
+          "coverage": "not_baked",
+          "version": "0.56.0-1.azl3",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "kubectl",
@@ -89,10 +149,22 @@
           "note": "distributed as an OCI container image; not scanned by the binary overlay (which assesses downloadable archives)"
         },
         {
+          "name": "kubectl package",
+          "coverage": "not_baked",
+          "version": "1.34.11-1.azl3",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
+        },
+        {
           "name": "kubelet",
           "coverage": "container_image",
           "version": "1.34.10",
           "note": "distributed as an OCI container image; not scanned by the binary overlay (which assesses downloadable archives)"
+        },
+        {
+          "name": "kubelet package",
+          "coverage": "not_baked",
+          "version": "1.34.11-4.azl3",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "kubernetes-binaries",
@@ -101,15 +173,33 @@
           "note": "distributed as an OCI container image; not scanned by the binary overlay (which assesses downloadable archives)"
         },
         {
+          "name": "kubernetes-cri-tools package",
+          "coverage": "not_baked",
+          "version": "1.34.0-34.azl3",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
+        },
+        {
           "name": "node-exporter",
           "coverage": "covered_by_scan",
-          "version": "1.12.1-7.azl3"
+          "version": "1.12.1"
+        },
+        {
+          "name": "node-exporter-kubernetes package",
+          "coverage": "not_baked",
+          "version": "1.12.1-7.azl3",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "nvidia-device-plugin",
           "coverage": "covered_by_scan",
           "version": "0.19.3-6.azl3",
           "condition": "gpu_node"
+        },
+        {
+          "name": "nvidia-device-plugin package",
+          "coverage": "not_baked",
+          "version": "0.19.3-15.azl3",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "oras",
@@ -119,7 +209,7 @@
       ],
       "counts": {
         "aks_built": 1,
-        "not_baked": 1,
+        "not_baked": 16,
         "covered_by_scan": 8,
         "container_image": 4,
         "covered_by_package": 3,
@@ -135,6 +225,12 @@
         },
         {
           "name": "aks-secure-tls-bootstrap-client",
+          "coverage": "aks_built",
+          "version": "1.1.4",
+          "note": "built by AKS / upstream; not tracked by the distro advisory feed"
+        },
+        {
+          "name": "aks-secure-tls-bootstrap-client package",
           "coverage": "not_baked",
           "version": "1.1.4-ubuntu24.04u2",
           "note": "distro-versioned component with no matching installed package in this build's baked image"
@@ -149,6 +245,12 @@
           "coverage": "container_image",
           "version": "v1.30.15",
           "note": "distributed as an OCI container image; not scanned by the binary overlay (which assesses downloadable archives)"
+        },
+        {
+          "name": "azure-acr-credential-provider package",
+          "coverage": "not_baked",
+          "version": "1.33.18-ubuntu24.04u1",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "blobfuse",
@@ -168,55 +270,111 @@
         {
           "name": "containerd",
           "coverage": "covered_by_scan",
-          "version": "2.3.3-ubuntu24.04u2"
+          "version": "2.3.5"
         },
         {
           "name": "containernetworking-plugins",
           "coverage": "covered_by_scan",
-          "version": "1.9.0-ubuntu24.04u1"
+          "version": "1.9.0"
+        },
+        {
+          "name": "containernetworking-plugins package",
+          "coverage": "not_baked",
+          "version": "1.9.0-ubuntu24.04u44",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "datacenter-gpu-manager-4-core",
           "coverage": "scan_pending",
-          "version": "1:4.5.3-1",
+          "version": "4.5.3",
           "condition": "gpu_node",
           "note": "published in NVIDIA's own package repository, which this feed does not yet resolve; binary scan planned"
+        },
+        {
+          "name": "datacenter-gpu-manager-4-core package",
+          "coverage": "not_baked",
+          "version": "1:4.5.3-1",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "datacenter-gpu-manager-4-proprietary",
           "coverage": "scan_pending",
-          "version": "1:4.5.3-1",
+          "version": "4.5.3",
           "condition": "gpu_node",
           "note": "published in NVIDIA's own package repository, which this feed does not yet resolve; binary scan planned"
         },
         {
+          "name": "datacenter-gpu-manager-4-proprietary package",
+          "coverage": "not_baked",
+          "version": "1:4.5.3-1",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
+        },
+        {
           "name": "dcgm-exporter",
-          "coverage": "covered_by_scan",
-          "version": "4.8.2-ubuntu24.04u10",
-          "condition": "gpu_node"
+          "coverage": "scan_pending",
+          "version": "4.8.2",
+          "condition": "gpu_node",
+          "note": "cached in this VHD and installed on GPU nodes; not tracked by the base distro advisory feed; binary scan planned"
+        },
+        {
+          "name": "dcgm-exporter package",
+          "coverage": "not_baked",
+          "version": "4.8.2-ubuntu24.04u16",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "dra-driver-nvidia-gpu",
-          "coverage": "covered_by_scan",
-          "version": "0.4.1-ubuntu24.04u5",
-          "condition": "gpu_node"
+          "coverage": "scan_pending",
+          "version": "0.4.1",
+          "condition": "gpu_node",
+          "note": "cached in this VHD and installed on GPU nodes; not tracked by the base distro advisory feed; binary scan planned"
+        },
+        {
+          "name": "dra-driver-nvidia-gpu package",
+          "coverage": "not_baked",
+          "version": "0.4.1-ubuntu24.04u11",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "ig",
           "coverage": "covered_by_scan",
-          "version": "0.55.1-ubuntu24.04u2"
+          "version": "0.56.0"
+        },
+        {
+          "name": "ig package",
+          "coverage": "not_baked",
+          "version": "0.56.0-ubuntu24.04u3",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
+        },
+        {
+          "name": "ig-gadgets package",
+          "coverage": "not_baked",
+          "version": "0.56.0-ubuntu20.04u1",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "kubectl",
           "coverage": "container_image",
-          "version": "1.34.10",
+          "version": "1.34.11",
           "note": "distributed as an OCI container image; not scanned by the binary overlay (which assesses downloadable archives)"
+        },
+        {
+          "name": "kubectl package",
+          "coverage": "not_baked",
+          "version": "1.34.11-ubuntu24.04u1",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "kubelet",
           "coverage": "container_image",
-          "version": "1.34.10",
+          "version": "1.34.11",
           "note": "distributed as an OCI container image; not scanned by the binary overlay (which assesses downloadable archives)"
+        },
+        {
+          "name": "kubelet package",
+          "coverage": "not_baked",
+          "version": "1.34.11-ubuntu24.04u4",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "kubernetes-binaries",
@@ -225,9 +383,33 @@
           "note": "distributed as an OCI container image; not scanned by the binary overlay (which assesses downloadable archives)"
         },
         {
+          "name": "kubernetes-cri-tools package",
+          "coverage": "not_baked",
+          "version": "1.34.0-ubuntu24.04u34",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
+        },
+        {
+          "name": "moby-containerd package",
+          "coverage": "not_baked",
+          "version": "2.3.5-ubuntu24.04u2",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
+        },
+        {
+          "name": "moby-runc package",
+          "coverage": "not_baked",
+          "version": "1.4.3-ubuntu24.04u21",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
+        },
+        {
           "name": "node-exporter",
           "coverage": "covered_by_scan",
-          "version": "1.12.1-ubuntu24.04u7"
+          "version": "1.12.1"
+        },
+        {
+          "name": "node-exporter-kubernetes package",
+          "coverage": "not_baked",
+          "version": "1.12.1-ubuntu24.04u7",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "nvidia-cuda-driver",
@@ -247,9 +429,16 @@
         },
         {
           "name": "nvidia-device-plugin",
-          "coverage": "covered_by_scan",
-          "version": "0.19.3-ubuntu24.04u6",
-          "condition": "gpu_node"
+          "coverage": "scan_pending",
+          "version": "0.19.3",
+          "condition": "gpu_node",
+          "note": "cached in this VHD and installed on GPU nodes; not tracked by the base distro advisory feed; binary scan planned"
+        },
+        {
+          "name": "nvidia-device-plugin package",
+          "coverage": "not_baked",
+          "version": "0.19.3-ubuntu24.04u15",
+          "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "nvidia-grid-driver",
@@ -267,14 +456,15 @@
         {
           "name": "runc",
           "coverage": "covered_by_scan",
-          "version": "1.4.3-ubuntu24.04u2"
+          "version": "1.4.3"
         }
       ],
       "counts": {
-        "covered_by_scan": 14,
-        "not_baked": 1,
+        "covered_by_scan": 11,
+        "aks_built": 1,
+        "not_baked": 16,
         "container_image": 7,
-        "scan_pending": 2
+        "scan_pending": 5
       }
     }
   }
