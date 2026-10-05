@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "type": "aks-release-upgrade-index",
-  "generated": "2026-09-28T14:43:09Z",
+  "generated": "2026-10-05T15:23:22Z",
   "basis": "release_history",
   "to_release": "v20260904",
   "count": 4,

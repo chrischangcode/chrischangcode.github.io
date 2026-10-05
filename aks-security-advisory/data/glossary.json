@@ -19,22 +19,22 @@
       "will_not_fix": "The vendor will not ship a fix (Ubuntu CVE Tracker 'ignored' \u2014 e.g. the release is past standard support, or the fix is deemed too intrusive). The reason is shown on the advisory."
     },
     "counts": {
-      "fixed": 6688,
-      "fix_available_upstream": 53,
-      "affected": 7800,
-      "not_affected": 5035,
-      "under_investigation": 1138,
-      "will_not_fix": 1686
+      "fixed": 7200,
+      "fix_available_upstream": 73,
+      "affected": 7832,
+      "not_affected": 5062,
+      "under_investigation": 491,
+      "will_not_fix": 1810
     },
     "shares": {
-      "fixed": 0.2986,
-      "not_affected": 0.2248,
-      "will_not_fix": 0.0753,
-      "under_investigation": 0.0508,
-      "affected": 0.3482,
-      "fix_available_upstream": 0.0024
+      "fixed": 0.3205,
+      "not_affected": 0.2253,
+      "will_not_fix": 0.0806,
+      "affected": 0.3486,
+      "under_investigation": 0.0219,
+      "fix_available_upstream": 0.0032
     },
-    "total": 22400,
+    "total": 22468,
     "counts_basis": "per-advisory headline_status -- the single most-actionable status across all OS/SKU lineages, counted once per advisory (see issue #39, F7). This is NOT a per-package-row distribution: do not read status.shares as 'the share of my packages that are affected'; it over-weights the actionable buckets relative to true per-SKU prevalence."
   },
   "coverage": {
@@ -137,5 +137,5 @@
     },
     "release_notes_verified": true
   },
-  "generated": "2026-09-28T14:41:10Z"
+  "generated": "2026-10-05T15:20:39Z"
 }
