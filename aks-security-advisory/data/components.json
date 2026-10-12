@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "type": "aks-vhd-components",
-  "generated": "2026-10-05T15:20:39Z",
+  "generated": "2026-10-12T16:11:16Z",
   "families": {
     "azurelinux": {
       "components": [
@@ -71,7 +71,7 @@
         {
           "name": "containernetworking-plugins package",
           "coverage": "not_baked",
-          "version": "1.9.0-44.azl3",
+          "version": "1.9.1-47.azl3",
           "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
@@ -121,7 +121,7 @@
         {
           "name": "dra-driver-nvidia-gpu package",
           "coverage": "not_baked",
-          "version": "0.4.1-11.azl3",
+          "version": "0.5.0-5.azl3",
           "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
@@ -133,7 +133,7 @@
         {
           "name": "ig package",
           "coverage": "not_baked",
-          "version": "0.56.0-3.azl3",
+          "version": "0.56.0-4.azl3",
           "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
@@ -151,7 +151,7 @@
         {
           "name": "kubectl package",
           "coverage": "not_baked",
-          "version": "1.34.11-1.azl3",
+          "version": "1.34.11-2.azl3",
           "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
@@ -163,7 +163,7 @@
         {
           "name": "kubelet package",
           "coverage": "not_baked",
-          "version": "1.34.11-4.azl3",
+          "version": "1.34.11-7.azl3",
           "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
@@ -186,7 +186,7 @@
         {
           "name": "node-exporter-kubernetes package",
           "coverage": "not_baked",
-          "version": "1.12.1-7.azl3",
+          "version": "1.12.1-9.azl3",
           "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
@@ -198,7 +198,7 @@
         {
           "name": "nvidia-device-plugin package",
           "coverage": "not_baked",
-          "version": "0.19.3-15.azl3",
+          "version": "0.19.3-16.azl3",
           "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
@@ -270,17 +270,17 @@
         {
           "name": "containerd",
           "coverage": "covered_by_scan",
-          "version": "2.3.5"
+          "version": "2.3.6"
         },
         {
           "name": "containernetworking-plugins",
           "coverage": "covered_by_scan",
-          "version": "1.9.0"
+          "version": "1.9.1"
         },
         {
           "name": "containernetworking-plugins package",
           "coverage": "not_baked",
-          "version": "1.9.0-ubuntu24.04u44",
+          "version": "1.9.1-ubuntu24.04u47",
           "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
@@ -325,14 +325,14 @@
         {
           "name": "dra-driver-nvidia-gpu",
           "coverage": "scan_pending",
-          "version": "0.4.1",
+          "version": "0.5.0",
           "condition": "gpu_node",
           "note": "cached in this VHD and installed on GPU nodes; not tracked by the base distro advisory feed; binary scan planned"
         },
         {
           "name": "dra-driver-nvidia-gpu package",
           "coverage": "not_baked",
-          "version": "0.4.1-ubuntu24.04u11",
+          "version": "0.5.0-ubuntu24.04u5",
           "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
@@ -343,7 +343,7 @@
         {
           "name": "ig package",
           "coverage": "not_baked",
-          "version": "0.56.0-ubuntu24.04u3",
+          "version": "0.56.0-ubuntu24.04u4",
           "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
@@ -361,7 +361,7 @@
         {
           "name": "kubectl package",
           "coverage": "not_baked",
-          "version": "1.34.11-ubuntu24.04u1",
+          "version": "1.34.11-ubuntu24.04u2",
           "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
@@ -373,7 +373,7 @@
         {
           "name": "kubelet package",
           "coverage": "not_baked",
-          "version": "1.34.11-ubuntu24.04u4",
+          "version": "1.34.11-ubuntu24.04u7",
           "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
@@ -391,13 +391,13 @@
         {
           "name": "moby-containerd package",
           "coverage": "not_baked",
-          "version": "2.3.5-ubuntu24.04u2",
+          "version": "2.3.6-ubuntu24.04u1",
           "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "moby-runc package",
           "coverage": "not_baked",
-          "version": "1.4.3-ubuntu24.04u21",
+          "version": "1.4.3-ubuntu24.04u31",
           "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
@@ -408,24 +408,16 @@
         {
           "name": "node-exporter-kubernetes package",
           "coverage": "not_baked",
-          "version": "1.12.1-ubuntu24.04u7",
+          "version": "1.12.1-ubuntu24.04u9",
           "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "nvidia-cuda-driver",
           "coverage": "container_image",
-          "version": "580.159.04-20260629214430",
+          "version": "580.159.04-20260918140533",
           "image": "mcr.microsoft.com/aks/aks-gpu-cuda-lts",
           "condition": "gpu_node",
           "note": "NVIDIA driver, shipped as the OCI image mcr.microsoft.com/aks/aks-gpu-cuda-lts and pulled at node provisioning time; tracked by its own image advisory, not the distro feed"
-        },
-        {
-          "name": "nvidia-cuda-driver-prebaked",
-          "coverage": "container_image",
-          "version": "580.159.04-20260629214430",
-          "image": "mcr.microsoft.com/aks/aks-gpu-cuda-lts",
-          "condition": "gpu_node",
-          "note": "NVIDIA driver, shipped as the OCI image mcr.microsoft.com/aks/aks-gpu-cuda-lts and its kernel module is pre-built into this VHD; tracked by its own image advisory, not the distro feed"
         },
         {
           "name": "nvidia-device-plugin",
@@ -437,13 +429,13 @@
         {
           "name": "nvidia-device-plugin package",
           "coverage": "not_baked",
-          "version": "0.19.3-ubuntu24.04u15",
+          "version": "0.19.3-ubuntu24.04u16",
           "note": "distro-versioned component with no matching installed package in this build's baked image"
         },
         {
           "name": "nvidia-grid-driver",
           "coverage": "container_image",
-          "version": "570.237-20260817204535",
+          "version": "580.178.04-20261006181431",
           "image": "mcr.microsoft.com/aks/aks-gpu-grid",
           "condition": "gpu_node",
           "note": "NVIDIA driver, shipped as the OCI image mcr.microsoft.com/aks/aks-gpu-grid and pulled at node provisioning time; tracked by its own image advisory, not the distro feed"
@@ -463,7 +455,7 @@
         "covered_by_scan": 11,
         "aks_built": 1,
         "not_baked": 16,
-        "container_image": 7,
+        "container_image": 6,
         "scan_pending": 5
       }
     }
