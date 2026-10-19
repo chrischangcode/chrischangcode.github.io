@@ -1,6 +1,6 @@
 # AKS Security Advisories -- machine-readable feed guide
 
-> GENERATED with this feed build (2026-10-12T16:13:08Z). Every byte size, release label and
+> GENERATED with this feed build (2026-10-19T14:08:03Z). Every byte size, release label and
 > count below is a fact about THIS build, walked from manifest.json and the
 > canonical vocabulary -- not a hand-written claim. Re-read manifest.json /
 > glossary.json for the authoritative live inventory.
@@ -27,22 +27,22 @@ Data root: https://chrischangcode.github.io/aks-security-advisory/data/
 
 ## Endpoints in THIS build (byte sizes from manifest.json)
 
-  data/advisories/  --  22,729 files, 323,717,418 B  --  required  --  schema 2.0
-  data/advisory-pages/  --  22,729 files, 179,502,821 B  --  optional  --  schema 1.0
-  data/by-package/  --  577 files, 17,590,070 B  --  optional  --  schema 1.0
-  data/by-release/  --  27 files, 79,635,675 B  --  optional  --  schema 1.0
-  data/components.json  --  17,257 B  --  optional  --  schema 2.0
+  data/advisories/  --  22,825 files, 336,236,840 B  --  required  --  schema 2.0
+  data/advisory-pages/  --  22,825 files, 182,373,384 B  --  optional  --  schema 1.0
+  data/by-package/  --  577 files, 17,948,730 B  --  optional  --  schema 1.0
+  data/by-release/  --  28 files, 85,447,643 B  --  optional  --  schema 1.0
+  data/components.json  --  17,261 B  --  optional  --  schema 2.0
   data/glossary.json  --  13,853 B  --  optional  --  schema 2.0
-  data/index-slim.json  --  1,654,733 B, 22,729 entries  --  optional  --  schema 1.0
-  data/index.json  --  50,080,429 B, 22,729 entries  --  required  --  schema 2.0
-  data/pathmap/  --  4 files, 829,694 B  --  optional  --  schema 1.1
+  data/index-slim.json  --  1,661,304 B, 22,825 entries  --  optional  --  schema 1.0
+  data/index.json  --  51,947,576 B, 22,825 entries  --  required  --  schema 2.0
+  data/pathmap/  --  4 files, 829,905 B  --  optional  --  schema 1.1
 
 Read manifest.json FIRST to plan fetches and avoid the large index.json.
 Endpoints marked 'optional' may be absent on an older feed artifact; treat
 a 404 on them as 'this feed predates the endpoint', not an error.
 Every path above is data-root-relative, e.g. https://chrischangcode.github.io/aks-security-advisory/data/index.json
 
-## VHD release labels in THIS build (27)
+## VHD release labels in THIS build (28)
 
 These are the lineage labels used in advisories[].packages[].releases[] and as
 by-release keys. Resolve a scanner path WITHIN one of these lineages:
@@ -73,20 +73,21 @@ by-release keys. Resolve a scanner path WITHIN one of these lineages:
   - AKSUbuntu/gen2/2404tlcontainerd
   - AKSUbuntu/gen2/2604minimalarm64containerd
   - AKSUbuntu/gen2/2604minimalcontainerd
+  - AKSUbuntu/gen2/2604minimalcvmcontainerd
 
 ## Status vocabulary (from glossary.json; counts measured in this build)
 
-- fixed (Fixed) -- count 7276
+- fixed (Fixed) -- count 7297
     A scanned AKS VHD build ships a package version at or above the distro's fixed version. The 'first fixed build' field names the earliest build that carries the fix.
-- fix_available_upstream (Fix available upstream) -- count 59
+- fix_available_upstream (Fix available upstream) -- count 70
     The distro (Azure Linux / Ubuntu) has published a fixed package, but none of the scanned VHD builds ship it yet. The fix exists upstream and is expected in a future node image.
-- affected (Affected) -- count 7949
+- affected (Affected) -- count 7878
     Vulnerable, with no fix AKS can ship yet. Comes from a vendor VEX / Ubuntu CVE Tracker assertion (a fixless CVE cannot be enumerated from OVAL alone), or from the binary scan overlay when a CVE survives to the newest scanned build. A scanned binary stays affected even if the scanner reports a fixed version, because that fix is in the bundled module and not in any artifact AKS ships — see evidence.module_fixed_version. The generated glossary records how large a share of the feed it is.
-- not_affected (Not affected) -- count 5094
+- not_affected (Not affected) -- count 5171
     Excluded by a vendor verdict — an Azure Linux CSAF/VEX justification or an Ubuntu CVE Tracker 'not-affected' (e.g. the vulnerable code path is not present/reachable). The justification is shown on the advisory.
-- under_investigation (Under investigation) -- count 497
+- under_investigation (Under investigation) -- count 495
     Triage is not complete — either no distro OVAL/VEX verdict exists yet, or the Ubuntu CVE Tracker marks the package 'needs-triage'.
-- will_not_fix (Will not fix) -- count 1854
+- will_not_fix (Will not fix) -- count 1914
     The vendor will not ship a fix (Ubuntu CVE Tracker 'ignored' — e.g. the release is past standard support, or the fix is deemed too intrusive). The reason is shown on the advisory.
 
 Do NOT assume any status is rare; consult glossary.json status.counts /

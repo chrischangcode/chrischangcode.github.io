@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "type": "aks-vhd-pathmap-index",
-  "generated": "2026-10-12T16:12:47Z",
+  "generated": "2026-10-19T14:07:46Z",
   "default_lineage": "AKSAzureLinuxV3/gen2",
   "lineages": {
     "AKSAzureLinuxV3/cvmgen2": "azurelinux-3.0",
@@ -30,7 +30,8 @@
     "AKSUbuntu/gen2/2404cvmcontainerd": "ubuntu-noble",
     "AKSUbuntu/gen2/2404tlcontainerd": "ubuntu-noble",
     "AKSUbuntu/gen2/2604minimalarm64containerd": "ubuntu-jammy",
-    "AKSUbuntu/gen2/2604minimalcontainerd": "ubuntu-jammy"
+    "AKSUbuntu/gen2/2604minimalcontainerd": "ubuntu-jammy",
+    "AKSUbuntu/gen2/2604minimalcvmcontainerd": "ubuntu-jammy"
   },
   "maps": [
     {
@@ -51,8 +52,8 @@
       "key": "ubuntu-jammy",
       "os_family": "ubuntu",
       "release": "jammy",
-      "path_count": 3398,
-      "package_count": 269
+      "path_count": 3400,
+      "package_count": 270
     },
     {
       "key": "ubuntu-noble",
