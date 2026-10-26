@@ -19,22 +19,22 @@
       "will_not_fix": "The vendor will not ship a fix (Ubuntu CVE Tracker 'ignored' \u2014 e.g. the release is past standard support, or the fix is deemed too intrusive). The reason is shown on the advisory."
     },
     "counts": {
-      "fixed": 7297,
+      "fixed": 7296,
       "fix_available_upstream": 70,
-      "affected": 7878,
+      "affected": 8202,
       "not_affected": 5171,
-      "under_investigation": 495,
-      "will_not_fix": 1914
+      "under_investigation": 582,
+      "will_not_fix": 2047
     },
     "shares": {
-      "fixed": 0.3197,
-      "not_affected": 0.2265,
-      "will_not_fix": 0.0839,
-      "affected": 0.3451,
-      "under_investigation": 0.0217,
-      "fix_available_upstream": 0.0031
+      "fixed": 0.3122,
+      "not_affected": 0.2213,
+      "will_not_fix": 0.0876,
+      "affected": 0.351,
+      "under_investigation": 0.0249,
+      "fix_available_upstream": 0.003
     },
-    "total": 22825,
+    "total": 23368,
     "counts_basis": "per-advisory headline_status -- the single most-actionable status across all OS/SKU lineages, counted once per advisory (see issue #39, F7). This is NOT a per-package-row distribution: do not read status.shares as 'the share of my packages that are affected'; it over-weights the actionable buckets relative to true per-SKU prevalence."
   },
   "coverage": {
@@ -70,18 +70,18 @@
       "scan_pending": 7,
       "aks_built": 2,
       "container_image": 10,
-      "not_baked": 32,
+      "not_baked": 36,
       "not_assessed": 0
     },
     "shares": {
-      "aks_built": 0.0274,
-      "not_baked": 0.4384,
-      "covered_by_scan": 0.2603,
-      "container_image": 0.137,
-      "covered_by_package": 0.0411,
-      "scan_pending": 0.0959
+      "aks_built": 0.026,
+      "not_baked": 0.4675,
+      "covered_by_scan": 0.2468,
+      "container_image": 0.1299,
+      "covered_by_package": 0.039,
+      "scan_pending": 0.0909
     },
-    "total": 73
+    "total": 77
   },
   "condition": {
     "labels": {
@@ -137,5 +137,5 @@
     },
     "release_notes_verified": true
   },
-  "generated": "2026-10-19T14:06:38Z"
+  "generated": "2026-10-26T13:51:12Z"
 }
