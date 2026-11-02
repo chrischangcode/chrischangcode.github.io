@@ -1,15 +1,15 @@
 {
   "schema_version": "1.0",
   "type": "aks-vhd-feed-manifest",
-  "generated": "2026-10-26T13:52:27Z",
+  "generated": "2026-11-02T16:51:52Z",
   "data_root": ".",
   "count": 14,
   "endpoints": [
     {
       "path": "advisories/",
       "kind": "collection",
-      "files": 23368,
-      "bytes": 345546747,
+      "files": 23643,
+      "bytes": 350234531,
       "media_type": "application/json",
       "schema_version": "2.0",
       "optional": false,
@@ -18,8 +18,8 @@
     {
       "path": "advisory-pages/",
       "kind": "collection",
-      "files": 23368,
-      "bytes": 185893529,
+      "files": 23643,
+      "bytes": 188352291,
       "media_type": "text/html",
       "schema_version": "1.0",
       "optional": true,
@@ -28,8 +28,8 @@
     {
       "path": "by-package/",
       "kind": "collection",
-      "files": 580,
-      "bytes": 18444826,
+      "files": 583,
+      "bytes": 18805189,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": true,
@@ -39,7 +39,7 @@
       "path": "by-release/",
       "kind": "collection",
       "files": 29,
-      "bytes": 89188297,
+      "bytes": 91418662,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": true,
@@ -48,7 +48,7 @@
     {
       "path": "components.json",
       "kind": "document",
-      "bytes": 18339,
+      "bytes": 18343,
       "media_type": "application/json",
       "schema_version": "2.0",
       "optional": true
@@ -64,7 +64,7 @@
     {
       "path": "glossary.json",
       "kind": "document",
-      "bytes": 13850,
+      "bytes": 13852,
       "media_type": "application/json",
       "schema_version": "2.0",
       "optional": true
@@ -72,20 +72,20 @@
     {
       "path": "index-slim.json",
       "kind": "document",
-      "bytes": 1696308,
+      "bytes": 1715754,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": true,
-      "entries": 23368
+      "entries": 23643
     },
     {
       "path": "index.json",
       "kind": "document",
-      "bytes": 53562138,
+      "bytes": 54621575,
       "media_type": "application/json",
       "schema_version": "2.0",
       "optional": false,
-      "entries": 23368
+      "entries": 23643
     },
     {
       "path": "llms.txt",
@@ -125,7 +125,7 @@
     {
       "path": "sitemap.xml",
       "kind": "document",
-      "bytes": 6821462,
+      "bytes": 6901818,
       "media_type": "application/xml",
       "schema_version": "1.0",
       "optional": true

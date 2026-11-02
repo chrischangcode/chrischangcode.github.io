@@ -3,7 +3,7 @@
   "id": "GHSA-HRXH-6V49-42GF",
   "type": "aks-vhd-security-advisory",
   "severity": "High",
-  "updated": "2026-10-26T13:51:03Z",
+  "updated": "2026-11-02T16:49:39Z",
   "references": [
     "https://nvd.nist.gov/vuln/detail/GHSA-HRXH-6V49-42GF",
     "https://raw.githubusercontent.com/microsoft/AzureLinuxVulnerabilityData/main/azurelinux-3.0-oval.xml",
@@ -20,11 +20,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSAzureLinuxV3-cvmgen2-202610.23.0",
+      "latest_build": "AKSAzureLinuxV3-cvmgen2-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -40,7 +40,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/nvidia-device-plugin-0.19.3-6.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -56,7 +56,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dcgm-exporter-4.8.2-10.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -72,7 +72,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dra-driver-nvidia-gpu-0.4.1-5.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -84,11 +84,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSAzureLinuxV3-gen1-202610.23.0",
+      "latest_build": "AKSAzureLinuxV3-gen1-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -104,7 +104,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/nvidia-device-plugin-0.19.3-6.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -120,7 +120,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dcgm-exporter-4.8.2-10.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -136,7 +136,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dra-driver-nvidia-gpu-0.4.1-5.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -148,11 +148,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSAzureLinuxV3-gen1fips-202610.23.0",
+      "latest_build": "AKSAzureLinuxV3-gen1fips-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -168,7 +168,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/nvidia-device-plugin-0.19.3-6.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -184,7 +184,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dcgm-exporter-4.8.2-10.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -200,7 +200,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dra-driver-nvidia-gpu-0.4.1-5.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -212,11 +212,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSAzureLinuxV3-gen2-202610.23.0",
+      "latest_build": "AKSAzureLinuxV3-gen2-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -232,7 +232,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/nvidia-device-plugin-0.19.3-6.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -248,7 +248,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dcgm-exporter-4.8.2-10.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -264,7 +264,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dra-driver-nvidia-gpu-0.4.1-5.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -276,11 +276,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSAzureLinuxV3-gen2arm64-202610.23.0",
+      "latest_build": "AKSAzureLinuxV3-gen2arm64-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -296,7 +296,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/nvidia-device-plugin-0.19.3-6.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -312,7 +312,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dcgm-exporter-4.8.2-10.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -328,7 +328,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dra-driver-nvidia-gpu-0.4.1-5.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -340,11 +340,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSAzureLinuxV3-gen2arm64fips-202610.23.0",
+      "latest_build": "AKSAzureLinuxV3-gen2arm64fips-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -360,7 +360,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/nvidia-device-plugin-0.19.3-6.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -376,7 +376,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dcgm-exporter-4.8.2-10.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -392,7 +392,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dra-driver-nvidia-gpu-0.4.1-5.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -404,11 +404,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSAzureLinuxV3-gen2fips-202610.23.0",
+      "latest_build": "AKSAzureLinuxV3-gen2fips-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -424,7 +424,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/nvidia-device-plugin-0.19.3-6.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -440,7 +440,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dcgm-exporter-4.8.2-10.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -456,7 +456,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dra-driver-nvidia-gpu-0.4.1-5.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -468,11 +468,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSAzureLinuxV3-gen2kata-202610.23.0",
+      "latest_build": "AKSAzureLinuxV3-gen2kata-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -484,11 +484,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSAzureLinuxV3-gen2katacc-202610.23.0",
+      "latest_build": "AKSAzureLinuxV3-gen2katacc-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -500,11 +500,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSAzureLinuxV3-gen2tl-202610.23.0",
+      "latest_build": "AKSAzureLinuxV3-gen2tl-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -520,7 +520,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/nvidia-device-plugin-0.19.3-6.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -536,7 +536,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dcgm-exporter-4.8.2-10.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -552,7 +552,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dra-driver-nvidia-gpu-0.4.1-5.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -568,7 +568,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -584,7 +584,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/nvidia-device-plugin-0.19.3-6.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -600,7 +600,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dcgm-exporter-4.7.1-1.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -616,7 +616,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dra-driver-nvidia-gpu-0.4.1-5.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -628,11 +628,11 @@
       "package": "containerd",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen1-2004fipscontainerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen1-2004fipscontainerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu20.04u4_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu20.04u5_amd64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -644,11 +644,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen1-2004fipscontainerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen1-2004fipscontainerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -664,7 +664,7 @@
       "first_fixed_build": "AKSUbuntu-gen1-2004fipscontainerd-202608.06.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/i/ig/ig_0.54.1-ubuntu20.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -675,11 +675,11 @@
       "package": "containerd",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2004cvmcontainerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2004cvmcontainerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu20.04u4_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu20.04u5_amd64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -691,11 +691,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2004cvmcontainerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2004cvmcontainerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -711,7 +711,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2004cvmcontainerd-202608.06.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/i/ig/ig_0.54.1-ubuntu20.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -722,11 +722,11 @@
       "package": "containerd",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2004fipscontainerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2004fipscontainerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu20.04u4_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu20.04u5_amd64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -738,11 +738,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2004fipscontainerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2004fipscontainerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -758,7 +758,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2004fipscontainerd-202608.06.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/i/ig/ig_0.54.1-ubuntu20.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -769,11 +769,11 @@
       "package": "containerd",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen1-2204containerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen1-2204containerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u4_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u5_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -785,11 +785,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen1-2204containerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen1-2204containerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -805,7 +805,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/nvidia-device-plugin/nvidia-device-plugin_0.19.3-ubuntu22.04u6_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -821,7 +821,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu22.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -837,7 +837,7 @@
       "first_fixed_build": "AKSUbuntu-gen1-2204containerd-202608.06.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.54.1-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -852,7 +852,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dra-driver-nvidia-gpu/dra-driver-nvidia-gpu_0.4.1-ubuntu22.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -864,11 +864,11 @@
       "package": "containerd",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen1-2204fipscontainerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen1-2204fipscontainerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u4_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u5_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -880,11 +880,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen1-2204fipscontainerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen1-2204fipscontainerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -900,7 +900,7 @@
       "first_fixed_build": "AKSUbuntu-gen1-2204fipscontainerd-202608.06.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.54.1-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -915,7 +915,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/nvidia-device-plugin/nvidia-device-plugin_0.19.3-ubuntu22.04u6_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -931,7 +931,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu22.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -947,7 +947,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dra-driver-nvidia-gpu/dra-driver-nvidia-gpu_0.4.1-ubuntu22.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -959,11 +959,11 @@
       "package": "containerd",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2204arm64containerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2204arm64containerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u4_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u5_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -975,11 +975,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2204arm64containerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2204arm64containerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -995,7 +995,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/nvidia-device-plugin/nvidia-device-plugin_0.19.3-ubuntu22.04u6_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1011,7 +1011,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu22.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1027,7 +1027,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2204arm64containerd-202608.06.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.54.1-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -1042,7 +1042,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dra-driver-nvidia-gpu/dra-driver-nvidia-gpu_0.4.1-ubuntu22.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1054,11 +1054,11 @@
       "package": "containerd",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2204containerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2204containerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u4_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u5_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1070,11 +1070,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2204containerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2204containerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1090,7 +1090,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/nvidia-device-plugin/nvidia-device-plugin_0.19.3-ubuntu22.04u6_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1106,7 +1106,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu22.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1122,7 +1122,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2204containerd-202608.06.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.54.1-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -1137,7 +1137,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dra-driver-nvidia-gpu/dra-driver-nvidia-gpu_0.4.1-ubuntu22.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1149,11 +1149,11 @@
       "package": "containerd",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2204fipscontainerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2204fipscontainerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u4_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u5_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1165,11 +1165,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2204fipscontainerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2204fipscontainerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1185,7 +1185,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2204fipscontainerd-202608.06.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.54.1-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -1200,7 +1200,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/nvidia-device-plugin/nvidia-device-plugin_0.19.3-ubuntu22.04u6_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1216,7 +1216,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu22.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1232,7 +1232,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dra-driver-nvidia-gpu/dra-driver-nvidia-gpu_0.4.1-ubuntu22.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1244,11 +1244,11 @@
       "package": "containerd",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2204fipstlcontainerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2204fipstlcontainerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u4_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u5_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1260,11 +1260,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2204fipstlcontainerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2204fipstlcontainerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1280,7 +1280,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2204fipstlcontainerd-202608.06.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.54.1-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -1295,7 +1295,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/nvidia-device-plugin/nvidia-device-plugin_0.19.3-ubuntu22.04u6_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1311,7 +1311,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu22.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1327,7 +1327,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dra-driver-nvidia-gpu/dra-driver-nvidia-gpu_0.4.1-ubuntu22.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1339,11 +1339,11 @@
       "package": "containerd",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2204tlcontainerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2204tlcontainerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
-        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u4_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u5_arm64.deb",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1355,11 +1355,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2204tlcontainerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2204tlcontainerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1375,7 +1375,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/nvidia-device-plugin/nvidia-device-plugin_0.19.3-ubuntu22.04u6_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1391,7 +1391,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu22.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1407,7 +1407,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2204tlcontainerd-202608.06.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.54.1-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -1422,7 +1422,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dra-driver-nvidia-gpu/dra-driver-nvidia-gpu_0.4.1-ubuntu22.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1434,11 +1434,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2604minimalarm64containerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2604minimalarm64containerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1450,11 +1450,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2604minimalcontainerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2604minimalcontainerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1466,11 +1466,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2604minimalcvmcontainerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2604minimalcvmcontainerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1486,7 +1486,7 @@
       "first_fixed_build": "AKSUbuntu-gen1-2404containerd-202610.23.0",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.7-ubuntu24.04u3_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -1497,11 +1497,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen1-2404containerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen1-2404containerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1517,7 +1517,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/nvidia-device-plugin/nvidia-device-plugin_0.19.3-ubuntu24.04u6_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1533,7 +1533,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu24.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1549,7 +1549,7 @@
       "first_fixed_build": "AKSUbuntu-gen1-2404containerd-202608.06.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.54.1-ubuntu24.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -1564,7 +1564,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/d/dra-driver-nvidia-gpu/dra-driver-nvidia-gpu_0.4.1-ubuntu24.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1580,7 +1580,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2404arm64containerd-202610.23.0",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.7-ubuntu24.04u3_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -1591,11 +1591,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2404arm64containerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2404arm64containerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1611,7 +1611,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/nvidia-device-plugin/nvidia-device-plugin_0.19.3-ubuntu24.04u6_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1627,7 +1627,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu24.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1643,7 +1643,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2404arm64containerd-202608.06.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.54.1-ubuntu24.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -1658,7 +1658,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/d/dra-driver-nvidia-gpu/dra-driver-nvidia-gpu_0.4.1-ubuntu24.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1674,7 +1674,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2404containerd-202610.23.0",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.7-ubuntu24.04u3_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -1685,11 +1685,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2404containerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2404containerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1705,7 +1705,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/nvidia-device-plugin/nvidia-device-plugin_0.19.3-ubuntu24.04u6_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1721,7 +1721,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu24.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1737,7 +1737,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2404containerd-202608.06.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.54.1-ubuntu24.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -1752,7 +1752,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/d/dra-driver-nvidia-gpu/dra-driver-nvidia-gpu_0.4.1-ubuntu24.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1768,7 +1768,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2404cvmcontainerd-202610.23.0",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.7-ubuntu24.04u3_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -1779,11 +1779,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2404cvmcontainerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2404cvmcontainerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1799,7 +1799,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/nvidia-device-plugin/nvidia-device-plugin_0.19.3-ubuntu24.04u6_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1815,7 +1815,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu24.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1831,7 +1831,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2404cvmcontainerd-202608.06.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.54.1-ubuntu24.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -1846,7 +1846,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/d/dra-driver-nvidia-gpu/dra-driver-nvidia-gpu_0.4.1-ubuntu24.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1862,7 +1862,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2404tlcontainerd-202610.23.0",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.7-ubuntu24.04u3_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -1873,11 +1873,11 @@
       "package": "Azure CNI",
       "status": "affected",
       "severity": "High",
-      "latest_build": "AKSUbuntu-gen2-2404tlcontainerd-202610.23.0",
+      "latest_build": "AKSUbuntu-gen2-2404tlcontainerd-202610.30.0",
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1893,7 +1893,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt nvidia-device-plugin: this CVE clears only once nvidia-device-plugin is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/nvidia-device-plugin/nvidia-device-plugin_0.19.3-ubuntu24.04u6_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1909,7 +1909,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu24.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -1925,7 +1925,7 @@
       "first_fixed_build": "AKSUbuntu-gen2-2404tlcontainerd-202608.06.1",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.54.1-ubuntu24.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc"
       }
     },
@@ -1940,7 +1940,7 @@
       "statement": "Trivy reports the bundled module google.golang.org/grpc as fixed in 1.82.1. That is a fix in the module, not a rebuilt dra-driver-nvidia-gpu: this CVE clears only once dra-driver-nvidia-gpu is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/d/dra-driver-nvidia-gpu/dra-driver-nvidia-gpu_0.4.1-ubuntu24.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9",
         "scan_pkg": "google.golang.org/grpc",
         "module_fixed_version": "1.82.1"
       }
@@ -2023,6 +2023,6 @@
     "https://security-metadata.canonical.com/oval/com.ubuntu.focal.cve.oval.xml.bz2",
     "https://security-metadata.canonical.com/oval/com.ubuntu.jammy.cve.oval.xml.bz2",
     "https://security-metadata.canonical.com/oval/com.ubuntu.noble.cve.oval.xml.bz2",
-    "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:c953df52fba79f47fe22c2ccc6c9d9b7d00fe01704e0b36b90d0a10d114364d8"
+    "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:2e6fb51f45fb2bc82cc9214645b07767c1fe4a005ce20f509be07efc1b6a8da9"
   ]
 }

@@ -1,1 +1,1 @@
-{"schema_version":"1.0","type":"aks-vhd-by-package","package":"erofs-utils","count":1,"releases":["AKSAzureLinuxV3/gen2kata","AKSAzureLinuxV3/gen2katacc"],"advisories":[{"id":"CVE-2022-46174","headline_status":"under_investigation","releases":[0,1]}],"generated":"2026-10-26T13:52:12Z"}
+{"schema_version":"1.0","type":"aks-vhd-by-package","package":"erofs-utils","count":1,"releases":["AKSAzureLinuxV3/gen2kata","AKSAzureLinuxV3/gen2katacc"],"advisories":[{"id":"CVE-2022-46174","headline_status":"under_investigation","releases":[0,1]}],"generated":"2026-11-02T16:51:27Z"}
