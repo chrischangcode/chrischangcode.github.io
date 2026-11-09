@@ -8,11 +8,11 @@
 <link rel="canonical" href="https://chrischangcode.github.io/aks-security-advisory/data/advisory-pages/GO-2026-5932.html">
 <link rel="alternate" type="application/json" href="../advisories/GO-2026-5932.json">
 <style>body{font:16px/1.5 system-ui,sans-serif;margin:0 auto;padding:1.5rem;max-width:60rem;color:#1b1b1b}table{border-collapse:collapse;width:100%}th,td{border:1px solid #d0d0d0;padding:.4rem .6rem;text-align:left;vertical-align:top}th{background:#f4f4f4}code,.mono{font-family:ui-monospace,monospace;font-size:.92em}.note{color:#555;font-size:.92em}ul{padding-left:1.2rem}</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","@id":"https://chrischangcode.github.io/aks-security-advisory/data/advisory-pages/GO-2026-5932.html","url":"https://chrischangcode.github.io/aks-security-advisory/data/advisory-pages/GO-2026-5932.html","identifier":"GO-2026-5932","name":"GO-2026-5932 - AKS VHD security advisory","headline":"GO-2026-5932: affected in the assessed AKS VHD releases","inLanguage":"en","isAccessibleForFree":true,"encoding":{"@type":"MediaObject","encodingFormat":"application/json","contentUrl":"https://chrischangcode.github.io/aks-security-advisory/data/advisories/GO-2026-5932.json"},"isPartOf":{"@type":"Dataset","name":"AKS VHD security advisories","url":"https://chrischangcode.github.io/aks-security-advisory/"},"dateModified":"2026-11-02T16:49:39Z","keywords":["Unknown","affected"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","@id":"https://chrischangcode.github.io/aks-security-advisory/data/advisory-pages/GO-2026-5932.html","url":"https://chrischangcode.github.io/aks-security-advisory/data/advisory-pages/GO-2026-5932.html","identifier":"GO-2026-5932","name":"GO-2026-5932 - AKS VHD security advisory","headline":"GO-2026-5932: affected in the assessed AKS VHD releases","inLanguage":"en","isAccessibleForFree":true,"encoding":{"@type":"MediaObject","encodingFormat":"application/json","contentUrl":"https://chrischangcode.github.io/aks-security-advisory/data/advisories/GO-2026-5932.json"},"isPartOf":{"@type":"Dataset","name":"AKS VHD security advisories","url":"https://chrischangcode.github.io/aks-security-advisory/"},"dateModified":"2026-11-09T17:09:38Z","keywords":["Unknown","affected"]}</script>
 </head>
 <body>
 <h1>GO-2026-5932</h1>
-<p>Severity: <strong>Unknown</strong> &middot; Headline status: <strong>affected</strong> &middot; Updated: 2026-11-02</p>
+<p>Severity: <strong>Unknown</strong> &middot; Headline status: <strong>affected</strong> &middot; Updated: 2026-11-09</p>
 <p class="note">headline_status is the single most-actionable status across all OS/SKU lineages (see issue #39, F7), a cross-lineage triage summary -- NOT the status for any specific SKU. To answer a (SKU, CVE) question read the matching packages[].status row for that release, not headline_status.</p>
 <h2>Package status by OS / SKU</h2>
 <table>
@@ -25,6 +25,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/cvmgen2</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -32,6 +33,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/cvmgen2</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -39,6 +41,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/cvmgen2</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -46,6 +49,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/cvmgen2</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -53,6 +57,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen1</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -60,6 +65,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen1</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -67,6 +73,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen1</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -74,6 +81,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen1</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -81,6 +89,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen1fips</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -88,6 +97,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen1fips</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -95,6 +105,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen1fips</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -102,6 +113,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen1fips</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -109,6 +121,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -116,6 +129,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -123,6 +137,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -130,6 +145,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -137,6 +153,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2arm64</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -144,6 +161,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2arm64</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -151,6 +169,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2arm64</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -158,6 +177,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2arm64</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -165,6 +185,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2arm64fips</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -172,6 +193,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2arm64fips</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -179,6 +201,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2arm64fips</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -186,6 +209,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2arm64fips</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -193,6 +217,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2fips</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -200,6 +225,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2fips</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -207,6 +233,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2fips</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -214,6 +241,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2fips</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -221,6 +249,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2kata</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -228,6 +257,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2kata</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -235,6 +265,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2kata</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -242,6 +273,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2katacc</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -249,6 +281,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2katacc</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -256,6 +289,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2katacc</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -263,6 +297,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2tl</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -270,6 +305,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2tl</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -277,6 +313,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2tl</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -284,6 +321,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/gen2tl</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -291,6 +329,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/osguardgen2fipstl</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -298,6 +337,7 @@
 <td>Unknown</td>
 <td><code>AKSAzureLinuxV3/osguardgen2fipstl</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -305,6 +345,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2004fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>containerd</code></td>
 <td>affected</td>
@@ -312,6 +353,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2004fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -319,6 +361,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2004fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>ig</code></td>
 <td>affected</td>
@@ -326,6 +369,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2004fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -333,6 +377,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2004fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>blobfuse2</code></td>
 <td>affected</td>
@@ -340,6 +385,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2004fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -347,6 +393,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2004cvmcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>containerd</code></td>
 <td>affected</td>
@@ -354,6 +401,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2004cvmcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -361,6 +409,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2004cvmcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>ig</code></td>
 <td>affected</td>
@@ -368,6 +417,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2004cvmcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -375,6 +425,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2004cvmcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>blobfuse2</code></td>
 <td>affected</td>
@@ -382,6 +433,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2004cvmcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -389,6 +441,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2004fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>containerd</code></td>
 <td>affected</td>
@@ -396,6 +449,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2004fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -403,6 +457,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2004fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>ig</code></td>
 <td>affected</td>
@@ -410,6 +465,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2004fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -417,6 +473,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2004fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>blobfuse2</code></td>
 <td>affected</td>
@@ -424,6 +481,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2004fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -431,6 +489,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2204containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>containerd</code></td>
 <td>affected</td>
@@ -438,6 +497,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2204containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -445,6 +505,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2204containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -452,6 +513,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2204containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>ig</code></td>
 <td>affected</td>
@@ -459,6 +521,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2204containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -466,6 +529,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2204containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>blobfuse2</code></td>
 <td>affected</td>
@@ -473,6 +537,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2204containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -480,6 +545,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2204fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>containerd</code></td>
 <td>affected</td>
@@ -487,6 +553,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2204fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -494,6 +561,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2204fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>ig</code></td>
 <td>affected</td>
@@ -501,6 +569,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2204fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -508,6 +577,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2204fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -515,6 +585,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2204fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>blobfuse2</code></td>
 <td>affected</td>
@@ -522,6 +593,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2204fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -529,6 +601,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204arm64containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>containerd</code></td>
 <td>affected</td>
@@ -536,6 +609,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204arm64containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -543,6 +617,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204arm64containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -550,6 +625,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204arm64containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>ig</code></td>
 <td>affected</td>
@@ -557,6 +633,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204arm64containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -564,6 +641,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204arm64containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>blobfuse2</code></td>
 <td>affected</td>
@@ -571,6 +649,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204arm64containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -578,6 +657,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>containerd</code></td>
 <td>affected</td>
@@ -585,6 +665,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -592,6 +673,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -599,6 +681,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>ig</code></td>
 <td>affected</td>
@@ -606,6 +689,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -613,6 +697,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>blobfuse2</code></td>
 <td>affected</td>
@@ -620,6 +705,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -627,6 +713,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>containerd</code></td>
 <td>affected</td>
@@ -634,6 +721,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -641,6 +729,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>ig</code></td>
 <td>affected</td>
@@ -648,6 +737,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -655,6 +745,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -662,6 +753,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>blobfuse2</code></td>
 <td>affected</td>
@@ -669,6 +761,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204fipscontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -676,6 +769,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204fipstlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>containerd</code></td>
 <td>affected</td>
@@ -683,6 +777,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204fipstlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -690,6 +785,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204fipstlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>ig</code></td>
 <td>affected</td>
@@ -697,6 +793,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204fipstlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -704,6 +801,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204fipstlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -711,6 +809,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204fipstlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>blobfuse2</code></td>
 <td>affected</td>
@@ -718,6 +817,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204fipstlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -725,6 +825,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204tlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>containerd</code></td>
 <td>affected</td>
@@ -732,6 +833,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204tlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -739,6 +841,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204tlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -746,6 +849,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204tlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>ig</code></td>
 <td>affected</td>
@@ -753,6 +857,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204tlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -760,6 +865,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204tlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>blobfuse2</code></td>
 <td>affected</td>
@@ -767,6 +873,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2204tlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -774,6 +881,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2604minimalarm64containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -781,6 +889,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2604minimalarm64containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>blobfuse2</code></td>
 <td>affected</td>
@@ -788,6 +897,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2604minimalarm64containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -795,6 +905,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2604minimalcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -802,6 +913,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2604minimalcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>blobfuse2</code></td>
 <td>affected</td>
@@ -809,6 +921,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2604minimalcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -816,6 +929,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2604minimalcvmcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -823,6 +937,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2604minimalcvmcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>blobfuse2</code></td>
 <td>affected</td>
@@ -830,6 +945,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2604minimalcvmcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -837,6 +953,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2404containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>containerd</code></td>
 <td>affected</td>
@@ -844,6 +961,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2404containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -851,6 +969,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2404containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -858,6 +977,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2404containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>ig</code></td>
 <td>affected</td>
@@ -865,6 +985,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2404containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -872,6 +993,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2404containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>blobfuse2</code></td>
 <td>affected</td>
@@ -879,6 +1001,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen1/2404containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -886,6 +1009,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404arm64containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>containerd</code></td>
 <td>affected</td>
@@ -893,6 +1017,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404arm64containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -900,6 +1025,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404arm64containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -907,6 +1033,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404arm64containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>ig</code></td>
 <td>affected</td>
@@ -914,6 +1041,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404arm64containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -921,6 +1049,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404arm64containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>blobfuse2</code></td>
 <td>affected</td>
@@ -928,6 +1057,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404arm64containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -935,6 +1065,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>containerd</code></td>
 <td>affected</td>
@@ -942,6 +1073,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -949,6 +1081,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -956,6 +1089,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>ig</code></td>
 <td>affected</td>
@@ -963,6 +1097,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -970,6 +1105,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>blobfuse2</code></td>
 <td>affected</td>
@@ -977,6 +1113,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404containerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -984,6 +1121,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404cvmcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>containerd</code></td>
 <td>affected</td>
@@ -991,6 +1129,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404cvmcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -998,6 +1137,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404cvmcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -1005,6 +1145,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404cvmcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>ig</code></td>
 <td>affected</td>
@@ -1012,6 +1153,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404cvmcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -1019,6 +1161,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404cvmcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>blobfuse2</code></td>
 <td>affected</td>
@@ -1026,6 +1169,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404cvmcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>oras</code></td>
 <td>affected</td>
@@ -1033,6 +1177,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404tlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>containerd</code></td>
 <td>affected</td>
@@ -1040,6 +1185,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404tlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>Azure CNI</code></td>
 <td>affected</td>
@@ -1047,6 +1193,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404tlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>dcgm-exporter</code></td>
 <td>affected</td>
@@ -1054,6 +1201,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404tlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>ig</code></td>
 <td>affected</td>
@@ -1061,6 +1209,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404tlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>node-exporter</code></td>
 <td>affected</td>
@@ -1068,6 +1217,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404tlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 <tr>
 <td><code>blobfuse2</code></td>
 <td>affected</td>
@@ -1075,6 +1225,7 @@
 <td>Unknown</td>
 <td><code>AKSUbuntu/gen2/2404tlcontainerd</code></td>
 </tr>
+<tr><td colspan="5" class="note">Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays &#x27;affected&#x27;.</td></tr>
 </tbody>
 </table>
 <h2>References</h2>

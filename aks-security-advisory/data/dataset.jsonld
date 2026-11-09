@@ -20,7 +20,7 @@
     "node image",
     "vulnerability"
   ],
-  "dateModified": "2026-11-02T16:51:51Z",
+  "dateModified": "2026-11-09T17:11:36Z",
   "encodingFormat": "application/json",
   "distribution": [
     {
@@ -47,21 +47,21 @@
       "name": "data/glossary.json",
       "contentUrl": "https://chrischangcode.github.io/aks-security-advisory/data/glossary.json",
       "encodingFormat": "application/json",
-      "contentSize": 13852
+      "contentSize": 13851
     },
     {
       "@type": "DataDownload",
       "name": "data/index-slim.json",
       "contentUrl": "https://chrischangcode.github.io/aks-security-advisory/data/index-slim.json",
       "encodingFormat": "application/json",
-      "contentSize": 1715754
+      "contentSize": 1749832
     },
     {
       "@type": "DataDownload",
       "name": "data/index.json",
       "contentUrl": "https://chrischangcode.github.io/aks-security-advisory/data/index.json",
       "encodingFormat": "application/json",
-      "contentSize": 54621575
+      "contentSize": 35811185
     },
     {
       "@type": "DataDownload",

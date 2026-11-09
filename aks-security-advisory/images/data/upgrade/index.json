@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "type": "aks-release-upgrade-index",
-  "generated": "2026-11-02T16:53:08Z",
+  "generated": "2026-11-09T17:12:41Z",
   "basis": "release_history",
   "to_release": "v20261025",
   "count": 4,
@@ -43,8 +43,8 @@
       "release_gap": 3,
       "summary": {
         "fixed": 173,
-        "partially_fixed": 260,
-        "still_present": 299,
+        "partially_fixed": 262,
+        "still_present": 312,
         "new_in_latest": 1
       },
       "file": "v20260904.json"
@@ -56,8 +56,8 @@
       "release_gap": 2,
       "summary": {
         "fixed": 151,
-        "partially_fixed": 260,
-        "still_present": 286,
+        "partially_fixed": 263,
+        "still_present": 294,
         "new_in_latest": 0
       },
       "file": "v20260925.json"
@@ -68,9 +68,9 @@
       "comparability": "same_scan",
       "release_gap": 1,
       "summary": {
-        "fixed": 31,
-        "partially_fixed": 156,
-        "still_present": 240,
+        "fixed": 33,
+        "partially_fixed": 157,
+        "still_present": 248,
         "new_in_latest": 65
       },
       "file": "v20261011.json"

@@ -69,16 +69,16 @@
       "absent_from_all_k8s_reports": "The image reference does not appear in any per-Kubernetes-version scan report. This is the only claim made about an unmapped image."
     },
     "counts": {
-      "k8s_exact": 605,
-      "k8s_repo_tagskew": 1391,
+      "k8s_exact": 586,
+      "k8s_repo_tagskew": 1414,
       "k8s_registry_variant": 293,
-      "k8s_unmapped": 1130
+      "k8s_unmapped": 1126
     },
     "shares": {
-      "k8s_exact": 0.177,
-      "k8s_repo_tagskew": 0.4068,
+      "k8s_exact": 0.1714,
+      "k8s_repo_tagskew": 0.4136,
       "k8s_registry_variant": 0.0857,
-      "k8s_unmapped": 0.3305
+      "k8s_unmapped": 0.3293
     },
     "total": 3419
   },
@@ -94,16 +94,16 @@
       "disputed": "The computed diff and the upstream mitigated list disagree for this CVE. The feed records both signals (in_computed / in_upstream) rather than silently choosing one."
     },
     "counts": {
-      "computed": 16428,
+      "computed": 16429,
       "upstream": 0,
-      "disputed": 1247
+      "disputed": 1258
     },
     "shares": {
-      "computed": 0.9294,
+      "computed": 0.9289,
       "upstream": 0.0,
-      "disputed": 0.0706
+      "disputed": 0.0711
     },
-    "total": 17675
+    "total": 17687
   },
   "presentation_state": {
     "labels": {
@@ -134,5 +134,5 @@
       "image_current": "From a continuously-rescanned per-image report. Drifts ahead of the frozen snapshots, so it is never blended with them."
     }
   },
-  "generated": "2026-11-02T16:53:08Z"
+  "generated": "2026-11-09T17:12:41Z"
 }
