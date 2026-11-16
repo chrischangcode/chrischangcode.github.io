@@ -3,7 +3,7 @@
   "id": "GO-2026-5932",
   "type": "aks-vhd-security-advisory",
   "severity": "Unknown",
-  "updated": "2026-11-09T17:09:38Z",
+  "updated": "2026-11-16T16:39:50Z",
   "references": [
     "https://nvd.nist.gov/vuln/detail/GO-2026-5932",
     "https://raw.githubusercontent.com/microsoft/AzureLinuxVulnerabilityData/main/azurelinux-3.0-oval.xml",
@@ -24,7 +24,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -40,7 +40,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -56,7 +56,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dcgm-exporter-4.8.2-10.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -72,7 +72,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.12.1-13.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -88,7 +88,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -104,7 +104,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -120,7 +120,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dcgm-exporter-4.8.2-10.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -136,7 +136,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.12.1-13.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -152,7 +152,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -168,7 +168,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -184,7 +184,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dcgm-exporter-4.8.2-10.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -200,7 +200,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.12.1-13.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -216,7 +216,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -232,7 +232,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -248,7 +248,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dcgm-exporter-4.8.2-10.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -264,7 +264,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.12.1-13.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -280,7 +280,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -296,7 +296,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -312,7 +312,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dcgm-exporter-4.8.2-10.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -328,7 +328,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.12.1-13.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -344,7 +344,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -360,7 +360,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -376,7 +376,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dcgm-exporter-4.8.2-10.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -392,7 +392,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.12.1-13.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -408,7 +408,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -424,7 +424,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -440,7 +440,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dcgm-exporter-4.8.2-10.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -456,7 +456,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.12.1-13.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -472,7 +472,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -488,7 +488,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -504,7 +504,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.12.1-13.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -520,7 +520,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -536,7 +536,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -552,7 +552,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.12.1-13.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -568,7 +568,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -584,7 +584,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -600,7 +600,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dcgm-exporter-4.8.2-10.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -616,7 +616,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/n/node-exporter-kubernetes-1.12.1-13.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -632,7 +632,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -648,7 +648,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/azurelinux/3.0/prod/cloud-native/x86_64/Packages/d/dcgm-exporter-4.7.1-1.azl3.x86_64.rpm",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -664,7 +664,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -680,7 +680,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu20.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -696,7 +696,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -712,7 +712,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/i/ig/ig_0.57.0-ubuntu20.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -728,7 +728,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu20.04u13_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -744,7 +744,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/b/blobfuse2/blobfuse2_2.5.6_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -760,7 +760,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -776,7 +776,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu20.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -792,7 +792,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -808,7 +808,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/i/ig/ig_0.57.0-ubuntu20.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -824,7 +824,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu20.04u13_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -840,7 +840,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/b/blobfuse2/blobfuse2_2.5.6_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -856,7 +856,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -872,7 +872,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu20.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -888,7 +888,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -904,7 +904,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/i/ig/ig_0.57.0-ubuntu20.04u5_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -920,7 +920,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu20.04u13_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -936,7 +936,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/b/blobfuse2/blobfuse2_2.5.6_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -952,7 +952,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -968,7 +968,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -984,7 +984,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1000,7 +1000,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu22.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1016,7 +1016,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.57.0-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1032,7 +1032,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu22.04u13_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1048,7 +1048,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/b/blobfuse2/blobfuse2_2.5.6_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1064,7 +1064,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1080,7 +1080,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1096,7 +1096,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1112,7 +1112,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.57.0-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1128,7 +1128,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu22.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1144,7 +1144,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu22.04u13_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1160,7 +1160,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/b/blobfuse2/blobfuse2_2.5.6_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1176,7 +1176,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1192,7 +1192,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1208,7 +1208,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1224,7 +1224,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu22.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1240,7 +1240,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.57.0-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1256,7 +1256,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu22.04u13_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1272,7 +1272,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/b/blobfuse2/blobfuse2_2.5.6_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1288,7 +1288,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1304,7 +1304,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1320,7 +1320,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1336,7 +1336,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu22.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1352,7 +1352,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.57.0-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1368,7 +1368,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu22.04u13_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1384,7 +1384,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/b/blobfuse2/blobfuse2_2.5.6_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1400,7 +1400,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1416,7 +1416,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1432,7 +1432,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1448,7 +1448,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.57.0-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1464,7 +1464,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu22.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1480,7 +1480,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu22.04u13_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1496,7 +1496,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/b/blobfuse2/blobfuse2_2.5.6_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1512,7 +1512,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1528,7 +1528,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1544,7 +1544,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1560,7 +1560,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.57.0-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1576,7 +1576,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu22.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1592,7 +1592,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu22.04u13_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1608,7 +1608,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/b/blobfuse2/blobfuse2_2.5.6_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1624,7 +1624,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1640,7 +1640,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/moby-containerd/moby-containerd_1.7.36-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1656,7 +1656,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1672,7 +1672,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu22.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1688,7 +1688,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/ig/ig_0.57.0-ubuntu22.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1704,7 +1704,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu22.04u13_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1720,7 +1720,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/b/blobfuse2/blobfuse2_2.5.6_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1736,7 +1736,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1752,7 +1752,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1768,7 +1768,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/b/blobfuse2/blobfuse2_2.5.6_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1784,7 +1784,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1800,7 +1800,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1816,7 +1816,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/b/blobfuse2/blobfuse2_2.5.6_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1832,7 +1832,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1848,7 +1848,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1864,7 +1864,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/b/blobfuse2/blobfuse2_2.5.6_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1880,7 +1880,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1896,7 +1896,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.7-ubuntu24.04u4_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1912,7 +1912,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1928,7 +1928,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu24.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1944,7 +1944,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.57.0-ubuntu24.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1960,7 +1960,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu24.04u13_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1976,7 +1976,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/b/blobfuse2/blobfuse2_2.5.6_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -1992,7 +1992,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2008,7 +2008,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.7-ubuntu24.04u4_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2024,7 +2024,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2040,7 +2040,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu24.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2056,7 +2056,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.57.0-ubuntu24.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2072,7 +2072,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu24.04u13_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2088,7 +2088,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/b/blobfuse2/blobfuse2_2.5.6_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2104,7 +2104,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2120,7 +2120,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.7-ubuntu24.04u4_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2136,7 +2136,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2152,7 +2152,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu24.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2168,7 +2168,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.57.0-ubuntu24.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2184,7 +2184,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu24.04u13_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2200,7 +2200,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/b/blobfuse2/blobfuse2_2.5.6_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2216,7 +2216,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2232,7 +2232,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.7-ubuntu24.04u4_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2248,7 +2248,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2264,7 +2264,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu24.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2280,7 +2280,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.57.0-ubuntu24.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2296,7 +2296,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu24.04u13_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2312,7 +2312,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/b/blobfuse2/blobfuse2_2.5.6_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2328,7 +2328,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt oras: this CVE clears only once oras is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_linux_arm64.tar.gz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2344,7 +2344,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt containerd: this CVE clears only once containerd is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/moby-containerd/moby-containerd_2.3.7-ubuntu24.04u4_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2360,7 +2360,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt Azure CNI: this CVE clears only once Azure CNI is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.aks.azure.com/azure-cni/v1.6.21/binaries/azure-vnet-cni-linux-arm64-v1.6.21.tgz",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2376,7 +2376,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt dcgm-exporter: this CVE clears only once dcgm-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/d/dcgm-exporter/dcgm-exporter_4.8.2-ubuntu24.04u10_amd64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2392,7 +2392,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt ig: this CVE clears only once ig is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/ig/ig_0.57.0-ubuntu24.04u5_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2408,7 +2408,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt node-exporter: this CVE clears only once node-exporter is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/n/node-exporter-kubernetes/node-exporter-kubernetes_1.12.1-ubuntu24.04u13_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2424,7 +2424,7 @@
       "statement": "Trivy reports the bundled module golang.org/x/crypto as fixed in 0.58.1-0.20261009181718-2f1f834330b2. That is a fix in the module, not a rebuilt blobfuse2: this CVE clears only once blobfuse2 is rebuilt against the patched module and a scanned VHD build ships that rebuild. No such build has been observed, so this stays 'affected'.",
       "evidence": {
         "scan": "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/b/blobfuse2/blobfuse2_2.5.6_arm64.deb",
-        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290",
+        "scanner": "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6",
         "scan_pkg": "golang.org/x/crypto",
         "module_fixed_version": "0.58.1-0.20261009181718-2f1f834330b2"
       }
@@ -2510,6 +2510,6 @@
     "https://security-metadata.canonical.com/oval/com.ubuntu.focal.cve.oval.xml.bz2",
     "https://security-metadata.canonical.com/oval/com.ubuntu.jammy.cve.oval.xml.bz2",
     "https://security-metadata.canonical.com/oval/com.ubuntu.noble.cve.oval.xml.bz2",
-    "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:37b47ee69184581cc66835e47dc561680d5cd0af69abd1eb5271a818e09c6290"
+    "mcr.microsoft.com/oss/v2/aquasecurity/trivy@sha256:70c5dd158a38067ab0f877f70a3ae1596ba5795fb8305ed24ce43e3c28129ad6"
   ]
 }

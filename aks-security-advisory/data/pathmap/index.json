@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "type": "aks-vhd-pathmap-index",
-  "generated": "2026-11-09T17:11:19Z",
+  "generated": "2026-11-16T16:41:55Z",
   "default_lineage": "AKSAzureLinuxV3/gen2",
   "lineages": {
     "AKSAzureLinuxV3/cvmgen2": "azurelinux-3.0",

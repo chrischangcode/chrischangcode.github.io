@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "type": "aks-images-feed-manifest",
-  "generated": "2026-11-09T17:12:41Z",
+  "generated": "2026-11-16T16:43:20Z",
   "data_root": ".",
   "count": 9,
   "endpoints": [
@@ -16,17 +16,17 @@
     {
       "path": "cve-index.json",
       "kind": "document",
-      "bytes": 262773,
+      "bytes": 263106,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": true,
-      "entries": 7046
+      "entries": 7054
     },
     {
       "path": "cve/",
       "kind": "collection",
-      "files": 7046,
-      "bytes": 120482210,
+      "files": 7054,
+      "bytes": 121573287,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": false,
@@ -35,7 +35,7 @@
     {
       "path": "glossary.json",
       "kind": "document",
-      "bytes": 10238,
+      "bytes": 10236,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": true
@@ -44,7 +44,7 @@
       "path": "image/",
       "kind": "collection",
       "files": 174,
-      "bytes": 9353934,
+      "bytes": 9403382,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": false,
@@ -54,7 +54,7 @@
       "path": "k8s/",
       "kind": "collection",
       "files": 98,
-      "bytes": 4373683,
+      "bytes": 4401444,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": false,
@@ -72,7 +72,7 @@
       "path": "release/",
       "kind": "collection",
       "files": 21,
-      "bytes": 9604204,
+      "bytes": 9655775,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": false,
@@ -82,7 +82,7 @@
       "path": "upgrade/",
       "kind": "collection",
       "files": 4,
-      "bytes": 9450935,
+      "bytes": 9453573,
       "media_type": "application/json",
       "schema_version": "1.0",
       "optional": false,
