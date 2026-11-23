@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "type": "aks-release-upgrade-index",
-  "generated": "2026-11-16T16:43:20Z",
+  "generated": "2026-11-23T19:07:02Z",
   "basis": "release_history",
   "to_release": "v20261025",
   "count": 4,
@@ -39,38 +39,37 @@
     {
       "from_release": "v20260904",
       "to_release": "v20261025",
-      "comparability": "same_scan",
+      "comparability": "cross_scan",
       "release_gap": 3,
       "summary": {
         "fixed": 169,
         "partially_fixed": 265,
-        "still_present": 321,
-        "new_in_latest": 1
+        "still_present": 321
       },
       "file": "v20260904.json"
     },
     {
       "from_release": "v20260925",
       "to_release": "v20261025",
-      "comparability": "same_scan",
+      "comparability": "cross_scan",
       "release_gap": 2,
       "summary": {
         "fixed": 147,
         "partially_fixed": 266,
-        "still_present": 303,
-        "new_in_latest": 0
+        "still_present": 303
       },
       "file": "v20260925.json"
     },
     {
       "from_release": "v20261011",
       "to_release": "v20261025",
-      "comparability": "cross_scan",
+      "comparability": "same_scan",
       "release_gap": 1,
       "summary": {
-        "fixed": 32,
-        "partially_fixed": 157,
-        "still_present": 249
+        "fixed": 35,
+        "partially_fixed": 162,
+        "still_present": 276,
+        "new_in_latest": 65
       },
       "file": "v20261011.json"
     }

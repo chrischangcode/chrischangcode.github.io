@@ -1,6 +1,6 @@
 # AKS Security Advisories -- machine-readable feed guide
 
-> GENERATED with this feed build (2026-11-16T16:42:13Z). Every byte size, release label and
+> GENERATED with this feed build (2026-11-23T19:05:50Z). Every byte size, release label and
 > count below is a fact about THIS build, walked from manifest.json and the
 > canonical vocabulary -- not a hand-written claim. Re-read manifest.json /
 > glossary.json for the authoritative live inventory.
@@ -27,15 +27,15 @@ Data root: https://chrischangcode.github.io/aks-security-advisory/data/
 
 ## Endpoints in THIS build (byte sizes from manifest.json)
 
-  data/advisories/  --  23,843 files, 232,510,256 B  --  required  --  schema 2.0
-  data/advisory-pages/  --  23,843 files, 154,476,274 B  --  optional  --  schema 1.0
-  data/by-package/  --  584 files, 10,964,247 B  --  optional  --  schema 1.0
-  data/by-release/  --  29 files, 53,536,352 B  --  optional  --  schema 1.0
-  data/components.json  --  18,343 B  --  optional  --  schema 2.0
-  data/glossary.json  --  13,852 B  --  optional  --  schema 2.0
-  data/index-slim.json  --  1,759,445 B, 23,843 entries  --  optional  --  schema 1.0
-  data/index.json  --  32,564,764 B, 23,843 entries  --  required  --  schema 2.0
-  data/pathmap/  --  4 files, 830,547 B  --  optional  --  schema 1.1
+  data/advisories/  --  24,225 files, 366,138,166 B  --  required  --  schema 2.0
+  data/advisory-pages/  --  24,225 files, 188,968,277 B  --  optional  --  schema 1.0
+  data/by-package/  --  587 files, 17,935,087 B  --  optional  --  schema 1.0
+  data/by-release/  --  29 files, 85,620,589 B  --  optional  --  schema 1.0
+  data/components.json  --  19,208 B  --  optional  --  schema 2.0
+  data/glossary.json  --  13,853 B  --  optional  --  schema 2.0
+  data/index-slim.json  --  1,749,229 B, 24,225 entries  --  optional  --  schema 1.0
+  data/index.json  --  52,003,479 B, 24,225 entries  --  required  --  schema 2.0
+  data/pathmap/  --  4 files, 829,664 B  --  optional  --  schema 1.1
 
 Read manifest.json FIRST to plan fetches and avoid the large index.json.
 Endpoints marked 'optional' may be absent on an older feed artifact; treat
@@ -78,17 +78,17 @@ by-release keys. Resolve a scanner path WITHIN one of these lineages:
 
 ## Status vocabulary (from glossary.json; counts measured in this build)
 
-- fixed (Fixed) -- count 3179
+- fixed (Fixed) -- count 7793
     A scanned AKS VHD build ships a package version at or above the distro's fixed version. The 'first fixed build' field names the earliest build that carries the fix.
 - fix_available_upstream (Fix available upstream) -- count 88
     The distro (Azure Linux / Ubuntu) has published a fixed package, but none of the scanned VHD builds ship it yet. The fix exists upstream and is expected in a future node image.
-- affected (Affected) -- count 7068
+- affected (Affected) -- count 7391
     Vulnerable, with no fix AKS can ship yet. Comes from a vendor VEX / Ubuntu CVE Tracker assertion (a fixless CVE cannot be enumerated from OVAL alone), or from the binary scan overlay when a CVE survives to the newest scanned build. A scanned binary stays affected even if the scanner reports a fixed version, because that fix is in the bundled module and not in any artifact AKS ships — see evidence.module_fixed_version. The generated glossary records how large a share of the feed it is.
-- not_affected (Not affected) -- count 9836
+- not_affected (Not affected) -- count 5236
     Excluded by a vendor verdict — an Azure Linux CSAF/VEX justification or an Ubuntu CVE Tracker 'not-affected' (e.g. the vulnerable code path is not present/reachable). The justification is shown on the advisory.
-- under_investigation (Under investigation) -- count 533
+- under_investigation (Under investigation) -- count 548
     Triage is not complete — either no distro OVAL/VEX verdict exists yet, or the Ubuntu CVE Tracker marks the package 'needs-triage'.
-- will_not_fix (Will not fix) -- count 3139
+- will_not_fix (Will not fix) -- count 3169
     The vendor will not ship a fix (Ubuntu CVE Tracker 'ignored' — e.g. the release is past standard support, or the fix is deemed too intrusive). The reason is shown on the advisory.
 
 Do NOT assume any status is rare; consult glossary.json status.counts /
